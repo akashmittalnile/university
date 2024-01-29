@@ -1,0 +1,181 @@
+a{text-decoration: none;}
+.resources-box{padding: 100px 50px;border-radius: 15px;width: 85%;margin: 0 auto; } 
+.resourse-banner{height: 90vh; padding-top: 12%;background: url("../images/resources-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.resources-box p{font-size: 16px;}
+.resources-box h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+
+.blogs .card{padding: 15px 15px 35px 15px;transition: 0.3s ease; border: 0;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.blogs .card:hover{box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;}
+.blogs .card h5{transition: 0.3s ease;}
+.blogs .card:hover h5{color: #3fab40;}
+.blogs .card .img-box img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;height: 400px; object-fit: cover;}
+.blogs .card .img-box{background-color: #008d21a1;padding: 0px 15px 15px 0px;width: 100%;margin: 0 auto; }
+.blogs .card .learn-more-btn{color: #3fab40; margin-top: 30px; padding: 10px;width: 100%;border: 1px solid #3fab40;background-color: transparent;border-radius: 5px;transition: 0.3s ease;font-size: 14px;}
+.blogs .card .learn-more-btn:hover{border: 1px solid #3fab40;background-color: #3fab40;color: white;}
+.blogs {margin-top: -80px;}
+
+.blog .card{padding: 15px 15px 35px 15px;transition: 0.3s ease; border: 0;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.blog .card:hover{box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;}
+.blog .card h5{transition: 0.3s ease;}
+.blog .card:hover h5{color: #3fab40;}
+.blog .card .img-box img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;height: 400px; object-fit: cover;}
+.blog .card .img-box{background-color: #008d21a1;padding: 0px 15px 15px 0px;width: 100%;margin: 0 auto; }
+.blog .card .learn-more-btn{color: #3fab40; margin-top: 30px; padding: 10px;width: 100%;border: 1px solid #3fab40;background-color: transparent;border-radius: 5px;transition: 0.3s ease;font-size: 14px;}
+.blog .card .learn-more-btn:hover{border: 1px solid #3fab40;background-color: #3fab40;color: white;}
+
+.e-book{padding: 50px 0px; margin-top: 100px;background: linear-gradient( rgb(19 78 42 / 0%), rgb(28 66 23 / 98%) ),  url("../images/e-book-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.e-book .signup-btn{width: 200px;}
+.e-book .image-slider{margin-top: 50px;}
+.e-book .parent{ display: flex; align-items: center; justify-content: center; height: 100%; }
+.e-book .carousel{ max-width: 100%; }
+.e-book .slide { height: 100%; }
+.e-book .slide  .card{padding: 20px;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.e-book .slide  .card .img-box{background-color: #008d21a1;padding: 0px 15px 15px 0px;margin: 0 auto;width: 100%; }
+.e-book .slide  .card .img-box img{height: 350px;box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;object-fit: cover;}
+.e-book .load-more{transition: 0.3s ease;font-size: 14px; padding: 10px 25px;width: 200px;margin-top: 25px; background-color: #3fab40;color: rgb(245, 245, 245);border: 1px solid #3fab40;}
+.e-book .load-more:hover{background-color: transparent;color: rgb(245, 245, 245);border: 1px solid rgb(245, 245, 245);}
+.events{margin-top: 100px;}
+.box-slide {width: 100%; background-color: #EAE8E8; display: flex; align-items: center; justify-content: center; flex-direction: column; height: 250px; }
+.aboutImageSlide { width: 100%; height: 350px; object-fit: cover; border: 3px solid white; }
+.news-letter .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; object-fit: cover;}
+.news-letter .left-section{background-color: #3fab40;padding: 0px 15px 15px 0px;}
+.news-letter {margin-top: 100px;}
+.news-letter h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.news-letter button{width: 300px;height: 50px;}
+.news-letter form .form-control{border: 1px solid #97e798; font-size: 14px; color: #4e4e4e;background-color: #ffffff70;}
+.news-letter form .form-control:focus{box-shadow: none;border: 1px solid #3fab40;}
+.news-letter-box{padding: 50px;border: 1px solid #b6eab7;border-radius: 5px;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;background: url("../images/letter-bg-3.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.podcast{padding: 50px 0px; margin-top: 100px;background:  linear-gradient( rgb(19 78 42 / 10%), rgb(37 130 24 / 50%) ),url("../images/p-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.podcast .signup-btn{width: 200px;}
+.podcast .image-slider{margin-top: 50px;}
+.podcast .parent{ display: flex; align-items: center; justify-content: center; height: 100%; }
+.podcast .carousel{ max-width: 100%; }
+.podcast .box-slide {width: 100%; background-color: #EAE8E8; display: flex; align-items: center; justify-content: center; flex-direction: column; height: 250px; }
+.podcast .aboutImageSlide { width: 100%; height: 350px; object-fit: cover; border: 3px solid white; }
+.podcast .card{padding: 20px;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;;  border: 1px solid #ffffff42; background: #fff;}
+.podcast ul li{list-style: none;padding-bottom: 5px;color: rgb(245, 245, 245);font-size: 14px;}
+.podcast ul {padding-left: 0;color: rgb(245, 245, 245);}
+.podcast .slide  .card .img-box{background-color: rgb(245, 245, 245);padding: 0px 15px 15px 0px;margin: 0 auto;width: 100%; }
+.podcast .slide  .card .img-box img{height: 250px;box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;object-fit: cover;}
+.podcast  h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.podcast .slide  .card .listen-btn{transition: 0.3s ease; font-size: 14px;border-radius: 5px;padding: 8px 20px;border: 1px solid #ffffff;background-color: transparent;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;color: rgb(245, 245, 245);}
+.podcast .slide  .card .listen-btn:hover{background-color: #3fab40; border: 1px solid #3fab40; }
+.podcast .load-more{transition: 0.3s ease;font-size: 14px; padding: 10px 25px;width: 200px;margin-top: 25px; background-color: #3fab40;color: rgb(245, 245, 245);border: 1px solid #3fab40;}
+.podcast .load-more:hover{background-color: transparent;color: rgb(245, 245, 245);border: 1px solid rgb(245, 245, 245);}
+.events{margin-top: 100px;}
+.events .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; object-fit: cover;margin-top: -14px; margin-left: -14px;}
+.events .left-section{background-color: #ffffff;padding: 0px 15px 25px 0px;border: 10px solid #3fab40;border-bottom: 10px solid #3fab40;}
+.events h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.events button{font-size: 14px;}
+.conference{margin-top: 100px;background: url("../images/conference.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
+.conference h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.conference  button{transition: 0.3s ease; font-size: 14px;border-radius: 5px;padding: 8px 20px;border: 1px solid #ffffff;width: 200px;background-color: transparent;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;color: rgb(245, 245, 245);}
+.conference  button:hover{background-color: #3fab40; border: 1px solid #3fab40;color: rgb(245, 245, 245); }
+.speaking{margin-top: 100px;}
+.speaking .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; object-fit: cover;margin-bottom: -14px; margin-left: 22px; }
+.speaking .right-section{background-color: #ffffff; padding: 22px 0px 0px 1px; border: 10px solid #3fab40;}
+.speaking h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.speaking button{font-size: 14px;}
+.interviews{margin-top: 100px;background-color: #e3f5e3;padding: 50px 0px;}
+.interviews .video-box{padding: 30px;background-color: #ffffff;}
+.interviews .rwd-media { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
+.interviews .rwd-media iframe,
+.rwd-media video { position: absolute; width: 100%; height: 100%; box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; }
+.interviews  h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.webinar{margin-top: 100px;}
+.webinar .video-box video{margin: 0 auto;display: block;}
+.webinar h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.webinar  .video-box video{border: 10px solid #ffffff;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;    margin-top: -20px;    background: white; margin-left: -15px;}
+.news-letter .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; object-fit: cover;}
+.webinar  .video-box{background-color: #ffffff;padding: 0px 9px 20px 0px;;border: 10px solid #3fab40;}
+.business-links{margin-top: 100px;}
+.business-links h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;margin-bottom: 30px;}
+.business-links .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;    height: 350px; width: 100%; object-fit: cover;}
+.business-links .left-section{background-color: #008d21a1;padding: 0px 15px 15px 0px;}
+.business-links .learn-more-btn{background-color: transparent;border: 1px solid #3fab40; color: #3fab40; padding: 10px 25px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;font-size: 14px;transition: 0.3s ease;}
+.business-links .learn-more-btn:hover{background-color: #3fab40;color: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;}
+.business-links .link-box{background-color: #edf6ed;padding: 25px;border: 1px solid #bedfbe;}
+.business-links .load-more-btn{width: 200px;}
+@media(max-width: 991px){
+    .resourse-banner{height: 63vh;}
+    .resources-box {width: 100%;padding: 100px 10px;}
+    .blogs{padding: 10px;}
+    .blog{padding: 10px;}
+    .e-book{margin-top: 50px;padding: 50px 10px;}
+    .e-book .slide .card .img-box img{height: 250px;}
+    .news-letter{margin-top: 50px;}
+    .news-letter-box {padding: 30px;}
+    .news-letter h1{font-size: 35px;margin-top: 15px;}
+    .news-letter button{width: 100%;}
+    .podcast{margin-top: 50px;padding: 50px 10px;}
+    .events{margin-top: 50px;padding: 10px;}
+    .events .left-section {padding: 0px 2px 17px 0px; }
+    .events h1{font-size: 35px;margin-top: 15px;}
+    .conference{margin-top: 50px;padding: 50px 10px;}
+    .speaking{margin-top: 50px;padding: 10px;}
+    .speaking .right-section { padding: 14px 0px 0px 0px;margin-top: 30px;  }
+    .speaking h1{font-size: 35px;}
+    .webinar{margin-top: 50px;padding: 10px;}
+    .webinar .video-box video{height: 203px;}
+    .webinar h1{font-size: 35px;margin-top: 15px;}
+    .interviews{margin-top: 50px;    padding: 50px 10px;}
+    .interviews h1{font-size: 35px;}
+    .interviews .video-box{padding: 10px;}
+    .business-links{margin-top: 50px;}
+    .business-links h1{font-size: 35px;}
+    .business-links .left-section img{height: 305px;}
+    .business-links .right-section h4{margin-top: 15px;}
+    .resources-box h1{font-size: 35px;}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
+    .resourse-banner { height: 39vh; }
+    .blogs .card .img-box img{height: 223px;}
+    .blog .card .img-box img{height: 223px;}
+    .e-book .slide .card .img-box img{height: 170px;}
+    .podcast .slide .card .img-box img{height: 110px;}
+    .business-links .load-more-btn{margin-bottom: 20px;}
+}
+
+
+a{text-decoration: none;}
+.resources-box{padding: 100px 50px;border-radius: 15px;width: 85%;margin: 0 auto; } 
+.resourse-banner{height: 90vh; padding-top: 9%;background:linear-gradient( rgb(19 78 42 / 10%), rgb(37 130 24 / 50%) ),url("../images/p-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.resources-box p{font-size: 16px;}
+.resources-box h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.podcast-contents .card{padding: 15px;transition: 0.3s ease; border: 0;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.podcast-contents .card:hover{box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;}
+.podcast-contents .card h5{transition: 0.3s ease;}
+.podcast-contents .card:hover h5, .podcast-contents .card:hover li{color: #3fab40;}
+.podcast-contents .card .img-box img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;height: 400px; object-fit: cover;}
+.podcast-contents .card .img-box{background-color: #008d21a1;padding: 0px 15px 15px 0px;width: 100%;margin: 0 auto; }
+.podcast-contents .card .learn-more-btn{color: #ffffff;background-color: #3fab40; padding: 10px;width: 100%;border: 1px solid #3fab40;border-radius: 5px;transition: 0.3s ease;font-size: 16px;}
+.podcast-contents .card .learn-more-btn:hover{border: 1px solid #3fab40;background-color: white;color: #3fab40;}
+.podcast-contents {margin-top: -80px;}
+.e-book{padding: 50px 0px; margin-top: 100px;background: linear-gradient( rgb(19 78 42 / 0%), rgb(28 66 23 / 98%) ),  url("../images/e-book-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.podcast-contents .card h5{font-size: 1.2em;}
+.podcast-contents ul { padding-left: 0;  }
+.podcast-contents ul li { list-style: none;color: #474747; padding-bottom: 5px; font-size: 14px; }
+@media(max-width: 991px){
+    .resourse-banner{height: 63vh;}
+    .resources-box {width: 100%;padding: 100px 10px;}
+    .podcast-contents{padding: 10px;}
+    .e-book{margin-top: 50px;padding: 50px 10px;}
+    .e-book .slide .card .img-box img{height: 250px;}
+    .resources-box p{font-size: 12px;}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
+    .resourse-banner { height: 39vh; }
+    .podcast-contents .card .img-box img{height: 223px;}
+    .e-book .slide .card .img-box img{height: 170px;}
+    .podcast .slide .card .img-box img{height: 110px;}
+}
+@media only screen and (min-width: 412px) and (max-width: 412px) and (min-height: 915px) and (max-height: 915px) {
+    .podcast-contents {margin-top: -190px;}
+}
+
+@media only screen and (min-width: 280px) and (max-width: 300px){
+    .podcast-contents {margin-top: -22px;}
+}
+@media only screen and (min-width: 390px) and (max-width: 450px){
+    .podcast-contents {margin-top: -160px;}
+}

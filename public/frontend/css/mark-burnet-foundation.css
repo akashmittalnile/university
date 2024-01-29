@@ -1,0 +1,32 @@
+.mark-burnet{padding-top: 10%;}
+.sponser-partner .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; object-fit: cover;}
+.sponser-partner .left-section{background-color: #008d21a1;padding: 0px 25px 25px 0px;}
+.sponser-partner .right-section{margin-left: -100px;background-color: #ffffffd4;padding: 50px 30px;}
+.sponser-partner h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.donate-support{margin-top: 100px;}
+.donate-support h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.donate-support .left-section .img-box img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.donate-support .left-section .img-box{background-color: #008d21a1;padding: 0px 20px 20px 0px;}
+.donate-support .img-2{margin-left: -30px;margin-top: -150px;box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;}
+.merch{padding: 50px 0px; margin-top: 100px;background:  url("../images/merch-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.merch .signup-btn{width: 200px;}
+.image-slider{margin-top: 50px;}
+.parent{ display: flex; align-items: center; justify-content: center; height: 100%; }
+.carousel{ max-width: 100%; }
+.slide { max-height: 400px; }
+.box-slide {width: 100%; background-color: #EAE8E8; display: flex; align-items: center; justify-content: center; flex-direction: column; height: 250px; }
+.aboutImageSlide { width: 100%; height: 350px; object-fit: cover; border: 3px solid white; }
+.merch h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+@media(max-width: 991px){
+    .mark-burnet{padding-top: 30%;}
+    .sponser-partner .left-section { padding: 0px 15px 15px 0px; }
+    .sponser-partner .right-section{margin-left: auto;  padding: 50px 10px 0px 10px;}
+    .sponser-partner h1{font-size: 35px;}
+    .sponser-partner{padding: 10px;}
+    .donate-support{margin-top: 50px;padding: 10px;}
+    .donate-support .left-section .img-box { padding: 0px 15px 15px 0px; }
+    .donate-support .img-2 {margin-left: -4px;margin-top: -106px;}
+    .donate-support h1{font-size: 35px;margin-top: 15px;}
+    .merch{margin-top: 50px;padding: 50px 10px;}
+    
+}

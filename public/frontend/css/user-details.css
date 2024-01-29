@@ -1,0 +1,106 @@
+.user-details{padding-top: 10%;}
+.user-detiled-header .left-section h1{line-height: 90px;font-size: 65px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.user-detiled-header .left-section p{font-size: 25px;}
+.user-detiled-header .right-section{background-color: #3fab40;padding: 0px 0px 35px 35px;}
+.user-detiled-header .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.my-info{margin-top: 100px;background-color: #edffed;padding: 100px 30px;}
+.my-info .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
+.my-info .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.my-info  h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.my-info .head{margin-bottom: -50px; position: relative;}
+.purchased{background: linear-gradient( rgb(19 78 42 / 0%), rgb(37 130 24 / 50%) ), url("../images/what-we-do-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 100px 0px;}
+.purchased h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.purchased .sub-text{font-size: 18px;}
+.purchased-box{ padding: 30px; background: #44953a96;border: 1px solid white;border-radius: 15px;    width: 90%;  margin-top: 50px; margin: 0 auto;  margin-top: 50px; }
+.purchased-box li{list-style: none;color: rgb(245, 245, 245);padding: 10px;}
+.purchased-items{background: linear-gradient( rgb(19 78 42 / 0%), rgb(37 130 24 / 50%) ), url("../images/podcasts-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;} 
+.purchased-items h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.purchased-items .right-section{background-color: #3fab40;padding: 0px 0px 20px 20px;}
+.purchased-items .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.purchased-items-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
+.purchased-items-box i{color: #3fab40;font-size: 16px;}
+.purchased-items-box ul{padding-left: 0;}
+.purchased-items-box .btn {transition: 0.3s ease; padding: 10px 20px; width: 300px; margin: 5px; border: none; cursor: pointer; }
+.purchased-items-box .btn:hover{background-color: #3fab40!important;}
+.purchased-items-box .btn{border: 2px solid white!important;}
+.purchased-items-box .btn:focus{box-shadow: none;}
+#ebook { background-color: #3fab40; color: white; }
+#podcasts { color: white; background-color: #94cb95; }
+.purchased-items-box .content { display: none;  padding: 20px; }
+.purchased-items-box .active { display: block; }
+@media(max-width: 991px){
+    .user-detiled-header .left-section h1{line-height: 16px;font-size:28px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;text-align:  center;margin-bottom: 15px;}
+    .user-details { padding-top: 30%;}
+    .user-detiled-header{padding: 10px;}
+    .user-detiled-header .right-section { padding: 0px 0px 15px 15px; }
+    .my-info { margin-top: 50px;padding: 50px 10px;}
+    .my-info h1{font-size: 35px;margin-top: 15px;;}
+    .purchased{margin-top: 50px;padding: 30px 10px;}
+    .purchased h1{font-size: 35px;}
+    .purchased-box{width: 100%; padding: 10px;}
+    .purchased-box ul{padding-left: 0;}
+    .how-we-do{margin-top: 50px;padding: 50px 10px;}
+    .how-we-do h1{font-size: 35px;}
+    .my-info .left-section {padding: 0px 15px 15px 0px; }
+    .how-we-do-box {margin-top: 30px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;}
+    .how-we-do-box img{width: auto;height: auto;}
+    .bottom-margin{margin-bottom: 10px;}
+    .how-we-do-cards { margin-top: 30px; }
+    .purchased-items h1{font-size: 35px;}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
+    .how-we-offer .right-section img { margin-left: -104px; margin-top: -563px;  }
+}
+.mail-info img, .phone-info img{width: auto;height: 40px;}
+.card{width: 100%;height: 100%;border-radius: 15px;background-color: white;padding: 20px;border: 0;}
+.my-info .card img{width: auto;height: 70px;}
+.my-info .card {box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;}
+.my-info .card:hover{background-color: #3fab40;}
+.my-info .card:hover h5,.my-info .card:hover h3{color: white;}
+.user-details .sub-head {
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-family: 'Comfortaa';
+    font-weight: 600;
+}
+.head h2{ font-family: 'Comfortaa';
+    font-weight: 600;}
+.e-book .signup-btn{width: 200px;}
+.e-book .parent{ display: flex; align-items: center; justify-content: center; height: 100%;margin-top: 0!important; }
+.e-book .carousel{ max-width: 100%; }
+.e-book .slide { height: 100%; }
+.e-book .slide  .card{padding: 20px;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.e-book .slide  .card .img-box{background-color: #008d21a1;padding: 0px 15px 15px 0px;margin: 0 auto;width: 100%; }
+.e-book .slide  .card .img-box img{height: 350px;box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;object-fit: cover;}
+.box-slide {width: 100%; background-color: #EAE8E8; display: flex; align-items: center; justify-content: center; flex-direction: column; height: 250px; }
+.owl-carousel .owl-stage-outer{padding: 20px;}
+.podcasts .signup-btn{width: 200px;}
+.podcasts .parent{ display: flex; align-items: center; justify-content: center; height: 100%;margin-top: 0!important; }
+.podcasts .carousel{ max-width: 100%; }
+.podcasts .slide { height: 100%; }
+.podcasts .slide  .card{padding: 20px;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.podcasts .slide  .card .img-box{background-color: #008d21a1;padding: 0px 15px 15px 0px;margin: 0 auto;width: 100%; }
+.podcasts .slide  .card .img-box img{height: 350px;box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; width: 100%;object-fit: cover;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
+    .resourse-banner { height: 39vh; }
+    .blogs .card .img-box img{height: 223px;}
+    .e-book .slide .card .img-box img{height: 100px;}
+    .podcast .slide .card .img-box img{height: 110px;}
+    .business-links .load-more-btn{margin-bottom: 20px;}
+}
+@media(max-width: 991px){
+    .e-book .slide .card .img-box img{height: 200px;}
+    .e-book .slide .card{padding: 15px;}
+    .podcasts .slide .card .img-box img{height: 200px;}
+    .podcasts .slide .card{padding: 15px;}
+    .purchased-items-box .btn{margin:  0 auto;display: block;margin-bottom: 10px;}
+    .user-details .sub-head {
+        font-size: 18px;
+        letter-spacing: 1px;
+        font-family: 'Comfortaa';
+        font-weight: 600;
+    }
+    .head h2{font-size: 25px; margin-top: 20px;}
+    .mail-info img, .phone-info img{height: 20px;}
+    .my-info .card{margin-bottom: 10px;}
+}

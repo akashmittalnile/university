@@ -1,0 +1,7 @@
+.common-card ul{padding: 20px;background: rgb(220 250 208);border-radius: 5px;}
+.common-card ul li{list-style: none;padding: 10px;}
+.manage-plan{padding: 10px;width: 100%;}
+.p-bg{padding: 5px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; background: #eef9e3;width: 100px;margin: 0 auto;border-radius: 20px;}
+.p-bg p{font-size: 15px;}
+.monthly{    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #3fab40; background-color: #d3ecb6;   padding: 6px 10px;   width: 90px; border-radius: 15px 0px 15px 0px; text-align: right; margin-top: -8%;}
+.plan-items{margin-top: 50px;}

@@ -1,0 +1,24 @@
+a{text-decoration: none;}
+.sign-up{background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../images/6.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding-top: 9%;padding-bottom: 50px;}
+.left-section{padding: 100px 30px;}
+.left-section h1{line-height: 90px;text-shadow: 2px 2px #212020;font-size: 65px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.left-section p{font-size: 25px;}
+.left-section b{font-size: 72px;}
+.right-section{padding: 100px 30px;box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;background-color: #3fab4040;border-radius: 15px;}
+.right-section button{padding: 15px 55px;font-weight: 600; }
+.sign-up-contents{background: #ffffffcc;border-radius: 10px;}
+.sign-up form{    padding: 65px 30px;}
+.sign-up form .form-control{border: 0;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.sign-up form button{width: 100%;height: 50px;}
+.sign-up img{width: 100%;height: 100%;border-radius: 10px 0px 0px 10px;}
+.sign-up .img-box{height: 100%; background: url("../images/sign-in.svg");background-position: center;background-repeat: no-repeat;background-size: cover;padding-top: 6%;padding-bottom: 50px;}
+.img-box h1{font-size: 45px;font-weight: 700;top: 45%;position: relative; }
+.sign-up-head{width: 50%; margin: 0 auto;  padding: 20px; background: #8bc34a5e;}
+.forgot-password{color: #3fab40;transition: 0.3s ease-in-out;margin: 0 auto;display: block;}
+.forgot-password:hover{color: #639d64;}
+.sign-link{transition: 0.3s ease;}
+.sign-link:hover{color:#639d64 ;}
+@media(max-width: 991px){
+    .sign-up .img-box{padding-top: 30%;}
+    .img-box h1{font-size: 35px;}
+}

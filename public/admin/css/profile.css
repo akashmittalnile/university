@@ -1,0 +1,80 @@
+.profile-info .profile-img img{width: 150px;
+    height: 150px;border: 1px solid rgb(209, 209, 209);
+    border-radius: 50%; object-fit: cover;margin: 0 auto;display: block;}
+.profile-info .profile-img {padding: 20px;}
+.profile-img button{width: 100%;}
+.img-bg img{margin: 0 auto;
+    display: block;
+    height: 45px;
+    width: auto;}
+.img-bg{padding: 18px;
+    background: #e2f3e2;
+    width: 85px;
+    height: 85px;
+    border-radius: 5px;}
+    .m-top{margin-top: 60px;}
+    .profile-card{padding: 20px;}
+    .common-card{height: 100%!important;}
+  
+    
+    .hover-text,  .hover-text2 {
+        display: none;
+      }
+      
+      a:hover .hover-text {
+        display: inline-block;
+        position: absolute;
+        background-color: white;
+        border: 1px solid rgb(120, 204, 138);
+        color: black;
+        padding: 6px 10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        font-size: 10px;
+      }
+      a:hover .hover-text2 {
+        display: inline-block;
+        left: 20%;
+    position: absolute;
+    bottom: 35%;
+
+        background-color: white;
+        border: 1px solid rgb(120, 204, 138);
+        color: black;
+        padding: 6px 10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        font-size: 10px;
+        
+    }
+      
+    .form-floating>.form-control {
+        padding: 1.1rem 0.75rem;
+    }
+    
+    .form-floating>.form-control, .form-floating>.form-select {
+        height: calc(2.9rem + 6px);
+        line-height: 0.25;
+    }
+    .modal-content{width: 85%;margin: 0 auto; padding: 0px 15px 15px 15px;}
+    .file-upload div {
+        position: relative;
+        overflow: hidden;
+      }
+      .file-upload input {
+        position: absolute;
+        font-size: 13px;
+        opacity: 0;
+        right: 0;
+        top: 0;
+      }
+      .upload-btn{background-color: rgb(230 255 230);font-size: 13px;border: 1px dashed #3fab40;padding: 12px 40px;border-radius: 5px;width: 100%;}
+      .modal input:focus, .modal textarea:focus{box-shadow: none;border: 1px solid #3fab40;}
+      .modal input, .modal textarea{font-size: 13px;border: 1px solid rgb(225, 225, 225);border-radius: 5px;}
+      .form-floating>textarea:focus, .form-floating>textarea:not(:placeholder-shown) { padding-top: 2.1rem!important;  padding-bottom: 0.625rem!important; }
+      .modal-header{border-bottom: 0;}
+      .modal-footer{border-top: 0;}
+      .modal-body{padding-top: 0;padding-bottom: 0;}
+      .toggle-password {
+        float: right;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-top: -33px;
+        font-size: 15px;
+    }

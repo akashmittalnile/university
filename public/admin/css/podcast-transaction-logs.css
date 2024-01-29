@@ -1,0 +1,27 @@
+.top-cards .common-card {height: 100%;}
+.podcast-detail-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
+.podcast-detail-box i{color: #3fab40;font-size: 16px;}
+.podcast-detail-box ul{padding-left: 0;}
+.podcast-detail-box .btn {transition: 0.3s ease; padding: 10px 20px;width: 200px; margin: 5px; border: none; cursor: pointer; }
+.podcast-detail-box .btn:hover{background-color: #3fab40!important;}
+.podcast-detail-box .btn:focus{box-shadow: none;}
+#partners { background-color: #3fab40; color: white; }
+#supporters { color: white; background-color: #94cb95; }
+.podcast-detail-box .content { display: none;  padding: 20px; }
+.podcast-detail-box .active { display: block; }
+.d-btn{float: right;margin-right: 10px;}
+.date-btn, .date-btn:focus{padding: 10px;border-radius: 5px;border: 1px solid #3fab40;}
+.date-btn{height: 43px;}
+.download-btn i{font-size: 18px;line-height: 0;}
+.download-btn:hover i{color: white;}
+.podcast-detail-box table td, .podcast-detail-box table th{padding: 15px;}
+.podcast-detail-box table thead{background: #afe9b0;}
+.podcast-detail-box table .common-btn, .podcast-detail-box table .outline-btn{padding: 5px 10px;font-size: 13px;width: 80px;}
+.podcast-detail-box table tbody tr:hover{background-color: #eeffe6;}
+.podcast-detail-box table {border: 1px solid #39dd3b;background-color: white;margin-bottom: 0;}
+.book-details{overflow-y: scroll;height: 580px;border: 1px solid #39dd3b;}
+.pagination .page-link{border-radius: 50%;margin-right: 5px;color: #3fab40;width: 32px;height: 32px;text-align: center;border: 0;border: 1px solid white;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.page-item:last-child .page-link{border-radius: 50%;background-color: #3fab40;color: white;padding: 6px 0px;}
+.page-item:first-child .page-link{border-radius: 50%;background-color: #3fab40;color: white;padding: 6px 0px;}
+.pagination .page-link:focus, .pagination .page-link:hover{box-shadow: none;border: 1px solid #3fab40;}
+.page-link i{    font-size: 14px;}

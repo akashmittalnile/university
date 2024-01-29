@@ -1,0 +1,97 @@
+.about-us{padding-top: 10%;}
+.vision-purpose .left-section h1{line-height: 90px;font-size: 65px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.vision-purpose .left-section p{font-size: 25px;}
+.vision-purpose .right-section{background-color: #3fab40;padding: 0px 0px 35px 35px;}
+.vision-purpose .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.my-story{margin-top: 100px;}
+.my-story .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
+.my-story .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.my-story  h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.my-story .head{margin-bottom: -50px; position: relative;}
+.what-we-do{margin-top: 100px;background: linear-gradient( rgb(19 78 42 / 0%), rgb(37 130 24 / 50%) ), url("../images/what-we-do-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
+.what-we-do h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.what-we-do .sub-text{font-size: 18px;}
+.what-we-do-box{ padding: 30px; background: #44953a96;border: 1px solid white;border-radius: 15px;    width: 90%;  margin-top: 50px; margin: 0 auto;  margin-top: 50px; }
+.what-we-do-box li{list-style: none;color: rgb(245, 245, 245);padding: 10px;}
+.how-we-do{margin-top: 100px;background: url("../images/how-we-do-img.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;padding-bottom: 250px;}
+.how-we-do .sub-head{font-size: 18px;}
+.how-we-do-box{background-color: #ffffff8f;padding: 0px 30px 0px 30px;border-radius: 15px;margin-top: 50px;}
+.how-we-do-box h3{font-size: 24px;font-weight: 600;}
+.how-we-do-box img{    width: 50%;  margin: 0 auto; display: block;}
+.how-we-do h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.how-we-do-cards .card{padding: 30px 20px 50px 20px;height: 100%; border-radius: 15px; border: 0;background-color: #3fab40c4; color: white;}
+.how-we-do-cards .card h5, .how-we-do-cards .card p{margin: 0;padding: 0;}
+.how-we-do-cards .card img{width: 50px;height: auto;margin: 0 auto;display: block;margin-bottom: 20px;}
+.how-we-do-cards {margin-top: -140px;}
+.how-we-do-cards .img-bg{padding: 20px; background-color: transparent;width: 90px;height: 90px;margin: 0 auto;border-radius: 50%;box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;}
+.why-you-select{margin-top: 100px;}
+.why-you-select h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.why-you-select-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
+.why-you-select-box i{color: #3fab40;font-size: 16px;}
+.why-you-select-box ul{padding-left: 0;}
+.why-you-select-box{padding: 30px;border-radius: 15px;}
+.why-you-select .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
+.why-you-select .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.how-we-offer{margin-top: 150px;}
+.how-we-offer h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.how-we-offer .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
+.how-we-offer .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.how-we-offer .right-section img{margin-left: -100px;margin-top: 10px;box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.how-we-offer-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
+.how-we-offer-box i{color: #3fab40;font-size: 16px;}
+.how-we-offer-box ul{padding-left: 0;}
+.who-is-it-for{margin-top: 100px;background: url("../images/who-is-it.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
+.who-is-it-for-contents{background: #ffffffe6;  padding: 50px 30px; border-radius: 15px;}
+.who-is-it-for h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.who-is-it-for .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.who-is-it-for .left-section{background-color: #008d21a1;padding: 0px 20px 20px 0px;}
+.global-impact{margin-top: 100px;} 
+.global-impact h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.global-impact .right-section{background-color: #3fab40;padding: 0px 0px 20px 20px;}
+.global-impact .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
+.global-impact-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
+.global-impact-box i{color: #3fab40;font-size: 16px;}
+.global-impact-box ul{padding-left: 0;}
+.global-impact-box{ padding: 30px;border-radius: 15px; margin-top: 50px; margin: 0 auto;  margin-top: 50px; }
+.global-impact-box .btn {transition: 0.3s ease; padding: 10px 20px; width: 300px; margin: 5px; border: none; cursor: pointer; }
+.global-impact-box .btn:hover{background-color: #3fab40!important;}
+.global-impact-box .btn:focus{box-shadow: none;}
+#partners { background-color: #3fab40; color: white; }
+#supporters { color: white; background-color: #94cb95; }
+.global-impact-box .content { display: none;  padding: 20px; }
+.global-impact-box .active { display: block; }
+@media(max-width: 991px){
+    .vision-purpose .left-section h1{line-height: 38px;font-size: 35px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;text-align:  center;margin-bottom: 10px;}
+    .about-us { padding-top: 30%;}
+    .vision-purpose{padding: 10px;}
+    .vision-purpose .right-section { padding: 0px 0px 15px 15px; }
+    .my-story { margin-top: 50px;padding: 10px;}
+    .my-story h1{font-size: 35px;margin-top: 15px;;}
+    .what-we-do{margin-top: 50px;padding: 30px 10px;}
+    .what-we-do h1{font-size: 35px;}
+    .what-we-do-box{width: 100%; padding: 10px;}
+    .what-we-do-box ul{padding-left: 0;}
+    .how-we-do{margin-top: 50px;padding: 50px 10px;}
+    .how-we-do h1{font-size: 35px;}
+    .my-story .left-section {padding: 0px 15px 15px 0px; }
+    .how-we-do-box {margin-top: 30px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;}
+    .how-we-do-box img{width: auto;height: auto;}
+    .bottom-margin{margin-bottom: 10px;}
+    .how-we-do-cards { margin-top: 30px; }
+    .why-you-select{margin-top: 50px;padding: 10px;}
+    .why-you-select .left-section { padding: 0px 15px 15px 0px; }
+    .why-you-select-box{padding: 10px;margin-top: 20px;}
+    .how-we-offer{margin-top: 50px;padding: 10px;}
+    .how-we-offer .left-section { padding: 0px 15px 15px 0px; }
+    .how-we-offer h1{margin-top: 210px;}
+    .how-we-offer .right-section img { margin-left: -8px; margin-top: -316px; margin-top: -563px; }
+    .who-is-it-for{margin-top: 50px;}
+    .global-impact{margin-top: 50px;}
+    .why-you-select h1{font-size: 35px;}
+    .how-we-offer h1{font-size: 35px;}
+    .who-is-it-for h1{font-size: 35px;margin-top: 15px;}
+    .global-impact h1{font-size: 35px;}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
+    .how-we-offer .right-section img { margin-left: -104px; margin-top: -563px;  }
+}
