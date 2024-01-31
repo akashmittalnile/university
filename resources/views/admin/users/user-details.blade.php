@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <p class="black-color f-600">Mark as Inactive</p>
+                        <p class="black-color f-600">Mark as @if($user->status==1) Inactive @else Active @endif</p>
                         <div class="form-check mt-3 form-switch">
                             <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" @if($user->status==1) checked @endif>
                         </div>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="info ms-3">
                                 <p class="black-color f-600">Phone No.</p>
-                                <p class="mt-2">{{ $user->phone }}</p>
+                                <p class="mt-2">+1 {{ $user->phone }}</p>
                             </div>
                         </div>
                     </div>

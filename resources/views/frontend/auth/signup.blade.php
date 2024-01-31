@@ -18,7 +18,7 @@
                         <form action="{{ route('user.register') }}" method="POST" id="signin_form">
                             @csrf
                             <input type="hidden" id="redirect_url" value="{{ route('signin') }}">
-                            <h5 class="black-color f-500">Please Enter You Basic Details</h5>
+                            <h5 class="black-color f-500">Please Enter Your Basic Details</h5>
                             <div class="field">
                                 <div class="form-floating mb-3 mt-3">
                                     <input type="text" class="form-control" id="floatingInput" name="name"
@@ -94,22 +94,27 @@
             $.validator.addMethod('password_match', function(value) {
                 return $("input[name=password]").val() == value;
             });
-            $.validator.addMethod("passwordCheck",
-                function(value, element) {
-                    var password = value;
 
-                    // Define a regular expression pattern to check for at least one uppercase letter,
-                    // one number, and one special character.
-                    var pattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+            $.validator.addMethod("AtLeastOnenumber", function(value) {
+                return /(?=.*[0-9])/.test(value);
+            }, 'At least 1 number is required.');
 
-                    if (pattern.test(password)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                },
-                "Password is not valid. It should contain at least one uppercase letter, one number, and one special character."
-            );
+            $.validator.addMethod("AtLeastOneUpperChar", function(value) {
+                return /^(?=.*[A-Z])/.test(value);
+            }, 'At least 1 uppercase character is required.');
+
+            $.validator.addMethod("AtLeastOneSpecialChar", function(value) {
+                return !/^[A-Za-z0-9 ]+$/.test(value);
+            }, 'At least 1 special character is required.');
+
+            $.validator.addMethod("AtLeastOneLowerChar", function(value) {
+                return /^(?=.*[a-z])/.test(value);
+            }, 'At least 1 lower character is required.');
+
+            $.validator.addMethod("phoneValidate", function(value) {
+                return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(value);
+            }, 'Please enter valid phone number.');
+
             $('#signin_form').validate({
                 rules: {
                     name: {
@@ -117,6 +122,7 @@
                     },
                     phone: {
                         required: true,
+                        phoneValidate: true,
                     },
                     file: {
                         required: true,
@@ -130,7 +136,10 @@
                         required: true,
                         maxlength: 191,
                         minlength: 6,
-                        passwordCheck: true
+                        AtLeastOnenumber: true,
+                        AtLeastOneUpperChar: true,
+                        AtLeastOneLowerChar: true,
+                        AtLeastOneSpecialChar: true
                     },
                     password_confirmation: {
                         required: true,

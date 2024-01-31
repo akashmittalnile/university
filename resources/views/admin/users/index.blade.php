@@ -61,7 +61,7 @@
                                                 Email Id
                                             </th>
                                             <th scope="col" class="text-capitalize">
-                                                Contact Number
+                                                Phone Number
                                             </th>
                                             <th scope="col" class="text-capitalize text-center">
                                                 Action

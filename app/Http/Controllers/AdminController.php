@@ -120,24 +120,28 @@ class AdminController extends Controller
     public function signin_post(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
         try {
-            if (Auth::attempt($request->only(['email', 'password']))) {
-                $user = User::where("email", $request->email)->first();
-                if ($user->admin == 1) {
-                    Auth::login($user);
-                    return response()->json(['message' => 'Logged In Successfully. ', 'redirect' => true, 'route' => route("admin.dashboard"), 'status' => 200]);
+            $user = User::where('email', $request->email)->first();
+            if(isset($user->id)){
+                if (Auth::attempt($request->only(['email', 'password']))) {
+                    $user = User::where("email", $request->email)->first();
+                    if ($user->admin == 1) {
+                        Auth::login($user);
+                        return response()->json(['message' => 'Logged In Successfully. ', 'redirect' => true, 'route' => route("admin.dashboard"), 'status' => 200]);
+                    } else {
+                        Auth::login($user);
+                        session()->forget('error');
+                        return response()->json(['message' => 'Logged In Successfully. ', 'redirect' => true, 'route' => route("user.profile"), 'status' => 200]);
+                    }
                 } else {
-                    Auth::login($user);
-                    session()->forget('error');
-                    return response()->json(['message' => 'Logged In Successfully. ', 'redirect' => true, 'route' => route("user.profile"), 'status' => 200]);
+                    return response()->json(['message' => 'Invalid Password. ', 'status' => 201]);
                 }
             } else {
-
-                return response()->json(['message' => 'Invalid Password. ', 'status' => 201]);
+                return response()->json(['message' => 'This email is not registered with us', 'status' => 201]);
             }
         } catch (\Throwable $th) {
             return response()->json(['message' => $th->getMessage(), 'status' => 201]);

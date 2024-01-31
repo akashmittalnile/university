@@ -129,7 +129,7 @@
                                     <div class="input-group mb-2" style="width: 96.5%;">
                                         <input type="text" class="form-control common-shadow" name="search" placeholder="Search by user name, amount" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
 
-                                        <input type="date" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="form-control common-shadow"/>
+                                        <input type="date" max="{{date('Y-m-d')}}" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="form-control common-shadow"/>
 
                                         <button class="search-btn">
                                             <i style="color: white;" class="bi bi-search"></i>

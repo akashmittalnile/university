@@ -46,7 +46,7 @@
                             <h6 class="main-color">Mon</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">08:30 - 05:00</p>
+                            <p class="black-color">08:30 AM - 05:00 PM</p>
                         </div>
                     </div>
                     <div class="d-flex mb-2">

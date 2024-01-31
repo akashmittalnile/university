@@ -12,13 +12,13 @@
             <h3 class="font-weight-bold black-color">Profile</h3>
         </div>
         <div class="profile-link">
-            <a href="#">
+            <a href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
                         <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/profile-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
-                        <a href="{{ route('admin.profile') }}" class="profile-name">{{ auth()->user()->name ?? 'Admin Profile' }}<i class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="javascript:void(0)" class="profile-name">{{ auth()->user()->name ?? 'Admin Profile' }}<i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </a>
@@ -62,7 +62,7 @@
                                                     <img src="images/user.png" alt="image" class="img-fluid">
                                                 </div>
                                                 <div class="texts ms-3">
-                                                    <p class="text-color">Owner's Name</p>
+                                                    <p class="text-color">Full Name</p>
                                                     <h6 class="black-color mt-2">{{ auth()->user()->name ?? 'NA' }}</h6>
                                                 </div>
                                             </div>
@@ -124,7 +124,7 @@
                         Details</h5>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput1" placeholder="Name" value="{{ auth()->user()->name ?? '' }}" name="name">
-                        <label for="floatingInput1">Name</label>
+                        <label for="floatingInput1">Full Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInput2" placeholder="Email" value="{{ auth()->user()->email ?? '' }}" name="email">
@@ -155,8 +155,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn common-btn">Save Details</button>
+                    <button type="button" id="edit-profile-cancel-btn" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn common-btn">Update Details</button>
                 </div>
             </form>
         </div>
@@ -190,8 +190,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn common-btn">Save Password</button>
+                    <button type="button" id="change-password-cancel-btn" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn common-btn">Update Password</button>
                 </div>
             </form>
         </div>
@@ -199,6 +199,16 @@
 </div>
 
 <script>
+    $("#edit-profile-cancel-btn").on('click', function(){
+        $("#profile_form")[0].reset();
+        $("#profile_form input").removeClass('border-danger');
+    });
+
+    $("#change-password-cancel-btn").on('click', function(){
+        $("#password_form")[0].reset();
+        $("#password_form input").removeClass('border-danger');
+    });
+    
     $(document).on('click', '#file-upload-img', function(){
         $("#upload-img").get(0).click();
     })
@@ -207,6 +217,11 @@
     })
 
     $(document).ready(function() {
+
+        $.validator.addMethod("phoneValidate", function(value) {
+            return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(value);
+        }, 'Please enter valid phone number.');
+
         $('#profile_form').validate({
             rules: {
                 name: {
@@ -215,6 +230,7 @@
                 },
                 phone: {
                     required: true,
+                    phoneValidate: true
                 },
                 address: {
                     required: true,
@@ -382,7 +398,6 @@
             errorPlacement: function(error, element) {
                 // error.addClass("invalid-feedback");
                 element.addClass("border border-danger");
-                element.closest(".form-floating").append(error);
             },
             highlight: function(element, errorClass, validClass) {
                 $('.please-wait').hide();
