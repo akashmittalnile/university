@@ -16,7 +16,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/profile-image.jpg')}}" alt="profile image" class="img-fluid me-2">
+                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -32,7 +32,7 @@
                     <div class="col-md-3">
                         <div class="d-flex align-items-center">
                             <div class="profile-img">
-                                <img src="{{ asset('admin/images/profile-image.jpg') }}" alt="">
+                                <img src="{{ isset($user->profile) ? asset("uploads/profile/".$user->profile) : asset('admin/images/no-image.jpg') }}" alt="">
                             </div>
                             <h6 class="black-color ms-3 f-600 text-capitalize">{{ $user->name ?? "NA" }}</h6>
                         </div>

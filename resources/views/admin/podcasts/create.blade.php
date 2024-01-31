@@ -19,7 +19,7 @@
                 <a href="#">
                     <div class="d-flex align-items-center">
                         <div class="profile-pic">
-                            <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/profile-image.jpg')}}" alt="profile image"
+                            <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image"
                                 class="img-fluid me-2" />
                         </div>
                         <div class="button-link">

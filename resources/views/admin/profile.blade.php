@@ -15,7 +15,7 @@
             <a href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/profile-image.jpg')}}" alt="profile image" class="img-fluid me-2">
+                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
                         <a href="javascript:void(0)" class="profile-name">{{ auth()->user()->name ?? 'Admin Profile' }}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -36,7 +36,7 @@
                                         @if(isset(auth()->user()->profile))
                                         <img src="{{asset("uploads/profile/".auth()->user()->profile)}}" alt="image" class="img-fluid">
                                         @else
-                                        <img src="{{asset('admin/images/profile-image.jpg')}}" alt="image" class="img-fluid">
+                                        <img src="{{asset('admin/images/no-image.jpg')}}" alt="image" class="img-fluid">
                                         @endif
                                         <h5 class="black-color text-center mt-3 f-600">{{ auth()->user()->name ?? 'NA' }}</h5>
                                         <div class="text-center mt-4">
