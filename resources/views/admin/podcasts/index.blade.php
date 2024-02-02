@@ -99,7 +99,7 @@
             <form action="" method="get" id="delete_form">
                 @csrf
                 <div class="modal-footer justify-content-center mb-3">
-                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn common-btn">Yes, Delete</button>
                 </div>
             </form>

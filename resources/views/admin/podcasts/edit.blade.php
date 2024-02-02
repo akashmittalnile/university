@@ -244,7 +244,9 @@
                         },
                     @endif
 
-
+                    plans: {
+                        required: true,
+                    },
                     description: {
                         required: true,
                         maxlength: 191,
