@@ -36,9 +36,6 @@ Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('config:cache');
     $exitCode = Artisan::call('view:clear');
     $exitCode = Artisan::call('route:clear');
-    $exitCode = Artisan::call("db:seed --class=RoleSeeder");
-
-    $exitCode = Artisan::call("db:seed");
     return '<h1>Cache facade value cleared</h1>';
 });
 

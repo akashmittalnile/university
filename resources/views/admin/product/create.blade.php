@@ -47,7 +47,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 field_error">
                                     <label for="name" class="form-label black-color f-600">Product Price</label>
-                                    <input type="number" class="form-control" name="price" id="price" value="" aria-describedby="price" placeholder="Enter Product Price" />
+                                    <input type="number" min="0.1" step="0.01" class="form-control" name="price" id="price" value="" aria-describedby="price" placeholder="Enter Product Price" />
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -67,18 +67,9 @@
                             <div class="col-md-4 mb-3">
                                 <div class="book-img">
                                     <img src="{{ asset('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
-                                    <div class="cancel-icon">
-                                        <div class="top-right">
-                                            <a href="javascript:void(0)" id="resetBtn">
-                                                <div class="icon-bg">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Product Image</label>
                                     <div class="dropzone m-3" id="multipleImage">
@@ -91,7 +82,7 @@
                                     </div>
                                     <input type="hidden" id="arrayOfImage" name="array_of_image" value="">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Product Description</label>
@@ -111,7 +102,7 @@
                         <a href="{{ route('admin.product') }}"><button type="button" class="outline-btn">
                                 Cancel
                             </button></a>
-                        <a><button class="common-btn ms-2">Save & Create New Product<i class="bi bi-floppy ms-2"></i></button></a>
+                        <a><button class="common-btn ms-2">Create New Product<i class="bi bi-floppy ms-2"></i></button></a>
                     </div>
                 </div>
                 <form>
@@ -220,16 +211,15 @@
             errorPlacement: function(error, element) {
                 // error.addClass("invalid-feedback");
                 element.addClass("border border-danger");
-
+                element.closest(".file").addClass("border border-danger");
             },
             highlight: function(element, errorClass, validClass) {
                 $('.please-wait').hide();
-
             },
             unhighlight: function(element, errorClass, validClass) {
                 // $(element).removeClass("text-danger");
                 $(element).removeClass("border border-danger");
-
+                $(element).closest(".file").removeClass("border border-danger");
             },
             submitHandler: function(form, event) {
                 event.preventDefault();
