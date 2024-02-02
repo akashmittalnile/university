@@ -54,7 +54,7 @@ class PodcastController extends Controller
 
             $podcast = new Podcast();
             $podcast->name = $request->name;
-            $podcast->plans = implode(",", $request->plans);
+            $podcast->plans = $request->plans;
             $uid = uniqid();
             if ($request->fileType==1 && $request->hasFile("audio_file")) {
                 $file = $request->file('audio_file');
@@ -114,7 +114,7 @@ class PodcastController extends Controller
         $id = encrypt_decrypt('decrypt', $id);
         $plans = Plan::orderBy("price", "asc")->get();
         $podcast = Podcast::where('id', $id)->first();
-        $podcast->plans = explode(",", $podcast->plans);
+        $podcast->plans = $podcast->plans;
         return view('admin.podcasts.edit', compact('podcast', 'plans'));
     }
 
@@ -139,7 +139,7 @@ class PodcastController extends Controller
                     'status' => 201
                 ]);
             }
-            $podcast->plans = implode(",", $request->plans);
+            $podcast->plans = $request->plans;
             $uid = uniqid();
             if ($request->fileType==1 && $request->hasFile("audio_file")) {
                 $file = $request->file('audio_file');

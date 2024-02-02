@@ -108,9 +108,9 @@
                                             @foreach ($plans as $item)
                                                 <div class="col-md-3">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
-                                                        <div class="form-group-box my-auto">
+                                                        <div class="form-group my-auto">
                                                             <input type="radio" name="plans"
-                                                                @if ($podcast && in_array($item->id, $podcast->plans)) checked @endif
+                                                                @if ($podcast && ($podcast->plans == $item->id)) checked @endif
                                                                 value="{{ $item->id }}" id="plan{{ $item->id }}">
                                                             <label for="plan{{ $item->id }}">{{ $item->name }}
                                                                 ({{ strtoupper($item->currency) . ' ' . $item->price }})
@@ -259,9 +259,9 @@
                 errorElement: "span",
                 errorPlacement: function(error, element) {
                     // error.addClass("invalid-feedback");
+                    element.closest(".form-check").addClass("border border-danger");
                     element.closest(".field").addClass("border border-danger");
                     element.addClass("border border-danger");
-
                 },
                 highlight: function(element, errorClass, validClass) {
                     $('.please-wait').hide();
@@ -270,7 +270,8 @@
                 unhighlight: function(element, errorClass, validClass) {
                     // $(element).removeClass("text-danger");
                     $(element).removeClass("border border-danger");
-
+                    $(element).closest(".form-check").removeClass("border border-danger");
+                    $(element).closest(".field").removeClass("border border-danger");
                 },
                 submitHandler: function(form, event) {
                     event.preventDefault();

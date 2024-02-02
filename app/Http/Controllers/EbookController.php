@@ -47,7 +47,7 @@ class EbookController extends Controller
         try {
             $ebook = new Ebook();
             $ebook->name = $request->name;
-            $ebook->plans = implode(",", $request->plans);
+            $ebook->plans = $request->plans;
             $uid = uniqid();
             
             if ($request->hasFile("pdf_file")) {
@@ -103,7 +103,7 @@ class EbookController extends Controller
         $id = encrypt_decrypt('decrypt', $id);
         $plans = Plan::orderBy("price", "asc")->get();
         $ebook = Ebook::where('id', $id)->first();
-        $ebook->plans = explode(",", $ebook->plans);
+        $ebook->plans = $ebook->plans;
         return view('admin.ebooks.edit', compact('ebook', 'plans'));
     }
 
@@ -118,7 +118,7 @@ class EbookController extends Controller
             $ebook = Ebook::where('id', $id)->first();
             $ebook->name = $request->name;
 
-            $ebook->plans = implode(",", $request->plans);
+            $ebook->plans = $request->plans;
             $uid = uniqid();
             if ($request->hasFile("pdf_file")) {
                 $file = $request->file('pdf_file');

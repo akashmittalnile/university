@@ -114,7 +114,7 @@
                         }
                         $arr[1] = $str;
                     @endphp
-                    <a href="{{ route('admin.dashboard.download.report', $arr[1]) }}"><button class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
+                    <a style="margin-left: 80%; width: 20%;" href="{{ route('admin.dashboard.download.report', $arr[1]) }}"><button class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
                     <div class="transaction-details">
                         <div class="transation-detail-box common-card common-shadow">
                             <button class="btn" id="partners" onclick="showContent('partners')">
@@ -178,7 +178,7 @@
                                                         </td>
                                                         <td>{{ ucfirst($item->plan->type) }}</td>
                                                         <td>
-                                                            1st of Every Month
+                                                            {{ date('d M Y', strtotime('+1 month'.$item->receive_date)) }}
                                                         </td>
                                                         <td>
                                                             {{ date('d M Y, h:i:s a', strtotime($item->receive_date)) }}

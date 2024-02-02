@@ -118,7 +118,7 @@
                     </div>
                     <div class="modal-footer justify-content-center mb-3">
                         <button type="submit" class="btn common-btn">Update</button>
-                        <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>

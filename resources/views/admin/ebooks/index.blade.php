@@ -87,7 +87,7 @@
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
                 <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">E-Book</b>
                     ?</h6>
-                <img src="images/microphone.png" alt="image" class="img-fluid">
+                <img src="images/delete.png" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
                 @csrf

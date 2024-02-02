@@ -90,7 +90,7 @@
                                             @foreach ($plans as $item)
                                                 <div class="col-md-3">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
-                                                        <div class="form-group-bo form-group my-auto">
+                                                        <div class="form-group my-auto">
                                                             <input type="radio" name="plans" value="{{ $item->id }}" id="plan{{ $item->id }}">
                                                             <label for="plan{{ $item->id }}">{{ $item->name }}
                                                                 ({{ strtoupper($item->currency) . ' ' . $item->price }})
@@ -184,7 +184,7 @@
                             <a href="{{ route('admin.podcasts') }}"><button type="button" class="outline-btn">
                                     Cancel
                                 </button></a>
-                            <a><button class="common-btn ms-2">Save & Create New Podcast<i class="bi bi-floppy ms-2"></i></button></a>
+                            <a><button class="common-btn ms-2">Create New Podcast<i class="bi bi-floppy ms-2"></i></button></a>
                         </div>
                     </div>
                     <form>
@@ -251,6 +251,8 @@
                 unhighlight: function(element, errorClass, validClass) {
                     // $(element).removeClass("text-danger");
                     $(element).removeClass("border border-danger");
+                    $(element).closest(".form-check").removeClass("border border-danger");
+                    $(element).closest(".field").removeClass("border border-danger");
 
                 },
                 submitHandler: function(form, event) {

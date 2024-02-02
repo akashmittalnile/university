@@ -173,7 +173,7 @@
                                             </td>
                                             <td>{{ ucfirst($item->plan->type) }}</td>
                                             <td>
-                                                1st of Every Month
+                                                {{ date('d M Y', strtotime('+1 month'.$item->receive_date)) }}
                                             </td>
                                             <td>
                                                 {{ date('d M Y, h:i:s a', strtotime($item->receive_date)) }}
