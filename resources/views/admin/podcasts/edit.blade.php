@@ -91,15 +91,7 @@
                                     <div class="book-img">
                                         <img src="{{ $podcast ? asset("uploads/podcasts/$podcast->thumbnail") : asset('admin/images/book.jpg') }}"
                                             alt="image" id="imageDisplay" class="img-fluid" />
-                                        <div class="cancel-icon">
-                                            <div class="top-right">
-                                                <a href="#" id="resetBtn">
-                                                    <div class="icon-bg">
-                                                        <i class="bi bi-trash-fill"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <audio controls class="mt-3 custom-audio" id="audioPlayer">
                                         <source
@@ -117,7 +109,7 @@
                                                 <div class="col-md-3">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
                                                         <div class="form-group-box my-auto">
-                                                            <input type="checkbox" name="plans[]"
+                                                            <input type="radio" name="plans"
                                                                 @if ($podcast && in_array($item->id, $podcast->plans)) checked @endif
                                                                 value="{{ $item->id }}" id="plan{{ $item->id }}">
                                                             <label for="plan{{ $item->id }}">{{ $item->name }}
@@ -258,13 +250,17 @@
                         maxlength: 191,
 
                     },
+                    cancellation_policy: {
+                        required: true,
+                        maxlength: 191,
+                    },
 
                 },
                 errorElement: "span",
                 errorPlacement: function(error, element) {
                     // error.addClass("invalid-feedback");
                     element.closest(".field").addClass("border border-danger");
-                    element.closest(".field_error").append(error);
+                    element.addClass("border border-danger");
 
                 },
                 highlight: function(element, errorClass, validClass) {

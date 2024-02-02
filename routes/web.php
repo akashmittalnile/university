@@ -106,6 +106,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         //  membership
         Route::resource("plans", PlanController::class);
+        Route::post("plans-update/{id}", [PlanController::class, 'update'])->name('plan.update');
         Route::get("fetch-plans", [PlanController::class, 'getPlans'])->name('plans.fetch');
 
         //  ebooks

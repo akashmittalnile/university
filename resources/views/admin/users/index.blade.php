@@ -36,7 +36,7 @@
                     <div class="transaction-details">
                         <form action="" method="get">
                             <div class="search-box ms-auto d-flex">
-                                <div class="input-group mb-2">
+                                <div class="input-group mb-2" style="margin-left: 30%;">
                                     <input type="text" class="form-control common-shadow" name="search"
                                         placeholder="Search by user name, email, phone number"
                                         value="{{ request()->has('search') ? request('search') : '' }}"

@@ -60,9 +60,9 @@ class PlanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Plan $plan)
+    public function update(Request $request, $id)
     {
-
+        $plan = Plan::where('id', $id)->first();
         $plan->podcasts = $request->podcasts;
         $plan->gallary = $request->gallery;
         $plan->ebooks = $request->ebooks;

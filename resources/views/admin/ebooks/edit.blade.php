@@ -95,7 +95,7 @@
                                                 <div class="col-md-3">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
                                                         <div class="form-group-box my-auto">
-                                                            <input type="checkbox" name="plans[]" @if ($ebook && in_array($item->id, $ebook->plans)) checked @endif
+                                                            <input type="radio" name="plans" @if ($ebook && in_array($item->id, $ebook->plans)) checked @endif
                                                             value="{{ $item->id }}"
                                                             id="plan{{ $item->id }}">
                                                             <label for="plan{{ $item->id }}">{{ $item->name }}
@@ -138,8 +138,6 @@
     </div>
 
 </main>
-@endsection
-@push('js')
 <script src="{{ asset('admin/js/dashboard.js') }}"></script>
 <script>
     $(document).ready(function() {
@@ -156,7 +154,7 @@
 
                 },
                 @if(!$ebook)
-                audio_file: {
+                pdf_file: {
                     required: true,
                     maxlength: 191,
 
@@ -174,13 +172,16 @@
                     maxlength: 191,
 
                 },
-
+                cancellation_policy: {
+                    required: true,
+                    maxlength: 191,
+                },
             },
             errorElement: "span",
             errorPlacement: function(error, element) {
                 // error.addClass("invalid-feedback");
-                element.closest(".field").addClass("border border-danger");
-                element.closest(".field_error").append(error);
+                element.addClass("border border-danger");
+                element.closest(".file-upload").addClass("border border-danger");
 
             },
             highlight: function(element, errorClass, validClass) {
@@ -205,7 +206,7 @@
                     dataType: 'json',
                     contentType: false,
                     processData: false,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         $("#preloader").show()
                     },
                     complete: function() {
@@ -324,4 +325,4 @@
         }
     });
 </script>
-@endpush
+@endsection

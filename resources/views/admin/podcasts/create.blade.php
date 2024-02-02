@@ -72,15 +72,7 @@
                                     <div class="book-img">
                                         <img src="{{ $podcast ? asset("uploads/podcasts/$podcast->thumbnail") : asset('admin/images/book.jpg') }}"
                                             alt="image" id="imageDisplay" class="img-fluid" />
-                                        <div class="cancel-icon">
-                                            <div class="top-right">
-                                                <a href="#" id="resetBtn">
-                                                    <div class="icon-bg">
-                                                        <i class="bi bi-trash-fill"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <audio controls class="mt-3 custom-audio" id="audioPlayer">
                                         <source
@@ -98,10 +90,8 @@
                                             @foreach ($plans as $item)
                                                 <div class="col-md-3">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
-                                                        <div class="form-group-box my-auto">
-                                                            <input type="checkbox" name="plans[]"
-                                                                @if ($podcast && in_array($item->id, $podcast->plans)) checked @endif
-                                                                value="{{ $item->id }}" id="plan{{ $item->id }}">
+                                                        <div class="form-group-bo form-group my-auto">
+                                                            <input type="radio" name="plans" value="{{ $item->id }}" id="plan{{ $item->id }}">
                                                             <label for="plan{{ $item->id }}">{{ $item->name }}
                                                                 ({{ strtoupper($item->currency) . ' ' . $item->price }})
                                                             </label>
@@ -176,7 +166,7 @@
                                         <label for="exampleFormControlTextarea1"
                                             class="form-label black-color f-600">Description</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="5"
-                                            placeholder="Type your description"> {{ $podcast ? $podcast->description : '' }}</textarea>
+                                            placeholder="Type your description"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -184,7 +174,7 @@
                                         <label for="exampleFormControlTextarea1"
                                             class="form-label black-color f-600">Cancellation Policy</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" name="cancellation_policy" rows="3"
-                                            placeholder="Enter cancellation policy">{{ $podcast ? $podcast->cancellation_policy : '' }}</textarea>
+                                            placeholder="Enter cancellation policy"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -227,6 +217,9 @@
                         required: true,
                         maxlength: 191,
                     },
+                    plans: {
+                        required: true,
+                    },
                     audio_file: {
                         required: true,
                     },
@@ -238,10 +231,15 @@
                         required: true,
                         maxlength: 191,
                     },
+                    cancellation_policy: {
+                        required: true,
+                        maxlength: 191,
+                    },
                 },
                 errorElement: "span",
                 errorPlacement: function(error, element) {
                     // error.addClass("invalid-feedback");
+                    element.closest(".form-check").addClass("border border-danger");
                     element.closest(".field").addClass("border border-danger");
                     element.addClass("border border-danger");
 

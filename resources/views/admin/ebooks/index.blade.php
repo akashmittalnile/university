@@ -11,7 +11,7 @@
 <main class="main-container dashboard">
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
-            <h3 class="font-weight-bold black-color">Manage E-book</h3>
+            <h3 class="font-weight-bold black-color">Manage E-Book</h3>
             <div class="count-bg ms-2">
                 <p class=" white-color">{{ sprintf('%02d', $count) }}</p>
             </div>
@@ -41,9 +41,9 @@
                         </div>
                     </form>
                 </div>
-                {{-- <a href="#"><button class="outline-btn ms-2">E-book Transaction Loans<i
+                {{-- <a href="#"><button class="outline-btn ms-2">E-Book Transaction Loans<i
                                 class="bi bi-coin ms-2"></i></button></a> --}}
-                <a href="{{ route('admin.ebooks.create') }}"><button class="common-btn ms-2">Add New E-book<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="{{ route('admin.ebooks.create') }}"><button class="common-btn ms-2">Add New E-Book<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">
@@ -59,8 +59,7 @@
                                     {{-- <h4 class="main-color text-left mt-3">${{ $item->price }}</h4> --}}
                                     <div class="d-flex mt-3">
                                         <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.ebooks.destroy', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
-                                        <a href="{{ route('admin.ebooks.edit', encrypt_decrypt('encrypt', $item->id)) }}"><button class="common-btn ms-2">Edit
-                                                Ebook
+                                        <a href="{{ route('admin.ebooks.edit', encrypt_decrypt('encrypt', $item->id)) }}"><button class="common-btn ms-2">Edit E-Book
                                             </button></a>
                                     </div>
                                 </div>
@@ -68,7 +67,7 @@
                             @empty
                             <div class="text-center mt-5">
                                 <img width="300" src="{{ asset('admin/images/no-data.svg') }}" alt="">
-                                <h4 class="p-4 text-center my-2 w-100">No Ebooks found</h4>
+                                <h4 class="p-4 text-center my-2 w-100">No E-Books Found</h4>
                             </div>
                             @endforelse
                             {{$ebooks->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
@@ -86,14 +85,14 @@
             </div>
             <div class="modal-body">
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
-                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Ebook</b>
+                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">E-Book</b>
                     ?</h6>
                 <img src="images/microphone.png" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
                 @csrf
                 <div class="modal-footer justify-content-center mb-3">
-                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn common-btn">Yes, Delete</button>
                 </div>
             </form>

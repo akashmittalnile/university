@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('admin/css/add-new-e-book.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/css/edit-podcast.css') }}" />
 @endpush
 
 @section('content')
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="row align-items-center">
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="book-img">
                                                 <img src="{{ $ebook ? asset("uploads/ebooks/$ebook->thumbnail") : asset('admin/images/book.jpg') }}"
                                                     alt="image" id="imageDisplay" class="img-fluid" />
@@ -100,7 +100,7 @@
                                                         <div class="col-md-3">
                                                             <div class="rounded shadow bg-white p-2 d-flex my-2">
                                                                 <div class="form-group-box my-auto">
-                                                                    <input type="checkbox" name="plans[]"
+                                                                    <input type="radio" name="plans"
                                                                         @if ($ebook && in_array($item->id, $ebook->plans)) checked @endif
                                                                         value="{{ $item->id }}"
                                                                         id="plan{{ $item->id }}">
@@ -138,15 +138,13 @@
                         </div>
                         <div class="d-flex mt-3 mb-4">
                             <a href="{{ route('admin.ebooks') }}"><button type="button" class="outline-btn" type="button">Cancel</button></a>
-                            <a><button class="common-btn ms-2">Save & Create New E-Book<i class="bi bi-floppy ms-2"></i></button></a>
+                            <a><button class="common-btn ms-2">Create New E-Book<i class="bi bi-floppy ms-2"></i></button></a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-@endsection
-@push('js')
     <script src="{{ asset('admin/js/dashboard.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -162,18 +160,16 @@
                         maxlength: 191,
 
                     },
-                    @if (!$ebook)
-                        audio_file: {
-                            required: true,
-                            maxlength: 191,
+                    pdf_file: {
+                        required: true,
+                        maxlength: 191,
 
-                        },
-                        thumbnail: {
-                            required: true,
-                            maxlength: 191,
+                    },
+                    thumbnail: {
+                        required: true,
+                        maxlength: 191,
 
-                        },
-                    @endif
+                    },
 
 
                     description: {
@@ -181,13 +177,17 @@
                         maxlength: 191,
 
                     },
+                    cancellation_policy: {
+                        required: true,
+                        maxlength: 191,
+                    },
 
                 },
                 errorElement: "span",
                 errorPlacement: function(error, element) {
                     // error.addClass("invalid-feedback");
-                    element.closest(".field").addClass("border border-danger");
-                    element.closest(".field_error").append(error);
+                    element.addClass("border border-danger");
+                    element.closest(".file").addClass("border border-danger");
 
                 },
                 highlight: function(element, errorClass, validClass) {
@@ -327,4 +327,4 @@
             }
         });
     </script>
-@endpush
+@endsection
