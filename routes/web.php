@@ -64,10 +64,15 @@ Route::get('/affiliate', [FrontendController::class, 'affiliate'])->name('affili
 
 Route::get('/sign-in', [FrontendController::class, 'signin'])->name('signin');
 Route::get('login', [FrontendController::class, 'signin'])->name('login');
-
 Route::get('/sign-up', [FrontendController::class, 'signup'])->name('signup');
 
 
+Route::get('/forgot-password', [FrontendController::class, 'forgotPassword'])->name('forgot.password');
+Route::post('/forgot-password-send-otp', [FrontendController::class, 'forgotPasswordSendOTP'])->name('forgot.password.send-otp');
+Route::get('/verify-otp/{email}', [FrontendController::class, 'verifyOTP'])->name('verify.otp');
+Route::post('/verifying-otp', [FrontendController::class, 'verifyingOTP'])->name('verifying.otp');
+Route::get('/reset-password/{email}', [FrontendController::class, 'resetPassword'])->name('reset.password');
+Route::post('/update-password', [FrontendController::class, 'updatePassword'])->name('update.password');
 
 
 

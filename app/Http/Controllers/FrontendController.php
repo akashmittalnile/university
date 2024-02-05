@@ -8,9 +8,12 @@ use App\Models\Content;
 use App\Models\Ebook;
 use App\Models\Plan;
 use App\Models\Podcast;
+use App\Models\User;
 use App\Models\UserPlanDetail;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class FrontendController extends Controller
 {
@@ -27,6 +30,121 @@ class FrontendController extends Controller
                 $total += $item->plan->price;
             }
             return view("frontend.profile", compact('user', 'currentPlan', 'total'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function forgotPassword()
+    {
+        try{
+            return view('frontend.auth.forgot-pass');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function forgotPasswordSendOTP(Request $request)
+    {
+        try{
+            $validator = Validator::make($request->all(), [
+                'email' => 'required'
+            ]);
+            if ($validator->fails()) {
+                return errorMsg($validator->errors()->first());
+            } else {
+                $code = rand(1000, 9999);
+                $user = User::where('email', $request->email)->first();
+                if(isset($user->id)){
+                    if($user->status != 1) return errorMsg('Your account was temporarily inactive by administrator!');
+                    User::where('email', $request->email)->update([
+                        'remember_token' => $code
+                    ]);
+                    $data['site_title'] = 'Forgot Password - Email Verification OTP';
+                    $data['subject'] = 'Forgot Password - Email Verification OTP';
+                    $data['view'] = 'layouts.email.send-otp';
+                    $data['to_email'] = $request->email;
+                    $data['customer_name'] = $request->name;
+                    $data['otp'] = $code;
+                    sendEmail($data);
+                    $redirect_url = route('verify.otp', encrypt_decrypt('encrypt', $request->email));
+                    return successMsg('OTP is sended to your email address', $redirect_url);
+                } else return errorMsg('This email address is not registered with university PMO');
+            }
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function verifyOTP($email)
+    {
+        try{
+            return view('frontend.auth.verify-otp')->with(compact('email'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function verifyingOTP(Request $request)
+    {
+        try{
+            $validator = Validator::make($request->all(), [
+                'email' => 'required',
+                'otp1' => 'required',
+                'otp2' => 'required',
+                'otp3' => 'required',
+                'otp4' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return errorMsg($validator->errors()->first());
+            } else {
+                $email = encrypt_decrypt('decrypt', $request->email);
+                $user = User::where('email', $email)->first();
+                $otp = $request['otp1'].''.$request['otp2'].$request['otp3'].$request['otp4'];
+                if(isset($user->id)){
+                    $check_otp = User::where('email', $email)->where('remember_token', $otp)->first();
+                    if (isset($check_otp->id)) {
+                        $redirect_url = route('reset.password', encrypt_decrypt('encrypt', $email));
+                        return successMsg('OTP verified successfully.', $redirect_url);
+                    } else {
+                        return errorMsg('Incorrect OTP');
+                    }
+                } else return errorMsg('This email address is not registered with university PMO');
+            }
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function resetPassword($email)
+    {
+        try {
+            return view('frontend.auth.reset-pass')->with(compact('email'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function updatePassword(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'password' => 'required',
+                'new_password' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return errorMsg($validator->errors()->first());
+            } else {
+                $email = encrypt_decrypt('decrypt', $request->email);
+                $user = User::where('email', $email)->first();
+                if(isset($user->id)){
+                    User::where('email', $email)->update([
+                        'password' => Hash::make($request->password),
+                        'remember_token' => null
+                    ]);
+                    return successMsg('Password reset successfully.');
+                } else return errorMsg('This email address is not registered with university PMO');
+            }
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }

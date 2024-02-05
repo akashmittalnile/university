@@ -17,7 +17,7 @@
                         <label for="floatingInput">Email</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="tel" class="form-control" name="phone" id="floatingInput"
+                        <input type="number" class="form-control" name="phone" id="floatingInput"
                             placeholder="Enter your number">
                         <label for="floatingInput">Phone</label>
                     </div>
@@ -116,6 +116,10 @@
 
 <script>
     $(document).ready(function() {
+        $.validator.addMethod("phoneValidate", function(value) {
+            return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(value);
+        }, 'Please enter valid phone number.');
+
         $('#contact_form').validate({
             rules: {
                 email: {
@@ -130,13 +134,11 @@
                 },
                 phone: {
                     required: true,
-                    maxlength: 191,
-                    minlength: 10
+                    phoneValidate: true,
                 },
                 message: {
                     required: true,
                     maxlength: 191,
-                    minlength: 6
                 },
             },
             errorElement: "span",

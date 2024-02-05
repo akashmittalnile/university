@@ -16,7 +16,9 @@
                     <div class="right-section">
                         <h5 class="text-capitalize white-color">Everything You Need to Work Smarter, Save Precious Time
                             and grow your business faster, in one place! <br>Opening at 08:30 AM</h5>
+                        @if(!isset(auth()->user()->id))
                         <a href="{{ route('signup') }}"><button class="btn common-btn mt-4">Sign Up</button></a>
+                        @endif
                     </div>
                 </div>
             </div>

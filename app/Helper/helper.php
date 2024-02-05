@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DefaultMail;
+
 if (!function_exists('encrypt_decrypt')) {
     function encrypt_decrypt($action, $string)
     {
@@ -31,6 +34,14 @@ if (!function_exists('errorMsg')) {
     function errorMsg($msg, $data = [])
     {
         return response()->json(['status' => false, 'message' => $msg, 'data' => $data]);
+    }
+}
+
+if (!function_exists('sendEmail')) {
+    function sendEmail($data)
+    {
+        $data['from_email'] = env('MAIL_FROM_ADDRESS');
+        Mail::to($data['to_email'])->send(new DefaultMail($data));
     }
 }
 

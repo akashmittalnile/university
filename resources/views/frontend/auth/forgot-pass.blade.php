@@ -10,37 +10,26 @@
                     <div class="col-md-7">
                         <div class="img-box">
                             <div class="sign-up-head">
-                                <h1 class="text-center white-color">Sign In</h1>
+                                <h1 class="text-center white-color">Forgot Password</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <form action="{{ route('admin.signin.post') }}" method="POST" id="signin_form">
+                        <form action="{{ route('forgot.password.send-otp') }}" method="POST" id="signin_form">
                             @csrf
-                            <input type="hidden" id="redirect_url" value="{{ route('admin.dashboard') }}">
                             <h3 class="main-color f-600">Great!!</h3>
-                            <h6 class="mb-4">Enter your Email & Password to login</h6>
+                            <h6 class="mb-4">Enter your registered email to reset password</h6>
                             <div class="field">
                                 <div class="form-floating mb-3">
                                     <input type="email" name="email" class="form-control" id="floatingInput"
-                                        placeholder="Enter your email Id">
+                                        placeholder="Email">
                                     <label for="floatingInput">Email</label>
                                 </div>
                             </div>
-                            <div class="field">
-                                <div class="form-floating mb-3">
-                                    <input type="password" name="password" class="form-control" id="floatingInput"
-                                        placeholder="Enter Password">
-                                    <label for="floatingInput">Password</label>
-                                </div>
-                            </div>
                             <div class="mb-3">
-                                <a href="#"><button class="btn common-btn mb-3">Sign In</button></a>
-                                <a href="{{ route('forgot.password') }}" class="text-center black-color f-600 mb-2 forgot-password">Forgot
-                                    Password?</a>
-                                <p class="text-center black-color f-600 mb-2">Or</p>
-                                <p class="text-center black-color mt-0">Already have an account? <a
-                                        href="{{ route('signup') }}" class="main-color sign-link f-600">Sign Up</a></p>
+                                <a href="#"><button class="btn common-btn mb-3">Send OTP</button></a>
+                                <p class="text-center black-color mt-0"><a
+                                        href="{{ route('signin') }}" class="main-color sign-link f-600">Sign In</a></p>
                             </div>
 
                         </form>
@@ -59,11 +48,6 @@
                         required: true,
                         maxlength: 191,
                         email: true
-                    },
-                    password: {
-                        required: true,
-                        maxlength: 191,
-                        minlength: 6
                     },
                 },
                 errorElement: "span",
@@ -98,9 +82,14 @@
                         dataType: 'json',
                         contentType: false,
                         processData: false,
-
+                        beforeSend: function () {
+                            $("#preloader").show()
+                        },
+                        complete: function() {
+                            $("#preloader").hide()
+                        },
                         success: function(response) {
-                            if (response.status == 200) {
+                            if (response.status) {
 
 
                                 Swal.fire(
@@ -110,11 +99,8 @@
                                 ).then((result) => {
                                     if (result.value) {
                                         var url = $('#redirect_url').val();
-                                        if (response.redirect) {
-                                            window.location = response.route;
-                                        }
-                                        if (url !== undefined || url != null) {
-                                            window.location = url;
+                                        if (response.data) {
+                                            window.location = response.data;
                                         } else {
                                             location.reload(true);
                                         }
@@ -123,8 +109,7 @@
 
                                 return false;
                             }
-
-                            if (response.status == 201) {
+                            else {
 
                                 Swal.fire(
                                     'Error',
