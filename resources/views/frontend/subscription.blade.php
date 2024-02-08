@@ -36,6 +36,10 @@
                                     <a href="javascript:void(0)">
                                         <button class="btn learn-more-btn" @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @endif>Free</button>
                                     </a>
+                                @elseif($item->current_plan)
+                                    <a href="javascript:void(0)">
+                                        <button class="btn learn-more-btn" @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @endif>Purchased</button>
+                                    </a>
                                 @else
                                     <a href="javascript:void(0)"> 
                                         <button type="button"

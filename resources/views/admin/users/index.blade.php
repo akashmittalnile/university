@@ -37,10 +37,14 @@
                         <form action="" method="get">
                             <div class="search-box ms-auto d-flex">
                                 <div class="input-group mb-2" style="margin-left: 30%;">
-                                    <input type="text" class="form-control common-shadow" name="search"
-                                        placeholder="Search by user name, email, phone number"
-                                        value="{{ request()->has('search') ? request('search') : '' }}"
-                                        aria-describedby="basic-addon2" />
+                                    <input type="text" class="form-control common-shadow" name="search" placeholder="Search by user name, email, phone number" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
+
+                                    <select name="status" id="userStatus" class="form-control common-shadow">
+                                        <option @if(request()->status == "") selected @endif value="">All Users</option>
+                                        <option @if(request()->status == "1") selected @endif value="1">Active Users</option>
+                                        <option @if(request()->status == "0") selected @endif value="0">Inactive Users</option>
+                                    </select>
+
                                     <button class="search-btn">
                                         <i class="bi bi-search"></i>
                                     </button>

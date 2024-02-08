@@ -14,12 +14,7 @@
         <div class="profile-link">
             <a href="javascript:void(0)">
                 <div class="d-flex align-items-center">
-                    <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
-                    </div>
-                    <div class="button-link">
-                        <a href="javascript:void(0)" class="profile-name">{{ auth()->user()->name ?? 'Admin Profile' }}<i class="bi bi-arrow-right ms-2"></i></a>
-                    </div>
+                    
                 </div>
             </a>
         </div>

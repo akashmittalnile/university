@@ -61,6 +61,7 @@
                 </div>
             </div>
         </div>
+       
         <div class="merch">
             <div class="container">
                 <h1 class="white-color f-600 text-center mb-3">Merch</h1>
@@ -69,9 +70,11 @@
                     Micro, Small and Medium-sized enterprises (MSMEs): Executives/Sponsors, Entrepreneurs, Consultants,
                     Contractors, Teachers, Students, Project/ Senior Managers, Project Management Offices (PMOs) among
                     others who are eager to shift and serve their industries.</p>
+                @if(!isset(auth()->user()->id))
                 <div class="text-center">
                     <a href="sign-up.html"><button class="btn common-btn mt-1 signup-btn">Sign up</button></a>
                 </div>
+                @endif
                 <div class="image-slider">
                     <div class="parent">
                         <div class="carousel">
@@ -114,5 +117,6 @@
                 </div>
             </div>
         </div>
+        
     </section>
 @endsection

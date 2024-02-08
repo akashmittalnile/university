@@ -19,6 +19,9 @@ class UserController extends Controller
             $search = trim(request('search'));
             $users->where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("phone", "LIKE", "%$search%");
         }
+        if($request->filled('status')){
+            $users->where('status', $request->status);
+        }
         $users = $users->orderByDesc('id')->paginate(config("app.records_per_page"));
         return view('admin.users.index', compact('users', 'count'));
     }
