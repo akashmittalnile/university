@@ -111,6 +111,21 @@ class UserController extends Controller
         }
     }
 
+    public function approveReject($id, $status)
+    {
+        try {
+            $id = encrypt_decrypt('decrypt', $id);
+            $status = encrypt_decrypt('decrypt', $status);
+            $user = User::where('id', $id)->update([
+                'status'=> $status
+            ]);
+            $msg = ($status == 1) ? 'approved' : 'rejected';
+            return redirect()->back()->with('success', 'User ' .$msg. ' successfully');
+        } catch (\Exception $e) {
+            return errorMsg($e->getMessage());
+        }
+    }
+
     public function register(Request $request)
     {
         $request->validate(
@@ -137,6 +152,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->phone = $request->phone;
+            $user->status = 0;
             $user->password = Hash::make($request->password);
             $user->save();
             return response()->json(['status' => 200, 'message' => 'User registered successfully']);

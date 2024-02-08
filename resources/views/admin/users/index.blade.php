@@ -30,6 +30,7 @@
                 </a>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="main-cards">
@@ -41,8 +42,10 @@
 
                                     <select name="status" id="userStatus" class="form-control common-shadow">
                                         <option @if(request()->status == "") selected @endif value="">All Users</option>
+                                        <option @if(request()->status == "0") selected @endif value="0">Pending Users</option>
                                         <option @if(request()->status == "1") selected @endif value="1">Active Users</option>
-                                        <option @if(request()->status == "0") selected @endif value="0">Inactive Users</option>
+                                        <option @if(request()->status == "2") selected @endif value="2">Inactive Users</option>
+                                        <option @if(request()->status == "3") selected @endif value="3">Rejected Users</option>
                                     </select>
 
                                     <button class="search-btn">
@@ -67,6 +70,9 @@
                                             <th scope="col" class="text-capitalize">
                                                 Phone Number
                                             </th>
+                                            <th scope="col" class="text-capitalize">
+                                                Status
+                                            </th>
                                             <th scope="col" class="text-capitalize text-center">
                                                 Action
                                             </th>
@@ -78,6 +84,7 @@
                                                 <td class="text-capitalize">{{ $item->name }}</td>
                                                 <td>{{ $item->email }}</td>
                                                 <td>+1 {{ $item->phone }}</td>
+                                                <td>@if($item->status==0) Pending @elseif($item->status == 1) Active @elseif($item->status == 2) Inactive @elseif($item->status == 3) Rejected @endif</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         {{-- <a href="#"><button class="outline-btn ">
@@ -91,7 +98,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td align="center" colspan="4">No records found</td>
+                                                <td align="center" colspan="5">No records found</td>
                                             </tr>
                                         @endforelse
                                     </table>

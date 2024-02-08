@@ -91,7 +91,7 @@
                             <p class=" text-color">Most importantly, ECONO-ProjectEX is commited to collaborate with
                                 international project management community, and offer tremendous advantages to
                                 Micro,Small and Medium-sized enterprises(MSMEs).</p>
-                            <form action="">
+                            <form action="#">
                                 <div class="form-floating mb-3">
                                     <input type="name" class="form-control" id="floatingInput" placeholder="Enter your name">
                                     <label for="floatingInput">Name</label>
@@ -100,7 +100,7 @@
                                     <input type="email" class="form-control" id="floatingInput" placeholder="Enter your email Id">
                                     <label for="floatingInput">Email address</label>
                                 </div>
-                                <a href="#"><button class="btn common-btn">Submit<i class="bi bi-arrow-right ms-3"></i></button></a>
+                                <a href="javascript:void(0)"><button type="button" class="btn common-btn">Submit<i class="bi bi-arrow-right ms-3"></i></button></a>
                             </form>
                         </div>
                     </div>

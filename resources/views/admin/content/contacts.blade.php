@@ -8,7 +8,7 @@
     <main class="main-container dashboard">
         <div class="main-title d-flex align-items-center">
             <div class="page-title d-flex align-items-center">
-                <a href="manage-podcasts.html"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
+                
                 <h3 class="font-weight-bold black-color">Manage Page Content</h3>
             </div>
             <div class="profile-link">
@@ -43,6 +43,8 @@
                                             <tr>
                                                 <th scope="col" class="text-capitalize">Sr No.</th>
                                                 <th scope="col" class="text-capitalize" style="width: 20%;">Name</th>
+                                                <th scope="col" class="text-capitalize" style="width: 20%;">Email Id</th>
+                                                <th scope="col" class="text-capitalize" style="width: 20%;">Phone Number</th>
                                                 <th scope="col" class="text-capitalize" style="width: 25%;">Address</th>
                                                 <th scope="col" class="text-capitalize" style="width: 45%;">Messages</th>
                                             </tr>
@@ -52,12 +54,14 @@
                                             <tr>
                                                 <td>{{$key+1}}</td>
                                                 <td>{{$val->name ?? "NA"}}</td>
+                                                <td>{{$val->email ?? "NA"}}</td>
+                                                <td>@if(isset($val->phone)) +1 {{$val->phone}} @else NA @endif</td>
                                                 <td>{{$val->address ?? "NA"}}</td>
                                                 <td>{{$val->message ?? "NA"}}</td>
                                             </tr>
                                             @empty
                                             <tr>
-                                                <td align="center" colspan="4">No records found</td>
+                                                <td align="center" colspan="6">No records found</td>
                                             </tr>
                                             @endforelse
                                         </tbody>

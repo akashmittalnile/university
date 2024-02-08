@@ -11,7 +11,7 @@
     <main class="main-container dashboard">
         <div class="main-title d-flex align-items-center">
             <div class="page-title d-flex align-items-center">
-                <a href="manage-podcasts.html"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
+                
                 <h3 class="font-weight-bold black-color">Manage Page Content</h3>
             </div>
             <div class="profile-link">
@@ -37,7 +37,7 @@
                                     class="fa fa-angle-right ms-3 me-3"></i> <b class="main-color">Mark Burnett
                                     Foundation</b></p>
                         </div>
-                        <div class="about-us">
+                        <div class="about-us mt-3">
                             <form action="{{ route('admin.markBurnet.save') }}" method="post">
                                 @csrf
                                 <div class="wrapper">

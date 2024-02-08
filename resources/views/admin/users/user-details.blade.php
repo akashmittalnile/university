@@ -25,6 +25,14 @@
             </a>
         </div>
     </div>
+
+    @if($user->status==0)
+    <div class="d-flex align-items-center justify-content-end mt-4">
+        <a href="{{ route('admin.users.approve.reject', ['id' => encrypt_decrypt('encrypt', $user->id), 'status' => encrypt_decrypt('encrypt', 1)]) }}"><button class="outline-btn">Approve</button></a>
+        <a href="{{ route('admin.users.approve.reject', ['id' => encrypt_decrypt('encrypt', $user->id), 'status' => encrypt_decrypt('encrypt', 3)]) }}"><button class="common-btn ms-3">Reject</button></a>
+    </div>
+    @endif
+
     <div class="row g-3 my-2">
         <div class="col-md-12">
             <div class="common-card">
@@ -38,10 +46,20 @@
                         </div>
                     </div>
                     <div class="col-md-3">
+                        @if($user->status == 3)
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <a href="javascript:void(0)"><button class="outline-btn border border-danger text-danger">Rejected</button></a>
+                        </div>
+                        @elseif($user->status == 0)
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <a href="javascript:void(0)"><button class="outline-btn">Pending</button></a>
+                        </div>
+                        @else
                         <p class="black-color f-600">Mark as @if($user->status==1) Inactive @else Active @endif</p>
                         <div class="form-check mt-3 form-switch">
                             <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" @if($user->status==1) checked @endif>
                         </div>
+                        @endif
                     </div>
                     <div class="col-md-3">
                         <div class="d-flex align-items-center">
@@ -325,7 +343,7 @@
 
 <script type="text/javascript">
     $(document).on('change', '#flexSwitchCheckChecked', function(e) {
-        let status = ($(this).is(":checked")) ? 1 : 0;
+        let status = ($(this).is(":checked")) ? 1 : 2;
         e.preventDefault();
         $.ajax({
             type: 'post',

@@ -230,6 +230,8 @@ class ContentController extends Controller
                     $final = [
                         $key + 1,
                         $row->name ?? 'NA',
+                        $row->email ?? 'NA',
+                        (isset($row->phone) ? '+1 '.$row->phone : 'NA' ),
                         $row->address ?? 'NA',
                         $row->message ?? 'NA',
                     ];

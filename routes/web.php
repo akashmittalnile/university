@@ -104,6 +104,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get("users", [UserController::class, 'index'])->name('users.index');
         Route::get("view-details/{id}", [UserController::class, 'viewDetails'])->name('users.view.details');
         Route::post('user-change-status', [UserController::class, 'userChangeStatus'])->name('users.change.status');
+        Route::get('approve-reject/{id}/{status}', [UserController::class, 'approveReject'])->name('users.approve.reject');
         Route::get("user-detail-download-report/{id}", [UserController::class, 'userDetailDownloadReport'])->name('user-detail.download.report');
 
         //  membership
