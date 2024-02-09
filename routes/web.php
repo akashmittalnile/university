@@ -59,6 +59,7 @@ Route::get('/blog/{id}', [FrontendController::class, 'blogDetails'])->name('blog
 Route::get('/e-book', [FrontendController::class, 'e_book'])->name('e_book');
 Route::post('/contactSave', [FrontendController::class, 'contactSave'])->name('contactSave');
 Route::get('/affiliate', [FrontendController::class, 'affiliate'])->name('affiliate');
+Route::get('/products', [FrontendController::class, 'products'])->name('products');
 
 
 

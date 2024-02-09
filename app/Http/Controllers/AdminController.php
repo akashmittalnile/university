@@ -127,6 +127,9 @@ class AdminController extends Controller
         try {
             $user = User::where('email', $request->email)->first();
             if(isset($user->id)){
+                if($user->status == 0) return response()->json(['message' => 'Your account is currently pending for approval.', 'status' => 201]);
+                if($user->status == 2) return response()->json(['message' => 'Your account is inactive.', 'status' => 201]);
+                if($user->status == 3) return response()->json(['message' => 'Your account is rejected by the admin.', 'status' => 201]);
                 if (Auth::attempt($request->only(['email', 'password']))) {
                     $user = User::where("email", $request->email)->first();
                     if ($user->admin == 1) {

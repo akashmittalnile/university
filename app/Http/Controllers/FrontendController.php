@@ -8,6 +8,7 @@ use App\Models\Content;
 use App\Models\Ebook;
 use App\Models\Plan;
 use App\Models\Podcast;
+use App\Models\Product;
 use App\Models\User;
 use App\Models\UserPlanDetail;
 use Illuminate\Http\Request;
@@ -195,6 +196,16 @@ class FrontendController extends Controller
         try{
             $blog = Blog::orderByDesc('id')->get();
             return view("frontend.blog")->with(compact('blog'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function products()
+    {
+        try{
+            $product = Product::orderByDesc('id')->get();
+            return view("frontend.product")->with(compact('product'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }

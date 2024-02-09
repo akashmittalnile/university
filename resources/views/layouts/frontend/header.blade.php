@@ -46,6 +46,7 @@
                             <li><a class="dropdown-item" href="{{ route('e_book') }}">E-Book</a></li>
                             <li><a class="dropdown-item" href="{{ route('podcast') }}">Podcast</a></li>
                             <li><a class="dropdown-item" href="{{ route('blogs') }}">Blogs</a></li>
+                            <li><a class="dropdown-item" href="{{ route('products') }}">Products</a></li>
                         </ul>
                     </li>
                     @if (auth()->user())
