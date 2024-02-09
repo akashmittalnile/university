@@ -34,8 +34,7 @@
                 <div class="main-cards">
                     <div class="e-book-details">
                         <div class="d-flex align-items-center justify-content-end">
-                            <p class="text-color">Home<i class="fa fa-angle-right ms-3 me-3"></i> Editors <i
-                                    class="fa fa-angle-right ms-3 me-3"></i> <b class="main-color">Affiliate Links</b></p>
+                            
                         </div>
                         <div class="about-us">
                             <form action="{{ route('admin.affiliate.save') }}" method="post">
@@ -50,8 +49,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex">
-                                    <a href="javascript:void(0)"><button type="button" class="btn outline-btn">Cancel</button></a>
-                                    <a href="javascript:void(0)"><button class="btn common-btn ms-3" type="submit">Submit</button></a>
+                                    <!-- <a href="javascript:void(0)"><button type="button" class="btn outline-btn">Cancel</button></a> -->
+                                    <a href="javascript:void(0)"><button class="btn common-btn" type="submit">Submit</button></a>
                                 </div>
                             </form>
                         </div>

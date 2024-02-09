@@ -225,6 +225,9 @@
         });
 
         $(document).ready(function() {
+            $.validator.addMethod('filesize', function (value, element, param) {
+                return this.optional(element) || (element.files[0].size <= param * 1000000)
+            }, 'File size must be less than {0} MB');
             $('#create_form').validate({
                 rules: {
                     name: {
@@ -239,9 +242,13 @@
                     },
                     @if (!$podcast)
                     thumbnail: {
-                            required: true,
-                            maxlength: 191,
-                        },
+                        required: true,
+                        filesize: 1,
+                    },
+                    @else
+                    thumbnail: {
+                        filesize: 1,
+                    },
                     @endif
 
                     plans: {

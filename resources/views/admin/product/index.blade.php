@@ -74,7 +74,9 @@
                                 <h4 class="p-4 text-center my-2 w-100">No Products found</h4>
                             </div>
                             @endforelse
-                            {{$product->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            <div class="d-flex justify-content-center">
+                                {{$product->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            </div>
                         </div>
                     </div>
                 </div>

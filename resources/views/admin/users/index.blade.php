@@ -103,7 +103,9 @@
                                         @endforelse
                                     </table>
                                 </div>
-                            {{$users->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                                <div class="d-flex justify-content-center">
+                                    {{$users->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                                </div>
                         </div>
                     </div>
                 </div>

@@ -32,8 +32,7 @@
                         <div class="d-flex align-items-center mb-3 justify-content-end">
                             <a href="javascript:void(0)"><button class="btn common-btn top-btn me-4">Manage Business Hours</button></a>
                             <a href="{{ route('admin.contact.download.report') }}"><button class="btn outline-btn top-btn me-4">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
-                            <p class="text-color">Home<i class="fa fa-angle-right ms-3 me-3"></i> Editors <i
-                                    class="fa fa-angle-right ms-3 me-3"></i> <b class="main-color">Contact Us</b></p>
+                            
                         </div>
                         <div class="about-us">
                             <div class="transation-detail-box ">

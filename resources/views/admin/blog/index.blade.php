@@ -74,7 +74,9 @@
                                 <h4 class="p-4 text-center my-2 w-100">No Blogs found</h4>
                             </div>
                             @endforelse
-                            {{$blog->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            <div class="d-flex justify-content-center">
+                                {{$blog->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            </div>
                         </div>
                     </div>
                 </div>

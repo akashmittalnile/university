@@ -244,6 +244,9 @@
            $('.dz-default.dz-message').hide(); 
         } else $('.dz-default.dz-message').show();
 
+        $.validator.addMethod('filesize', function (value, element, param) {
+            return this.optional(element) || (element.files[0].size <= param * 1000000)
+        }, 'File size must be less than {0} MB');
         $('#create_form').validate({
             rules: {
                 name: {
@@ -260,6 +263,9 @@
                 cancellation_policy: {
                     required: true,
                     maxlength: 191,
+                },
+                thumbnail: {
+                    filesize: 1
                 },
             },
             errorElement: "span",

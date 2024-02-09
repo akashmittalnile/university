@@ -70,7 +70,9 @@
                                 <h4 class="p-4 text-center my-2 w-100">No E-Books Found</h4>
                             </div>
                             @endforelse
-                            {{$ebooks->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            <div class="d-flex justify-content-center">
+                                {{$ebooks->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            </div>
                         </div>
                     </div>
                 </div>

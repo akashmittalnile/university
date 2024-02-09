@@ -186,6 +186,9 @@
     console.log(arrOfImg);
 
     $(document).ready(function() {
+        $.validator.addMethod('filesize', function (value, element, param) {
+            return this.optional(element) || (element.files[0].size <= param * 1000000)
+        }, 'File size must be less than {0} MB');
         $('#create_form').validate({
             rules: {
                 name: {
@@ -205,6 +208,7 @@
                 },
                 thumbnail: {
                     required: true,
+                    filesize: 1
                 },
             },
             errorElement: "span",

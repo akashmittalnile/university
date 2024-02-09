@@ -148,6 +148,9 @@
     <script src="{{ asset('admin/js/dashboard.js') }}"></script>
     <script>
         $(document).ready(function() {
+            $.validator.addMethod('filesize', function (value, element, param) {
+                return this.optional(element) || (element.files[0].size <= param * 1000000)
+            }, 'File size must be less than {0} MB');
             $('#create_form').validate({
                 rules: {
                     name: {
@@ -167,8 +170,7 @@
                     },
                     thumbnail: {
                         required: true,
-                        maxlength: 191,
-
+                        filesize: 1
                     },
                     plans: {
                         required: true,

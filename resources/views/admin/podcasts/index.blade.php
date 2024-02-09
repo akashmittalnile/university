@@ -76,7 +76,9 @@
                                 <h4 class="p-4 text-center my-2 w-100">No Podcasts found</h4>
                             </div>
                             @endforelse
-                            {{$podcasts->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            <div class="d-flex justify-content-center">
+                                {{$podcasts->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            </div>
                         </div>
                     </div>
                 </div>

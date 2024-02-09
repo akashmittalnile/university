@@ -77,15 +77,7 @@
                                     @else
                                     <img src="{{ asset('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     @endif
-                                    <div class="cancel-icon">
-                                        <div class="top-right">
-                                            <a href="javascript:void(0)" id="resetBtn">
-                                                <div class="icon-bg">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -95,7 +87,7 @@
                                 </div>
                             </div>
                             <a href="#blog-gallery-parent-div" id="redirectbtn" class="d-none">btn</a>
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Blog Image</label>
                                     <div class="dropzone m-3" id="multipleImage">
@@ -116,7 +108,7 @@
                                     </div>
                                     <input type="hidden" id="arrayOfImage" name="array_of_image" value="">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Blog Description</label>
@@ -261,6 +253,9 @@
            $('.dz-default.dz-message').hide(); 
         } else $('.dz-default.dz-message').show();
 
+        $.validator.addMethod('filesize', function (value, element, param) {
+            return this.optional(element) || (element.files[0].size <= param * 1000000)
+        }, 'File size must be less than {0} MB');
         $('#create_form').validate({
             rules: {
                 name: {
@@ -278,12 +273,15 @@
                     required: true,
                     maxlength: 191,
                 },
+                thumbnail: {
+                    filesize: 1
+                },
             },
             errorElement: "span",
             errorPlacement: function(error, element) {
                 // error.addClass("invalid-feedback");
                 element.addClass("border border-danger");
-
+                element.closest(".file").addClass("border border-danger");
             },
             highlight: function(element, errorClass, validClass) {
                 $('.please-wait').hide();
@@ -292,7 +290,7 @@
             unhighlight: function(element, errorClass, validClass) {
                 // $(element).removeClass("text-danger");
                 $(element).removeClass("border border-danger");
-
+                $(element).closest(".file").removeClass("border border-danger");
             },
             submitHandler: function(form, event) {
                 event.preventDefault();

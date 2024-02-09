@@ -70,7 +70,9 @@
                                 <h4 class="p-4 text-center my-2 w-100">No Image found</h4>
                             </div>
                             @endforelse
-                            {{$gallery->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            <div class="d-flex justify-content-center">
+                                {{$gallery->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
+                            </div>
                         </div>
                     </div>
                 </div>

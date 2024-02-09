@@ -69,15 +69,7 @@
                             <div class="col-md-4 mb-3">
                                 <div class="book-img">
                                     <img src="{{ asset('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
-                                    <div class="cancel-icon">
-                                        <div class="top-right">
-                                            <a href="javascript:void(0)" id="resetBtn">
-                                                <div class="icon-bg">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -86,7 +78,7 @@
                                     <input type="text" class="form-control" name="link" id="link" value="" aria-describedby="name" placeholder="Enter Redirect Link" />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Blog Image</label>
                                     <div class="dropzone m-3" id="multipleImage">
@@ -99,7 +91,7 @@
                                     </div>
                                     <input type="hidden" id="arrayOfImage" name="array_of_image" value="">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Blog Description</label>
@@ -119,7 +111,7 @@
                         <a href="{{ route('admin.blog') }}"><button type="button" class="outline-btn">
                                 Cancel
                             </button></a>
-                        <a><button class="common-btn ms-2">Save & Create New Blog<i class="bi bi-floppy ms-2"></i></button></a>
+                        <a><button class="common-btn ms-2">Create New Blog<i class="bi bi-floppy ms-2"></i></button></a>
                     </div>
                 </div>
                 <form>
@@ -203,6 +195,9 @@
     console.log(arrOfImg);
 
     $(document).ready(function() {
+        $.validator.addMethod('filesize', function (value, element, param) {
+            return this.optional(element) || (element.files[0].size <= param * 1000000)
+        }, 'File size must be less than {0} MB');
         $('#create_form').validate({
             rules: {
                 name: {
@@ -222,12 +217,14 @@
                 },
                 thumbnail: {
                     required: true,
+                    filesize: 1
                 },
             },
             errorElement: "span",
             errorPlacement: function(error, element) {
                 // error.addClass("invalid-feedback");
                 element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
 
             },
             highlight: function(element, errorClass, validClass) {
@@ -237,6 +234,7 @@
             unhighlight: function(element, errorClass, validClass) {
                 // $(element).removeClass("text-danger");
                 $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
 
             },
             submitHandler: function(form, event) {
