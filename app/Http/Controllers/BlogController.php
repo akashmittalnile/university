@@ -45,7 +45,7 @@ class BlogController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return errorMsg($validator->errors()->first());
+                return redirect()->back()->with('error', $validator->errors()->first());
             } else {
                 $blog = new Blog;
 

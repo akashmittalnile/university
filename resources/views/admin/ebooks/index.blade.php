@@ -43,7 +43,7 @@
                 </div>
                 {{-- <a href="#"><button class="outline-btn ms-2">E-Book Transaction Loans<i
                                 class="bi bi-coin ms-2"></i></button></a> --}}
-                <a href="{{ route('admin.ebooks.create') }}"><button class="common-btn ms-2">Add New E-Book<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="{{ route('admin.ebooks.create') }}" style="width: 18%;"><button class="common-btn ms-2">Add New E-Book<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">

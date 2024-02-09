@@ -35,7 +35,7 @@ p,h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
   font-family: 'Poppins';
 }
 
-.search-box{width: 90%;text-align: right;}
+.search-box{width: 60%;text-align: right;}
 .search-box input{border: 0;padding: 12px;border-radius: 10px;}
 .search-box input::placeholder{font-size: 13px;color: rgb(171, 168, 168);}
 .search-box input{font-size: 13px;color: #171717;border: 1px #3fab40 solid;}

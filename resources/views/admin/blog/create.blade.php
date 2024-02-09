@@ -202,18 +202,13 @@
             rules: {
                 name: {
                     required: true,
-                    maxlength: 200,
                 },
                 link: {
                     required: true,
-                },
-                description: {
-                    required: true,
-                    maxlength: 191,
+                    url: true
                 },
                 cancellation_policy: {
                     required: true,
-                    maxlength: 191,
                 },
                 thumbnail: {
                     required: true,
@@ -225,7 +220,6 @@
                 // error.addClass("invalid-feedback");
                 element.addClass("border border-danger");
                 element.closest(".file").addClass("border border-danger");
-
             },
             highlight: function(element, errorClass, validClass) {
                 $('.please-wait').hide();
@@ -235,96 +229,94 @@
                 // $(element).removeClass("text-danger");
                 $(element).removeClass("border border-danger");
                 $(element).closest(".file").removeClass("border border-danger");
-
             },
             submitHandler: function(form, event) {
                 event.preventDefault();
                 form.submit();
-                // let formData = new FormData(form);
+                let formData = new FormData(form);
+                $.ajax({
+                    type: 'post',
+                    url: form.action,
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $("#preloader").show()
+                    },
+                    complete: function() {
+                        $("#preloader").hide()
+                    },
+                    success: function(response) {
+                        if (response.status) {
+                            Swal.fire(
+                                'Success',
+                                response.message,
+                                'success'
+                            ).then((result) => {
+                                if (result.value) {
+                                    var url = $('#redirect_url').val();
+                                    if (response.redirect) {
+                                        window.location = response.route;
+                                    }
+                                    if (url !== undefined || url != null) {
+                                        window.location = url;
+                                    } else {
+                                        location.reload(true);
+                                    }
+                                }
+                            });;
 
-                // $.ajax({
-                //     type: 'post',
-                //     url: form.action,
-                //     data: formData,
-                //     dataType: 'json',
-                //     contentType: false,
-                //     processData: false,
-                //     beforeSend: function () {
-                //         $("#preloader").show()
-                //     },
-                //     complete: function() {
-                //         $("#preloader").hide()
-                //     },
-                //     success: function(response) {
-                //         if (response.status) {
-                //             Swal.fire(
-                //                 'Success',
-                //                 response.message,
-                //                 'success'
-                //             ).then((result) => {
-                //                 if (result.value) {
-                //                     var url = $('#redirect_url').val();
-                //                     if (response.redirect) {
-                //                         window.location = response.route;
-                //                     }
-                //                     if (url !== undefined || url != null) {
-                //                         window.location = url;
-                //                     } else {
-                //                         location.reload(true);
-                //                     }
-                //                 }
-                //             });;
+                            return false;
+                        }
 
-                //             return false;
-                //         }
+                        if (!response.status) {
+                            Swal.fire(
+                                'Error',
+                                response.message,
+                                'error'
+                            );
+                            console.log(response.message);
+                            return false;
+                        }
+                    },
+                    error: function(data) {
+                        if (data.status == 422) {
+                            let li_htm = '';
+                            var form = $("#create_form");
+                            $.each(data.responseJSON.errors, function(k, v) {
+                                const $input = form.find(
+                                    `input[name=${k}],select[name=${k}],textarea[name=${k}]`
+                                );
+                                if ($input.next('small').length) {
+                                    $input.next('small').html(v);
+                                    if (k == 'services' || k == 'membership') {
+                                        $('#myselect').next('small').html(v);
+                                    }
+                                } else {
+                                    $input.after(
+                                        `<small class='text-danger'>${v}</small>`
+                                    );
+                                    if (k == 'services' || k == 'membership') {
+                                        $('#myselect').after(
+                                            `<small class='text-danger'>${v[0]}</small>`
+                                        );
+                                    }
+                                }
+                                li_htm += `<li>${v}</li>`;
+                            });
 
-                //         if (!response.status) {
-                //             Swal.fire(
-                //                 'Error',
-                //                 response.message,
-                //                 'error'
-                //             );
-                //             console.log(response.message);
-                //             return false;
-                //         }
-                //     },
-                //     error: function(data) {
-                //         if (data.status == 422) {
-                //             let li_htm = '';
-                //             var form = $("#create_form");
-                //             $.each(data.responseJSON.errors, function(k, v) {
-                //                 const $input = form.find(
-                //                     `input[name=${k}],select[name=${k}],textarea[name=${k}]`
-                //                 );
-                //                 if ($input.next('small').length) {
-                //                     $input.next('small').html(v);
-                //                     if (k == 'services' || k == 'membership') {
-                //                         $('#myselect').next('small').html(v);
-                //                     }
-                //                 } else {
-                //                     $input.after(
-                //                         `<small class='text-danger'>${v}</small>`
-                //                     );
-                //                     if (k == 'services' || k == 'membership') {
-                //                         $('#myselect').after(
-                //                             `<small class='text-danger'>${v[0]}</small>`
-                //                         );
-                //                     }
-                //                 }
-                //                 li_htm += `<li>${v}</li>`;
-                //             });
-
-                //             return false;
-                //         } else {
-                //             Swal.fire(
-                //                 'Error',
-                //                 data.statusText,
-                //                 'error'
-                //             );
-                //             return false;
-                //         }
-                //     }
-                // });
+                            return false;
+                        } else {
+                            Swal.fire(
+                                'Error',
+                                data.statusText,
+                                'error'
+                            );
+                            return false;
+                        }
+                    }
+                });
             }
         });
     });

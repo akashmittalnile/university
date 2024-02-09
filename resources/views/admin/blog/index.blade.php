@@ -24,7 +24,7 @@
                         <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
-                        <a href="profile.html" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </a>
@@ -47,7 +47,7 @@
 
                 {{-- <a href="#"><button class="outline-btn ms-2">Podcast Payment Transaction
                             Loans<i class="bi bi-coin ms-2"></i></button></a> --}}
-                <a href="{{ route('admin.blog.create') }}"><button class="common-btn ms-2">Add New Blog<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="{{ route('admin.blog.create') }}" style="width: 17%;"><button class="common-btn ms-2">Add New Blog<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">

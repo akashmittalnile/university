@@ -38,7 +38,7 @@
                         <form action="" method="get">
                             <div class="search-box ms-auto d-flex">
                                 <div class="input-group mb-2" style="margin-left: 30%;">
-                                    <input type="text" class="form-control common-shadow" name="search" placeholder="Search by user name, email, phone number" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
+                                    <input style="width: 34%;" type="text" class="form-control common-shadow" name="search" placeholder="Search by name, email, phone number" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
 
                                     <select name="status" id="userStatus" class="form-control common-shadow">
                                         <option @if(request()->status == "") selected @endif value="">All Users</option>

@@ -26,15 +26,18 @@ class ContentController extends Controller
 
     public function aboutSave(Request $request)
     {
+        if(isset($request->data)){
+            $content = Content::where("name", "about")->first();
+            if ($content) {
 
-        $content = Content::where("name", "about")->first();
-        if ($content) {
-
-            $content->value = $request->data;
-            $content->updated_at = date('Y-m-d H:i:s');
-            $content->save();
+                $content->value = $request->data;
+                $content->updated_at = date('Y-m-d H:i:s');
+                $content->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');  
+        } else {
+            return redirect()->back()->with('error', 'Please enter some content!');  
         }
-        return redirect()->back()->with('success', 'Content Updated Successfully');
     }
 
     public function markNetwork()
