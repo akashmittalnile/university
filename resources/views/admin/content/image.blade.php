@@ -46,7 +46,7 @@
 
                 {{-- <a href="#"><button class="outline-btn ms-2">Podcast Payment Transaction
                             Loans<i class="bi bi-coin ms-2"></i></button></a> --}}
-                <a href="javascript:void(0)"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn ms-2">Add Image<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="javascript:void(0)" style="width: 15%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn ms-2">Add Image<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">

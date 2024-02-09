@@ -11,7 +11,7 @@
     <main class="main-container dashboard">
         <div class="main-title d-flex align-items-center">
             <div class="page-title d-flex align-items-center">
-                <h3 class="font-weight-bold black-color">Manage Page Content</h3>
+                <h3 class="font-weight-bold black-color">Mark Network</h3>
             </div>
             <div class="profile-link">
                 <a href="#">
