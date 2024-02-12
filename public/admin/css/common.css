@@ -116,9 +116,14 @@ p,h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
     list-style-type: none;
   }
   
+  a{
+      text-decoration: none;
+  }
+  
   .sidebar-list-item {
     padding: 15px 10px;
     border-radius: 0px 28px 28px 0px;
+    color: #ffffff;
   }
   
   .sidebar-list-item:hover,.sidebar-list-item.active  {

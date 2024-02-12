@@ -1,10 +1,24 @@
 @extends('layouts.admin.app')
 @push('css')
     <link rel="stylesheet" href="{{ asset('admin/css/about-us.css') }}" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js"></script>
 @endpush
 @push('js')
-    <script src="{{ asset('admin/js/text-editor.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("post_text", {
+            language: "en",
+            uiColor: "#dddddd",
+            height: 500,
+            resize_dir: 'vertical'
+        });
+        CKEDITOR.instances['post_text'].on('change', function() { 
+            let value = CKEDITOR.instances['post_text'].getData().trim();
+            if(value!=undefined && value!=null && value!=''){
+                $(".cke_1.cke_chrome").attr("style", "border: 1px solid #3eda3f !important;")
+            } else $(".cke_1.cke_chrome").attr("style", "border: 1px solid red !important;")
+        });
+    </script>
+    <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 @endpush
 @section('content')
     <!-- Main -->
@@ -38,7 +52,7 @@
                             
                         </div>
                         <div class="about-us">
-                            <form action="{{ route('admin.about.save') }}" method="post" id="about-us-form">
+                            <form action="{{ route('admin.about.save') }}" method="post" onsubmit="return validateForm()">
                                 @csrf
                                 <div class="wrapper">
                                     <div class="col-lg-12  p-0  page-main">
@@ -62,18 +76,14 @@
     </main>
     <!-- End Main -->
     <!-- End Main -->
-@endsection
-
-@push('js')
-<script>
-    $("#about-us-form").submit( function(e) {
-        var messageLength = CKEDITOR.instances['editor'].getData().replace(/<[^>]*>/gi, '').length;
-        if( !messageLength ) {
-            alert( 'Please enter a message' );
-            e.preventDefault();
+    <script>
+        const validateForm = () => {
+            let val = CKEDITOR.instances['post_text'].getData().trim();
+            if(val!=undefined && val!=null && val !=''){
+                return true;
+            }
+            $(".cke_1.cke_chrome").attr("style", "border: 1px solid red !important;");
             return false;
         }
-        return false;
-    });
-</script>
-@endpush
+    </script>
+@endsection

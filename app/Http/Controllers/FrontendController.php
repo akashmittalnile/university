@@ -189,7 +189,8 @@ class FrontendController extends Controller
 
     public function affiliate()
     {
-        return view("frontend.affiliate");
+        $affiliate = Content::where("name", 'affiliate')->first();
+        return view("frontend.affiliate")->with(compact('affiliate'));
     }
 
     public function blog()
@@ -235,12 +236,14 @@ class FrontendController extends Controller
         foreach ($plans as  $item) {
             $item->description = explode(",", $item->description);
         }
-        return view("frontend.mark-network", compact("plans"));
+        $network = Content::where("name", 'mark-network')->first();
+        return view("frontend.mark-network", compact("plans", "network"));
     }
 
     public function markBurnet()
     {
-        return view("frontend.mark-burnet");
+        $burnet = Content::where("name", 'mark-burnet')->first();
+        return view("frontend.mark-burnet")->with(compact('burnet'));
     }
 
     public function resources()
