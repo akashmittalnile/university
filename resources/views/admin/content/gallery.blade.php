@@ -94,8 +94,8 @@
                         @csrf
                         <div class="file-upload-img d-flex align-items-center mb-3 field w-100">
                             <div class="file btn black-color upload-btn mx-auto">
-                                <div>
-                                    <img style="width: 160px; height: 160px; object-fit: cover; object-position: center; overflow: hidden; border-radius: 8px" src="" id="editImg" alt="">
+                                <div class="img-box">
+                                    <img style="width: 200px;" src="" id="editImg" alt="">
                                 </div>
                                 <div class="text-center mt-3">
                                     <span id="image_name" style="color: #000; cursor: pointer !important;">

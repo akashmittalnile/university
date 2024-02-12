@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/css/sidebar.css') }}" />
     <script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @stack('css')
     <style>
         .swal2-confirm {
@@ -60,6 +61,7 @@
     <script src="{{ asset('admin/js/script.js') }}"></script>
     <script src="{{ asset('admin/js/common.js') }}"></script>
     <script src="{{ asset('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @if ($success = Session::get('success'))
         <script>
             // toastr.success("{{ $success }}")

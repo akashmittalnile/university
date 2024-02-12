@@ -12,6 +12,12 @@
         height: 250,
         resize_dir: 'vertical'
     });
+    CKEDITOR.instances['post_text'].on('change', function() { 
+        let value = CKEDITOR.instances['post_text'].getData().trim();
+        if(value!=undefined && value!=null && value!=''){
+            $(".cke_1.cke_chrome").removeAttr("style")
+        } else $(".cke_1.cke_chrome").attr("style", "border: 1px solid red !important;")
+    });
 </script>
 <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 @endpush
@@ -242,7 +248,6 @@
     console.log(arrOfImg);
 
     $(document).ready(function() {
-
         var existingImages = {!! json_encode($img)  !!};
         existingImages.forEach(function(image) {
             arrOfImg.push(image.name);
@@ -266,10 +271,6 @@
                     required: true,
                     url: true
                 },
-                description: {
-                    required: true,
-                    maxlength: 191,
-                },
                 cancellation_policy: {
                     required: true,
                     maxlength: 191,
@@ -283,6 +284,10 @@
                 // error.addClass("invalid-feedback");
                 element.addClass("border border-danger");
                 element.closest(".file").addClass("border border-danger");
+                let val = CKEDITOR.instances['post_text'].getData().trim();
+                if(val==undefined || val==null || val ==''){
+                    $(".cke_1.cke_chrome").attr("style", "border: 1px solid red !important;");
+                }
             },
             highlight: function(element, errorClass, validClass) {
                 $('.please-wait').hide();
@@ -295,6 +300,11 @@
             },
             submitHandler: function(form, event) {
                 event.preventDefault();
+                let val = CKEDITOR.instances['post_text'].getData().trim();
+                if(val==undefined || val==null || val ==''){
+                    $(".cke_1.cke_chrome").attr("style", "border: 1px solid red !important;");
+                    return false;
+                }
                 form.submit();
                 let formData = new FormData(form);
 
@@ -332,9 +342,7 @@
                             });;
 
                             return false;
-                        }
-
-                        if (!response.status) {
+                        }else{
                             Swal.fire(
                                 'Error',
                                 response.message,
@@ -369,14 +377,6 @@
                                 }
                                 li_htm += `<li>${v}</li>`;
                             });
-
-                            return false;
-                        } else {
-                            Swal.fire(
-                                'Error',
-                                data.statusText,
-                                'error'
-                            );
                             return false;
                         }
                     }

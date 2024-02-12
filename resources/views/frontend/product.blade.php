@@ -1,6 +1,11 @@
 @extends('layouts.frontend.app')
 @push('css')
 <link rel="stylesheet" href="{{ asset('frontend/css/resources.css') }}">
+<style>
+    .product-img {position: relative; height: 380px; width: 380px; margin: 0 auto; border-bottom: 12px solid #008d21a1; border-right: 12px solid #008d21a1; border-top: 1px solid #008d21a1; border-left: 1px solid #008d21a1;}
+    .product-img img{position: absolute; bottom: 0; left: 0; right: 0; top: 0; margin: auto; max-width: 100%; max-height: 100%;}
+
+</style>
 @endpush
 @section('content')
 <section class="resources">
@@ -16,7 +21,7 @@
                 @forelse($product as $val)
                 <div class="col-md-4 mb-3 block ">
                     <div class="card float w-100">
-                        <div class="img-box">
+                        <div class="product-img">
                             <img src="{{ asset("uploads/products/".$val->image) }}" alt="image" class="img-fluid">
                         </div>
                         <h5 class="black-color mt-3 text-capitalize">{{ $val->title ?? 'NA' }}</h5>

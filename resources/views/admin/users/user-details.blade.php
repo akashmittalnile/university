@@ -356,7 +356,10 @@
             dataType: 'json',
             success: function(result) {
                 if (result.status) {
-                    window.location.reload();
+                    toastr.success("Status Changed");
+                    setInterval(function(){
+                        window.location.reload();
+                    }, 2000)
                 } else {
                     toastr.error(result.message);
                     return false;
