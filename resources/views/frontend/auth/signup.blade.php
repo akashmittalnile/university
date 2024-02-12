@@ -55,12 +55,24 @@
                                 </div>
                             </div>
 
-                            <div class="file-upload form-floating d-flex align-items-center mb-3">
+                            <!-- <div class="file-upload form-floating d-flex align-items-center mb-3">
                                 <div class="file btn black-color upload-btn">
                                     <div id="file-upload-img">
                                         Upload Photo <i class="bi bi-file-image ms-2 main-color"></i>
                                     </div>
                                     <div>
+                                        <input type="file" name="file" id="upload-img" accept="image/png, image/jpg, image/jpeg"/>
+                                        
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="">
+                                <div class="file-upload d-flex align-items-center mb-3 field">
+                                    <div class="file btn black-color upload-btn">
+                                        <div id="file-upload-img">
+                                            Upload Profile Photo
+                                        </div>
                                         <input type="file" name="file" id="upload-img" accept="image/png, image/jpg, image/jpeg"/>
                                         <img style="width: 120px !important" class="m-3 img-fluid img-thumbnail rounded d-none" src="{{asset('admin/images/profile-image.jpg')}}" id="display-img" alt="">
                                     </div>
@@ -152,7 +164,7 @@
                 errorElement: "span",
                 errorPlacement: function(error, element) {
                     // error.addClass("invalid-feedback");
-                    // element.closest(".field").append(error);
+                    element.closest(".file").addClass("border border-danger");
                     element.addClass("border border-danger")
                 },
                 highlight: function(element, errorClass, validClass) {
@@ -162,7 +174,7 @@
                 unhighlight: function(element, errorClass, validClass) {
                     // $(element).removeClass("text-danger");
                     $(element).removeClass("border border-danger");
-
+                    $(element).closest(".file").removeClass("border border-danger");
                 },
                 submitHandler: function(form, event) {
                     event.preventDefault();

@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Ebook;
+use App\Models\GalleryAttribute;
 use App\Models\Plan;
 use App\Models\Podcast;
 use App\Models\Product;
@@ -224,7 +225,8 @@ class FrontendController extends Controller
 
     public function accomplishment()
     {
-        return view("frontend.accomplishment");
+        $gallery = GalleryAttribute::orderByDesc('id')->get();
+        return view("frontend.accomplishment")->with(compact('gallery'));
     }
 
     public function markNetwork()

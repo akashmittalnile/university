@@ -98,19 +98,19 @@
                                     <img style="width: 160px; height: 160px; object-fit: cover; object-position: center; overflow: hidden; border-radius: 8px" src="" id="editImg" alt="">
                                 </div>
                                 <div class="text-center mt-3">
-                                    <span id="image_name">
-                                        Click here for change image
+                                    <span id="image_name" style="color: #000; cursor: pointer !important;">
+                                        Click here to change image
                                     </span>
                                     <input type="hidden" name="update" value="1">
                                     <input type="hidden" id="imgId" name="id" value="">
-                                    <input type="file" name="thumbnail" accept="image/png, image/jpg, image/jpeg" id="imageInput" />
+                                    <input style="cursor: pointer !important;" type="file" name="thumbnail" accept="image/png, image/jpg, image/jpeg" id="imageInput" />
                                 </div>
                                 
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center mb-3">
-                            <button type="button" id="edit-model-close-btn" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
-                            <button disabled type="submit" id="edit-model-submit-btn" class="w-50 btn common-btn">Update<i class="bi bi-floppy ms-2"></i></button>
+                            <button type="button" id="edit-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button disabled type="submit" id="edit-model-submit-btn" class="w-50 btn outline-btn">Update<i class="bi bi-floppy ms-2"></i></button>
                         </div>
                     </form>
                 </div>
@@ -144,8 +144,8 @@
                         @csrf
                         <input type="hidden" name="array_of_image" id="arrayOfImage" value="">
                         <div class="modal-footer justify-content-center mb-3">
-                            <button type="button" id="upload-model-close-btn" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
-                            <button disabled type="submit" id="upload-model-submit-btn" class="w-50 btn common-btn">Save & Create<i class="bi bi-floppy ms-2"></i></button>
+                            <button type="button" id="upload-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button disabled type="submit" id="upload-model-submit-btn" class="w-50 btn outline-btn">Create<i class="bi bi-floppy ms-2"></i></button>
                         </div>
                     </form>
                 </div>
@@ -163,12 +163,12 @@
             <div class="modal-body">
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
                 <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Image</b> ?</h6>
-                <img src="images/microphone.png" alt="image" class="img-fluid">
+                <img src="images/delete.png" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
                 @csrf
                 <div class="modal-footer justify-content-center mb-3">
-                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn common-btn">Yes, Delete</button>
                 </div>
             </form>

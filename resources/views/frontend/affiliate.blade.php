@@ -26,7 +26,7 @@
                     Medium-sized enterprises (MSMEs): Executives/Sponsors, Entrepreneurs, Consultants, Contractors,
                     Teachers, Students, Project/ Senior Managers, Project Management Offices (PMOs) among others who are
                     eager to shift and serve their industries.</p>
-                <a href="sign-up.html"><button class="btn common-btn mt-1 signup-btn">Sign up</button></a>
+                <a href="{{ route('signup') }}"><button class="btn common-btn mt-1 signup-btn">Sign up</button></a>
                 <div class="image-slider">
                     <div class="parent">
                         <div class="carousel">

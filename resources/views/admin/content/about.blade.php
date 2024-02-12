@@ -38,7 +38,7 @@
                             
                         </div>
                         <div class="about-us">
-                            <form action="{{ route('admin.about.save') }}" method="post">
+                            <form action="{{ route('admin.about.save') }}" method="post" id="about-us-form">
                                 @csrf
                                 <div class="wrapper">
                                     <div class="col-lg-12  p-0  page-main">
@@ -63,3 +63,17 @@
     <!-- End Main -->
     <!-- End Main -->
 @endsection
+
+@push('js')
+<script>
+    $("#about-us-form").submit( function(e) {
+        var messageLength = CKEDITOR.instances['editor'].getData().replace(/<[^>]*>/gi, '').length;
+        if( !messageLength ) {
+            alert( 'Please enter a message' );
+            e.preventDefault();
+            return false;
+        }
+        return false;
+    });
+</script>
+@endpush

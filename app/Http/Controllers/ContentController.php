@@ -126,7 +126,7 @@ class ContentController extends Controller
             }
             $file->move("uploads/gallery", $name);
             GalleryAttribute::where('id', $id)->update(['path'=> $name]);
-            return redirect()->back()->with('success', 'Image Updated Successfully');
+            return redirect()->route('admin.image')->with('success', 'Image Updated Successfully');
         } else {
             $array_of_image = json_decode($request->array_of_image);
             if (is_array($array_of_image) && count($array_of_image) > 0) {

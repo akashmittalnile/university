@@ -59,7 +59,7 @@
                 <div class="col-md-4 py-4">
                     <div class="common-card float" style="min-width: 380px">
                         <div class="monthly ms-auto">
-                            <p class="text-center"> {{ $item->type . 'ly' }}</p>
+                            <p class="text-center"> {{ $item->type }}</p>
                         </div>
                         <h4 class="black-color text-center f-600 letter-space">
                             {{ $item->name }}

@@ -77,7 +77,7 @@ class EbookController extends Controller
             $ebook->save();
 
             return response()->json([
-                'message' => 'Ebook Created Successfully.',
+                'message' => 'E-Book Created Successfully.',
                 'status' => 200
             ]);
         } catch (\Throwable $th) {
@@ -160,7 +160,7 @@ class EbookController extends Controller
             $ebook->save();
 
             return response()->json([
-                'message' => 'Ebook Updated Successfully.',
+                'message' => 'E-Book Updated Successfully.',
                 'status' => 200
             ]);
         } catch (\Throwable $th) {
@@ -189,6 +189,6 @@ class EbookController extends Controller
         }
 
         Ebook::where('id', $id)->delete();
-        return redirect()->back()->with('success', 'Ebook Deleted Successfully.');
+        return redirect()->back()->with('success', 'E-Book Deleted Successfully.');
     }
 }
