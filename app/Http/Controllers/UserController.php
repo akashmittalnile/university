@@ -116,10 +116,18 @@ class UserController extends Controller
         try {
             $id = encrypt_decrypt('decrypt', $id);
             $status = encrypt_decrypt('decrypt', $status);
-            $user = User::where('id', $id)->update([
+            User::where('id', $id)->update([
                 'status'=> $status
             ]);
+            $user = User::where('id', $id)->first();
             $msg = ($status == 1) ? 'approved' : 'rejected';
+            $mailMsg = ($status == 1) ? "Congratulations, $user->name. Your account was approved by administrator" : "Your account is rejected. Maybe some information is incomplete or the Administrator wants you to improve.";
+            $mailSubject = ($status == 1) ? "University PMO Account Approved" : "University PMO Account Rejected";
+            $data['name'] = $user->name;
+            $data['to_mail'] = $user->email;
+            $data['subject'] = $mailSubject;
+            $data['body'] = $mailMsg;
+            sendMail($data);
             return redirect()->back()->with('success', 'User ' .$msg. ' successfully');
         } catch (\Exception $e) {
             return errorMsg($e->getMessage());
@@ -155,6 +163,13 @@ class UserController extends Controller
             $user->status = 0;
             $user->password = Hash::make($request->password);
             $user->save();
+
+            $data['name'] = $user->name;
+            $data['to_mail'] = $user->email;
+            $data['subject'] = 'Welcome to University PMO Family';
+            $data['body'] = "Congratulations, $user->name! We are so glad you joined. Please wait until your account was approved by administrator.";
+            sendMail($data);
+
             return response()->json(['status' => 200, 'message' => 'User registered successfully']);
         } catch (\Throwable $th) {
             //throw $th;
