@@ -70,7 +70,7 @@ class PlanController extends Controller
 
         $description = [];
         $description[] = $request->podcasts ? "Access $request->podcasts podcasts" : 'All podcasts unlimited access.';
-        $description[] = $request->gallery ? "Access $request->gallery ccomplishment Gallery" : 'All ccomplishment Gallery unlimited access.';
+        $description[] = $request->gallery ? "Access $request->gallery Accomplishment Gallery" : 'All Accomplishment Gallery unlimited access.';
         $description[] = $request->ebooks ? "Access $request->ebooks ebooks" : 'All ebooks unlimited access.';
         // $description[] = $request->details;
         $plan->description = implode(",", $description);

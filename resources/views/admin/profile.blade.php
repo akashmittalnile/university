@@ -37,11 +37,9 @@
                                         <div class="text-center mt-4">
                                             <a href="javascript:void(0)">
                                                 <button class="common-btn" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">Edit Details</button>
-                                                <span class="hover-text black-color">Last updated on {{ date('d M Y h:iA', strtotime(auth()->user()->updated_at)) }}</span>
                                             </a>
                                             <a href="javascript:void(0)">
                                                 <button class="outline-btn mt-2" data-bs-toggle="modal" data-bs-target="#change-password-modal">Change Password</button>
-                                                <span class="hover-text2 black-color">Last updated on {{ date('d M Y h:iA', strtotime(auth()->user()->updated_at)) }}</span>
                                             </a>
                                         </div>
                                     </div>

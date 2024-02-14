@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-    <div class="news-letter">
+    <!-- <div class="news-letter">
         <div class="container">
             <div class="news-letter-box">
                 <div class="row align-items-center">
@@ -103,6 +103,29 @@
                                 <a href="javascript:void(0)"><button type="button" class="btn common-btn">Submit<i class="bi bi-arrow-right ms-3"></i></button></a>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="speaking">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="left-section">
+                        <h1 class="black-color f-600">Speaking</h1>
+                        <p class="text-color mt-3 text-justify">Most importantly, ECONO-ProjectEX is committed to
+                            collaborate with the international project management community, and offer tremendous
+                            advantages to Micro, Small and Medium-sized enterprises (MSMEs): Executives/ Sponsors,
+                            Entrepreneurs, Consultants, Contractors, Teachers, Students, Project/ Senior Managers,
+                            Project Management Offices (PMOs) among others who are eager to shift and serve their
+                            industries.</p>
+                        <!-- <a href="#"><button class="btn mt-md-3 common-btn">Load More<i class="bi bi-arrow-right ms-3"></i></button></a> -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="right-section">
+                        <img src="{{ asset('frontend/images/event.jpg') }}" alt="image" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -165,7 +188,7 @@
                             Entrepreneurs, Consultants, Contractors, Teachers, Students, Project/ Senior Managers,
                             Project Management Offices (PMOs) among others who are eager to shift and serve their
                             industries.</p>
-                        <a href="#"><button class="btn mt-3 common-btn">Load More<i class="bi bi-arrow-right ms-3"></i></button></a>
+                        <!-- <a href="#"><button class="btn mt-3 common-btn">Load More<i class="bi bi-arrow-right ms-3"></i></button></a> -->
                     </div>
                 </div>
             </div>
@@ -179,32 +202,10 @@
                 Medium-sized enterprises (MSMEs): Executives/ Sponsors, Entrepreneurs, Consultants, Contractors,
                 Teachers, Students, Project/ Senior Managers, Project Management Offices (PMOs) among others who are
                 eager to shift and serve their industries.</p>
-            <a href="#"><button class="btn mt-3">Load More<i class="bi bi-arrow-right ms-3"></i></button></a>
+            <!-- <a href="#"><button class="btn mt-3">Load More<i class="bi bi-arrow-right ms-3"></i></button></a> -->
         </div>
     </div>
-    <div class="speaking">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="left-section">
-                        <h1 class="black-color f-600">Speaking</h1>
-                        <p class="text-color mt-3 text-justify">Most importantly, ECONO-ProjectEX is committed to
-                            collaborate with the international project management community, and offer tremendous
-                            advantages to Micro, Small and Medium-sized enterprises (MSMEs): Executives/ Sponsors,
-                            Entrepreneurs, Consultants, Contractors, Teachers, Students, Project/ Senior Managers,
-                            Project Management Offices (PMOs) among others who are eager to shift and serve their
-                            industries.</p>
-                        <a href="#"><button class="btn mt-md-3 common-btn">Load More<i class="bi bi-arrow-right ms-3"></i></button></a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="right-section">
-                        <img src="{{ asset('frontend/images/event.jpg') }}" alt="image" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div class="webinar">
         <div class="container">
             <div class="row align-items-center">
@@ -241,7 +242,7 @@
                 eager to shift and serve their industries.</p>
         </div>
     </div>
-    <div class="business-links">
+    <!-- <div class="business-links">
         <div class="container">
             <h1 class="black-color text-center text-capitalize">News <b class="main-color">&</b> Updates</h1>
             <div class="business-link-contents">
@@ -334,6 +335,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
 @endsection

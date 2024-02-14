@@ -27,7 +27,7 @@
                 Manage Membership Plans
             </h3>
             <div class="count-bg ms-2">
-                <p class="white-color">03</p>
+                <p class="white-color">{{ sprintf('%02d', count($plans))}}</p>
             </div>
         </div>
         <div class="profile-link">
@@ -61,7 +61,7 @@
                         <div class="monthly ms-auto">
                             <p class="text-center"> {{ $item->type }}</p>
                         </div>
-                        <h4 class="black-color text-center f-600 letter-space">
+                        <h4 class="black-color text-center f-600 letter-space text-capitalize">
                             {{ $item->name }}
                         </h4>
                         <div class="p-bg mt-3">
@@ -79,7 +79,7 @@
 
                         </ul>
                         <div class="text-center">
-                            <a href="javascript:void(0)"><button class="manage-plan common-btn" data-url="{{ route('admin.plan.update', $item->id) }}" data-podcasts='{{ $item->podcasts }}' data-ebooks='{{ $item->ebooks }}' data-gallery='{{ $item->gallary }}' data-name='{{ $item->name }}' onclick="updatePlan(this)">
+                            <a href="javascript:void(0)"><button class="manage-plan common-btn" data-url="{{ route('admin.plan.update', $item->id) }}" data-podcasts='{{ $item->podcasts }}' data-ebooks='{{ $item->ebooks }}' data-gallery='{{ $item->gallary }}' data-name='{{ ucwords($item->name) }}' onclick="updatePlan(this)">
                                     Manage Plan
                                 </button></a>
                         </div>
@@ -97,26 +97,26 @@
 <div class="modal fade" id="updatePlan" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="border-bottom: none !important;">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color">Update<span id="name"></span> </h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Update <span id="name"></span> </h4>
                 <form action="" id="update_form" method="post">
                     @csrf
                     <div class="form-group py-2">
                         <label for="Podcasts">Total Podcasts</label>
-                        <input type="text" class="form-control" name="podcasts" value="0">
+                        <input type="text" class="form-control" name="podcasts" value="0" required>
                     </div>
                     <div class="form-group py-2">
                         <label for="Podcasts">Total ebooks</label>
-                        <input type="text" class="form-control" name="ebooks" value="0">
+                        <input type="text" class="form-control" name="ebooks" value="0" required>
                     </div>
                     <div class="form-group py-2">
                         <label for="Podcasts">Accomplishment Gallery</label>
-                        <input type="text" class="form-control" name="gallery" value="0">
+                        <input type="text" class="form-control" name="gallery" value="0" required>
                     </div>
-                    <div class="modal-footer justify-content-center mb-3">
+                    <div class="modal-footer justify-content-center mb-3" style="border-top: none !important;">
                         <button type="submit" class="btn common-btn">Update</button>
                         <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
                     </div>

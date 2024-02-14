@@ -49,6 +49,7 @@
                                             data-currency="{{ $item->currency }}"
                                             data-plan_id="{{ $item->id }}"
                                             data-email="{{ auth()->user()->email }}"
+                                            data-description="{{ auth()->user()->name }}"
                                             data-image="{{ asset('frontend/images/logo.png') }}" @endif
                                             class="btn learn-more-btn">Buy Now</button>
                                         </a>
