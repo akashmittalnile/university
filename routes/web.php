@@ -81,10 +81,13 @@ Route::post('/update-password', [FrontendController::class, 'updatePassword'])->
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::post('register', [UserController::class, 'register'])->name('register');
-    Route::middleware(["auth"])->group(function () {
+    Route::middleware(["user"])->group(function () {
+        Route::get('check-password', [FrontendController::class, 'checkPassword'])->name('check.password');
         Route::get('profile', [FrontendController::class, 'profile'])->name('profile');
+        Route::post("profile", [FrontendController::class, 'profile_update'])->name('profile.post');
         Route::get('subscription', [FrontendController::class, 'subscription'])->name('subscription');
         Route::post('purchase', [PlanController::class, 'purchase'])->name('purchase');
+        Route::post('review', [PlanController::class, 'review'])->name('review');
         Route::get("logout", [UserController::class, 'logout'])->name('logout');
     });
 });
@@ -94,7 +97,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/signin', [AdminController::class, 'signin'])->name('signin');
     Route::post('signin', [AdminController::class, 'signin_post'])->name('signin.post');
     
-    Route::middleware(["auth", "admin"])->group(function () {
+    Route::middleware(["admin"])->group(function () {
         Route::get('check-password', [AdminController::class, 'checkPassword'])->name('check.password');
 
         // dashboard

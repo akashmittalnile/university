@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class AdminMiddleware
 
         if(Auth::check())
         {
-            if(Auth::user()->admin == 1){
+            if(Auth::user()->admin == 0){
                 return $next($request);
             }else{
                 Auth::logout();

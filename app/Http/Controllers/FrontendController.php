@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\UserPlanDetail;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,6 +36,56 @@ class FrontendController extends Controller
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
+    }
+
+    public function checkPassword(Request $request)
+    {
+        try{
+            $user = User::where('id', auth()->user()->id)->first();
+            if(!(Hash::check($request->current_password, $user->password))){
+                echo json_encode("Old Password doesn't match with Current Password.");
+            } else echo json_encode(true);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function profile_update(Request $request)
+    {
+        if ($request->has('current_password')) {
+            request()->validate([
+                'password' => 'required',
+            ]);
+            if (Auth::attempt(['email' => auth()->user()->email, 'password' => $request->current_password])) {
+                $user = User::where('id', auth()->user()->id)->first();
+                $user->password = Hash::make($request->password);
+                $user->save();
+                return successMsg("Password changed Successfully.");
+            } else {
+                return errorMsg('Please enter correct current password.');
+            }
+        }
+        $user = User::where('id', auth()->user()->id)->first();
+        $uid = uniqid();
+        if ($request->hasFile("file")) {
+            $file = $request->file('file');
+            $name = "profile_" .  $uid . "." . $file->getClientOriginalExtension();
+            if(isset($user->profile)){
+                $link = public_path() . "/uploads/profile/" . $user->profile;
+                if (file_exists($link)) {
+                    unlink($link);
+                }
+            }
+            $user->profile = $name;
+            $file->move("uploads/profile", $name);
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->updated_at = date('Y-m-d H:i:s');
+        $user->save();
+        return successMsg('Profile updated Successfully.');
     }
 
     public function forgotPassword()

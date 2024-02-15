@@ -138,10 +138,12 @@
                     </div>
                 </div>
             </div>
+            @if(isset(auth()->user()->id))
             <p class="text-center mt-3">Share Your Thoughts!</p>
             <div class="text-center">
-                <a href="#"><button class="common-btn">Write a Review</button></a>
+                <a href="javascript:void(0)"><button data-bs-toggle="modal" data-bs-target="#review-modal" class="common-btn">Write a Review</button></a>
             </div>
+            @endif
         </div>
     </section>
 
@@ -158,4 +160,31 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="review-modalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('user.review') }}" method="post" id="profile_form" enctype="multipart/form-data"> @csrf
+                <div class="modal-body">
+                    <h5 class="black-color text-center mb-3 f-600 letter-space"><b class="main-color">R</b>eview</h5>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput1" placeholder="Name" value="{{ auth()->user()->name ?? '' }}" name="name">
+                        <label for="floatingInput1">Full Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput2" placeholder="Email" value="{{ auth()->user()->email ?? '' }}" name="email">
+                        <label for="floatingInput2">Email address</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="edit-profile-cancel-btn" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn common-btn">Update Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
