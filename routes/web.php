@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AffliateBadgesController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\EbookController;
@@ -154,19 +155,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('blog-image-delete', [BlogController::class, "imageDelete"])->name('blog.image.delete');
         Route::get('blog-uploaded-image-delete/{id}', [BlogController::class, "uploadedImageDelete"])->name('blog.uploaded.image.delete');
 
-        // Content Management
+        // about us
         Route::get("about", [ContentController::class, 'about'])->name('about');
         Route::post("about", [ContentController::class, 'aboutSave'])->name('about.save');
 
+        // mark network
         Route::get("mark-network", [ContentController::class, 'markNetwork'])->name('markNetwork');
         Route::post("mark-network", [ContentController::class, 'markNetworkSave'])->name('markNetwork.save');
 
+        // affiliate
         Route::get("affiliate", [ContentController::class, 'affiliate'])->name('affiliate');
         Route::post("affiliate", [ContentController::class, 'affiliateSave'])->name('affiliate.save');
 
+        // resources
         Route::get("resources", [ContentController::class, 'resources'])->name('resources');
         Route::post("resources", [ContentController::class, 'resourcesSave'])->name('resources.save');
 
+        // gallery
         Route::get("gallery", [ContentController::class, 'gallery'])->name('gallery');
         Route::post('gallery-image-upload', [ContentController::class, "imageUpload"])->name('gallery.image.upload');
         Route::post('gallery-image-delete', [ContentController::class, "imageDelete"])->name('gallery.image.delete');
@@ -180,12 +185,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('uploaded-image-delete/{id}', [ImageController::class, "uploadedImageDelete"])->name('uploaded.image.delete');
         Route::post("image", [ImageController::class, 'imageSave'])->name('image.save');
 
+        // affiliate badges
+        Route::get("affiliate-badges", [AffliateBadgesController::class, 'affiliateBadges'])->name('affiliate.badges');
+        Route::post('affiliate-image-upload', [AffliateBadgesController::class, "imageUpload"])->name('affiliate.image.upload');
+        Route::post('affiliate-image-delete', [AffliateBadgesController::class, "imageDelete"])->name('affiliate.image.delete');
+        Route::get('affiliate-uploaded-image-delete/{id}', [AffliateBadgesController::class, "uploadedImageDelete"])->name('affiliate.uploaded.image.delete');
+        Route::post("affiliate-image", [AffliateBadgesController::class, 'imageSave'])->name('affiliate.image.save');
+
+        // mark burnet
         Route::get("markBurnet", [ContentController::class, 'markBurnet'])->name('markBurnet');
         Route::post("markBurnet", [ContentController::class, 'markBurnetSave'])->name('markBurnet.save');
 
         // contacts
         Route::get("contacts", [ContentController::class, 'contacts'])->name('contacts');
         Route::get("contact-download-report", [ContentController::class, 'contactDownloadReport'])->name('contact.download.report');
+
+        // business hours
+        Route::get("business-hours", [ContentController::class, 'businessHours'])->name('business.hours');
+        Route::post("business-hours-save", [ContentController::class, 'businessHourSave'])->name('business.hour.save');
+
+        // home
+        Route::get("manage-home", [ContentController::class, 'home'])->name('manage.home');
+        Route::post("manage-home-save", [ContentController::class, 'homeSave'])->name('manage.home.save');
 
         // Admin Profile
         Route::get("profile", [AdminController::class, 'profile'])->name('profile');

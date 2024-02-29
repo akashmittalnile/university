@@ -40,7 +40,7 @@
                         class="img-fluid me-2 business-hour">
                     <h2 class="main-color f-600 mt-0 mb-0">Business Hours</h2>
                 </div>
-                <div class="weeks">
+                <!-- <div class="weeks">
                     <div class="d-flex mb-2">
                         <div class="week-bg">
                             <h6 class="main-color">Mon</h6>
@@ -107,7 +107,9 @@
                     </div>
                     <a href="tel:(876)285-2626"><button class="btn common-btn"><i
                                 class="bi bi-telephone-outbound me-2"></i>Call Now - (876) 285-2626</button></a>
-                </div>
+                </div> -->
+
+                {!! businessHour() !!}
 
             </div>
         </div>

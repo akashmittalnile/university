@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Badge;
 use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Content;
@@ -229,7 +230,10 @@ class FrontendController extends Controller
 
     public function index()
     {
-        return view("index");
+        $home = Content::where('name', 'home')->first();
+        $data = unserialize($home->value);
+        $badges = Badge::where('status', 1)->get();
+        return view("index")->with(compact('home', 'badges', 'data'));
     }
 
     public function about()

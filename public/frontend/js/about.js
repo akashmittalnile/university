@@ -2,7 +2,7 @@
 
 jQuery(document).ready(function($) {
     "use strict";
-    $('#customers-testimonials').owlCarousel({
+    $("#customers-testimonials, #customers-testimonials1").owlCarousel({
         loop: true,
         center: true,
         items: 3,

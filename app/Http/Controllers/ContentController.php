@@ -220,6 +220,98 @@ class ContentController extends Controller
         return $this->downloadDownloadContactReportFile($contact);
     }
 
+    public function businessHours(Request $request)
+    {
+        try{
+            $content = Content::where("name", "business-hour")->first();
+            if (!$content) {
+                $content = new Content();
+                $content->name = 'business-hour';
+                $content->save();
+            }
+            return view("admin.content.business-hour")->with(compact('content'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function businessHourSave(Request $request)
+    {
+        try{
+            $content = Content::where("name", "business-hour")->first();
+            if ($content) {
+                $content->value = $request->data;
+                $content->updated_at = date('Y-m-d H:i:s');
+                $content->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function home(Request $request)
+    {
+        try{
+            $content = Content::where("name", "home")->first();
+            if (!$content) {
+                $content = new Content();
+                $content->name = 'home';
+                $content->save();
+            }
+            $data = unserialize($content->value);
+            return view("admin.content.home")->with(compact('content', 'data'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function homeSave(Request $request)
+    {
+        try{
+            $request->validate(
+                [
+                    'banner_title' => 'required',
+                    "banner_sub_title" => 'required',
+                    "you_title" => 'required',
+                    "you_link" => 'required',
+                    "banner_image" => 'file|max:10240',
+                ]
+            );
+            $content = Content::where("name", "home")->first();
+            if ($content) {
+                $unser = unserialize($content->value);
+                $name = $unser['banner_image'] ?? null;
+                if ($request->hasFile("banner_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('banner_image');
+                    $name = "home_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['banner_image'])){
+                       $link = public_path() . "/uploads/ebooks/" . $unser['banner_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name);
+                }
+                $val = array(
+                    'banner_title' => $request->banner_title,
+                    'banner_sub_title' => $request->banner_sub_title,
+                    'banner_image' => $name,
+                    'you_title' => $request->you_title,
+                    'you_link' => $request->you_link,
+                );
+                $content->value = serialize($val);
+                $content->updated_at = date('Y-m-d H:i:s');
+                $content->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
     public function downloadDownloadContactReportFile($data)
     {
         header('Content-Type: text/csv; charset=utf-8');

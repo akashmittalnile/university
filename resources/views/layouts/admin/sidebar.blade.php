@@ -49,14 +49,24 @@
         <div class="side-head mt-3">
             <p class="white-color m-0 p-0">Manage Page Content</p>
         </div>
-        <a href="{{ route('admin.about') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.about') ? 'active' : '' }}">
-                <i class="bi bi-list-ul me-2"></i>About Us
+        <a href="{{ route('admin.affiliate.badges') }}">
+            <li class="sidebar-list-item {{ Route::is('admin.affiliate.badges') ? 'active' : '' }}">
+                <i class="bi bi-card-image me-2"></i>Affiliate Badges
             </li>
         </a>
         <a href="{{ route('admin.image') }}">
             <li class="sidebar-list-item {{ Route::is('admin.image') ? 'active' : '' }}">
                 <i class="bi bi-card-image me-2"></i>Manage Image
+            </li>
+        </a>
+        <a href="{{ route('admin.manage.home') }}">
+            <li class="sidebar-list-item {{ Route::is('admin.manage.home') ? 'active' : '' }}">
+                <i class="bi bi-list-ul me-2"></i>Manage Home
+            </li>
+        </a>
+        <a href="{{ route('admin.about') }}">
+            <li class="sidebar-list-item {{ Route::is('admin.about') ? 'active' : '' }}">
+                <i class="bi bi-list-ul me-2"></i>About Us
             </li>
         </a>
         <a href="{{ route('admin.gallery') }}">
@@ -87,7 +97,7 @@
             </li>
         </a>
         <a href="{{ route('admin.contacts') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.contacts') ? 'active' : '' }}">
+            <li class="sidebar-list-item {{ (Route::is('admin.contacts') || Route::is('admin.business.hours')) ? 'active' : '' }}">
                 <i class="bi bi-person-rolodex me-2"></i>Contact
                     Us
             </li>

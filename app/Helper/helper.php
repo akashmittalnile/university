@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DefaultMail;
+use App\Models\Content;
 
 if (!function_exists('encrypt_decrypt')) {
     function encrypt_decrypt($action, $string)
@@ -42,6 +43,14 @@ if (!function_exists('sendEmail')) {
     {
         $data['from_email'] = env('MAIL_FROM_ADDRESS');
         Mail::to($data['to_email'])->send(new DefaultMail($data));
+    }
+}
+
+if (!function_exists('businessHour')) {
+    function businessHour()
+    {
+        $hour = Content::where("name", "business-hour")->first();
+        return $hour->value;
     }
 }
 
