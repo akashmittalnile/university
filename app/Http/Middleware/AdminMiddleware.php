@@ -16,17 +16,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        if(Auth::check())
-        {
-            if(Auth::user()->admin == 1){
-                return $next($request);
-            }else{
-                Auth::logout();
-                return redirect('/sign-in')->with('error', 'Unauthorized access');
-            }
-        }else{
-            return redirect('/sign-in')->with('error', 'Unauthorized access');
+        if (Auth::check() && Auth::user()->admin == 1) {
+            return $next($request);
         }
+
+        // If not, redirect or handle the unauthorized request as needed
+        return redirect(route("home"))->with('error', 'Unauthorized access');
     }
 }
