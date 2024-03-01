@@ -45,7 +45,8 @@
             <div class="main-cards">
                 <div class="e-book-details">
                     <div class="d-flex align-items-center justify-content-end mb-3">
-                        <a href="{{ route('admin.business.hours') }}"><button class="btn common-btn top-btn me-4">Manage Testimonials</button></a>
+                        <a href="{{ route('admin.manage.testimonial') }}"><button class="btn common-btn top-btn me-4">Manage Testimonials</button></a>
+                        <a href="{{ route('admin.affiliate.badges') }}"><button class="btn common-btn top-btn me-4">Manage Affiliate Badges</button></a>
                     </div>
                     <div class="about-us">
                         <form action="{{ route('admin.manage.home.save') }}" method="post" enctype="multipart/form-data" id="create_form">

@@ -11,6 +11,7 @@ use App\Models\GalleryAttribute;
 use App\Models\Plan;
 use App\Models\Podcast;
 use App\Models\Product;
+use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\UserPlanDetail;
 use Illuminate\Http\Request;
@@ -233,7 +234,8 @@ class FrontendController extends Controller
         $home = Content::where('name', 'home')->first();
         $data = unserialize($home->value);
         $badges = Badge::where('status', 1)->get();
-        return view("index")->with(compact('home', 'badges', 'data'));
+        $test = Testimonial::where('status', 1)->orderByDesc('id')->get();
+        return view("index")->with(compact('home', 'badges', 'data', 'test'));
     }
 
     public function about()

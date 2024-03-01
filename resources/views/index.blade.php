@@ -25,115 +25,26 @@
     </section>
 
     <section class="testimonials">
+    <h1 class="mt-4 text-center f-600">Testimonials<b class="main-color"></b></h1>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="customers-testimonials" class="owl-carousel">
+
+                        @forelse($test as $key => $val)
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle"
-                                    src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg"
+                                <img style="margin: 0; max-width: 350px" class="img-circle img-fluid rounded"
+                                    src="{{ asset('uploads/testimonial/'.$val->image) }}"
                                     alt="">
-                                <h6 class="main-color mb-0 text-left">4.5</h6>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill half-star"></i>
-                                </div>
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                    Completely synergize resource taxing relationships via premier niche markets.
-                                    Professionally cultivate.</p>
+                                <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
+                                <p>{{ $val->description ?? 'NA' }}</p>
                                 <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>Liya
-                                    Patrik</h4>
+                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle"
-                                    src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg"
-                                    alt="">
-                                <h6 class="main-color mb-0 text-left">4.5</h6>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill half-star"></i>
-                                </div>
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                    Completely synergize resource taxing relationships via premier niche markets.
-                                    Professionally cultivate.</p>
-                                <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>Liya
-                                    Patrik</h4>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle"
-                                    src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg"
-                                    alt="">
-                                <h6 class="main-color mb-0 text-left">4.5</h6>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill half-star"></i>
-                                </div>
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                    Completely synergize resource taxing relationships via premier niche markets.
-                                    Professionally cultivate.</p>
-                                <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>Liya
-                                    Patrik</h4>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle"
-                                    src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg"
-                                    alt="">
-                                <h6 class="main-color mb-0 text-left">4.5</h6>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill half-star"></i>
-                                </div>
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                    Completely synergize resource taxing relationships via premier niche markets.
-                                    Professionally cultivate.</p>
-                                <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>Liya
-                                    Patrik</h4>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle"
-                                    src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg"
-                                    alt="">
-                                <h6 class="main-color mb-0 text-left">4.5</h6>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill full-star"></i>
-                                    <i class="bi bi-star-fill half-star"></i>
-                                </div>
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                    Completely synergize resource taxing relationships via premier niche markets.
-                                    Professionally cultivate.</p>
-                                <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>Liya
-                                    Patrik</h4>
-                            </div>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -159,6 +70,7 @@
     </section>
 
     <section class="testimonial">
+        <h1 class="mt-4 text-center f-600">Affiliate <b class="main-color"> Badges</b></h1>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

@@ -13,7 +13,7 @@
 <main class="main-container dashboard">
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
-            
+            <a href="{{ route('admin.manage.home') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
             <h3 class="font-weight-bold black-color">Affiliate Badges</h3>
         </div>
         <div class="profile-link">
@@ -61,10 +61,7 @@
                                     <div class="d-flex mt-4">
                                         <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.affiliate.uploaded.image.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
                                         <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-img="{{ asset("uploads/badges/$item->path") }}">Edit Image</button></a>
-                                        <!-- <a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy Image URL" style="background: #eee; padding: 10px 15px; border-radius: 50%; color: black; margin-left: 15px" href="javascript:void(0)" onclick="copyToClipboard('copy_{{ $item->id }}')"><i class="bi bi-copy"></i></a> -->
-                                        
                                     </div>
-                                    <input style="opacity: 0; position: absolute;" type="text" id="copy_{{ $item->id }}" value="{{ asset("uploads/images/$item->path") }}">
                                 </div>
                             </div>
                             @empty
