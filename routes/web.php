@@ -60,7 +60,7 @@ Route::get('/blogs', [FrontendController::class, 'blog'])->name('blogs');
 Route::get('/blog/{id}', [FrontendController::class, 'blogDetails'])->name('blog.details');
 Route::get('/e-book', [FrontendController::class, 'e_book'])->name('e_book');
 Route::post('/contactSave', [FrontendController::class, 'contactSave'])->name('contactSave');
-Route::get('/affiliate', [FrontendController::class, 'affiliate'])->name('affiliate');
+Route::get('/business-services', [FrontendController::class, 'affiliate'])->name('affiliate');
 Route::get('/products', [FrontendController::class, 'products'])->name('products');
 
 
@@ -165,8 +165,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("mark-network", [ContentController::class, 'markNetworkSave'])->name('markNetwork.save');
 
         // affiliate
-        Route::get("affiliate", [ContentController::class, 'affiliate'])->name('affiliate');
-        Route::post("affiliate", [ContentController::class, 'affiliateSave'])->name('affiliate.save');
+        Route::get("business-service", [ContentController::class, 'affiliate'])->name('affiliate');
+        Route::post("business-service-store", [ContentController::class, 'affiliateSave'])->name('affiliate.save');
 
         // resources
         Route::get("resources", [ContentController::class, 'resources'])->name('resources');

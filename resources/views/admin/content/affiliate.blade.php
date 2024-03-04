@@ -27,7 +27,7 @@
         <div class="main-title d-flex align-items-center">
             <div class="page-title d-flex align-items-center">
                 
-                <h3 class="font-weight-bold black-color">Affiliate Links</h3>
+                <h3 class="font-weight-bold black-color">Business Services</h3>
             </div>
             <div class="profile-link">
                 <a href="#">

@@ -32,7 +32,7 @@
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('affiliate') }}">Affiliate Links</a>
+                        <a class="nav-link" href="{{ route('affiliate') }}">Business Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('markBurnet') }}">Mark Burnet Foundation</a>

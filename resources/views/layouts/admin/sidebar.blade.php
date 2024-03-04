@@ -77,7 +77,7 @@
         </a>
         <a href="{{ route('admin.affiliate') }}">
             <li class="sidebar-list-item {{ Route::is('admin.affiliate') ? 'active' : '' }}">
-                <i class="bi bi-box-arrow-up-right me-2"></i>Affiliate Links
+                <i class="bi bi-box-arrow-up-right me-2"></i>Business Services
             </li>
         </a>
         <a href="{{ route('admin.markBurnet') }}">

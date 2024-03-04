@@ -136,7 +136,7 @@
                             <div class="dz-default dz-message">
                                 <span>Click once inside the box to upload an image
                                     <br>
-                                    <small class="text-danger">Make sure the image size is less than 1 MB</small>
+                                    <small class="text-danger">Make sure the image size is less than 5 MB</small>
                                 </span>
                             </div>
                         </div>
@@ -231,7 +231,7 @@
     });
 
     Dropzone.options.multipleImage = {
-        maxFilesize: 1,
+        maxFilesize: 5,
         renameFile: function(file) {
             var dt = new Date();
             var time = dt.getTime();

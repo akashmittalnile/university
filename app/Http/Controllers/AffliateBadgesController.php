@@ -12,7 +12,7 @@ class AffliateBadgesController extends Controller
     {
         try{
             $gallery = Badge::orderByDesc('id')->paginate(config("app.ebook_per_page"));
-            return view("admin.content.affiliate-link", compact("gallery"));
+            return view("admin.content.affiliate-badges", compact("gallery"));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
