@@ -24,8 +24,9 @@
         </div>
     </section>
 
+    @if(count($test) > 0)
     <section class="testimonials">
-    <h1 class="mt-4 text-center f-600">Testimonials<b class="main-color"></b></h1>
+        <h1 class="mt-4 text-center f-600">Testimonials<b class="main-color"></b></h1>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -56,6 +57,7 @@
             @endif
         </div>
     </section>
+    @endif
 
     <section class="youtube">
         <div class="container">
@@ -69,6 +71,7 @@
         </div>
     </section>
 
+    @if(count($badges) > 0)
     <section class="testimonial">
         <h1 class="mt-4 text-center f-600">Affiliate <b class="main-color"> Badges</b></h1>
         <div class="container">
@@ -92,6 +95,7 @@
             </div>
         </div>
     </section>
+    @endif
 
     <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="review-modalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-lg">

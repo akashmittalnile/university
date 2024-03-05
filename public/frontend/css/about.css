@@ -1,5 +1,5 @@
 .about-us{padding-top: 10%;}
-.vision-purpose .left-section h1{line-height: 90px;font-size: 65px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.vision-purpose .left-section h1{line-height: 90px;font-size: 65px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600; text-align: end;}
 .vision-purpose .left-section p{font-size: 25px;}
 .vision-purpose .right-section{background-color: #3fab40;padding: 0px 0px 35px 35px;}
 .vision-purpose .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}

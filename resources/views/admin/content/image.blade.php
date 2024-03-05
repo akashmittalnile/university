@@ -238,7 +238,7 @@
             return time + file.name;
         },
         acceptedFiles: ".jpeg,.jpg,.png",
-        timeout: 5000,
+        timeout: 50000,
         addRemoveLinks: true,
         headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
