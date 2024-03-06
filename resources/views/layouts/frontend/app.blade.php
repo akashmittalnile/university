@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- -------testimonial-------- -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/common.css') }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/css/header-footer.css') }}">
@@ -49,7 +49,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
+    <script src="{{ asset('plugins/OwlCarousel/owl.carousel.min.js') }}" type="text/javascript"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script src="{{ asset('/frontend/js/script.js') }}"></script>
 

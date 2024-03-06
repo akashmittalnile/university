@@ -174,7 +174,7 @@
                                                         <th scope="row">{{ $i + 1 }}</th>
                                                         <td class="text-capitalize">{{ $item->user->name }}</td>
                                                         <td>{{ $item->plan->name }}</td>
-                                                        <td>{{ $item->plan->currency = 'inr' ? '₹' : '$' }}{{ number_format(intval($item->plan->price), 2, '.', ',') }}
+                                                        <td>${{ number_format((float)($item->plan->price), 2, '.', ',') }}
                                                         </td>
                                                         <td>{{ ucfirst($item->plan->type) }}</td>
                                                         <td>

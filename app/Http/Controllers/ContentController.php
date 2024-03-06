@@ -48,18 +48,90 @@ class ContentController extends Controller
             $content->name = 'mark-network';
             $content->save();
         }
-        return view("admin.content.mark-network", compact("content"));
+        $data = unserialize($content->value);
+        return view("admin.content.mark-network", compact("content", "data"));
     }
 
     public function markNetworkSave(Request $request)
     {
-        $content = Content::where("name", "mark-network")->first();
-        if ($content) {
-            $content->value = $request->data;
-            $content->updated_at = date('Y-m-d H:i:s');
-            $content->save();
+        try{
+            $request->validate(
+                [
+                    'sec1_title' => 'required',
+                    "sec1_sub_title" => 'required',
+                    "sec1_image" => 'file|max:10240',
+                    'sec2_title' => 'required',
+                    "sec2_sub_title" => 'required',
+                    "sec2_image" => 'file|max:10240',
+                    'sec3_title' => 'required',
+                    "sec3_sub_title" => 'required',
+                    "sec3_image" => 'file|max:10240',
+                ]
+            );
+            $content = Content::where("name", "mark-network")->first();
+            if ($content) {
+                $unser = unserialize($content->value);
+                $name1 = $unser['sec1_image'] ?? null;
+                $name2 = $unser['sec2_image'] ?? null;
+                $name3 = $unser['sec3_image'] ?? null;
+                if ($request->hasFile("sec1_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec1_image');
+                    $name1 = "network_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec1_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec1_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name1);
+                }
+                if ($request->hasFile("sec2_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec2_image');
+                    $name2 = "network_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec2_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec2_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name2);
+                }
+                if ($request->hasFile("sec3_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec3_image');
+                    $name3 = "network_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec3_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec3_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name3);
+                }
+                $val = array(
+                    'sec1_title' => $request->sec1_title,
+                    'sec1_sub_title' => $request->sec1_sub_title,
+                    'sec1_image' => $name1,
+                    'sec2_title' => $request->sec2_title,
+                    'sec2_sub_title' => $request->sec2_sub_title,
+                    'sec2_image' => $name2,
+                    'sec3_title' => $request->sec3_title,
+                    'sec3_sub_title' => $request->sec3_sub_title,
+                    'sec3_image' => $name3,
+                );
+                $content->value = serialize($val);
+                $content->updated_at = date('Y-m-d H:i:s');
+                $content->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
         }
-        return redirect()->back()->with('success', 'Content Updated Successfully');
     }
 
     public function markBurnet()
@@ -70,18 +142,90 @@ class ContentController extends Controller
             $content->name = 'mark-burnet';
             $content->save();
         }
-        return view("admin.content.mark-burnet", compact("content"));
+        $data = unserialize($content->value);
+        return view("admin.content.mark-burnet", compact("content", 'data'));
     }
 
     public function markBurnetSave(Request $request)
     {
-        $content = Content::where("name", "mark-burnet")->first();
-        if ($content) {
-            $content->value = $request->data;
-            $content->updated_at = date('Y-m-d H:i:s');
-            $content->save();
+        try{
+            $request->validate(
+                [
+                    'sec1_title' => 'required',
+                    "sec1_sub_title" => 'required',
+                    "sec1_image" => 'file|max:10240',
+                    'sec2_title' => 'required',
+                    "sec2_sub_title" => 'required',
+                    "sec2_image" => 'file|max:10240',
+                    'sec3_title' => 'required',
+                    "sec3_sub_title" => 'required',
+                    "sec3_image" => 'file|max:10240',
+                ]
+            );
+            $content = Content::where("name", "mark-burnet")->first();
+            if ($content) {
+                $unser = unserialize($content->value);
+                $name1 = $unser['sec1_image'] ?? null;
+                $name2 = $unser['sec2_image'] ?? null;
+                $name3 = $unser['sec3_image'] ?? null;
+                if ($request->hasFile("sec1_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec1_image');
+                    $name1 = "foundation_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec1_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec1_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name1);
+                }
+                if ($request->hasFile("sec2_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec2_image');
+                    $name2 = "foundation_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec2_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec2_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name2);
+                }
+                if ($request->hasFile("sec3_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec3_image');
+                    $name3 = "foundation_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec3_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec3_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name3);
+                }
+                $val = array(
+                    'sec1_title' => $request->sec1_title,
+                    'sec1_sub_title' => $request->sec1_sub_title,
+                    'sec1_image' => $name1,
+                    'sec2_title' => $request->sec2_title,
+                    'sec2_sub_title' => $request->sec2_sub_title,
+                    'sec2_image' => $name2,
+                    'sec3_title' => $request->sec3_title,
+                    'sec3_sub_title' => $request->sec3_sub_title,
+                    'sec3_image' => $name3,
+                );
+                $content->value = serialize($val);
+                $content->updated_at = date('Y-m-d H:i:s');
+                $content->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
         }
-        return redirect()->back()->with('success', 'Content Updated Successfully');
     }
 
     public function affiliate()
@@ -126,7 +270,7 @@ class ContentController extends Controller
             }
             $file->move("uploads/gallery", $name);
             GalleryAttribute::where('id', $id)->update(['path'=> $name]);
-            return redirect()->route('admin.image')->with('success', 'Image Updated Successfully');
+            return redirect()->back()->with('success', 'Image Updated Successfully');
         } else {
             $array_of_image = json_decode($request->array_of_image);
             if (is_array($array_of_image) && count($array_of_image) > 0) {
@@ -288,7 +432,7 @@ class ContentController extends Controller
                     $name = "home_" .  $uid . "." . $file->getClientOriginalExtension();
     
                     if(isset($unser['banner_image'])){
-                       $link = public_path() . "/uploads/ebooks/" . $unser['banner_image'];
+                       $link = public_path() . "/uploads/content/" . $unser['banner_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 

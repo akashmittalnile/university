@@ -35,26 +35,18 @@
                         <form action="{{ route('admin.manage.home.save') }}" method="post" enctype="multipart/form-data" id="create_form">
                             @csrf
                             <div class="edit-ebook">
-                                <input type="hidden" id="redirect_url" value="{{ route('admin.ebooks') }}">
+                                <input type="hidden" id="redirect_url" value="{{ route('admin.manage.home') }}">
                                 <div class="common-card">
                                     <div class="row align-items-center">
                                         <h6 class="mb-3 main-color">Section 1</h6>
                                         <div class="border-bottom row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="mb-3 field_error">
                                                     <label for="banner_title" class="form-label black-color f-600">Enter Banner Title</label>
                                                     <input type="text" name="banner_title" class="form-control" id="banner_title" value="{{ $data['banner_title'] ?? '' }}" aria-describedby="banner_title" placeholder="Enter Banner Title">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="mb-3">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="banner_sub_title" class="form-label black-color f-600">Enter Banner Sub-Title</label>
-                                                        <input type="text" name="banner_sub_title" class="form-control" id="banner_sub_title" value="{{ $data['banner_sub_title'] ?? '' }}" aria-describedby="banner_sub_title" placeholder="Enter Banner Sub-Title">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="imageInput" class="form-label black-color f-600">Upload Banner Background Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field">
@@ -72,9 +64,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-3">
+                                                    <div class="mb-3 field_error">
+                                                        <label for="banner_sub_title" class="form-label black-color f-600">Enter Banner Sub-Title</label>
+
+                                                        <textarea name="banner_sub_title" class="form-control" id="banner_sub_title" aria-describedby="banner_sub_title" placeholder="Enter Banner Sub-Title" cols="30" rows="5">{{ $data['banner_sub_title'] ?? '' }}</textarea>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <h6 class="my-3 main-color">Section 2</h6>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="mb-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="you_title" class="form-label black-color f-600">Enter Youtube Title</label>
@@ -82,7 +84,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="mb-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="you_link" class="form-label black-color f-600">Enter Youtube Video Embed (link/src)</label>

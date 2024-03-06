@@ -66,7 +66,7 @@
                         </h4>
                         <div class="p-bg mt-3">
                             <p class="text-center main-color">
-                                {{ $item->price == 0 ? 'Free' : ($item->currency == 'inr' ? "₹ $item->price" : "$ item->price") }}
+                                {{ $item->price == 0 ? 'Free' : '$'.$item->price }}
                             </p>
                         </div>
                         <ul class="mt-3">

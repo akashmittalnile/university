@@ -237,7 +237,7 @@
             var time = dt.getTime();
             return time + file.name;
         },
-        acceptedFiles: ".jpeg,.jpg,.png",
+        acceptedFiles: ".jpeg,.jpg,.png,.svg",
         timeout: 50000,
         addRemoveLinks: true,
         headers: {

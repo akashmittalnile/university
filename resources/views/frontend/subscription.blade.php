@@ -24,7 +24,7 @@
                             @endif
                             <div class="card float">
                                 <h2 class="card_title">{{$item->name}}</h2>
-                                <p class="pricing">{{ $item->currency == 'inr' ? '₹' : "$" }}{{ number_format($item->price, 2, '.', ',') }}</p>
+                                <p class="pricing">${{ number_format($item->price, 2, '.', ',') }}</p>
                                 <hr>
                                 <ul class="features">
                                     @foreach ($item->description as $text)

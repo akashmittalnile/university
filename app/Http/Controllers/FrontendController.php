@@ -294,13 +294,16 @@ class FrontendController extends Controller
             $item->description = explode(",", $item->description);
         }
         $network = Content::where("name", 'mark-network')->first();
-        return view("frontend.mark-network", compact("plans", "network"));
+        $data = unserialize($network->value);
+        return view("frontend.mark-network", compact("plans", "network", "data"));
     }
 
     public function markBurnet()
     {
+        $product = Product::orderByDesc('id')->get();
         $burnet = Content::where("name", 'mark-burnet')->first();
-        return view("frontend.mark-burnet")->with(compact('burnet'));
+        $data = unserialize($burnet->value);
+        return view("frontend.mark-burnet")->with(compact('burnet', 'data', 'product'));
     }
 
     public function resources()
