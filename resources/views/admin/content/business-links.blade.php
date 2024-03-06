@@ -14,8 +14,8 @@
 <main class="main-container dashboard">
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
-            <a href="{{ route('admin.manage.home') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
-            <h3 class="font-weight-bold black-color">Manage Testimonial</h3>
+            <a href="{{ route('admin.affiliate') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
+            <h3 class="font-weight-bold black-color">Business Links</h3>
         </div>
         <div class="profile-link">
             <a href="#">
@@ -44,7 +44,7 @@
                     </form> -->
                 </div>
 
-                <a href="javascript:void(0)" style="width: 17%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn ms-2">Add Testimonial<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="javascript:void(0)" style="width: 18%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn ms-2">Add Business Link<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">
@@ -54,18 +54,18 @@
                             <div class="slid col-4 mb-4">
                                 <div class="box-slid common-card float w-100">
                                     <div class="img-box" style="height: 75%;">
-                                        <img id style="height: 100%;" src="{{ asset("uploads/testimonial/$item->image") }}" alt="image" class="img-fluid">
+                                        <img id style="height: 100%;" src="{{ asset("uploads/content/$item->image") }}" alt="image" class="img-fluid">
                                     </div>
                                     <div class="d-flex mt-4">
-                                        <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.manage.testimonial.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
-                                        <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Testimonial</button></a>
+                                        <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.business.links.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
+                                        <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->links }}" data-img="{{ $item->image }}">Edit</button></a>
                                     </div>
                                 </div>
                             </div>
                             @empty
                             <div class="text-center mt-5">
                                 <img width="300" src="{{ asset('admin/images/no-data.svg') }}" alt="">
-                                <h4 class="p-4 text-center my-2 w-100">No testimonials found</h4>
+                                <h4 class="p-4 text-center my-2 w-100">No business link found</h4>
                             </div>
                             @endforelse
                             <div class="d-flex justify-content-center">
@@ -86,12 +86,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color">Edit Testimonial</h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Edit Business Link</h4>
                 
-                <form action="{{ route('admin.manage.testimonial.update') }}" method="post" enctype="multipart/form-data" id="update_form">
+                <form action="{{ route('admin.business.links.update') }}" method="post" enctype="multipart/form-data" id="update_form">
                     @csrf
                     <div class="edit-ebook">
-                        <input type="hidden" id="redirect_url" value="{{ route('admin.manage.testimonial') }}">
+                        <input type="hidden" id="redirect_url" value="{{ route('admin.business.links') }}">
                         <div class="common-card">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
@@ -126,8 +126,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <div class="mb-3 field_error">
-                                            <label for="editDesignation" class="form-label black-color f-600">Enter Designation</label>
-                                            <input type="text" name="designation" class="form-control" id="editDesignation" value="" aria-describedby="designation" placeholder="Enter Designation">
+                                            <label for="editDesignation" class="form-label black-color f-600">Enter Redirect URL</label>
+                                            <input type="url" name="link" class="form-control" id="editDesignation" value="" aria-describedby="designation" placeholder="Enter Redirect URL">
                                         </div>
                                     </div>
                                 </div>
@@ -152,12 +152,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color">Add Testimonial</h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Add Business Link</h4>
 
-                <form action="{{ route('admin.manage.testimonial.save') }}" method="post" enctype="multipart/form-data" id="create_form">
+                <form action="{{ route('admin.business.links.save') }}" method="post" enctype="multipart/form-data" id="create_form">
                     @csrf
                     <div class="edit-ebook">
-                        <input type="hidden" id="redirect_url" value="{{ route('admin.manage.testimonial') }}">
+                        <input type="hidden" id="redirect_url" value="{{ route('admin.business.links') }}">
                         <div class="common-card">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
@@ -191,8 +191,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <div class="mb-3 field_error">
-                                            <label for="designation" class="form-label black-color f-600">Enter Designation</label>
-                                            <input type="text" name="designation" class="form-control" id="designation" value="" aria-describedby="designation" placeholder="Enter Designation">
+                                            <label for="designation" class="form-label black-color f-600">Enter Redirect URL</label>
+                                            <input type="url" name="link" class="form-control" id="designation" value="" aria-describedby="designation" placeholder="Enter Redirect URL">
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
             </div>
             <div class="modal-body">
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
-                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Testimonial</b> ?</h6>
+                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Business Link</b> ?</h6>
                 <img src="images/delete.png" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
@@ -291,8 +291,9 @@
                 title: {
                     required: true,
                 },
-                designation: {
+                link: {
                     required: true,
+                    url: true
                 },
                 description: {
                     required: true,
@@ -418,7 +419,7 @@
                 title: {
                     required: true,
                 },
-                designation: {
+                link: {
                     required: true,
                 },
                 description: {

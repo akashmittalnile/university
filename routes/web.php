@@ -167,6 +167,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // affiliate
         Route::get("business-service", [ContentController::class, 'affiliate'])->name('affiliate');
         Route::post("business-service-store", [ContentController::class, 'affiliateSave'])->name('affiliate.save');
+        Route::get("business-links", [ContentController::class, 'businessLinks'])->name('business.links');
+        Route::post("business-link-store", [ContentController::class, 'businessLinkSave'])->name('business.links.save');
+        Route::post("business-link-update", [ContentController::class, 'businessLinkUpdate'])->name('business.links.update');
+        Route::get("business-link-delete/{id}", [ContentController::class, 'businessLinkDelete'])->name('business.links.delete');
 
         // resources
         Route::get("resources", [ContentController::class, 'resources'])->name('resources');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Badge;
 use App\Models\Blog;
+use App\Models\BusinessLink;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Ebook;
@@ -246,8 +247,11 @@ class FrontendController extends Controller
 
     public function affiliate()
     {
+        $product = Product::orderByDesc('id')->get();
         $affiliate = Content::where("name", 'affiliate')->first();
-        return view("frontend.affiliate")->with(compact('affiliate'));
+        $data = unserialize($affiliate->value);
+        $link = BusinessLink::orderByDesc("id")->get();
+        return view("frontend.affiliate")->with(compact('affiliate', 'data', 'product', 'link'));
     }
 
     public function blog()

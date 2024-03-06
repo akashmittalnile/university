@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessLink;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\GalleryAttribute;
@@ -236,18 +237,172 @@ class ContentController extends Controller
             $content->name = 'affiliate';
             $content->save();
         }
-        return view("admin.content.affiliate", compact("content"));
+        $data = unserialize($content->value);
+        return view("admin.content.affiliate", compact("content", "data"));
     }
 
     public function affiliateSave(Request $request)
     {
-        $content = Content::where("name", "affiliate")->first();
-        if ($content) {
-            $content->value = $request->data;
-            $content->updated_at = date('Y-m-d H:i:s');
-            $content->save();
+        try{
+            $request->validate(
+                [
+                    'sec1_title' => 'required',
+                    "sec1_sub_title" => 'required',
+                    "sec1_image" => 'file|max:10240',
+                    'sec2_title' => 'required',
+                    "sec2_sub_title" => 'required',
+                    "sec2_image" => 'file|max:10240'
+                ]
+            );
+            $content = Content::where("name", "affiliate")->first();
+            if ($content) {
+                $unser = unserialize($content->value);
+                $name1 = $unser['sec1_image'] ?? null;
+                $name2 = $unser['sec2_image'] ?? null;
+                if ($request->hasFile("sec1_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec1_image');
+                    $name1 = "service_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec1_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec1_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name1);
+                }
+                if ($request->hasFile("sec2_image")) {
+                    $uid = uniqid();
+                    $file = $request->file('sec2_image');
+                    $name2 = "service_" .  $uid . "." . $file->getClientOriginalExtension();
+    
+                    if(isset($unser['sec2_image'])){
+                       $link = public_path() . "/uploads/content/" . $unser['sec2_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        } 
+                    }
+                    $file->move("uploads/content", $name2);
+                }
+                $val = array(
+                    'sec1_title' => $request->sec1_title,
+                    'sec1_sub_title' => $request->sec1_sub_title,
+                    'sec1_image' => $name1,
+                    'sec2_title' => $request->sec2_title,
+                    'sec2_sub_title' => $request->sec2_sub_title,
+                    'sec2_image' => $name2,
+                );
+                $content->value = serialize($val);
+                $content->updated_at = date('Y-m-d H:i:s');
+                $content->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
         }
-        return redirect()->back()->with('success', 'Content Updated Successfully');
+    }
+
+    public function businessLinks()
+    {
+        $data = BusinessLink::orderByDesc("id")->paginate(config("app.ebook_per_page"));
+        return view("admin.content.business-links", compact("data"));
+    }
+
+    public function businessLinkSave(Request $request)
+    {
+        try{
+            $request->validate(
+                [
+                    'title' => 'required',
+                    "description" => 'required',
+                    "image" => 'file|max:10240',
+                    'link' => 'required',
+                ]
+            );
+            $link = new BusinessLink;
+            $link->title = $request->title;
+            $link->links = $request->link;
+            $uid = uniqid();
+            
+            if ($request->hasFile("image")) {
+                $file = $request->file('image');
+                $name = "links_" .  $uid . "." . $file->getClientOriginalExtension();
+                $link->image = $name;
+                $file->move("uploads/content", $name);
+            }
+            $link->description = $request->description;
+            $link->status = 1;
+            $link->save();
+
+            return response()->json([
+                'message' => 'Business Link Created Successfully.',
+                'status' => 200
+            ]);
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function businessLinkUpdate(Request $request)
+    {
+        try{
+            $request->validate(
+                [
+                    'title' => 'required',
+                    "description" => 'required',
+                    "image" => 'file|max:10240',
+                    'link' => 'required',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->id);
+            $links = BusinessLink::where('id', $id)->first();
+            $links->title = $request->title;
+            $links->links = $request->link;
+            $uid = uniqid();
+            
+            if ($request->hasFile("image")) {
+                $file = $request->file('image');
+                $name = "links_" .  $uid . "." . $file->getClientOriginalExtension();
+                if(isset($links->image)){
+                    $link = public_path() . "/uploads/content/" . $links->image;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $links->image = $name;
+                $file->move("uploads/content", $name);
+
+            }
+            $links->description = $request->description;
+            $links->status = 1;
+            $links->save();
+
+            return response()->json([
+                'message' => 'Business Link Updated Successfully.',
+                'status' => 200
+            ]);
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function businessLinkDelete($id)
+    {
+        try{
+            $id = encrypt_decrypt('decrypt', $id);
+            $links = BusinessLink::where('id', $id)->first();
+
+            $link = public_path() . "/uploads/content/" . $links->image;
+            if (file_exists($link)) {
+                unlink($link);
+            }
+
+            BusinessLink::where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Business Link Deleted Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
     }
 
     public function gallery()
