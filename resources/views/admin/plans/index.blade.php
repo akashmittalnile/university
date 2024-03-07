@@ -46,7 +46,7 @@
     <div class="row page-content">
         <div class="page-content">
             <div class="d-flex align-items-center justify-content-end">
-                <a href="javascript:void(0)"><button class="outline-btn">
+                <a href="{{ route('admin.plans.transaction.logs') }}"><button class="outline-btn">
                         Plan Payment Transaction Logs
                     </button></a>
 

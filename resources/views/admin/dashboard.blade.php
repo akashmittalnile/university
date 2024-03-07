@@ -194,7 +194,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{$transactions->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
                             </div>
                             <div class="content" id="supportersContent">
                                 <li>
