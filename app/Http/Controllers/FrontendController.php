@@ -33,7 +33,7 @@ class FrontendController extends Controller
             $plans = UserPlanDetail::where("user_id", auth()->user()->id)->get();
             $total = 0;
             foreach ($plans as $item) {
-                $total += $item->plan->price;
+                $total += $item->plan->price ?? 0;
             }
             return view("frontend.profile", compact('user', 'currentPlan', 'total'));
         } catch (\Exception $e) {

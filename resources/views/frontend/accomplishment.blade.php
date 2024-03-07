@@ -11,7 +11,7 @@
                 @forelse($gallery as $item)
                 <div class="img-box col-lg-3 mb-2">
                     <img src="{{ asset("uploads/gallery/$item->path") }}" alt="Image" width="100%"
-                        class="gallery-image">
+                        class="gallery-image" style="object-position: center; object-fit: cover; height: 100%;" >
                     <div class="overlay">
                         <div class="text">
                             <!-- <p>In a fully didgital world ECONO ProjectEX provides effective consultative/advisory change

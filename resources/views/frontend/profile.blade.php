@@ -68,7 +68,7 @@
                     <div class="card float common-shadow">
                         @if ($currentPlan)
                         <img src="{{ asset('frontend/images/subscription-plan.png') }}" alt="image" class="img-fluid">
-                        <h5 class="text-color mt-3">${{ number_format($currentPlan->price, 2, '.', ',') }}/{{ ucfirst($currentPlan->type) }}
+                        <h5 class="text-color mt-3">${{ number_format($currentPlan->price ?? 0, 2, '.', ',') }}/{{ ucfirst($currentPlan->type) }}
                         </h5>
                         <h3 class="main-color f-600 mt-3">{{ $currentPlan->name }}</h3>
                         @else

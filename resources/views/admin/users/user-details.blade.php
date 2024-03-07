@@ -57,7 +57,7 @@
                         @else
                         <p class="black-color f-600">Mark as @if($user->status==1) Inactive @else Active @endif</p>
                         <div class="form-check mt-3 form-switch">
-                            <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" @if($user->status==1) checked @endif>
+                            <input style="cursor: pointer;" class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" @if($user->status==1) checked @endif>
                         </div>
                         @endif
                     </div>
@@ -161,7 +161,7 @@
                     @endphp
                     <div class="transation-detail-box  common-card common-shadow">
                         <form action="" method="get" id="dateForm">
-                            <input type="date" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="d-btn date-btn">
+                            <input style="cursor: pointer;" type="date" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="d-btn date-btn">
                         </form>
                         <button class="btn" id="partners" onclick="showContent('partners')">Membership Transaction</button>
                         <!-- <button class="btn" id="supporters" onclick="showContent('supporters')">E-Book Transaction</button> -->
