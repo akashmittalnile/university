@@ -1,9 +1,9 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/user-details.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/user-details.css') }}" />
 @endpush
 @push('js')
-<script src="{{ asset('admin/js/user-details.js') }}"></script>
+<script src="{{ assets('admin/js/user-details.js') }}"></script>
 @endpush
 @section('content')
 <main class="main-container dashboard">
@@ -16,7 +16,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
+                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -40,7 +40,7 @@
                     <div class="col-md-3">
                         <div class="d-flex align-items-center">
                             <div class="profile-img">
-                                <img src="{{ isset($user->profile) ? asset("uploads/profile/".$user->profile) : asset('admin/images/no-image.jpg') }}" alt="">
+                                <img src="{{ isset($user->profile) ? assets("uploads/profile/".$user->profile) : assets('admin/images/no-image.jpg') }}" alt="">
                             </div>
                             <h6 class="black-color ms-3 f-600 text-capitalize">{{ $user->name ?? "NA" }}</h6>
                         </div>
@@ -64,7 +64,7 @@
                     <div class="col-md-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-bg">
-                                <img src="{{ asset('admin/images/email-details.png') }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('admin/images/email-details.png') }}" alt="image" class="img-fluid">
                             </div>
                             <div class="info ms-3">
                                 <p class="black-color f-600">Email Id</p>
@@ -75,7 +75,7 @@
                     <div class="col-md-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-bg">
-                                <img src="{{ asset('admin/images/contact.png') }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('admin/images/contact.png') }}" alt="image" class="img-fluid">
                             </div>
                             <div class="info ms-3">
                                 <p class="black-color f-600">Phone No.</p>
@@ -106,7 +106,7 @@
                     @endif
                     <div class="col-md-2">
                         <div class="sub-img-bg">
-                            <img src="{{ asset('admin/images/subscription-plan.png') }}" alt="" class="img-fluid">
+                            <img src="{{ assets('admin/images/subscription-plan.png') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="sub-img-bg">
-                            <img src="{{ asset('admin/images/transaction.png') }}" alt="" class="img-fluid">
+                            <img src="{{ assets('admin/images/transaction.png') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="sub-img-bg">
-                            <img src="{{ asset('admin/images/e-book.png') }}" alt="" class="img-fluid">
+                            <img src="{{ assets('admin/images/e-book.png') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>

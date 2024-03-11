@@ -17,16 +17,15 @@ class ImageController extends Controller
     public function imageSave(Request $request)
     {
         if(isset($request->update)){
-            $uid = uniqid();
             $id = encrypt_decrypt('decrypt', $request->id);
             $gallery = Image::where('id', $id)->first();
-            $file = $request->file('thumbnail');
-            $name = $gallery->path;
-            $link = public_path() . "/uploads/images/" . $gallery->path;
-            if (File::exists($link)) {
-                unlink($link);
+            if(isset($gallery->path)){
+               $link = public_path() . "/uploads/images/" . $gallery->path;
+                if (File::exists($link)) {
+                    unlink($link);
+                } 
             }
-            $file->move("uploads/images", $name);
+            $name = fileUpload($request->thumbnail, "uploads/images");
             Image::where('id', $id)->update(['path'=> $name]);
             return redirect()->back()->with('success', 'Image Updated Successfully');
         } else {
@@ -47,10 +46,7 @@ class ImageController extends Controller
     public function imageUpload(Request $request)
     {
         try {
-            $uid = uniqid();
-            $file = $request->file('file');
-            $name = "image_" .  $uid . "." . $file->getClientOriginalExtension();
-            $file->move("uploads/images", $name);
+            $name = fileUpload($request->file, "uploads/images");
             return response()->json(['status' => true, 'file_name' => $name, 'key' => 1]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());

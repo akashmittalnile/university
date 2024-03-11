@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="{!! asset('admin/images/logo.png') !!}">
+    <link rel="icon" type="image/x-icon" href="{!! assets('admin/images/logo.png') !!}">
     <title>University PMO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
@@ -12,8 +12,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="{{ asset('admin/css/common.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/css/sidebar.css') }}" />
+    <link rel="stylesheet" href="{{ assets('admin/css/common.css') }}" />
+    <link rel="stylesheet" href="{{ assets('admin/css/sidebar.css') }}" />
     <script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @stack('css')
@@ -58,9 +58,9 @@
 
 
     <!-- Custom JS -->
-    <script src="{{ asset('admin/js/script.js') }}"></script>
-    <script src="{{ asset('admin/js/common.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ assets('admin/js/script.js') }}"></script>
+    <script src="{{ assets('admin/js/common.js') }}"></script>
+    <script src="{{ assets('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @if ($success = Session::get('success'))
         <script>

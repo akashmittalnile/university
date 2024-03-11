@@ -1,10 +1,10 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/affiliate-links.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/affiliate-links.css') }}">
 @endpush
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
-<script src="{{ asset('frontend/js/about.js') }}"></script>
+<script src="{{ assets('frontend/js/about.js') }}"></script>
 <script>
     $('.pmoCarousel').owlCarousel({
         loop: false,
@@ -30,7 +30,7 @@
 @endpush
 @section('content')
 <section class="affiliate-links">
-    <div class="project-manager" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('uploads/content/{{$data['sec1_image']}}' )"></div>
+    <div class="project-manager" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec1_image']}}' )"></div>
     <div class="join-community">
         <h1 class="black-color text-center text-capitalize">{{ $data['sec1_title'] ?? 'NA' }}</h1>
         <p class="black-color mt-4 text-center">{{ $data['sec1_sub_title'] ?? 'NA' }}</p>
@@ -39,7 +39,7 @@
             <a href=""><button class="btn common-btn ms-md-3">Join the Community<i class="bi bi-arrow-right ms-3"></i></button></a>
         </div>
     </div>
-    <div class="affiliate-images" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('uploads/content/{{$data['sec2_image']}}' )">
+    <div class="affiliate-images" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec2_image']}}' )">
         <div class="container">
             <h1 class="white-color text-center text-capitalize">{{ $data['sec2_title'] ?? 'NA' }}</h1>
             <p class="white-color text-justify">{{ $data['sec2_sub_title'] ?? 'NA' }}</p>
@@ -52,7 +52,7 @@
                         <div class="owl-carousel owl-theme pmoCarousel">
                             @forelse($product as $key => $value)
                             <div class="item">
-                                <img src="{{ asset("uploads/products/".$value->image) }}" class="aboutImageSlide">
+                                <img src="{{ assets("uploads/products/".$value->image) }}" class="aboutImageSlide">
                             </div>
                             @empty
                             @endforelse
@@ -72,7 +72,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-3">
                             <div class="left-section">
-                                <img src="{{ asset('uploads/content/'.$value->image) }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('uploads/content/'.$value->image) }}" alt="image" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-md-9">

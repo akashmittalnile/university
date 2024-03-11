@@ -1,9 +1,9 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/edit-podcast.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/edit-podcast.css') }}" />
 @endpush
 @push('js')
-<script src="{{ asset('admin/js/dashboard.js') }}"></script>
+<script src="{{ assets('admin/js/dashboard.js') }}"></script>
 @endpush
 @section('content')
 <main class="main-container dashboard">
@@ -16,7 +16,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
+                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -54,9 +54,9 @@
                                             <input type="file" name="pdf_file" accept=".pdf" id="audioInput" />
                                         </div>
                                         @if(isset($ebook->pdf_file))
-                                        <a target="_black" class="mx-2" id="pdfredirect" href="{{ asset("uploads/ebooks/$ebook->pdf_file") }}"><img src="{{ asset('admin/images/pdf.svg') }}" width="30" alt="No pdf found"></a>
+                                        <a target="_black" class="mx-2" id="pdfredirect" href="{{ assets("uploads/ebooks/$ebook->pdf_file") }}"><img src="{{ assets('admin/images/pdf.svg') }}" width="30" alt="No pdf found"></a>
                                         @else
-                                        <a target="_black" class="d-none mx-2" id="pdfredirect" href=""><img src="{{ asset('admin/images/pdf.svg') }}" width="30" alt="No pdf found"></a>
+                                        <a target="_black" class="d-none mx-2" id="pdfredirect" href=""><img src="{{ assets('admin/images/pdf.svg') }}" width="30" alt="No pdf found"></a>
                                         @endif
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-3">
                                         <div class="book-img">
-                                            <img src="{{ $ebook ? asset("uploads/ebooks/$ebook->thumbnail") : asset('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
+                                            <img src="{{ $ebook ? assets("uploads/ebooks/$ebook->thumbnail") : assets('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
                                         </div>
                                     </div>
                                     <div class="col-md-9">
@@ -92,7 +92,7 @@
                                             <h6 class="black-color f-600">Select Plans</h6>
                                             <div class="row">
                                                 @foreach ($plans as $item)
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
                                                         <div class="form-group my-auto">
                                                             <input type="radio" name="plans" @if ($ebook && ($item->id == $ebook->plans)) checked @endif
@@ -138,7 +138,7 @@
     </div>
 
 </main>
-<script src="{{ asset('admin/js/dashboard.js') }}"></script>
+<script src="{{ assets('admin/js/dashboard.js') }}"></script>
 <script>
     $(document).ready(function() {
         $.validator.addMethod('filesize', function (value, element, param) {

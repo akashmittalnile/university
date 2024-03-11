@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/blogs-card.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/blogs-card.css') }}">
 @endpush
 @section('content')
 <section class="resources">
@@ -18,9 +18,9 @@
                     <div class="card float">
                         <div class="img-box">
                             @if(isset($val->image))
-                            <img src="{{ asset("uploads/blogs/".$val->image) }}" alt="image" class="img-fluid">
+                            <img src="{{ assets("uploads/blogs/".$val->image) }}" alt="image" class="img-fluid">
                             @else
-                            <img src="{{ asset('frontend/images/gallery-1.jpg') }}" alt="image" class="img-fluid">
+                            <img src="{{ assets('frontend/images/gallery-1.jpg') }}" alt="image" class="img-fluid">
                             @endif
                         </div>
                         <h5 class="black-color text-capitalize mt-3">{{ $val->title ?? 'NA' }}</h5>

@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/resources.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/resources.css') }}">
 @endpush
 @section('content')
 <section class="resources">
@@ -17,7 +17,7 @@
                 <div class="col-md-4 mb-3 block">
                     <div class="card float">
                         <div class="img-box">
-                            <img src="{{ asset("uploads/podcasts/".$val['thumbnail']) }}" alt="image" class="img-fluid">
+                            <img src="{{ assets("uploads/podcasts/".$val['thumbnail']) }}" alt="image" class="img-fluid">
                         </div>
                         <h5 class="black-color mt-3 text-capitalize">{{ $val['name'] ?? 'NA' }}</h5>
                         <ul class="mt-3">
@@ -26,7 +26,7 @@
                         @if(isset(auth()->user()->id))
                             @if($val['purchase'])
                                 @if($val['file_type']=='1')
-                                <a target="_blank" href="{{ asset("uploads/podcasts/".$val['audio_file']) }}"><button class="btn learn-more-btn">Listen <i class="bi bi-play-circle ms-2"></i></button></a>
+                                <a target="_blank" href="{{ assets("uploads/podcasts/".$val['audio_file']) }}"><button class="btn learn-more-btn">Listen <i class="bi bi-play-circle ms-2"></i></button></a>
                                 @else
                                 <a target="_blank" href="{{ route('view.podcast', encrypt_decrypt('encrypt', $val['id'])) }}"><button class="btn learn-more-btn">Listen <i class="bi bi-play-circle ms-2"></i></button></a>
                                 @endif

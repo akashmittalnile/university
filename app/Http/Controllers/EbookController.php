@@ -48,13 +48,10 @@ class EbookController extends Controller
             $ebook = new Ebook();
             $ebook->name = $request->name;
             $ebook->plans = $request->plans;
-            $uid = uniqid();
             
             if ($request->hasFile("pdf_file")) {
                 $file = $request->file('pdf_file');
-                $name = "ebook_" .  $uid . "." . $file->getClientOriginalExtension();
                 $sizeInBytes = $file->getSize();
-                $ebook->pdf_file = $name;
                 if ($sizeInBytes < 1048576) { // 1 MB = 1024 * 1024 bytes
                     $sizeInKB = round($sizeInBytes / 1024, 2);
                     $ebook->pdf_file_size = "$sizeInKB KB";
@@ -62,14 +59,13 @@ class EbookController extends Controller
                     $sizeInMB = round($sizeInBytes / 1048576, 2);
                     $ebook->pdf_file_size = "$sizeInMB MB";
                 }
-                $file->move("uploads/ebooks", $name);
+                $name = fileUpload($request->pdf_file, "uploads/ebooks");
+                $ebook->pdf_file = $name;
             }
 
             if ($request->hasFile("thumbnail")) {
-                $file = $request->file('thumbnail');
-                $name = "ebook_" .  $uid . "." . $file->getClientOriginalExtension();
+                $name = fileUpload($request->thumbnail, "uploads/ebooks");
                 $ebook->thumbnail = $name;
-                $file->move("uploads/ebooks", $name);
             }
             $ebook->description = $request->description;
             $ebook->cancellation_policy = $request->cancellation_policy;
@@ -119,17 +115,15 @@ class EbookController extends Controller
             $ebook->name = $request->name;
 
             $ebook->plans = $request->plans;
-            $uid = uniqid();
             if ($request->hasFile("pdf_file")) {
                 $file = $request->file('pdf_file');
-                $name = "ebook_" .  $uid . "." . $file->getClientOriginalExtension();
                 $sizeInBytes = $file->getSize();
 
                 $link = public_path() . "/uploads/ebooks/" . $ebook->pdf_file;
                 if (file_exists($link)) {
                     unlink($link);
                 }
-
+                $name = fileUpload($request->pdf_file, "uploads/ebooks");
                 $ebook->pdf_file = $name;
                 if ($sizeInBytes < 1048576) { // 1 MB = 1024 * 1024 bytes
                     $sizeInKB = round($sizeInBytes / 1024, 2);
@@ -138,21 +132,16 @@ class EbookController extends Controller
                     $sizeInMB = round($sizeInBytes / 1048576, 2);
                     $ebook->pdf_file_size = "$sizeInMB MB";
                 }
-                $file->move("uploads/ebooks", $name);
             }
 
 
             if ($request->hasFile("thumbnail")) {
-                $file = $request->file('thumbnail');
-                $name = "ebook_" .  $uid . "." . $file->getClientOriginalExtension();
-
                 $link = public_path() . "/uploads/ebooks/" . $ebook->thumbnail;
                 if (file_exists($link)) {
                     unlink($link);
                 }
-
+                $name = fileUpload($request->thumbnail, "uploads/ebooks");
                 $ebook->thumbnail = $name;
-                $file->move("uploads/ebooks", $name);
             }
             $ebook->description = $request->description;
             $ebook->cancellation_policy = $request->cancellation_policy;

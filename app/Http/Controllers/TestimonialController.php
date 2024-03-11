@@ -32,13 +32,10 @@ class TestimonialController extends Controller
             $testimonials = new Testimonial;
             $testimonials->title = $request->title;
             $testimonials->designation = $request->designation;
-            $uid = uniqid();
             
             if ($request->hasFile("image")) {
-                $file = $request->file('image');
-                $name = "testimonial_" .  $uid . "." . $file->getClientOriginalExtension();
+                $name = fileUpload($request->image, "uploads/testimonial");
                 $testimonials->image = $name;
-                $file->move("uploads/testimonial", $name);
             }
             $testimonials->description = $request->description;
             $testimonials->status = 1;
@@ -86,19 +83,16 @@ class TestimonialController extends Controller
             $testimonials = Testimonial::where('id', $id)->first();
             $testimonials->title = $request->title;
             $testimonials->designation = $request->designation;
-            $uid = uniqid();
             
             if ($request->hasFile("image")) {
-                $file = $request->file('image');
-                $name = "testimonial_" .  $uid . "." . $file->getClientOriginalExtension();
                 if(isset($testimonials->image)){
                     $link = public_path() . "/uploads/testimonial/" . $testimonials->image;
                     if (file_exists($link)) {
                         unlink($link);
                     }
                 }
+                $name = fileUpload($request->image, "uploads/testimonial");
                 $testimonials->image = $name;
-                $file->move("uploads/testimonial", $name);
 
             }
             $testimonials->description = $request->description;

@@ -53,7 +53,7 @@ Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
 Route::get('/accomplishment-gallery', [FrontendController::class, 'accomplishment'])->name('accomplishment');
 Route::get('/mark-network', [FrontendController::class, 'markNetwork'])->name('markNetwork');
 Route::get('/mark-burnet-foundation', [FrontendController::class, 'markBurnet'])->name('markBurnet');
-Route::get('/resources', [FrontendController::class, 'resources'])->name('resources');
+Route::get('/all-resources', [FrontendController::class, 'resources'])->name('resources');
 Route::get('/podcast', [FrontendController::class, 'podcast'])->name('podcast');
 Route::get('/view-podcast/{id}', [FrontendController::class, 'viewPodcast'])->name('view.podcast');
 Route::get('/blogs', [FrontendController::class, 'blog'])->name('blogs');

@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('frontend/css/accomplishment-gallery.css') }}">
+    <link rel="stylesheet" href="{{ assets('frontend/css/accomplishment-gallery.css') }}">
 @endpush
 @section('content')
     <section class="accomplishment-gallery">
@@ -10,7 +10,7 @@
             <div class="row">
                 @forelse($gallery as $item)
                 <div class="img-box col-lg-3 mb-2">
-                    <img src="{{ asset("uploads/gallery/$item->path") }}" alt="Image" width="100%"
+                    <img src="{{ assets("uploads/gallery/$item->path") }}" alt="Image" width="100%"
                         class="gallery-image" style="object-position: center; object-fit: cover; height: 100%;" >
                     <div class="overlay">
                         <div class="text">
@@ -18,7 +18,7 @@
                                 management, managed and technical implimentation services tailored to address the entire
                                 breadth of your business needs and success.</p> -->
                             <div class="text-center">
-                                <a target="_blank" href="{{ asset("uploads/gallery/$item->path") }}"><button class="view-btn common-btn"><i class="bi bi-eye me-2"></i>View
+                                <a target="_blank" href="{{ assets("uploads/gallery/$item->path") }}"><button class="view-btn common-btn"><i class="bi bi-eye me-2"></i>View
                                         Photo</button></a>
                             </div>
                         </div>

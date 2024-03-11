@@ -50,12 +50,9 @@ class ProductController extends Controller
             }else{
                 $product = new Product;
 
-                $uid = uniqid();
                 if ($request->hasFile("thumbnail")) {
-                    $file = $request->file('thumbnail');
-                    $name = "product_" .  $uid . "." . $file->getClientOriginalExtension();
+                    $name = fileUpload($request->thumbnail, "uploads/products");
                     $product->image = $name;
-                    $file->move("uploads/products", $name);
                 }
 
                 $product->title = $request->name;
@@ -109,16 +106,14 @@ class ProductController extends Controller
             }else{
                 $id = encrypt_decrypt('decrypt', $id);
                 $product = Product::where('id', $id)->first();
-                $uid = uniqid();
+                
                 if ($request->hasFile("thumbnail")) {
-                    $file = $request->file('thumbnail');
-                    $name = "product_" .  $uid . "." . $file->getClientOriginalExtension();
                     $link = public_path() . "/uploads/products/" . $product->image;
                     if(File::exists($link)) {
                         unlink($link);
                     }
+                    $name = fileUpload($request->thumbnail, "uploads/products");
                     $product->image = $name;
-                    $file->move("uploads/products", $name);
                 }
     
                 $product->title = $request->name;
@@ -171,17 +166,14 @@ class ProductController extends Controller
     public function imageUpload(Request $request)
     {
         try{
-            $uid = uniqid();
-            $file = $request->file('file');
-            $name = "product_" .  $uid . "." . $file->getClientOriginalExtension();
             $pro_id = isset($request->id) ? encrypt_decrypt('decrypt', $request->id) : null;
+            $name = fileUpload($request->file, "uploads/products");
             $product = ProductAttribute::create([
                 'product_id' => $pro_id,
                 'type' => 'slide_image',
                 'status' => 1,
                 'image' => $name,
             ]);
-            $file->move("uploads/products", $name);
             return response()->json(['status'=>true, 'file_name'=> $name, 'key'=> 1]); 
         }  catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());

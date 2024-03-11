@@ -1,9 +1,9 @@
 @extends('layouts.admin.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('admin/css/add-new-podcast.css') }}" />
+    <link rel="stylesheet" href="{{ assets('admin/css/add-new-podcast.css') }}" />
 @endpush
 @push('js')
-    {{-- <script src="{{ asset('admin/js/edit-podcast.js') }}"></script> --}}
+    {{-- <script src="{{ assets('admin/js/edit-podcast.js') }}"></script> --}}
     <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 @endpush
 @section('content')
@@ -19,7 +19,7 @@
                 <a href="#">
                     <div class="d-flex align-items-center">
                         <div class="profile-pic">
-                            <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image"
+                            <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image"
                                 class="img-fluid me-2" />
                         </div>
                         <div class="button-link">
@@ -68,27 +68,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-3 mb-3">
                                     <div class="book-img">
-                                        <img src="{{ $podcast ? asset("uploads/podcasts/$podcast->thumbnail") : asset('admin/images/book.jpg') }}"
+                                        <img src="{{ $podcast ? assets("uploads/podcasts/$podcast->thumbnail") : assets('admin/images/book.jpg') }}"
                                             alt="image" id="imageDisplay" class="img-fluid" />
                                         
                                     </div>
                                     <audio controls class="mt-3 custom-audio" id="audioPlayer">
                                         <source
-                                            src="{{ $podcast ? asset("uploads/podcasts/$podcast->audio_file") : asset('images/audio.mp3') }}"
+                                            src="{{ $podcast ? assets("uploads/podcasts/$podcast->audio_file") : assets('images/audio.mp3') }}"
                                             type="audio/mp3" />
                                         Your browser does not support
                                         the audio element.
                                     </audio>
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <div class="form-check">
                                         <h6 class="black-color f-600">Select Plans</h6>
                                         <div class="row">
                                             @foreach ($plans as $item)
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="rounded shadow bg-white p-2 d-flex my-2">
                                                         <div class="form-group my-auto">
                                                             <input type="radio" name="plans" value="{{ $item->id }}" id="plan{{ $item->id }}">

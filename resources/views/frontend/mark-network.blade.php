@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/mark-network.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/mark-network.css') }}">
 <style>
     .stripe-button-el {
         opacity: 1;
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-position-2">
-                    <div class="right-section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('uploads/content/{{$data['sec1_image']}}' )">
+                    <div class="right-section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec1_image']}}' )">
 
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-6 ">
                     <div class="left-section">
                         <div class="img-box">
-                            <img src="{{ asset('uploads/content/'.$data['sec2_image']) }}" alt="image" class="img-fluid">
+                            <img src="{{ assets('uploads/content/'.$data['sec2_image']) }}" alt="image" class="img-fluid">
                         </div>
                         <!-- <img src="images/community-2.jpg" alt="image" class="img-fluid img-2"> -->
                     </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('uploads/content/{{$data['sec3_image']}}' )">
+    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' )">
         <div class="container">
             <h1 class="mb-4 white-color text-center">{{ $data['sec3_title'] ?? 'NA' }}</h1>
             <p class="text-center white-color">{{ $data['sec3_sub_title'] ?? 'NA' }}</p>

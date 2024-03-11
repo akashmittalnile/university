@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-6 business-hour-section">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('frontend/images/working-hours.svg') }}" alt="image"
+                    <img src="{{ assets('frontend/images/working-hours.svg') }}" alt="image"
                         class="img-fluid me-2 business-hour">
                     <h2 class="main-color f-600 mt-0 mb-0">Business Hours</h2>
                 </div>

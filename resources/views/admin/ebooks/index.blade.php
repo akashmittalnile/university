@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/manage-e-book.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/manage-e-book.css') }}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 @endpush
 @push('js')
-<script src="{{ asset('admin/js/manage-e-book.js') }}"></script>
+<script src="{{ assets('admin/js/manage-e-book.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 @endpush
 @section('content')
@@ -20,7 +20,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
+                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -53,7 +53,7 @@
                             <div class="slid col-lg-4 mb-4">
                                 <div class="box-slid common-card float w-100">
                                     <div class="img-box" style="height: 75%;">
-                                        <img style="height: 100%;" src="{{ asset("uploads/ebooks/$item->thumbnail") }}" alt="image" class="img-fluid">
+                                        <img style="height: 100%;" src="{{ assets("uploads/ebooks/$item->thumbnail") }}" alt="image" class="img-fluid">
                                     </div>
                                     <p class="black-color mt-3 text-capitalize">{{ $item->name }}</p>
                                     {{-- <h4 class="main-color text-left mt-3">${{ $item->price }}</h4> --}}
@@ -66,7 +66,7 @@
                             </div>
                             @empty
                             <div class="text-center mt-5">
-                                <img width="300" src="{{ asset('admin/images/no-data.svg') }}" alt="">
+                                <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
                                 <h4 class="p-4 text-center my-2 w-100">No E-Books Found</h4>
                             </div>
                             @endforelse
@@ -89,7 +89,7 @@
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
                 <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">E-Book</b>
                     ?</h6>
-                <img src="images/delete.png" alt="image" class="img-fluid">
+                <img src="{{ assets('admin/images/delete.png') }}" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
                 @csrf

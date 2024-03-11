@@ -23,16 +23,15 @@ class AffliateBadgesController extends Controller
     {
         try{
             if(isset($request->update)){
-                $uid = uniqid();
                 $id = encrypt_decrypt('decrypt', $request->id);
                 $gallery = Badge::where('id', $id)->first();
-                $file = $request->file('thumbnail');
-                $name = $gallery->path;
-                $link = public_path() . "/uploads/badges/" . $gallery->path;
-                if (File::exists($link)) {
-                    unlink($link);
+                if(isset($gallery->path)){
+                    $link = public_path() . "/uploads/badges/" . $gallery->path;
+                    if (File::exists($link)) {
+                        unlink($link);
+                    }
                 }
-                $file->move("uploads/badges", $name);
+                $name = fileUpload($request->thumbnail, "uploads/badges");
                 Badge::where('id', $id)->update(['path'=> $name]);
                 return redirect()->back()->with('success', 'Image Updated Successfully');
             } else {
@@ -56,10 +55,7 @@ class AffliateBadgesController extends Controller
     public function imageUpload(Request $request)
     {
         try {
-            $uid = uniqid();
-            $file = $request->file('file');
-            $name = "image_" .  $uid . "." . $file->getClientOriginalExtension();
-            $file->move("uploads/badges", $name);
+            $name = fileUpload($request->file, "uploads/badges");
             return response()->json(['status' => true, 'file_name' => $name, 'key' => 1]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());

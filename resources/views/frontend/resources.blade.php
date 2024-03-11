@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/resources.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/resources.css') }}">
 @endpush
 @section('content')
 <section class="resources">
@@ -19,9 +19,9 @@
                     <div class="card float">
                         <div class="img-box">
                             @if(isset($val->image))
-                            <img src="{{ asset("uploads/blogs/".$val->image) }}" alt="image" class="img-fluid">
+                            <img src="{{ assets("uploads/blogs/".$val->image) }}" alt="image" class="img-fluid">
                             @else
-                            <img src="{{ asset('frontend/images/gallery-1.jpg') }}" alt="image" class="img-fluid">
+                            <img src="{{ assets('frontend/images/gallery-1.jpg') }}" alt="image" class="img-fluid">
                             @endif
                         </div>
                         <h5 class="black-color text-capitalize mt-3">{{ $val->title ?? 'NA' }}</h5>
@@ -51,13 +51,13 @@
                             <a href="blog.html">
                                 <div class="card float">
                                     <div class="img-box">
-                                        <img src="{{ asset("uploads/ebooks/".$val['thumbnail']) }}" alt="image" class="img-fluid">
+                                        <img src="{{ assets("uploads/ebooks/".$val['thumbnail']) }}" alt="image" class="img-fluid">
                                     </div>
                                     <h5 class="black-color mt-3 text-capitalize">{{ $val['name'] ?? 'NA' }}</h5>
                                     <p class="mt-3 text-color text-capitalize m-0 p-0">{!! $val['description'] ?? "NA" !!}</p>
                                     @if(isset(auth()->user()->id))
                                         @if($val['purchase'])
-                                        <a target="_blank" href="{{ asset("uploads/ebooks/".$val['pdf_file']) }}"><button class="btn learn-more-btn">View PDF <i class="bi bi-file-earmark-arrow-up"></i></button></a>
+                                        <a target="_blank" href="{{ assets("uploads/ebooks/".$val['pdf_file']) }}"><button class="btn learn-more-btn">View PDF <i class="bi bi-file-earmark-arrow-up"></i></button></a>
                                         @else
                                         <a target="_blank" href="{{ route('user.subscription') }}"><button class="btn learn-more-btn">Subscribe</button></a>
                                         @endif
@@ -82,7 +82,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="left-section">
-                            <img src="{{ asset('frontend/images/newsletter.jpg') }}" alt="image" class="img-fluid">
+                            <img src="{{ assets('frontend/images/newsletter.jpg') }}" alt="image" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="right-section">
-                        <img src="{{ asset('frontend/images/event.jpg') }}" alt="image" class="img-fluid">
+                        <img src="{{ assets('frontend/images/event.jpg') }}" alt="image" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -142,14 +142,14 @@
                             <a href="blog.html">
                                 <div class="card float">
                                     <div class="img-box">
-                                        <img src="{{ asset("uploads/podcasts/".$val['thumbnail']) }}" alt="image" class="img-fluid">
+                                        <img src="{{ assets("uploads/podcasts/".$val['thumbnail']) }}" alt="image" class="img-fluid">
                                     </div>
                                     <h5 class="black-color mt-3 text-capitalize">{{ $val['name'] ?? 'NA' }}</h5>
                                     <p class="mt-3 text-color text-capitalize m-0 p-0">{!! $val['description'] ?? "NA" !!}</p>
                                     @if(isset(auth()->user()->id))
                                         @if($val['purchase'])
                                             @if($val['file_type']=='1')
-                                            <a target="_blank" href="{{ asset("uploads/podcasts/".$val['audio_file']) }}"><button class="btn learn-more-btn">Listen <i class="bi bi-play-circle ms-2"></i></button></a>
+                                            <a target="_blank" href="{{ assets("uploads/podcasts/".$val['audio_file']) }}"><button class="btn learn-more-btn">Listen <i class="bi bi-play-circle ms-2"></i></button></a>
                                             @else
                                             <a target="_blank" href="{{ route('view.podcast', encrypt_decrypt('encrypt', $val['id'])) }}"><button class="btn learn-more-btn">Listen <i class="bi bi-play-circle ms-2"></i></button></a>
                                             @endif
@@ -176,7 +176,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="left-section">
-                        <img src="{{ asset('frontend/images/event.jpg') }}" alt="image" class="img-fluid">
+                        <img src="{{ assets('frontend/images/event.jpg') }}" alt="image" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -212,7 +212,7 @@
                 <div class="col-md-7">
                     <div class="video-box">
                         <video autoplay="" loop="" controls="" width="100%" height="480">
-                            <source type="video/mp4" src="{{ asset('frontend/images/webinar.mp4') }}">
+                            <source type="video/mp4" src="{{ assets('frontend/images/webinar.mp4') }}">
                         </video>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-3">
                             <div class="left-section">
-                                <img src="{{ asset('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -271,7 +271,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-3">
                             <div class="left-section">
-                                <img src="{{ asset('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -292,7 +292,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-3">
                             <div class="left-section">
-                                <img src="{{ asset('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -313,7 +313,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-3">
                             <div class="left-section">
-                                <img src="{{ asset('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
+                                <img src="{{ assets('frontend/images/business-links-1.jpg') }}" alt="image" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-md-9">

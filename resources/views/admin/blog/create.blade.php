@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/add-new-podcast.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/add-new-podcast.css') }}" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/min/dropzone.min.css">
 @endpush
 @push('js')
@@ -34,7 +34,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
+                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="book-img">
-                                    <img src="{{ asset('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
+                                    <img src="{{ assets('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     
                                 </div>
                             </div>
@@ -130,11 +130,6 @@
 
     Dropzone.options.multipleImage = {
         maxFilesize: 1,
-        renameFile: function(file) {
-            var dt = new Date();
-            var time = dt.getTime();
-            return time + file.name;
-        },
         acceptedFiles: ".jpeg,.jpg,.png",
         timeout: 5000,
         addRemoveLinks: true,

@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('frontend/css/sign-up.css') }}">
+    <link rel="stylesheet" href="{{ assets('frontend/css/sign-up.css') }}">
 @endpush
 @section('content')
     <section class="sign-up">
@@ -74,7 +74,7 @@
                                             Upload Profile Photo
                                         </div>
                                         <input type="file" name="file" id="upload-img" accept="image/png, image/jpg, image/jpeg"/>
-                                        <img style="width: 120px !important" class="m-3 img-fluid img-thumbnail rounded d-none" src="{{asset('admin/images/profile-image.jpg')}}" id="display-img" alt="">
+                                        <img style="width: 120px !important" class="m-3 img-fluid img-thumbnail rounded d-none" src="{{assets('admin/images/profile-image.jpg')}}" id="display-img" alt="">
                                     </div>
                                 </div>
                             </div>

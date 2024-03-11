@@ -49,12 +49,9 @@ class BlogController extends Controller
             } else {
                 $blog = new Blog;
 
-                $uid = uniqid();
                 if ($request->hasFile("thumbnail")) {
-                    $file = $request->file('thumbnail');
-                    $name = "blog_" .  $uid . "." . $file->getClientOriginalExtension();
+                    $name = fileUpload($request->thumbnail, "uploads/blogs");
                     $blog->image = $name;
-                    $file->move("uploads/blogs", $name);
                 }
 
                 $blog->title = $request->name;
@@ -107,16 +104,15 @@ class BlogController extends Controller
             } else {
                 $id = encrypt_decrypt('decrypt', $id);
                 $blog = Blog::where('id', $id)->first();
-                $uid = uniqid();
                 if ($request->hasFile("thumbnail")) {
-                    $file = $request->file('thumbnail');
-                    $name = "blog_" .  $uid . "." . $file->getClientOriginalExtension();
-                    $link = public_path() . "/uploads/blogs/" . $blog->image;
-                    if (File::exists($link)) {
-                        unlink($link);
+                    if(isset($blog->image)){
+                        $link = public_path() . "/uploads/blogs/" . $blog->image;
+                        if (File::exists($link)) {
+                            unlink($link);
+                        }
                     }
+                    $name = fileUpload($request->thumbnail, "uploads/blogs");
                     $blog->image = $name;
-                    $file->move("uploads/blogs", $name);
                 }
 
                 $blog->title = $request->name;
@@ -169,17 +165,14 @@ class BlogController extends Controller
     public function imageUpload(Request $request)
     {
         try {
-            $uid = uniqid();
-            $file = $request->file('file');
-            $name = "blog_" .  $uid . "." . $file->getClientOriginalExtension();
             $blog_id = isset($request->id) ? encrypt_decrypt('decrypt', $request->id) : null;
+            $name = fileUpload($request->file, "uploads/blogs");
             $blog = BlogAttribute::create([
                 'blog_id' => $blog_id,
                 'type' => 'slide_image',
                 'status' => 1,
                 'image' => $name,
             ]);
-            $file->move("uploads/blogs", $name);
             return response()->json(['status' => true, 'file_name' => $name, 'key' => 1]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());

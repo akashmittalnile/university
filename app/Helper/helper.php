@@ -24,6 +24,22 @@ if (!function_exists('encrypt_decrypt')) {
     }
 }
 
+if (!function_exists('assets')) {
+    function assets($path)
+    {
+        return asset('public/'.$path);
+    }
+}
+
+if (!function_exists('fileUpload')) {
+    function fileUpload($file, $path, $url = 0)
+    {
+        $name = $file->getClientOriginalName();  
+        $file->move(public_path("$path"), $name);
+        return $name;
+    }
+}
+
 if (!function_exists('successMsg')) {
     function successMsg($msg, $data = [])
     {

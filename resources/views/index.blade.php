@@ -1,9 +1,9 @@
 @extends('layouts.frontend.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('frontend/css/home.css') }}">
+    <link rel="stylesheet" href="{{ assets('frontend/css/home.css') }}">
 @endpush
 @section('content')
-    <section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('uploads/content/{{$data['banner_image']}}' )">
+    <section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['banner_image']}}' )">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -36,7 +36,7 @@
                         <div class="item">
                             <div class="shadow-effect">
                                 <img style="margin: 0; max-width: 350px" class="img-circle img-fluid rounded"
-                                    src="{{ asset('uploads/testimonial/'.$val->image) }}"
+                                    src="{{ assets('uploads/testimonial/'.$val->image) }}"
                                     alt="">
                                 <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
                                 <p>{{ $val->description ?? 'NA' }}</p>
@@ -83,7 +83,7 @@
                         <div class="item">
                             <div class="shadow-effect" style="width: 350px; padding: 10px;">
                                 <img style="margin: 0; max-width: 350px" class="img-circle img-fluid rounded"
-                                    src="{{ asset('uploads/badges/'.$val->path) }}"
+                                    src="{{ assets('uploads/badges/'.$val->path) }}"
                                     alt="">
                             </div>
                         </div>

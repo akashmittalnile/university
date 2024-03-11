@@ -1,9 +1,9 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/profile.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/profile.css') }}" />
 @endpush
 @push('js')
-<script src="{{ asset('admin/js/profile.js') }}"></script>
+<script src="{{ assets('admin/js/profile.js') }}"></script>
 @endpush
 @section('content')
 <main class="main-container dashboard">
@@ -29,9 +29,9 @@
                                 <div class="common-card">
                                     <div class="profile-img">
                                         @if(isset(auth()->user()->profile))
-                                        <img src="{{asset("uploads/profile/".auth()->user()->profile)}}" alt="image" class="img-fluid">
+                                        <img src="{{assets("uploads/profile/".auth()->user()->profile)}}" alt="image" class="img-fluid">
                                         @else
-                                        <img src="{{asset('admin/images/no-image.jpg')}}" alt="image" class="img-fluid">
+                                        <img src="{{assets('admin/images/no-image.jpg')}}" alt="image" class="img-fluid">
                                         @endif
                                         <h5 class="black-color text-center mt-3 f-600">{{ auth()->user()->name ?? 'NA' }}</h5>
                                         <div class="text-center mt-4">
@@ -52,7 +52,7 @@
                                         <div class="col-md-6">
                                             <div class="d-flex align-items-center">
                                                 <div class="img-bg">
-                                                    <img src="images/user.png" alt="image" class="img-fluid">
+                                                    <img src="{{ assets('admin/images/user.png') }}" alt="image" class="img-fluid">
                                                 </div>
                                                 <div class="texts ms-3">
                                                     <p class="text-color">Full Name</p>
@@ -63,7 +63,7 @@
                                         <div class="col-md-6">
                                             <div class="d-flex align-items-center">
                                                 <div class="img-bg">
-                                                    <img src="images/letter.png" alt="image" class="img-fluid">
+                                                    <img src="{{ assets('admin/images/letter.png') }}" alt="image" class="img-fluid">
                                                 </div>
                                                 <div class="texts ms-3">
                                                     <p class="text-color">Email Address</p>
@@ -74,7 +74,7 @@
                                         <div class="col-md-6 m-top">
                                             <div class="d-flex align-items-center">
                                                 <div class="img-bg">
-                                                    <img src="images/telephone.png" alt="image" class="img-fluid">
+                                                    <img src="{{ assets('admin/images/telephone.png') }}" alt="image" class="img-fluid">
                                                 </div>
                                                 <div class="texts ms-3">
                                                     <p class="text-color">Phone</p>
@@ -85,7 +85,7 @@
                                         <div class="col-md-6 m-top">
                                             <div class="d-flex align-items-center">
                                                 <div class="img-bg">
-                                                    <img src="images/location.png" alt="image" class="img-fluid">
+                                                    <img src="{{ assets('admin/images/location.png') }}" alt="image" class="img-fluid">
                                                 </div>
                                                 <div class="texts ms-3">
                                                     <p class="text-color">Address</p>
@@ -135,9 +135,9 @@
                             <div>
                                 <input type="file" name="file" id="upload-img" accept="image/png, image/jpg, image/jpeg"/>
                                 @if(isset(auth()->user()->profile))
-                                    <img width="150" class="m-3 img-fluid img-thumbnail rounded" src="{{asset("uploads/profile/".auth()->user()->profile)}}" id="display-img" alt="">
+                                    <img width="150" class="m-3 img-fluid img-thumbnail rounded" src="{{assets("uploads/profile/".auth()->user()->profile)}}" id="display-img" alt="">
                                 @else
-                                    <img width="150" class="m-3 img-fluid img-thumbnail rounded" src="{{asset('admin/images/profile-image.jpg')}}" id="display-img" alt="">
+                                    <img width="150" class="m-3 img-fluid img-thumbnail rounded" src="{{assets('admin/images/profile-image.jpg')}}" id="display-img" alt="">
                                 @endif
                             </div>
                         </div>

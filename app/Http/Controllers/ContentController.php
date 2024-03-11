@@ -76,43 +76,31 @@ class ContentController extends Controller
                 $name2 = $unser['sec2_image'] ?? null;
                 $name3 = $unser['sec3_image'] ?? null;
                 if ($request->hasFile("sec1_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec1_image');
-                    $name1 = "network_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec1_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec1_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name1);
+                    $name1 = fileUpload($request->sec1_image, "uploads/content");
                 }
                 if ($request->hasFile("sec2_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec2_image');
-                    $name2 = "network_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec2_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec2_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name2);
+                    $name2 = fileUpload($request->sec2_image, "uploads/content");
                 }
                 if ($request->hasFile("sec3_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec3_image');
-                    $name3 = "network_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec3_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec3_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name3);
+                    $name3 = fileUpload($request->sec3_image, "uploads/content");
                 }
                 $val = array(
                     'sec1_title' => $request->sec1_title,
@@ -170,43 +158,31 @@ class ContentController extends Controller
                 $name2 = $unser['sec2_image'] ?? null;
                 $name3 = $unser['sec3_image'] ?? null;
                 if ($request->hasFile("sec1_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec1_image');
-                    $name1 = "foundation_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec1_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec1_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name1);
+                    $name1 = fileUpload($request->sec1_image, "uploads/content");
                 }
                 if ($request->hasFile("sec2_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec2_image');
-                    $name2 = "foundation_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec2_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec2_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name2);
+                    $name2 = fileUpload($request->sec2_image, "uploads/content");
                 }
                 if ($request->hasFile("sec3_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec3_image');
-                    $name3 = "foundation_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec3_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec3_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name3);
+                    $name3 = fileUpload($request->sec3_image, "uploads/content");
                 }
                 $val = array(
                     'sec1_title' => $request->sec1_title,
@@ -260,30 +236,22 @@ class ContentController extends Controller
                 $name1 = $unser['sec1_image'] ?? null;
                 $name2 = $unser['sec2_image'] ?? null;
                 if ($request->hasFile("sec1_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec1_image');
-                    $name1 = "service_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec1_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec1_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name1);
+                    $name1 = fileUpload($request->sec1_image, "uploads/content");
                 }
                 if ($request->hasFile("sec2_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('sec2_image');
-                    $name2 = "service_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['sec2_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['sec2_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name2);
+                    $name2 = fileUpload($request->sec2_image, "uploads/content");
                 }
                 $val = array(
                     'sec1_title' => $request->sec1_title,
@@ -323,13 +291,10 @@ class ContentController extends Controller
             $link = new BusinessLink;
             $link->title = $request->title;
             $link->links = $request->link;
-            $uid = uniqid();
             
             if ($request->hasFile("image")) {
-                $file = $request->file('image');
-                $name = "links_" .  $uid . "." . $file->getClientOriginalExtension();
+                $name = fileUpload($request->image, "uploads/content");
                 $link->image = $name;
-                $file->move("uploads/content", $name);
             }
             $link->description = $request->description;
             $link->status = 1;
@@ -359,19 +324,16 @@ class ContentController extends Controller
             $links = BusinessLink::where('id', $id)->first();
             $links->title = $request->title;
             $links->links = $request->link;
-            $uid = uniqid();
             
             if ($request->hasFile("image")) {
-                $file = $request->file('image');
-                $name = "links_" .  $uid . "." . $file->getClientOriginalExtension();
                 if(isset($links->image)){
                     $link = public_path() . "/uploads/content/" . $links->image;
                     if (file_exists($link)) {
                         unlink($link);
                     }
                 }
+                $name = fileUpload($request->image, "uploads/content");
                 $links->image = $name;
-                $file->move("uploads/content", $name);
 
             }
             $links->description = $request->description;
@@ -414,16 +376,15 @@ class ContentController extends Controller
     public function gallerySave(Request $request)
     {
         if(isset($request->update)){
-            $uid = uniqid();
             $id = encrypt_decrypt('decrypt', $request->id);
             $gallery = GalleryAttribute::where('id', $id)->first();
-            $file = $request->file('thumbnail');
-            $name = "gallery_" .  $uid . "." . $file->getClientOriginalExtension();
-            $link = public_path() . "/uploads/gallery/" . $gallery->path;
-            if (File::exists($link)) {
-                unlink($link);
+            if(isset($gallery->path)){
+               $link = public_path() . "/uploads/gallery/" . $gallery->path;
+                if (File::exists($link)) {
+                    unlink($link);
+                } 
             }
-            $file->move("uploads/gallery", $name);
+            $name = fileUpload($request->thumbnail, "uploads/gallery");
             GalleryAttribute::where('id', $id)->update(['path'=> $name]);
             return redirect()->back()->with('success', 'Image Updated Successfully');
         } else {
@@ -444,10 +405,7 @@ class ContentController extends Controller
     public function imageUpload(Request $request)
     {
         try {
-            $uid = uniqid();
-            $file = $request->file('file');
-            $name = "gallery_" .  $uid . "." . $file->getClientOriginalExtension();
-            $file->move("uploads/gallery", $name);
+            $name = fileUpload($request->file, "uploads/gallery");
             return response()->json(['status' => true, 'file_name' => $name, 'key' => 1]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
@@ -582,17 +540,13 @@ class ContentController extends Controller
                 $unser = unserialize($content->value);
                 $name = $unser['banner_image'] ?? null;
                 if ($request->hasFile("banner_image")) {
-                    $uid = uniqid();
-                    $file = $request->file('banner_image');
-                    $name = "home_" .  $uid . "." . $file->getClientOriginalExtension();
-    
                     if(isset($unser['banner_image'])){
                        $link = public_path() . "/uploads/content/" . $unser['banner_image'];
                         if (file_exists($link)) {
                             unlink($link);
                         } 
                     }
-                    $file->move("uploads/content", $name);
+                    $name = fileUpload($request->banner_image, "uploads/content");
                 }
                 $val = array(
                     'banner_title' => $request->banner_title,

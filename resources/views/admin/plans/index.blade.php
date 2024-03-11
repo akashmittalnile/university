@@ -1,9 +1,9 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/manage-membership-plan.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/manage-membership-plan.css') }}" />
 @endpush
 @push('js')
-<script src="{{ asset('admin/js/dashboard.js') }}"></script>
+<script src="{{ assets('admin/js/dashboard.js') }}"></script>
 <script>
     function updatePlan(ele) {
         $("#updatePlan").modal("show");
@@ -34,7 +34,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
+                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>

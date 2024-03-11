@@ -1,11 +1,11 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('admin/css/manage-podcasts.css') }}" />
+<link rel="stylesheet" href="{{ assets('admin/css/manage-podcasts.css') }}" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/min/dropzone.min.css">
 @endpush
 @push('js')
-<script src="{{ asset('admin/js/text-editor.js') }}"></script>
+<script src="{{ assets('admin/js/text-editor.js') }}"></script>
 @endpush
 @section('content')
 <!-- Main -->
@@ -20,7 +20,7 @@
             <a href="#">
                 <div class="d-flex align-items-center">
                     <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
+                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
                     </div>
                     <div class="button-link">
                         <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
@@ -56,20 +56,20 @@
                             <div class="slid col-4 mb-4">
                                 <div class="box-slid common-card float w-100">
                                     <div class="img-box" style="height: 75%;">
-                                        <img id style="height: 100%;" src="{{ asset("uploads/images/$item->path") }}" alt="image" class="img-fluid">
+                                        <img id style="height: 100%;" src="{{ assets("uploads/images/$item->path") }}" alt="image" class="img-fluid">
                                     </div>
                                     <div class="d-flex mt-4">
                                         <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.uploaded.image.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
-                                        <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-img="{{ asset("uploads/images/$item->path") }}">Edit Image</button></a>
+                                        <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-img="{{ assets("uploads/images/$item->path") }}">Edit Image</button></a>
                                         <a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy Image URL" style="background: #eee; padding: 10px 15px; border-radius: 50%; color: black; margin-left: 15px" href="javascript:void(0)" onclick="copyToClipboard('copy_{{ $item->id }}')"><i class="bi bi-copy"></i></a>
                                         
                                     </div>
-                                    <input style="opacity: 0; position: absolute;" type="text" id="copy_{{ $item->id }}" value="{{ asset("uploads/images/$item->path") }}">
+                                    <input style="opacity: 0; position: absolute;" type="text" id="copy_{{ $item->id }}" value="{{ assets("uploads/images/$item->path") }}">
                                 </div>
                             </div>
                             @empty
                             <div class="text-center mt-5">
-                                <img width="300" src="{{ asset('admin/images/no-data.svg') }}" alt="">
+                                <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
                                 <h4 class="p-4 text-center my-2 w-100">No Image found</h4>
                             </div>
                             @endforelse
@@ -166,7 +166,7 @@
             <div class="modal-body">
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
                 <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Image</b> ?</h6>
-                <img src="images/delete.png" alt="image" class="img-fluid">
+                <img src="{{ assets('admin/images/delete.png') }}" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
                 @csrf
@@ -232,11 +232,6 @@
 
     Dropzone.options.multipleImage = {
         maxFilesize: 5,
-        renameFile: function(file) {
-            var dt = new Date();
-            var time = dt.getTime();
-            return time + file.name;
-        },
         acceptedFiles: ".jpeg,.jpg,.png,.svg",
         timeout: 50000,
         addRemoveLinks: true,

@@ -34,7 +34,7 @@ class UserController extends Controller
         $plans = UserPlanDetail::where("user_id", $id)->get();
         $total = 0;
         foreach ($plans as $item) {
-            $total += $item->plan->price;
+            $total += $item->plan->price ?? 0;
         }
         $user = User::where("id", $id)->first();
 

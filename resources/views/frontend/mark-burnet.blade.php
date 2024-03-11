@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/mark-burnet-foundation.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/mark-burnet-foundation.css') }}">
 @endpush
 @section('content')
 <section class="mark-burnet">
@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="left-section">
-                        <img src="{{ asset('uploads/content/'.$data['sec1_image']) }}" alt="image" class="img-fluid">
+                        <img src="{{ assets('uploads/content/'.$data['sec1_image']) }}" alt="image" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -26,7 +26,7 @@
                 <div class="col-md-6">
                     <div class="left-section">
                         <div class="img-box">
-                            <img src="{{ asset('uploads/content/'.$data['sec2_image']) }}" alt="image" class="img-fluid">
+                            <img src="{{ assets('uploads/content/'.$data['sec2_image']) }}" alt="image" class="img-fluid">
                         </div>
                         <!-- <img src="images/donate-support-2.jpg" alt="image" class="img-fluid img-2"> -->
                     </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="merch" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('uploads/content/{{$data['sec3_image']}}' )">
+    <div class="merch" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' )">
         <div class="container">
             <h1 class="white-color f-600 text-center mb-3">{{ $data['sec3_title'] ?? 'NA' }}</h1>
             <p class="white-color text-justify text-center">{{ $data['sec3_sub_title'] ?? 'NA' }}</p>
@@ -54,7 +54,7 @@
                         <div class="owl-carousel owl-theme pmoCarousel">
                             @forelse($product as $key => $value)
                             <div class="item">
-                                <img src="{{ asset("uploads/products/".$value->image) }}" class="aboutImageSlide">
+                                <img src="{{ assets("uploads/products/".$value->image) }}" class="aboutImageSlide">
                             </div>
                             @empty
                             @endforelse

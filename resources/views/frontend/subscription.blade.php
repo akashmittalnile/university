@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/membership-plan.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/membership-plan.css') }}">
 <style>
     .stripe-button-el {
         opacity: 1;
@@ -50,7 +50,7 @@
                                             data-plan_id="{{ $item->id }}"
                                             data-email="{{ auth()->user()->email }}"
                                             data-description="{{ auth()->user()->name }}"
-                                            data-image="{{ asset('frontend/images/logo.png') }}" @endif
+                                            data-image="{{ assets('frontend/images/logo.png') }}" @endif
                                             class="btn learn-more-btn">Buy Now</button>
                                         </a>
                                 @endif
@@ -90,7 +90,7 @@
                     status manually from the respective sections
                 </p>
                 <div class="d-flex justify-content-center mt-5">
-                    <button class="btn common-btn yes-btn ms-3 mx-2" id="confirm_button" data-name="{{ $item->name }}" data-amount="{{ $item->price * 100 }}" data-key="{{ env('STRIPE_PUBLISH') }}" data-currency="{{ $item->currency }}" data-email="{{ auth()->user()->email }}" data-image="{{ asset('assets/vendor/images/logo.svg') }}" onclick="openPaymentForm(this,{{ $item->id }})">
+                    <button class="btn common-btn yes-btn ms-3 mx-2" id="confirm_button" data-name="{{ $item->name }}" data-amount="{{ $item->price * 100 }}" data-key="{{ env('STRIPE_PUBLISH') }}" data-currency="{{ $item->currency }}" data-email="{{ auth()->user()->email }}" data-image="{{ assets('assets/vendor/images/logo.svg') }}" onclick="openPaymentForm(this,{{ $item->id }})">
                         Confirm</button>
                     <a><button class="btn outline-btn not-btn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             Cancel

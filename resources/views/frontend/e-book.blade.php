@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('frontend/css/resources.css') }}">
+<link rel="stylesheet" href="{{ assets('frontend/css/resources.css') }}">
 @endpush
 @section('content')
 <section class="resources">
@@ -17,7 +17,7 @@
                 <div class="col-md-4 mb-3 block">
                     <div class="card float">
                         <div class="img-box">
-                            <img src="{{ asset("uploads/ebooks/".$val['thumbnail']) }}" alt="image" class="img-fluid">
+                            <img src="{{ assets("uploads/ebooks/".$val['thumbnail']) }}" alt="image" class="img-fluid">
                         </div>
                         <h5 class="black-color mt-3 text-capitalize">{{ $val['name'] ?? 'NA' }}</h5>
                         <ul class="mt-3">
@@ -25,7 +25,7 @@
                         </ul>
                         @if(isset(auth()->user()->id))
                             @if($val['purchase'])
-                            <a target="_blank" href="{{ asset("uploads/ebooks/".$val['pdf_file']) }}"><button class="btn learn-more-btn">View PDF <i class="bi bi-file-earmark-arrow-up"></i></button></a>
+                            <a target="_blank" href="{{ assets("uploads/ebooks/".$val['pdf_file']) }}"><button class="btn learn-more-btn">View PDF <i class="bi bi-file-earmark-arrow-up"></i></button></a>
                             @else
                             <a target="_blank" href="{{ route('user.subscription') }}"><button class="btn learn-more-btn">Subscribe</button></a>
                             @endif

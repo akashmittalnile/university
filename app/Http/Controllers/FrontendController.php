@@ -69,18 +69,15 @@ class FrontendController extends Controller
             }
         }
         $user = User::where('id', auth()->user()->id)->first();
-        $uid = uniqid();
         if ($request->hasFile("file")) {
-            $file = $request->file('file');
-            $name = "profile_" .  $uid . "." . $file->getClientOriginalExtension();
             if(isset($user->profile)){
                 $link = public_path() . "/uploads/profile/" . $user->profile;
                 if (file_exists($link)) {
                     unlink($link);
                 }
             }
+            $name = fileUpload($request->file, "uploads/profile");
             $user->profile = $name;
-            $file->move("uploads/profile", $name);
         }
         $user->name = $request->name;
         $user->email = $request->email;

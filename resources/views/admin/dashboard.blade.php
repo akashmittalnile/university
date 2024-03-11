@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('admin/css/dashboard.css') }}" />
+    <link rel="stylesheet" href="{{ assets('admin/css/dashboard.css') }}" />
     <style>
         th,
         tr {
@@ -11,7 +11,7 @@
     </style>
 @endpush
 @push('js')
-    <script src="{{ asset('admin/js/dashboard.js') }}"></script>
+    <script src="{{ assets('admin/js/dashboard.js') }}"></script>
 @endpush
 @section('content')
     <!-- Main -->
@@ -24,7 +24,7 @@
                 <a href="#">
                     <div class="d-flex align-items-center">
                         <div class="profile-pic">
-                            <img src="{{ isset(auth()->user()->profile) ? asset("uploads/profile/".auth()->user()->profile) : asset('admin/images/no-image.jpg')}}" alt="profile image"
+                            <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image"
                                 class="img-fluid me-2" />
                         </div>
                         <div class="button-link">
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="img-bg">
-                                    <img src="{{ asset('/admin/images/users.png') }}" alt="" class="img-fluid" />
+                                    <img src="{{ assets('/admin/images/users.png') }}" alt="" class="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="img-bg">
-                                <img src="{{ asset('/admin/images/payment.png') }}" alt="" class="img-fluid" />
+                                <img src="{{ assets('/admin/images/payment.png') }}" alt="" class="img-fluid" />
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="img-bg">
-                                <img src="{{ asset('/admin/images/payment.png') }}" alt="" class="img-fluid" />
+                                <img src="{{ assets('/admin/images/payment.png') }}" alt="" class="img-fluid" />
                             </div>
                         </div>
                     </div>
