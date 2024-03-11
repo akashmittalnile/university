@@ -22,16 +22,16 @@
                             <h6 class="mb-4">Enter your Email & Password to login</h6>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="email" name="email" class="form-control" id="floatingInput"
+                                    <input type="email" name="email" class="form-control" id="email"
                                         placeholder="Enter your email Id">
-                                    <label for="floatingInput">Email</label>
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="password" name="password" class="form-control" id="floatingInput"
+                                    <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Enter Password">
-                                    <label for="floatingInput">Password</label>
+                                    <label for="password">Password</label>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -70,16 +70,18 @@
                 errorPlacement: function(error, element) {
                     // error.addClass("invalid-feedback");
                     // element.closest(".field").append(error);
-                    element.addClass("border border-danger")
+                    element.addClass("border border-danger");
+                    error.addClass("invalid-feedback");
+                    element.closest(".form-floating").append(error);
                 },
                 highlight: function(element, errorClass, validClass) {
                     $('.please-wait').hide();
-
+                    $(element).addClass("is-invalid");
                 },
                 unhighlight: function(element, errorClass, validClass) {
                     // $(element).removeClass("text-danger");
                     $(element).removeClass("border border-danger");
-
+                    $(element).removeClass("is-invalid");
                 },
                 submitHandler: function(form, event) {
                     event.preventDefault();

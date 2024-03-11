@@ -49,12 +49,6 @@
                     </div>
                 </div>
             </div>
-            @if(isset(auth()->user()->id))
-            <p class="text-center mt-3">Share Your Thoughts!</p>
-            <div class="text-center">
-                <a href="javascript:void(0)"><button data-bs-toggle="modal" data-bs-target="#review-modal" class="common-btn">Write a Review</button></a>
-            </div>
-            @endif
         </div>
     </section>
     @endif

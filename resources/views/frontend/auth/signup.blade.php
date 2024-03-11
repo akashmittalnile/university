@@ -21,37 +21,37 @@
                             <h5 class="black-color f-500">Please Enter Your Basic Details</h5>
                             <div class="field">
                                 <div class="form-floating mb-3 mt-3">
-                                    <input type="text" class="form-control" id="floatingInput" name="name"
+                                    <input type="text" class="form-control" id="name" name="name"
                                         placeholder="Enter your name">
-                                    <label for="floatingInput">Name</label>
+                                    <label for="name">Name</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="tel" class="form-control" id="floatingInput" name="phone"
+                                    <input type="tel" class="form-control" id="phone" name="phone"
                                         maxlength="15" placeholder="Enter your number">
-                                    <label for="floatingInput">Phone</label>
+                                    <label for="phone">Phone</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" name="email"
+                                    <input type="email" class="form-control" id="email" name="email"
                                         placeholder="Enter your email Id">
-                                    <label for="floatingInput">Email</label>
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingInput" name="password"
+                                    <input type="password" class="form-control" id="password" name="password"
                                         placeholder="Create New Password">
-                                    <label for="floatingInput">Create New Password</label>
+                                    <label for="password">Create New Password</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingInput"
+                                    <input type="password" class="form-control" id="cnf_password"
                                         name="password_confirmation" placeholder="Confirm Password">
-                                    <label for="floatingInput">Confirm Password</label>
+                                    <label for="cnf_password">Confirm Password</label>
                                 </div>
                             </div>
 
@@ -67,8 +67,8 @@
                                 </div>
                             </div> -->
 
-                            <div class="">
-                                <div class="file-upload d-flex align-items-center mb-3 field">
+                            <div class="form-floating mb-3">
+                                <div class="file-upload d-flex align-items-center field">
                                     <div class="file btn black-color upload-btn">
                                         <div id="file-upload-img">
                                             Upload Profile Photo
@@ -157,8 +157,7 @@
                         required: true,
                         maxlength: 191,
                         minlength: 6,
-                        password_match: true
-
+                        equalTo: "input[name='password']"
                     },
                 },
                 errorElement: "span",
@@ -166,15 +165,18 @@
                     // error.addClass("invalid-feedback");
                     element.closest(".file").addClass("border border-danger");
                     element.addClass("border border-danger")
+                    error.addClass("invalid-feedback");
+                    element.closest(".form-floating").append(error);
                 },
                 highlight: function(element, errorClass, validClass) {
                     $('.please-wait').hide();
-
+                    $(element).addClass("is-invalid");
                 },
                 unhighlight: function(element, errorClass, validClass) {
                     // $(element).removeClass("text-danger");
                     $(element).removeClass("border border-danger");
                     $(element).closest(".file").removeClass("border border-danger");
+                    $(element).removeClass("is-invalid");
                 },
                 submitHandler: function(form, event) {
                     event.preventDefault();
@@ -193,7 +195,12 @@
                         dataType: 'json',
                         contentType: false,
                         processData: false,
-
+                        beforeSend: function() {
+                            $("#preloader").show()
+                        },
+                        complete: function() {
+                            $("#preloader").hide()
+                        },
                         success: function(response) {
                             if (response.status == 200) {
 

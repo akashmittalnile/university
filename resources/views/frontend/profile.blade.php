@@ -9,22 +9,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 @endpush
 @section('content')
-<section class="user-details">
-    <div class="container">
-        <div class="user-detiled-header">
-            <div class="row align-items-center">
-                <div class="col-md-12">
-                    <div class="left-section">
-                        <h2 class="black-color text-center font-weight-bolder">User <b class="main-color">Details</b></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="my-info">
+<section class="user-details" style="padding-top: 6.6% !important;">
+    <div class="my-info mt-0 pt-5">
+        <h2 class="black-color text-center font-weight-bolder mb-5">User <b class="main-color">Details</b></h2>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="left-section">
                         @if(isset($user->profile))
                         <img src="{{ assets('uploads/profile/'.$user->profile) }}" class="img-fluid">
@@ -33,7 +23,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="head mb-2">
                         <h2 class="black-color mb-0 pb-0">{{ $user->name }}</h2>
                     </div>
@@ -45,16 +35,19 @@
                         <img src="{{ assets('frontend/images/letter.png') }}" alt="image" class="img-fluid me-2">
                         <h6 class="black-color f-600 m-0 p-0">{{ $user->email }}</h6>
                     </div>
-                    <div class="mt-4">
-                        <a href="javascript:void(0)">
-                            <button class="common-btn" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">Edit Details</button>
-                        </a>
+                    <div class="d-flex flex-row mt-4">
+                        <div class="">
+                            <a href="javascript:void(0)">
+                                <button class="common-btn" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">Edit Details</button>
+                            </a>
+                        </div>
+                        <div class="mx-3">
+                            <a href="javascript:void(0)">
+                                <button class="common-btn" data-bs-toggle="modal" data-bs-target="#change-password-modal">Change Password</button>
+                            </a>
+                        </div>
                     </div>
-                    <div class="mt-2">
-                        <a href="javascript:void(0)">
-                            <button class="common-btn" data-bs-toggle="modal" data-bs-target="#change-password-modal">Change Password</button>
-                        </a>
-                    </div>
+                    
                 </div>
                 <div class="col-md-12 mt-5 mb-3">
                     <h5 class="sub-head text-capitalize">My <b class="main-color">Subscription</b> Plan & <b class="main-color">payment</b> Details</h5>
