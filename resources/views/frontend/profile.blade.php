@@ -13,14 +13,9 @@
     <div class="container">
         <div class="user-detiled-header">
             <div class="row align-items-center">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="left-section">
-                        <h1 class="black-color text-md-end">User <b class="main-color">Details</b></h1>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="right-section  common-shadow">
-                        <img src="{{ assets('frontend/images/user-details.jpg') }}" alt="image" class="img-fluid">
+                        <h2 class="black-color text-center font-weight-bolder">User <b class="main-color">Details</b></h2>
                     </div>
                 </div>
             </div>
@@ -291,28 +286,21 @@
                     error: function(data) {
                         if (data.status == 422) {
                             let li_htm = '';
-                            var form = $("#create_form");
-                            $.each(data.responseJSON.errors, function(k, v) {
-                                const $input = form.find(
-                                    `input[name=${k}],select[name=${k}],textarea[name=${k}]`
+                            console.log(data);
+                            var form = $("#profile_form");
+                            const input = form.find(
+                                `input[name=${data.errors}]`
+                            );
+                            console.log(input);
+                            if (input.next('small').length) {
+                                input.next('small').html(data.message);
+                            } else {
+                                input.after(
+                                    `<small class='text-danger'>${data.message}</small>`
                                 );
-                                if ($input.next('small').length) {
-                                    $input.next('small').html(v);
-                                    if (k == 'services' || k == 'membership') {
-                                        $('#myselect').next('small').html(v);
-                                    }
-                                } else {
-                                    $input.after(
-                                        `<small class='text-danger'>${v}</small>`
-                                    );
-                                    if (k == 'services' || k == 'membership') {
-                                        $('#myselect').after(
-                                            `<small class='text-danger'>${v[0]}</small>`
-                                        );
-                                    }
-                                }
-                                li_htm += `<li>${v}</li>`;
-                            });
+                            }
+                            li_htm += `<li>${data.message}</li>`;
+                            
 
                             return false;
                         } else {

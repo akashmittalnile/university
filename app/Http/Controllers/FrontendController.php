@@ -69,6 +69,13 @@ class FrontendController extends Controller
             }
         }
         $user = User::where('id', auth()->user()->id)->first();
+        if($request->email != $user->email){
+            $isEmailExist = User::where('email', $request->email)->first();
+            if(isset($isEmailExist->id)){
+                return response()->json(['message' => 'This email is already registered', 'status' => false]);
+            }
+        }
+
         if ($request->hasFile("file")) {
             if(isset($user->profile)){
                 $link = public_path() . "/uploads/profile/" . $user->profile;

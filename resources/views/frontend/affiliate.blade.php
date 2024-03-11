@@ -35,8 +35,8 @@
         <h1 class="black-color text-center text-capitalize">{{ $data['sec1_title'] ?? 'NA' }}</h1>
         <p class="black-color mt-4 text-center">{{ $data['sec1_sub_title'] ?? 'NA' }}</p>
         <div class="d-flex justify-content-center affiliate-buttons mt-5">
-            <a href=""><button class="btn free-btn">Resources<i class="bi bi-arrow-right ms-3"></i></button></a>
-            <a href=""><button class="btn common-btn ms-md-3">Join the Community<i class="bi bi-arrow-right ms-3"></i></button></a>
+            <a href="{{ route('resources') }}"><button class="btn free-btn">Resources<i class="bi bi-arrow-right ms-3"></i></button></a>
+            <a href="{{ route('user.subscription') }}"><button class="btn common-btn ms-md-3">Join the Community<i class="bi bi-arrow-right ms-3"></i></button></a>
         </div>
     </div>
     <div class="affiliate-images" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec2_image']}}' )">
@@ -80,7 +80,7 @@
                                 <h4 class="black-color mb-4 f-600">{{ $value->title ?? 'NA' }}</h4>
                                 <p class="text-color">{{ $value->description ?? 'NA' }}</p>
                                 <br>
-                                <a href="{{ $value->links ?? 'NA' }}" target="_blank"><button class="btn learn-more-btn mt-2">Learn More<i class="bi bi-arrow-right ms-3"></i></button></a>
+                                <!-- <a href="{{ $value->links ?? 'NA' }}" target="_blank"><button class="btn learn-more-btn mt-2">Learn More<i class="bi bi-arrow-right ms-3"></i></button></a> -->
                             </div>
                         </div>
                     </div>
