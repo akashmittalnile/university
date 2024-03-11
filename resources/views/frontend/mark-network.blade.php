@@ -75,7 +75,11 @@
                                     <li class="pricing-feature text-capitalize">{{ $text }}</li>
                                     @endforeach
                                 </ul>
+                                @if($item->price == 0)
+                                <a class="mb-4" href="{{ route('user.subscription') }}"><button class="btn buy-btn btn-green">Free</button></a>
+                                @else
                                 <a class="mb-4" href="{{ route('user.subscription') }}"><button class="btn buy-btn btn-green">Buy Now</button></a>
+                                @endif
                             </div>
                             @empty
                             @endforelse
