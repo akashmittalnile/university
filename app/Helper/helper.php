@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DefaultMail;
 use App\Models\Content;
+use App\Models\User;
 
 if (!function_exists('encrypt_decrypt')) {
     function encrypt_decrypt($action, $string)
@@ -67,6 +68,14 @@ if (!function_exists('businessHour')) {
     {
         $hour = Content::where("name", "business-hour")->first();
         return unserialize($hour->value);
+    }
+}
+
+if (!function_exists('adminData')) {
+    function adminData()
+    {
+        $adminPro = User::where("admin", 1)->orderBy('id')->first();
+        return $adminPro;
     }
 }
 

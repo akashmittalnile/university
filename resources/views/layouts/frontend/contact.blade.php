@@ -126,8 +126,7 @@
                             @endif
                         </div>
                     </div>
-                    <a href="tel:(876)285-2626"><button class="btn common-btn"><i
-                                class="bi bi-telephone-outbound me-2"></i>Call Now - (876) 285-2626</button></a>
+                    <a href="tel:(876)285-2626"><button class="btn common-btn"><i class="bi bi-telephone-outbound me-2"></i>Call Now - {{ adminData()->phone ?? "(876) 285-2626" }}</button></a>
                 </div>
                 @endif
             </div>
