@@ -86,7 +86,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color">Edit Testimonial</h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Edit Testimonial</h4>
                 
                 <form action="{{ route('admin.manage.testimonial.update') }}" method="post" enctype="multipart/form-data" id="update_form">
                     @csrf
@@ -152,7 +152,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color">Add Testimonial</h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Testimonial</h4>
 
                 <form action="{{ route('admin.manage.testimonial.save') }}" method="post" enctype="multipart/form-data" id="create_form">
                     @csrf

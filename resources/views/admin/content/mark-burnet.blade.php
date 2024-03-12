@@ -8,7 +8,7 @@
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
 
-            <h3 class="font-weight-bold black-color">Mark Burnett Foundation</h3>
+            <h3 class="font-weight-bold black-color">Mark Burnet Foundation</h3>
         </div>
         <div class="profile-link">
             <a href="#">

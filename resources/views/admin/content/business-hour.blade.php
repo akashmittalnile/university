@@ -59,11 +59,13 @@
                                              </textarea>
                                         </div>
                                     </div>
+                                    <div class="col-lg-12">
+                                        <button class="btn common-btn" type="submit" >Submit</button>
+                                    </div>
                                 </div>
-                                <div class="d-flex">
-                                    <!-- <a href="javascript:void(0)"><button type="button" class="btn outline-btn">Cancel</button></a> -->
+                                <!-- <div class="d-flex">
                                     <a href="javascript:void(0)"><button class="btn common-btn" type="submit">Submit</button></a>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>
