@@ -162,6 +162,7 @@ a{text-decoration: none;}
     .e-book{margin-top: 50px;padding: 50px 10px;}
     .e-book .slide .card .img-box img{height: 250px;}
     .resources-box p{font-size: 12px;}
+    .merch{margin-top: 50px;padding: 50px 10px;}
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
     .resourse-banner { height: 39vh; }
@@ -179,3 +180,7 @@ a{text-decoration: none;}
 @media only screen and (min-width: 390px) and (max-width: 450px){
     .podcast-contents {margin-top: -160px;}
 }
+
+.merch{padding: 50px 0px; margin-top: 100px;background:  url("../images/merch-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.merch .signup-btn{width: 200px;}
+.merch h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}

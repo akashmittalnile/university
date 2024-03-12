@@ -356,7 +356,8 @@ class FrontendController extends Controller
                 $temp['audio_file'] = $val->audio_file;
                 $podcasts[] = $temp;
             }
-            return view("frontend.resources")->with(compact('podcasts', 'ebooks', 'blogs'));
+            $product = Product::orderByDesc('id')->get();
+            return view("frontend.resources")->with(compact('podcasts', 'ebooks', 'blogs', 'product'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
