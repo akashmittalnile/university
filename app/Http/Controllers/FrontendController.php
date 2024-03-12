@@ -329,9 +329,11 @@ class FrontendController extends Controller
             foreach($ebook as $val){
                 $arr = explode(',', $val->plans);
                 $isPurchase = array_intersect($arr,$myPlans);
+                $plan = Plan::where('id', $val->plans)->first();
                 if(count($isPurchase) > 0)
                 $temp['purchase'] = true;
                 else $temp['purchase'] = false;
+                $temp['plan_name'] = $plan->name;
                 $temp['name'] = $val->name;
                 $temp['description'] = $val->description;
                 $temp['thumbnail'] = $val->thumbnail;
@@ -341,9 +343,11 @@ class FrontendController extends Controller
             foreach($podcast as $val){
                 $arr = explode(',', $val->plans);
                 $isPurchase = array_intersect($arr,$myPlans);
+                $plan = Plan::where('id', $val->plans)->first();
                 if(count($isPurchase) > 0)
                 $temp['purchase'] = true;
                 else $temp['purchase'] = false;
+                $temp['plan_name'] = $plan->name;
                 $temp['name'] = $val->name;
                 $temp['description'] = $val->description;
                 $temp['thumbnail'] = $val->thumbnail;
@@ -370,9 +374,11 @@ class FrontendController extends Controller
             foreach($podcast as $val){
                 $arr = explode(',', $val->plans);
                 $isPurchase = array_intersect($arr,$myPlans);
+                $plan = Plan::where('id', $val->plans)->first();
                 if(count($isPurchase) > 0)
                 $temp['purchase'] = true;
                 else $temp['purchase'] = false;
+                $temp['plan_name'] = $plan->name;
                 $temp['name'] = $val->name;
                 $temp['description'] = $val->description;
                 $temp['thumbnail'] = $val->thumbnail;
@@ -411,9 +417,11 @@ class FrontendController extends Controller
             foreach($ebook as $val){
                 $arr = explode(',', $val->plans);
                 $isPurchase = array_intersect($arr,$myPlans);
+                $plan = Plan::where('id', $val->plans)->first();
                 if(count($isPurchase) > 0)
                 $temp['purchase'] = true;
                 else $temp['purchase'] = false;
+                $temp['plan_name'] = $plan->name;
                 $temp['name'] = $val->name;
                 $temp['description'] = $val->description;
                 $temp['thumbnail'] = $val->thumbnail;

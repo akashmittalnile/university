@@ -86,11 +86,11 @@
                     Foundation
             </li>
         </a>
-        <a href="{{ route('admin.resources') }}">
+        <!-- <a href="{{ route('admin.resources') }}">
             <li class="sidebar-list-item {{ Route::is('admin.resources') ? 'active' : '' }}">
                 <i class="bi bi-book me-2"></i>Resources
             </li>
-        </a>
+        </a> -->
         <a href="{{ route('admin.contacts') }}">
             <li class="sidebar-list-item {{ (Route::is('admin.contacts') || Route::is('admin.business.hours')) ? 'active' : '' }}">
                 <i class="bi bi-person-rolodex me-2"></i>Contact

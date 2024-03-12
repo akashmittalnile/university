@@ -3,6 +3,17 @@
 <link rel="stylesheet" href="{{ assets('frontend/css/resources.css') }}">
 @endpush
 @section('content')
+<style>
+    .current-plan{background-color: #d81b1b;
+    position: absolute;
+    border-radius: 10px 0px 10px 0px;left: auto;right: 0;
+    margin-top: -13px;
+    padding: 5px 10px;
+    z-index: 9;}
+    .current-plan p{color: #ffffff;font-size: 14px;}
+    .current-div{position: relative;}
+    .current-plan p{margin: 0;padding: 0;}
+</style>
 <section class="resources">
     <div class="resourse-banner">
         <div class="resources-box common-shadow">
@@ -14,7 +25,10 @@
         <div class="container">
             <div class="row">
                 @forelse($ebooks as $val)
-                <div class="col-md-4 mb-3 block">
+                <div class="col-md-4 mb-3 block current-div">
+                    <div class="current-plan me-auto">
+                        <p>{{ $val['plan_name'] ?? 'NA' }}</p>
+                    </div>
                     <div class="card float">
                         <div class="img-box">
                             <img src="{{ assets("uploads/ebooks/".$val['thumbnail']) }}" alt="image" class="img-fluid">

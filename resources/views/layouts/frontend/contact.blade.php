@@ -44,7 +44,7 @@
                 <div class="weeks">
                     <div class="d-flex mb-2 @if(businessHour()['sec1_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Mon</h6>
+                            <h6 class="@if(businessHour()['sec1_closed'] == 0) main-color @endif">Mon</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec1_closed'] == 1)
@@ -56,7 +56,7 @@
                     </div>
                     <div class="d-flex mb-2 @if(businessHour()['sec2_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Tue</h6>
+                            <h6 class="@if(businessHour()['sec2_closed'] == 0) main-color @endif">Tue</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec2_closed'] == 1)
@@ -68,7 +68,7 @@
                     </div>
                     <div class="d-flex mb-2 @if(businessHour()['sec3_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Wed</h6>
+                            <h6 class="@if(businessHour()['sec3_closed'] == 0) main-color @endif">Wed</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec3_closed'] == 1)
@@ -80,7 +80,7 @@
                     </div>
                     <div class="d-flex mb-2 @if(businessHour()['sec4_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Thu</h6>
+                            <h6 class="@if(businessHour()['sec4_closed'] == 0) main-color @endif">Thu</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec4_closed'] == 1)
@@ -92,7 +92,7 @@
                     </div>
                     <div class="d-flex mb-2 @if(businessHour()['sec5_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Fri</h6>
+                            <h6 class="@if(businessHour()['sec5_closed'] == 0) main-color @endif">Fri</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec5_closed'] == 1)
@@ -104,7 +104,7 @@
                     </div>
                     <div class="d-flex mb-2 @if(businessHour()['sec6_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Sat</h6>
+                            <h6 class="@if(businessHour()['sec6_closed'] == 0) main-color @endif">Sat</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec6_closed'] == 1)
@@ -116,7 +116,7 @@
                     </div>
                     <div class="d-flex mb-2 @if(businessHour()['sec7_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6>Sun</h6>
+                            <h6 class="@if(businessHour()['sec7_closed'] == 0) main-color @endif">Sun</h6>
                         </div>
                         <div class="time-bg ms-3">
                             @if(businessHour()['sec7_closed'] == 1)
