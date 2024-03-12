@@ -103,7 +103,7 @@
                         <label for="floatingInput2">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="tel" class="form-control" id="floatingInput3" placeholder="Phone" value="{{ auth()->user()->phone ?? '' }}" name="phone">
+                        <input type="tel" class="form-control code" id="floatingInput3" placeholder="Phone" value="{{ auth()->user()->phone ?? '' }}" name="phone">
                         <label for="floatingInput3">Phone</label>
                     </div>
                     <div class="file-upload form-floating d-flex align-items-center mb-3">
@@ -189,6 +189,8 @@
     })
 
     $(document).ready(function() {
+        $('.code').mask('(000) 000-0000');
+
         $.validator.addMethod("phoneValidate", function(value) {
             return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(value);
         }, 'Please enter valid phone number.');

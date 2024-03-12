@@ -28,7 +28,7 @@
                             </div>
                             <div class="field">
                                 <div class="form-floating mb-3">
-                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                    <input type="tel" class="form-control code" id="phone" name="phone"
                                         maxlength="15" placeholder="Enter your number">
                                     <label for="phone">Phone</label>
                                 </div>
@@ -103,6 +103,8 @@
             $("#display-img").attr("src", URL.createObjectURL(event.target.files[0]));
         })
         $(document).ready(function() {
+            $('.code').mask('(000) 000-0000');
+
             $.validator.addMethod('password_match', function(value) {
                 return $("input[name=password]").val() == value;
             });

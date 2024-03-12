@@ -61,6 +61,7 @@
     <script src="{{ assets('admin/js/script.js') }}"></script>
     <script src="{{ assets('admin/js/common.js') }}"></script>
     <script src="{{ assets('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @if ($success = Session::get('success'))
         <script>

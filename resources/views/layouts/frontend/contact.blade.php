@@ -17,7 +17,7 @@
                         <label for="floatingInput">Email</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" name="phone" id="floatingInput"
+                        <input type="text" class="form-control code" name="phone" id="floatingInput"
                             placeholder="Enter your number">
                         <label for="floatingInput">Phone</label>
                     </div>
@@ -133,9 +133,10 @@
         </div>
     </div>
 </section>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script>
     $(document).ready(function() {
+        $('.code').mask('(000) 000-0000');
         $.validator.addMethod("phoneValidate", function(value) {
             return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(value);
         }, 'Please enter valid phone number.');

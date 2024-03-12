@@ -52,7 +52,7 @@
     <script src="{{ assets('plugins/OwlCarousel/owl.carousel.min.js') }}" type="text/javascript"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script src="{{ assets('/frontend/js/script.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script src="{{ assets('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     @if ($success = Session::get('success'))
         <script>
