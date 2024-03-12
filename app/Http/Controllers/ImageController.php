@@ -78,7 +78,7 @@ class ImageController extends Controller
                 unlink($link);
             }
             Image::where('id', $id)->delete();
-            return redirect()->back()->with('idredirect',  1);
+            return redirect()->back()->with('success',  'Image deleted successfully');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }

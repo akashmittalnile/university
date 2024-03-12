@@ -133,7 +133,7 @@
                             <div class="dz-default dz-message">
                                 <span>Click once inside the box to upload an image
                                     <br>
-                                    <small class="text-danger">Make sure the image size is less than 1 MB</small>
+                                    <small class="text-danger">Make sure the image size is less than 5 MB</small>
                                 </span>
                             </div>
                         </div>
@@ -228,9 +228,9 @@
     });
 
     Dropzone.options.multipleImage = {
-        maxFilesize: 1,
+        maxFilesize: 5,
         acceptedFiles: ".jpeg,.jpg,.png",
-        timeout: 5000,
+        timeout: 50000,
         addRemoveLinks: true,
         headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'

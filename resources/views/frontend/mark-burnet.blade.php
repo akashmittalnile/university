@@ -54,7 +54,9 @@
                         <div class="owl-carousel owl-theme pmoCarousel">
                             @forelse($product as $key => $value)
                             <div class="item">
-                                <img src="{{ assets("uploads/products/".$value->image) }}" class="aboutImageSlide">
+                                <a href="{{ route('products') }}">
+                                    <img src="{{ assets("uploads/products/".$value->image) }}" class="aboutImageSlide">
+                                </a>
                             </div>
                             @empty
                             @endforelse
