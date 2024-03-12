@@ -35,82 +35,101 @@
                 </form>
             </div>
             <div class="col-md-6 business-hour-section">
+                @if(isset(businessHour()['sec1_closed']))
                 <div class="d-flex align-items-center">
                     <img src="{{ assets('frontend/images/working-hours.svg') }}" alt="image"
                         class="img-fluid me-2 business-hour">
                     <h2 class="main-color f-600 mt-0 mb-0">Business Hours</h2>
                 </div>
-                <!-- <div class="weeks">
-                    <div class="d-flex mb-2">
+                <div class="weeks">
+                    <div class="d-flex mb-2 @if(businessHour()['sec1_closed'] == 1) closed @endif">
                         <div class="week-bg">
                             <h6 class="main-color">Mon</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">08:30 AM - 05:00 PM</p>
+                            @if(businessHour()['sec1_closed'] == 1)
+                            <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec1_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec1_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
-                    <div class="d-flex mb-2">
+                    <div class="d-flex mb-2 @if(businessHour()['sec2_closed'] == 1) closed @endif">
                         <div class="week-bg">
                             <h6 class="main-color">Tue</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">08:30 AM - 05:00 PM</p>
+                            @if(businessHour()['sec2_closed'] == 1)
+                            <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec2_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec2_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
-                    <div class="d-flex mb-2">
+                    <div class="d-flex mb-2 @if(businessHour()['sec3_closed'] == 1) closed @endif">
                         <div class="week-bg">
-                            <h6 class="main-color">Tue</h6>
+                            <h6 class="main-color">Wed</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">08:30 AM - 05:00 PM</p>
+                            @if(businessHour()['sec3_closed'] == 1)
+                            <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec3_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec3_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
-                    <div class="d-flex mb-2">
-                        <div class="week-bg">
-                            <h6 class="main-color">Wd</h6>
-                        </div>
-                        <div class="time-bg ms-3">
-                            <p class="black-color">08:30 AM - 05:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-2">
+                    <div class="d-flex mb-2 @if(businessHour()['sec4_closed'] == 1) closed @endif">
                         <div class="week-bg">
                             <h6 class="main-color">Thu</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">08:30 AM - 05:00 PM</p>
+                            @if(businessHour()['sec4_closed'] == 1)
+                            <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec4_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec4_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
-                    <div class="d-flex mb-2">
+                    <div class="d-flex mb-2 @if(businessHour()['sec5_closed'] == 1) closed @endif">
                         <div class="week-bg">
                             <h6 class="main-color">Fri</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">08:30 AM - 05:00 PM</p>
+                            @if(businessHour()['sec5_closed'] == 1)
+                            <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec5_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec5_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
-                    <div class="d-flex mb-2">
+                    <div class="d-flex mb-2 @if(businessHour()['sec6_closed'] == 1) closed @endif">
                         <div class="week-bg">
                             <h6 class="main-color">Sat</h6>
                         </div>
                         <div class="time-bg ms-3">
-                            <p class="black-color">09:00 AM - 02:00 PM</p>
+                            @if(businessHour()['sec6_closed'] == 1)
+                            <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec6_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec6_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
-                    <div class="d-flex mb-2 closed">
+                    <div class="d-flex mb-2 @if(businessHour()['sec7_closed'] == 1) closed @endif">
                         <div class="week-bg">
                             <h6>Sun</h6>
                         </div>
                         <div class="time-bg ms-3">
+                            @if(businessHour()['sec7_closed'] == 1)
                             <p class="black-color">Closed</p>
+                            @else
+                            <p class="black-color">{{ date('h:i A', strtotime(businessHour()['sec7_open'])) }} - {{ date('h:i A', strtotime(businessHour()['sec7_close'])) }}</p>
+                            @endif
                         </div>
                     </div>
                     <a href="tel:(876)285-2626"><button class="btn common-btn"><i
                                 class="bi bi-telephone-outbound me-2"></i>Call Now - (876) 285-2626</button></a>
-                </div> -->
-
-                {!! businessHour() !!}
-
+                </div>
+                @endif
             </div>
         </div>
     </div>

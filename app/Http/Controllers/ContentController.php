@@ -486,7 +486,8 @@ class ContentController extends Controller
                 $content->name = 'business-hour';
                 $content->save();
             }
-            return view("admin.content.business-hour")->with(compact('content'));
+            $data = unserialize($content->value);
+            return view("admin.content.business-hour")->with(compact('content', 'data'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -497,7 +498,7 @@ class ContentController extends Controller
         try{
             $content = Content::where("name", "business-hour")->first();
             if ($content) {
-                $content->value = $request->data;
+                $content->value = serialize($request->all());
                 $content->updated_at = date('Y-m-d H:i:s');
                 $content->save();
             }

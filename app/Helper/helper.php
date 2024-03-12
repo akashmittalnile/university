@@ -66,7 +66,7 @@ if (!function_exists('businessHour')) {
     function businessHour()
     {
         $hour = Content::where("name", "business-hour")->first();
-        return $hour->value;
+        return unserialize($hour->value);
     }
 }
 
