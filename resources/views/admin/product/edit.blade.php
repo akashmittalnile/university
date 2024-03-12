@@ -68,12 +68,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="book-img">
                                     @if(isset($product->image))
                                     <img src="{{ assets("uploads/products/$product->image") }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     @else
-                                    <img src="{{ assets('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
+                                    <img src="{{ assets('admin/images/logo.png') }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     @endif
                                 </div>
                             </div>

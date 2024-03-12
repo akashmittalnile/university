@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <div class="book-img">
-                                        <img src="{{ $podcast ? assets("uploads/podcasts/$podcast->thumbnail") : assets('admin/images/book.jpg') }}"
+                                        <img src="{{ $podcast ? assets("uploads/podcasts/$podcast->thumbnail") : assets('admin/images/logo.png') }}"
                                             alt="image" id="imageDisplay" class="img-fluid" />
                                         
                                     </div>

@@ -72,13 +72,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="book-img">
-                                    <img src="{{ assets('admin/images/book.jpg') }}" alt="image" id="imageDisplay" class="img-fluid" />
+                                    <img src="{{ assets('admin/images/logo.png') }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="mb-3 field_error">
                                     <label for="link" class="form-label black-color f-600">Redirect Link</label>
                                     <input type="text" class="form-control" name="link" id="link" value="" aria-describedby="name" placeholder="Enter Redirect Link" />

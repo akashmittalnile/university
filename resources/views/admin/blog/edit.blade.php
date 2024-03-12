@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="book-img">
                                     @if(isset($blog->image))
                                     <img src="{{ assets("uploads/blogs/$blog->image") }}" alt="image" id="imageDisplay" class="img-fluid" />
@@ -86,7 +86,7 @@
                                     
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="mb-3 field_error">
                                     <label for="link" class="form-label black-color f-600">Redirect Link</label>
                                     <input type="text" class="form-control" name="link" id="link" value="{{ $blog->links ?? '' }}" aria-describedby="name" placeholder="Enter Redirect Link" />

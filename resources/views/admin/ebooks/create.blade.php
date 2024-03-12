@@ -88,7 +88,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-3">
                                             <div class="book-img">
-                                                <img src="{{ $ebook ? assets("uploads/ebooks/$ebook->thumbnail") : assets('admin/images/book.jpg') }}"
+                                                <img src="{{ $ebook ? assets("uploads/ebooks/$ebook->thumbnail") : assets('admin/images/logo.png') }}"
                                                     alt="image" id="imageDisplay" class="img-fluid" />
                                             </div>
                                         </div>
