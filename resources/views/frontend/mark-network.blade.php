@@ -5,6 +5,15 @@
     .stripe-button-el {
         opacity: 1;
     }
+    .current-plan{background-color: #d81b1b;
+        position: absolute;
+        border-radius: 10px 0px 10px 0px;left: auto;right: 0;
+        margin-top: -13px;
+        padding: 5px 10px;
+        z-index: 9;}
+    .current-plan p{color: #ffffff;font-size: 14px;}
+    .current-div{position: relative;}
+    .current-plan p{margin: 0;padding: 0;}
 </style>
 @endpush
 @section('content')
@@ -57,7 +66,12 @@
                         <div class="pricing pricing-palden">
 
                             @forelse($plans as $key => $item)
-                            <div class="pricing-item features-item float ja-animate" data-animation="move-from-bottom" data-delay="item-2" style="min-height: 497px;">
+                            <div class="pricing-item features-item float ja-animate current-div" data-animation="move-from-bottom" data-delay="item-2" style="min-height: 497px;">
+                                @if($item->current_plan)
+                                <div class="current-plan me-auto">
+                                    <p>Current Plan</p>
+                                </div>
+                                @endif
                                 <div class="pricing-deco">
                                     <svg class="pricing-deco-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" y="0px">
                                         <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
@@ -89,10 +103,22 @@
                                     <li class="pricing-feature text-capitalize">{{ $text }}</li>
                                     @endforeach
                                 </ul>
-                                @if($item->price == 0)
-                                <a class="mb-4" href="{{ route('user.subscription') }}"><button class="btn buy-btn btn-green">Free</button></a>
+                                @if($item->current_plan)
+                                <a class="mb-4" href="javascript:void(0)"><button class="btn buy-btn btn-green">Subscribed</button></a>
                                 @else
-                                <a class="mb-4" href="{{ route('user.subscription') }}"><button class="btn buy-btn btn-green">Buy Now</button></a>
+                                <a class="mb-4" href="{{ route('user.subscription') }}"><button class="btn buy-btn btn-green">
+                                    @if($item->price == 0)  
+                                        Free
+                                    @else
+                                        @if(isset(auth()->user()->id) && $item->current_plan_price <= $item->price)
+                                            Upgrade
+                                        @elseif(isset(auth()->user()->id) && $item->current_plan_price >= $item->price)
+                                            Downgrade
+                                        @else
+                                            Buy Now
+                                        @endif
+                                    @endif
+                                </button></a>
                                 @endif
                             </div>
                             @empty
