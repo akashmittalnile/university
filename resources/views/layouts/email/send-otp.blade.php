@@ -19,7 +19,7 @@
                 <tr>
                     <td style="font-family:tahoma, geneva, sans-serif;color:#29054a;font-size:12px; padding:10px;background: #ffffff;text-align: center;">
                         <a href="{{ route('signin') }}">
-                            <img alt="not found" src="{{ assets('frontend/images/logo.png') }}" height="60">
+                            <img alt="not found" src="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" height="60">
                         </a>
                     </td>
                 </tr>

@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-default navbar-fixed-top">
             <div class="navbar-brand d-block d-lg-none" href="#">
-                <a href="index.html"><img src="{{ assets('frontend/images/logo.png') }}" alt=""></a>
+                <a href="index.html"><img src="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" alt=""></a>
             </div>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -27,7 +27,7 @@
                     </li>
                 </ul>
                 <div class="navbar-brand d-none d-lg-block" href="#">
-                    <a href="{{ route('home') }}"><img src="{{ assets('frontend/images/logo.png') }}" alt=""
+                    <a href="{{ route('home') }}"><img src="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" alt=""
                             class="img-fluid"></a>
                 </div>
                 <ul class="navbar-nav">

@@ -73,7 +73,7 @@
                                     @if(isset($product->image))
                                     <img src="{{ assets("uploads/products/$product->image") }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     @else
-                                    <img src="{{ assets('admin/images/logo.png') }}" alt="image" id="imageDisplay" class="img-fluid" />
+                                    <img src="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" alt="image" id="imageDisplay" class="img-fluid" />
                                     @endif
                                 </div>
                             </div>

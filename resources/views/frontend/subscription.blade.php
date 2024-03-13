@@ -70,14 +70,14 @@
                                             data-plan_id="{{ $item->id }}"
                                             data-email="{{ auth()->user()->email }}"
                                             data-description="{{ auth()->user()->name }}"
-                                            data-image="{{ assets('frontend/images/logo.png') }}" @else 
+                                            data-image="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" @else 
                                             data-name="{{ $item->name }}" data-amount="{{ $item->price * 100 }}"
                                             data-key="{{ env('STRIPE_PUBLISH') }}"
                                             data-currency="{{ $item->currency }}"
                                             data-plan_id="{{ $item->id }}"
                                             data-email="{{ auth()->user()->email }}"
                                             data-description="{{ auth()->user()->name }}"
-                                            data-image="{{ assets('frontend/images/logo.png') }}" @endif
+                                            data-image="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" @endif
                                             class="btn learn-more-btn @if($item->current_plan_price >= $item->price) downgrade @else buy-now @endif"> 
                                             @if($item->current_plan_price <= $item->price)
                                                 Upgrade

@@ -122,6 +122,16 @@ class AdminController extends Controller
             $name = fileUpload($request->file, "uploads/profile");
             $user->profile = $name;
         }
+        if ($request->hasFile("file1")) {
+            if(isset($user->business_logo)){
+                $link = public_path() . "/uploads/logo/" . $user->business_logo;
+                if (file_exists($link)) {
+                    unlink($link);
+                }
+            }
+            $name1 = fileUpload($request->file1, "uploads/logo");
+            $user->business_logo = $name1;
+        }
         $user->name = $request->name;
         $user->email = $request->email;
         $user->address = $request->address;

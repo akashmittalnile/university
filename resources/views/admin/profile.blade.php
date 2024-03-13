@@ -127,21 +127,39 @@
                         <input type="tel" class="form-control code" id="floatingInput3" placeholder="Phone" value="{{ auth()->user()->phone ?? '' }}" name="phone">
                         <label for="floatingInput3">Phone</label>
                     </div>
-                    <div class="file-upload form-floating d-flex align-items-center mb-3">
-                        <div class="file btn black-color upload-btn">
-                            <div id="file-upload-img">
-                                Upload Photo <i class="bi bi-file-image ms-2 main-color"></i>
-                            </div>
-                            <div>
-                                <input type="file" name="file" id="upload-img" accept="image/png, image/jpg, image/jpeg"/>
-                                @if(isset(auth()->user()->profile))
-                                    <img width="150" class="m-3 img-fluid img-thumbnail rounded" src="{{assets("uploads/profile/".auth()->user()->profile)}}" id="display-img" alt="">
-                                @else
-                                    <img width="150" class="m-3 img-fluid img-thumbnail rounded" src="{{assets('admin/images/profile-image.jpg')}}" id="display-img" alt="">
-                                @endif
+                    <div class="row">
+                       <div class="file-upload form-floating d-flex align-items-center mb-3 col-6">
+                            <div class="file btn black-color upload-btn">
+                                <div id="file-upload-img">
+                                    Upload Photo <i class="bi bi-file-image ms-2 main-color"></i>
+                                </div>
+                                <div>
+                                    <input type="file" name="file" id="upload-img" accept="image/png, image/jpg, image/jpeg"/>
+                                    @if(isset(auth()->user()->profile))
+                                        <img style="width: 150px !important; height: 150px !important; object-fit: cover; object-position: center;" class="m-3 img-fluid img-thumbnail rounded" src="{{assets("uploads/profile/".auth()->user()->profile)}}" id="display-img" alt="">
+                                    @else
+                                        <img style="width: 150px !important; height: 150px !important; object-fit: cover; object-position: center;" class="m-3 img-fluid img-thumbnail rounded" src="{{assets('admin/images/profile-image.jpg')}}" id="display-img" alt="">
+                                    @endif
+                                </div>
                             </div>
                         </div>
+                        <div class="file-upload form-floating d-flex align-items-center mb-3 col-6">
+                            <div class="file btn black-color upload-btn">
+                                <div id="file-upload-img1">
+                                    Website Logo <i class="bi bi-file-image ms-2 main-color"></i>
+                                </div>
+                                <div>
+                                    <input type="file" name="file1" id="upload-img1" accept="image/png, image/jpg, image/jpeg"/>
+                                    @if(isset(auth()->user()->business_logo))
+                                        <img style="width: 150px !important; height: 150px !important; object-fit: cover; object-position: center;" class="m-3 img-fluid img-thumbnail rounded" src="{{assets("uploads/logo/".auth()->user()->business_logo)}}" id="display-img1" alt="">
+                                    @else
+                                        <img style="width: 150px !important; height: 150px !important; object-fit: cover; object-position: center;" class="m-3 img-fluid img-thumbnail rounded" src="{{assets('admin/images/logo.png')}}" id="display-img1" alt="">
+                                    @endif
+                                </div>
+                            </div>
+                        </div> 
                     </div>
+                    
                     <div class="form-floating mb-3">
                         <textarea class="form-control" name="address" placeholder="Address" id="floatingTextarea2" style="height: 100px">{{ auth()->user()->address ?? '' }}</textarea>
                         <label for="floatingTextarea2">Address</label>
@@ -206,11 +224,19 @@
         $("#upload-img").get(0).click();
     })
     $(document).on("change", "#upload-img", function(e){
-        $("#display-img").attr("src", URL.createObjectURL(event.target.files[0]))
+        $("#display-img").attr("src", URL.createObjectURL(e.target.files[0]))
+    })
+
+    $(document).on('click', '#file-upload-img1', function(){
+        $("#upload-img1").get(0).click();
+    })
+    $(document).on("change", "#upload-img1", function(e){
+        $("#display-img1").attr("src", URL.createObjectURL(e.target.files[0]))
     })
 
     $(document).ready(function() {
         $('.code').mask('(000) 000-0000');
+
         $.validator.addMethod("phoneValidate", function(value) {
             return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(value);
         }, 'Please enter valid phone number.');

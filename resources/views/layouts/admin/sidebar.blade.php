@@ -1,6 +1,6 @@
 <aside id="sidebar">
     <div class="sidebar-title">
-        <img src="{{ assets('/admin/images/logo.png') }}" alt="logo" class="img-fluid sidebar-logo" />
+        <img src="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" alt="logo" class="img-fluid sidebar-logo" />
     </div>
 
     <ul class="sidebar-list">

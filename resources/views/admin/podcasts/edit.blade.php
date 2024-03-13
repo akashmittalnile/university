@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <div class="book-img">
-                                        <img src="{{ $podcast ? assets("uploads/podcasts/$podcast->thumbnail") : assets('admin/images/logo.png') }}"
+                                        <img src="{{ $podcast ? assets("uploads/podcasts/$podcast->thumbnail") : (isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png')) }}"
                                             alt="image" id="imageDisplay" class="img-fluid" />
                                         
                                     </div>
