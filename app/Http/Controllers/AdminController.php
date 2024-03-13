@@ -26,7 +26,24 @@ class AdminController extends Controller
         if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
         if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
         $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->limit(5)->get();
-        return view("admin.dashboard", compact('total_users', 'total_earning', 'transactions', 'subscribe_users'));
+
+        $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        $data = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->select(
+            DB::raw('sum(plans.price) as y'), 
+            DB::raw("DATE_FORMAT(user_plan_details.created_at,'%m') as x"))->whereYear('user_plan_details.created_at', date('Y'))->groupBy('x')->orderByDesc('x')->get()->toArray();
+        $xw = collect($data)->pluck('x')->toArray();
+        $yw = collect($data)->pluck('y')->toArray();
+        $transactionArr = [];
+        for ($i = 0; $i < 12; $i++) {
+            if(in_array( $i+1, $xw )){
+                $indx = array_search($i+1, $xw);
+                $transactionArr[$i]['y'] = number_format($yw[$indx], 2, '.', '');
+            }else
+                $transactionArr[$i]['y'] = 0;
+            $transactionArr[$i]['x'] = $month[($i+1) - 1];
+        }
+
+        return view("admin.dashboard", compact('total_users', 'total_earning', 'transactions', 'subscribe_users', 'transactionArr'));
     }
 
     public function dashboardDownloadReport(Request $request)

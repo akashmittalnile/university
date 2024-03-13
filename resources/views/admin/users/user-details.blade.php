@@ -159,15 +159,16 @@
                         }
                         $arr[1] = $str;
                     @endphp
-                    <div class="transation-detail-box  common-card common-shadow">
-                        <form action="" method="get" id="dateForm">
+                    <div class="transation-detail-box  common-card common-shadow row">
+                        <div class="col-12">
+                            <form action="" method="get" id="dateForm">
                             <input style="cursor: pointer;" type="date" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="d-btn date-btn">
-                        </form>
-                        <button class="btn" id="partners" onclick="showContent('partners')">Membership Transaction</button>
-                        <!-- <button class="btn" id="supporters" onclick="showContent('supporters')">E-Book Transaction</button> -->
-                        
-                        <a href="{{ route('admin.user-detail.download.report',['id' => encrypt_decrypt('encrypt', $user->id), 'arr' => $arr[1]]) }}"><button class="d-btn download-btn outline-btn">Download Report<i class="bi bi-download ms-2"></i></button></a>
-                        <div class="content active" id="partnersContent">
+                            </form>
+                            <!-- <button class="btn" id="partners" onclick="showContent('partners')">Membership Transaction</button> -->
+                            <!-- <button class="btn" id="supporters" onclick="showContent('supporters')">E-Book Transaction</button> -->
+                            <a href="{{ route('admin.user-detail.download.report',['id' => encrypt_decrypt('encrypt', $user->id), 'arr' => $arr[1]]) }}"><button class="d-btn download-btn outline-btn">Download Report<i class="bi bi-download ms-2"></i></button></a>
+                        </div>
+                        <div class="col-12 content active" id="partnersContent">
                             <div class="pay-details">
                                 <table class="table  table-hover">
                                     <thead>

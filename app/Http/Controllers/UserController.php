@@ -29,7 +29,7 @@ class UserController extends Controller
     public function viewDetails($id, Request $request)
     {
         $id = encrypt_decrypt('decrypt', $id);
-        $currentPlan = UserPlanDetail::where("user_id", $id)->first();
+        $currentPlan = UserPlanDetail::where("user_id", $id)->orderByDesc('id')->first();
         $currentPlan = $currentPlan ? $currentPlan->plan : null;
         $plans = UserPlanDetail::where("user_id", $id)->get();
         $total = 0;
