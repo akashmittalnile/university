@@ -215,14 +215,21 @@ class FrontendController extends Controller
         try {
             $now = Carbon::now();
             $plans = Plan::orderBy("price", "asc")->get();
-            $myPlans = UserPlanDetail::where('user_id', auth()->user()->id)->where('end_date', '>=', $now)->pluck('plan_id')->toArray();
+            $myPlans = UserPlanDetail::leftJoin('plans as p', 'p.id', '=', 'user_plan_details.plan_id')->where('user_id', auth()->user()->id)->where('end_date', '>=', $now)->select('user_plan_details.plan_id', 'user_plan_details.id', 'p.price')->orderByDesc('id')->first();
             foreach ($plans as  $item) {
-                if (in_array($item->id, $myPlans)) 
+                if(!isset($myPlans->id) && ($item->price == 0)){
                     $item->current_plan = true;
-                else
+                    $item->current_plan_price = 0;
+                } elseif (isset($myPlans->id) && ($item->id == $myPlans->plan_id)) {
+                    $item->current_plan = true;
+                    $item->current_plan_price = $myPlans->price ?? 0;
+                } else {
                     $item->current_plan = false;
+                    $item->current_plan_price = $myPlans->price ?? 0;
+                } 
                 $item->description = explode(",", $item->description);
             }
+            // dd($plans);
             return view("frontend.subscription", compact('plans'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());

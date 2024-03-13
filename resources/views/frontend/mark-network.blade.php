@@ -65,10 +65,24 @@
                                         <path class="deco-layer deco-layer--3" d="M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716H42.401L43.415,98.342z" fill="#FFFFFF" opacity="0.7"></path>
                                         <path class="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF"></path>
                                     </svg>
-                                    <div class="pricing-price">${{ number_format($item->price, 2, '.', ',') }}
-                                        <span class="pricing-period">/ month</span>
+                                    @if($item->price == 0)
+                                    <div class="pricing-price" style="height: 14.5vh;">Free
+                                        <span class="pricing-period"></span>
                                     </div>
+                                    @else
+                                        @if($key == 1)
+                                        <div class="pricing-price">${{ number_format($item->price, 2, '.', ',') }}
+                                            <span class="pricing-period">/ month</span>
+                                        </div>
+                                        @else
+                                        <div class="pricing-price" style="height: 14.5vh;">${{ number_format($item->price, 2, '.', ',') }}
+                                            <span class="pricing-period">/ month</span>
+                                        </div>
+                                        @endif
+                                    @endif
+                                    @if($key == 1)
                                     <h3 class="pricing-title text-center">Recommended Plan</h3>
+                                    @endif
                                 </div>
                                 <ul class="pricing-feature-list">
                                     @foreach ($item->description as $text)

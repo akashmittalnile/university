@@ -3,8 +3,25 @@
 <link rel="stylesheet" href="{{ assets('frontend/css/membership-plan.css') }}">
 <style>
     .stripe-button-el {
-        opacity: 1;
+        opacity: 0;
     }
+    .modal-header {
+        border-bottom: 0;
+    }
+    .modal-footer {
+        border-top: 0;
+    }
+    .modal-body {
+        padding-top: 0;
+    }
+    .modal .common-btn {
+        background-color: rgb(236, 70, 70);color: #ffffff;padding: 10px 35px;border-radius: 5px;border: 0;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;font-size: 14px;border: 1px solid rgb(236, 70, 70);font-size: 13px;
+    }
+    .modal .common-btn:hover {
+        background-color: transparent;color: rgb(236, 70, 70); box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    }
+    .modal .outline-btn{background-color: transparent;color: #3fab40;padding: 10px 35px;border-radius: 5px;border: 0;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;font-size: 14px;border: 1px solid #3fab40;font-size: 13px;}
+    .modal .outline-btn:hover{background-color: #3fab40;color: white; box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;}
 </style>
 @endpush
 @section('content')
@@ -24,7 +41,11 @@
                             @endif
                             <div class="card float">
                                 <h2 class="card_title">{{$item->name}}</h2>
+                                @if($item->price == 0)
+                                <p class="pricing">Free</p>
+                                @else
                                 <p class="pricing">${{ number_format($item->price, 2, '.', ',') }}</p>
+                                @endif
                                 <hr>
                                 <ul class="features">
                                     @foreach ($item->description as $text)
@@ -32,18 +53,24 @@
                                     @endforeach
                                 </ul>
 
-                                @if ($item->price == 0)
+                                @if($item->current_plan)
                                     <a href="javascript:void(0)">
-                                        <button class="btn learn-more-btn" @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @endif>Free</button>
+                                        <button disabled class="btn learn-more-btn" @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @endif>Subscribed</button>
                                     </a>
-                                @elseif($item->current_plan)
+                                @elseif($item->price == 0)
                                     <a href="javascript:void(0)">
-                                        <button class="btn learn-more-btn" @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @endif>Purchased</button>
+                                        <button disabled class="btn learn-more-btn" @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @endif>Free</button>
                                     </a>
                                 @else
                                     <a href="javascript:void(0)"> 
                                         <button type="button"
-                                            @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @else onclick="openPaymentForm(this,{{ $item->id }})" 
+                                            @if (!auth()->user()) onclick="location.replace('{{ route('signin') }}')" @elseif($item->current_plan_price >= $item->price) data-name="{{ $item->name }}" data-amount="{{ $item->price * 100 }}"
+                                            data-key="{{ env('STRIPE_PUBLISH') }}"
+                                            data-currency="{{ $item->currency }}"
+                                            data-plan_id="{{ $item->id }}"
+                                            data-email="{{ auth()->user()->email }}"
+                                            data-description="{{ auth()->user()->name }}"
+                                            data-image="{{ assets('frontend/images/logo.png') }}" @else 
                                             data-name="{{ $item->name }}" data-amount="{{ $item->price * 100 }}"
                                             data-key="{{ env('STRIPE_PUBLISH') }}"
                                             data-currency="{{ $item->currency }}"
@@ -51,8 +78,16 @@
                                             data-email="{{ auth()->user()->email }}"
                                             data-description="{{ auth()->user()->name }}"
                                             data-image="{{ assets('frontend/images/logo.png') }}" @endif
-                                            class="btn learn-more-btn">Buy Now</button>
-                                        </a>
+                                            class="btn learn-more-btn @if($item->current_plan_price >= $item->price) downgrade @else buy-now @endif"> 
+                                            @if($item->current_plan_price <= $item->price)
+                                                Upgrade
+                                            @elseif($item->current_plan_price >= $item->price)
+                                                Downgrade
+                                            @else
+                                                Buy Now 
+                                            @endif
+                                        </button>
+                                    </a>
                                 @endif
                             </div>
                         </div>
@@ -63,6 +98,28 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="deleteFile" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
+                <h6 class="text-color text-center mt-3">Do you really want to downgrade your package?</h6>
+            </div>
+            <form action="" method="get" id="delete_form">
+                @csrf
+                <div class="modal-footer justify-content-center mb-3">
+                    <button type="submit" class="btn outline-btn buy-now">Yes</button>
+                    <button type="button" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 @if (auth()->user())
 
@@ -104,30 +161,39 @@
 @endsection
 @push('js')
 <script>
-    function openPaymentForm(ele, plan_id) {
 
+    $(document).on('click', '.downgrade', function() {
+        $("#deleteFile .buy-now").attr("data-plan_id", $(this).data("plan_id"))
+        $("#deleteFile .buy-now").attr("data-key", $(this).data("key"))
+        $("#deleteFile .buy-now").attr("data-name", $(this).data("name"));
+        $("#deleteFile .buy-now").attr("data-amount", $(this).data("amount"));
+        $("#deleteFile .buy-now").attr("data-currency", $(this).data("currency"));
+        $("#deleteFile .buy-now").attr("data-description", $(this).data("description"));
+        $("#deleteFile .buy-now").attr("data-email", $(this).data("email"));
+        $("#deleteFile .buy-now").attr("data-image", $(this).data("image"));
+        $("#deleteFile").modal("show");
+    });
+
+    $(document).on("click", '.buy-now', function(e) {
+        e.preventDefault();
+        let ele = $(this);
         $("#payment_form").show();
-        $("#plan_id").val(ele.getAttribute("data-plan_id"));
+        $("#plan_id").val($(this).data("plan_id"));
         var s = document.createElement("script");
         s.src = "https://checkout.stripe.com/checkout.js";
         s.setAttribute('class', "stripe-button");
-        s.setAttribute("data-key", ele.getAttribute("data-key"))
-        s.setAttribute("data-name", ele.getAttribute("data-name"));
-        s.setAttribute("data-amount", ele.getAttribute("data-amount"));
-        s.setAttribute("data-currency", ele.getAttribute("data-currency"));
-        s.setAttribute("data-description", ele.getAttribute("data-description"));
-        s.setAttribute("data-email", ele.getAttribute("data-email"));
-
-        s.setAttribute("data-image", ele.getAttribute("data-image"));
+        s.setAttribute("data-key", $(this).data("key"))
+        s.setAttribute("data-name", $(this).data("name"));
+        s.setAttribute("data-amount", $(this).data("amount"));
+        s.setAttribute("data-currency", $(this).data("currency"));
+        s.setAttribute("data-description", $(this).data("description"));
+        s.setAttribute("data-email", $(this).data("email"));
+        s.setAttribute("data-image", $(this).data("image"));
         $("#payment_form").append(s);
-
-
-
         setTimeout(() => {
             $(".stripe-button-el").click();
         }, 2000);
-
-
-    }
+    });
+     
 </script>
 @endpush
