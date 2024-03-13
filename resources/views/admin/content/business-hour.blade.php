@@ -88,7 +88,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec1_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" max="18:00:00" data-num="1" onchange="timeValidate(event);" name="sec1_open" value="{{ (isset($data['sec1_closed']) && $data['sec1_closed']==1) ? '--:--' : $data['sec1_open'] ?? date('H:i') }}" class="form-control" id="sec1_open" aria-describedby="sec1_open">
+                                                    <input type="time" max="19:00:00" data-num="1" onchange="timeValidate(event);" name="sec1_open" value="{{ (isset($data['sec1_closed']) && $data['sec1_closed']==1) ? '--:--' : $data['sec1_open'] ?? date('H:i') }}" class="form-control" id="sec1_open" aria-describedby="sec1_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -131,7 +131,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec2_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" max="18:00:00" data-num="2" onchange="timeValidate(event);" name="sec2_open" value="{{ (isset($data['sec2_closed']) && $data['sec2_closed']==1) ? '--:--' : $data['sec2_open'] ?? date('H:i') }}" class="form-control" id="sec2_open" aria-describedby="sec2_open">
+                                                    <input type="time" max="19:00:00" data-num="2" onchange="timeValidate(event);" name="sec2_open" value="{{ (isset($data['sec2_closed']) && $data['sec2_closed']==1) ? '--:--' : $data['sec2_open'] ?? date('H:i') }}" class="form-control" id="sec2_open" aria-describedby="sec2_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -174,7 +174,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec3_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" max="18:00:00" data-num="3" onchange="timeValidate(event);" name="sec3_open" value="{{ (isset($data['sec3_closed']) && $data['sec3_closed']==1) ? '--:--' : $data['sec3_open'] ?? date('H:i') }}" class="form-control" id="sec3_open" aria-describedby="sec3_open">
+                                                    <input type="time" max="19:00:00" data-num="3" onchange="timeValidate(event);" name="sec3_open" value="{{ (isset($data['sec3_closed']) && $data['sec3_closed']==1) ? '--:--' : $data['sec3_open'] ?? date('H:i') }}" class="form-control" id="sec3_open" aria-describedby="sec3_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -217,7 +217,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec4_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" max="18:00:00" data-num="4" onchange="timeValidate(event);" name="sec4_open" value="{{ (isset($data['sec4_closed']) && $data['sec4_closed']==1) ? '--:--' : $data['sec4_open'] ?? date('H:i') }}" class="form-control" id="sec4_open" aria-describedby="sec4_open">
+                                                    <input type="time" max="19:00:00" data-num="4" onchange="timeValidate(event);" name="sec4_open" value="{{ (isset($data['sec4_closed']) && $data['sec4_closed']==1) ? '--:--' : $data['sec4_open'] ?? date('H:i') }}" class="form-control" id="sec4_open" aria-describedby="sec4_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -260,7 +260,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec5_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" value="{{ (isset($data['sec5_closed']) && $data['sec5_closed']==1) ? '--:--' : $data['sec5_open'] ?? date('H:i') }}" max="18:00:00" data-num="5" onchange="timeValidate(event);" name="sec5_open" class="form-control" id="sec5_open" aria-describedby="sec5_open">
+                                                    <input type="time" value="{{ (isset($data['sec5_closed']) && $data['sec5_closed']==1) ? '--:--' : $data['sec5_open'] ?? date('H:i') }}" max="19:00:00" data-num="5" onchange="timeValidate(event);" name="sec5_open" class="form-control" id="sec5_open" aria-describedby="sec5_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -303,7 +303,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec6_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" value="{{ (isset($data['sec6_closed']) && $data['sec6_closed']==1) ? '--:--' : $data['sec6_open'] ?? date('H:i') }}" max="18:00:00" data-num="6" onchange="timeValidate(event);" name="sec6_open" class="form-control" id="sec6_open" aria-describedby="sec6_open">
+                                                    <input type="time" value="{{ (isset($data['sec6_closed']) && $data['sec6_closed']==1) ? '--:--' : $data['sec6_open'] ?? date('H:i') }}" max="19:00:00" data-num="6" onchange="timeValidate(event);" name="sec6_open" class="form-control" id="sec6_open" aria-describedby="sec6_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -346,7 +346,7 @@
                                             <div class="col-md-3">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec7_open" class="form-label black-color f-600">Open Time</label>
-                                                    <input type="time" value="{{ (isset($data['sec7_closed']) && $data['sec7_closed']==1) ? '--:--' : $data['sec7_open'] ?? date('H:i') }}" max="18:00:00" data-num="7" onchange="timeValidate(event);" name="sec7_open" class="form-control" id="sec7_open" aria-describedby="sec7_open">
+                                                    <input type="time" value="{{ (isset($data['sec7_closed']) && $data['sec7_closed']==1) ? '--:--' : $data['sec7_open'] ?? date('H:i') }}" max="19:00:00" data-num="7" onchange="timeValidate(event);" name="sec7_open" class="form-control" id="sec7_open" aria-describedby="sec7_open">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -394,8 +394,13 @@
         let value = $(this).val();
         id = id.split("_")[0];
         let dt = new Date();
-        let opentime = (dt.getHours()) + ":" + (dt.getMinutes());
-        let closetime = (dt.getHours()+1) + ":" + (dt.getMinutes());
+        let dthour = dt.getHours();
+        dthour = dthour.toString();
+        if(dthour.length == 1){
+            dthour = '0' + dthour;
+        }
+        let opentime = (dthour) + ":" + (dt.getMinutes());
+        let closetime = (parseInt(dthour)+1) + ":" + (dt.getMinutes());
         if(value == 0){
             $("#" + id + "_close").val(closetime);
             $("#" + id + "_open").val(opentime);

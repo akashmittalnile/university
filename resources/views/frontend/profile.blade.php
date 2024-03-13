@@ -9,13 +9,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 @endpush
 @section('content')
+<style>
+    .profile-info .profile-img img{width: 260px;
+    height: 260px;border: 1px solid rgb(209, 209, 209);
+    border-radius: 50%; object-fit: cover;margin: 0 auto;display: block;}
+    .profile-info .profile-img {padding: 20px;}
+</style>
 <section class="user-details" style="padding-top: 6.6% !important;">
     <div class="my-info mt-0 pt-5">
         <h2 class="black-color text-center font-weight-bolder mb-5">User <b class="main-color">Details</b></h2>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-4">
-                    <div class="left-section">
+                <div class="col-md-4 profile-info">
+                    <div class="left-section profile-img" style="background-color: transparent !important;">
                         @if(isset($user->profile))
                         <img src="{{ assets('uploads/profile/'.$user->profile) }}" class="img-fluid">
                         @else
@@ -24,10 +30,10 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="head mb-2">
+                    <div class="head mb-1">
                         <h2 class="black-color mb-0 pb-0">{{ $user->name }}</h2>
                     </div>
-                    <div class="d-flex mt-3 mt-md-5 mail-info align-items-center">
+                    <div class="d-flex mt-3 mt-md-3 mail-info align-items-center">
                         <img src="{{ assets('frontend/images/telephone.png') }}" alt="image" class="img-fluid me-2">
                         <p class="black-color f-600 m-0 p-0">{{ $user->phone }}</p>
                     </div>
