@@ -157,6 +157,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('blog-image-delete', [BlogController::class, "imageDelete"])->name('blog.image.delete');
         Route::get('blog-uploaded-image-delete/{id}', [BlogController::class, "uploadedImageDelete"])->name('blog.uploaded.image.delete');
 
+        // social media
+        Route::get("social-media", [ContentController::class, 'socialMedia'])->name('social.media');
+        Route::post("social-media-save", [ContentController::class, 'socialMediaSave'])->name('social.media.save');
+        Route::post("social-media-update", [ContentController::class, 'socialMediaUpdate'])->name('social.media.update');
+        Route::get("social-media-delete/{id}", [ContentController::class, 'socialMediaDelete'])->name('social.media.delete');
+
         // about us
         Route::get("about", [ContentController::class, 'about'])->name('about');
         Route::post("about", [ContentController::class, 'aboutSave'])->name('about.save');

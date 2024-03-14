@@ -92,7 +92,7 @@
                     @csrf
                     <div class="edit-ebook">
                         <input type="hidden" id="redirect_url" value="{{ route('admin.manage.testimonial') }}">
-                        <div class="common-card">
+                        <div class="common-card" style="box-shadow: none;">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="mb-3 field_error">
@@ -158,7 +158,7 @@
                     @csrf
                     <div class="edit-ebook">
                         <input type="hidden" id="redirect_url" value="{{ route('admin.manage.testimonial') }}">
-                        <div class="common-card">
+                        <div class="common-card" style="box-shadow: none;">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="mb-3 field_error">
@@ -256,6 +256,7 @@
 <script type="text/javascript">
 
     $('#uploadFile').on('hidden.bs.modal', function(e) {
+        $("#image_name").text("Upload Image");
         $(this).find('form').trigger('reset');
     })
 
@@ -284,6 +285,14 @@
             $("#image_name").text(selectedFile.name);
             // Set the audio source to the selected file
             imageDisplay.src = objectURL;
+        }
+    });
+
+    document.getElementById('editImageInput').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        if (fileInput.files.length > 0) {
+            const selectedFile = fileInput.files[0];
+            $("#edit_image_name").text(selectedFile.name);
         }
     });
 

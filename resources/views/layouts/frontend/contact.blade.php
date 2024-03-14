@@ -129,6 +129,14 @@
                     <a href="tel:(876)285-2626"><button class="btn common-btn"><i class="bi bi-telephone-outbound me-2"></i>Call Now - {{ adminData()->phone ?? "(876) 285-2626" }}</button></a>
                 </div>
                 @endif
+                <div class="d-flex align-items-center justify-content-center mt-4">
+                    @forelse(socialMedia() as $key => $val)
+                    <a href="{{ $val->link }}" target="_blank">
+                        <img style="object-fit: cover; object-position: center;border: 3px solid #3fab40;border-radius: 50%;padding: 3px; background: white; width: 50px !important; height: 50px !important;" src="{{ assets('uploads/socialmedia/'.$val->image) }}" alt="image" class="img-fluid me-2 business-hour">
+                    </a>
+                    @empty
+                    @endforelse
+                </div>
             </div>
         </div>
     </div>

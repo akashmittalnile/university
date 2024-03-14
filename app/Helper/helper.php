@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DefaultMail;
 use App\Models\Content;
+use App\Models\SocialMedia;
 use App\Models\User;
 
 if (!function_exists('encrypt_decrypt')) {
@@ -68,6 +69,14 @@ if (!function_exists('businessHour')) {
     {
         $hour = Content::where("name", "business-hour")->first();
         return unserialize($hour->value);
+    }
+}
+
+if (!function_exists('socialMedia')) {
+    function socialMedia()
+    {
+        $data = SocialMedia::where("status", 1)->orderByDesc('id')->get();
+        return $data;
     }
 }
 

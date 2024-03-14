@@ -46,6 +46,12 @@
                     Blogs
             </li>
         </a>
+        <a href="{{ route('admin.social.media') }}">
+            <li class="sidebar-list-item {{ Route::is('admin.social.media*') ? 'active' : '' }}">
+                <i class="bi bi-file-text me-2"></i>Manage
+                    Social Media Links
+            </li>
+        </a>
         <div class="side-head mt-3">
             <p class="white-color m-0 p-0">Manage Page Content</p>
         </div>

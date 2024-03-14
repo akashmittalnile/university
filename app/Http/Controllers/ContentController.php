@@ -6,6 +6,7 @@ use App\Models\BusinessLink;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\GalleryAttribute;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -586,6 +587,90 @@ class ContentController extends Controller
                     ];
                 fputcsv($output, $final);
             }
+        }
+    }
+
+    public function socialMedia(Request $request)
+    {
+        try{
+            $data = SocialMedia::where('status', 1)->orderByDesc('id')->paginate(config("app.records_per_page"));
+            return view("admin.content.social-media")->with(compact('data'));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function socialMediaSave(Request $request)
+    {
+        $request->validate(
+            [
+                'file' => 'required',
+                "link" => 'required',
+            ]
+        );
+        try{
+            if ($request->hasFile("file")) {
+                $name = fileUpload($request->file, "uploads/socialmedia");
+            }
+            $data = new SocialMedia;
+            $data->image = $name ?? null;
+            $data->link = $request->link ?? null;
+            $data->status = 1;
+            $data->save();
+            return response()->json([
+                'message' => 'New Social Media Link Created Successfully',
+                'status' => 200
+            ]);
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function socialMediaDelete($id)
+    {
+        try{
+            $id = encrypt_decrypt('decrypt', $id);
+            $data = SocialMedia::where('id', $id)->first();
+            $link = public_path() . "/uploads/socialmedia/" . $data->image;
+            if (file_exists($link)) {
+                unlink($link);
+            }
+            SocialMedia::where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Social Media Link Deleted Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function socialMediaUpdate(Request $request)
+    {
+        $request->validate(
+            [
+                "link" => 'required',
+            ]
+        );
+        try{
+            $id = encrypt_decrypt('decrypt', $request->id);
+            $data = SocialMedia::where('id', $id)->first();
+            if ($request->hasFile("file")) {
+                if(isset($data->image)){
+                    $link = public_path() . "/uploads/socialmedia/" . $data->image;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $name = fileUpload($request->file, "uploads/socialmedia");
+                $data->image = $name;
+            }
+            $data->link = $request->link ?? null;
+            $data->status = 1;
+            $data->save();
+            return response()->json([
+                'message' => 'Social Media Link Updated Successfully',
+                'status' => 200
+            ]);
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
         }
     }
 }
