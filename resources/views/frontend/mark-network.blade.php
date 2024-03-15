@@ -98,11 +98,9 @@
                                     <h3 class="pricing-title text-center">Recommended Plan</h3>
                                     @endif
                                 </div>
-                                <ul class="pricing-feature-list">
-                                    @foreach ($item->description as $text)
-                                    <li class="pricing-feature text-capitalize">{{ $text }}</li>
-                                    @endforeach
-                                </ul>
+
+                                <p class="px-4">{{ $item->description ?? 'NA' }}</p>
+                                
                                 @if($item->current_plan)
                                 <a class="mb-4" href="javascript:void(0)"><button class="btn buy-btn btn-green">Subscribed</button></a>
                                 @else

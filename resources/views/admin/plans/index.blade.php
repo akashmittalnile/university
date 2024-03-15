@@ -1,6 +1,20 @@
 @extends('layouts.admin.app')
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/manage-membership-plan.css') }}" />
+<style>
+    .modal-footer .outline-btn{
+        border: 1px solid rgb(236, 70, 70);
+        color: rgb(236, 70, 70);
+    }
+    .modal-footer .outline-btn:hover{
+        background-color: rgb(236, 70, 70);
+        color: white;
+    }
+    .modal-body .form-group label{font-size: 15px; font-weight: 600;}
+    textarea:focus{box-shadow: none;border: 1px solid #3fab40;}
+    textarea{font-size: 13px;border: 1px solid #3fab40;border-radius: 5px;padding: 12px;width: 100%; outline: none;}
+    textarea::placeholder{color: rgb(178, 176, 176);}
+</style>
 @endpush
 @push('js')
 <script src="{{ assets('admin/js/dashboard.js') }}"></script>
@@ -11,10 +25,7 @@
         const nameText = document.getElementById("name");
         nameText.innerHTML = ele.getAttribute('data-name');
         form.setAttribute("action", ele.getAttribute('data-url'));
-        form.podcasts.value = ele.getAttribute('data-podcasts');
-        form.ebooks.value = ele.getAttribute('data-ebooks');
-        form.gallery.value = ele.getAttribute('data-gallery');
-
+        form.description.value = ele.getAttribute('data-description');
     }
 </script>
 @endpush
@@ -70,16 +81,12 @@
                             </p>
                         </div>
                         <ul class="mt-3">
-                            @foreach ($item->description as $text)
                             <li class="text-capitalize black-color">
-                                <i class="bi bi-check-circle me-2"></i>{{ $text }}
+                                {{ $item->description ?? 'NA' }}
                             </li>
-                            @endforeach
-
-
                         </ul>
                         <div class="text-center">
-                            <a href="javascript:void(0)"><button class="manage-plan common-btn" data-url="{{ route('admin.plan.update', $item->id) }}" data-podcasts='{{ $item->podcasts }}' data-ebooks='{{ $item->ebooks }}' data-gallery='{{ $item->gallary }}' data-name='{{ ucwords($item->name) }}' onclick="updatePlan(this)">
+                            <a href="javascript:void(0)"><button class="manage-plan common-btn" data-url="{{ route('admin.plan.update', $item->id) }}" data-description='{{ $item->description }}' onclick="updatePlan(this)">
                                     Manage Plan
                                 </button></a>
                         </div>
@@ -105,16 +112,8 @@
                 <form action="" id="update_form" method="post">
                     @csrf
                     <div class="form-group py-2">
-                        <label for="Podcasts">Total Podcasts</label>
-                        <input type="text" class="form-control" name="podcasts" value="0" required>
-                    </div>
-                    <div class="form-group py-2">
-                        <label for="Podcasts">Total ebooks</label>
-                        <input type="text" class="form-control" name="ebooks" value="0" required>
-                    </div>
-                    <div class="form-group py-2">
-                        <label for="Podcasts">Accomplishment Gallery</label>
-                        <input type="text" class="form-control" name="gallery" value="0" required>
+                        <label class="mb-1" for="description">Description</label>
+                        <textarea name="description" id="description"  cols="30" rows="10"></textarea>
                     </div>
                     <div class="modal-footer justify-content-center mb-3" style="border-top: none !important;">
                         <button type="submit" class="btn common-btn">Update</button>

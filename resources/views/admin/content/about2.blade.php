@@ -7,8 +7,8 @@
 <main class="main-container dashboard">
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
-
-            <h3 class="font-weight-bold black-color">Manage About Us</h3>
+            <a href="{{ route('admin.about') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
+            <h3 class="font-weight-bold black-color">How We Do It</h3>
         </div>
         <div class="profile-link">
             <a href="#">
@@ -29,18 +29,26 @@
                 <div class="e-book-details">
                     <div class="d-flex align-items-center justify-content-end mb-3">
                         <!-- <a href="{{ route('admin.manage.testimonial') }}"><button class="btn common-btn top-btn me-4">Manage Testimonials</button></a> -->
-                        <a href="{{ route('admin.how_we_do_it') }}"><button class="btn common-btn top-btn me-4">Manage How We Do It</button></a>
+                        <!-- <a href="{{ route('admin.business.links') }}"><button class="btn common-btn top-btn me-4">Manage Business Links</button></a> -->
                     </div>
                     <div class="about-us">
-                        <form action="{{ route('admin.about.save') }}" method="post" enctype="multipart/form-data" id="create_form">
+                        <form action="{{ route('admin.how_we_do_it.save') }}" method="post" enctype="multipart/form-data" id="create_form">
                             @csrf
                             <div class="edit-ebook">
-                                <input type="hidden" id="redirect_url" value="{{ route('admin.about') }}">
+                                <input type="hidden" id="redirect_url" value="{{ route('admin.how_we_do_it') }}">
                                 <div class="common-card">
                                     <div class="row align-items-center">
 
+                                        <div class="border-bottom row">
+                                            <div class="col-md-12">
+                                                <div class="mb-3 field_error">
+                                                    <label for="sec_heading" class="form-label black-color f-600">Enter Heading</label>
+                                                    <input type="text" name="sec_heading" class="form-control" id="sec_heading" value="{{ $data['sec_heading'] ?? '' }}" aria-describedby="sec_heading" placeholder="Enter Heading">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <h6 class="mb-3 main-color">Section 1</h6>
+                                        <h6 class="my-3 main-color">Section 1</h6>
                                         <div class="border-bottom row">
                                             <div class="col-md-6">
                                                 <div class="mb-3 field_error">
@@ -75,7 +83,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
 
 
                                         <h6 class="my-3 main-color">Section 2</h6>
@@ -115,9 +122,8 @@
                                         </div>
 
 
-
                                         <h6 class="my-3 main-color">Section 3</h6>
-                                        <div class="border-bottom row">
+                                        <div class="border_bottom row">
                                             <div class="col-md-6">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec3_title" class="form-label black-color f-600">Enter Title</label>
@@ -126,14 +132,14 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="imageInput3" class="form-label black-color f-600">Upload Background Image</label>
+                                                    <label for="imageInput3" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field">
                                                         <div class="file btn black-color upload-btn">
                                                             <span id="image_name3">
                                                                 @if(isset($data['sec3_image']))
                                                                 {{ $data['sec3_image'] ?? "" }}
                                                                 @else
-                                                                Upload Background Image
+                                                                Upload Image
                                                                 @endif
                                                             </span>
                                                             <i class="bi bi-file-image ms-2 main-color"></i>
@@ -191,45 +197,27 @@
 
 
                                         <h6 class="my-3 main-color">Section 5</h6>
-                                        <div class="border-bottom row">
-                                            <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="mb-3 field_error">
                                                     <label for="sec5_title" class="form-label black-color f-600">Enter Title</label>
                                                     <input type="text" name="sec5_title" class="form-control" id="sec5_title" value="{{ $data['sec5_title'] ?? '' }}" aria-describedby="sec5_title" placeholder="Enter Title">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="imageInput5" class="form-label black-color f-600">Upload Image 1</label>
+                                                    <label for="imageInput5" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field">
                                                         <div class="file btn black-color upload-btn">
                                                             <span id="image_name5">
                                                                 @if(isset($data['sec5_image']))
                                                                 {{ $data['sec5_image'] ?? "" }}
                                                                 @else
-                                                                Upload Image 1
+                                                                Upload Image
                                                                 @endif
                                                             </span>
                                                             <i class="bi bi-file-image ms-2 main-color"></i>
                                                             <input type="file" data-num="5" name="sec5_image" accept="image/png, image/jpg, image/jpeg" id="imageInput5" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="mb-3">
-                                                    <label for="imageInput6" class="form-label black-color f-600">Upload Image 2</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name6">
-                                                                @if(isset($data['sec6_image']))
-                                                                {{ $data['sec6_image'] ?? "" }}
-                                                                @else
-                                                                Upload Image 2
-                                                                @endif
-                                                            </span>
-                                                            <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" data-num="6" name="sec6_image" accept="image/png, image/jpg, image/jpeg" id="imageInput6" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -243,156 +231,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <h6 class="my-3 main-color">Section 6</h6>
-                                        <div class="border-bottom row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="sec6_title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" name="sec6_title" class="form-control" id="sec6_title" value="{{ $data['sec6_title'] ?? '' }}" aria-describedby="sec6_title" placeholder="Enter Title">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="imageInput7" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name7">
-                                                                @if(isset($data['sec7_image']))
-                                                                {{ $data['sec7_image'] ?? "" }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span>
-                                                            <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" data-num="7" name="sec7_image" accept="image/png, image/jpg, image/jpeg" id="imageInput7" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="sec6_sub_title" class="form-label black-color f-600">Enter Sub-Title</label>
-                                                        <textarea name="sec6_sub_title" class="form-control" id="sec6_sub_title" aria-describedby="sec6_sub_title" placeholder="Enter Sub-Title" cols="30" rows="3">{{ $data['sec6_sub_title'] ?? '' }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <h6 class="my-3 main-color">Section 7</h6>
-                                        <div class="border-bottom row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="sec7_title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" name="sec7_title" class="form-control" id="sec7_title" value="{{ $data['sec7_title'] ?? '' }}" aria-describedby="sec7_title" placeholder="Enter Title">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="imageInput8" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name8">
-                                                                @if(isset($data['sec8_image']))
-                                                                {{ $data['sec8_image'] ?? "" }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span>
-                                                            <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" data-num="8" name="sec8_image" accept="image/png, image/jpg, image/jpeg" id="imageInput8" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="sec7_sub_title" class="form-label black-color f-600">Enter Sub-Title</label>
-                                                        <textarea name="sec7_sub_title" class="form-control" id="sec7_sub_title" aria-describedby="sec7_sub_title" placeholder="Enter Sub-Title" cols="30" rows="3">{{ $data['sec7_sub_title'] ?? '' }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <h6 class="my-3 main-color">Section 8</h6>
-                                        <div class="border-bottom row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="sec8_title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" name="sec8_title" class="form-control" id="sec8_title" value="{{ $data['sec8_title'] ?? '' }}" aria-describedby="sec8_title" placeholder="Enter Title">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="imageInput9" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name9">
-                                                                @if(isset($data['sec9_image']))
-                                                                {{ $data['sec9_image'] ?? "" }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span>
-                                                            <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" data-num="9" name="sec9_image" accept="image/png, image/jpg, image/jpeg" id="imageInput9" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="sec8_sub_title" class="form-label black-color f-600">Enter Sub-Title</label>
-                                                        <textarea name="sec8_sub_title" class="form-control" id="sec8_sub_title" aria-describedby="sec8_sub_title" placeholder="Enter Sub-Title" cols="30" rows="3">{{ $data['sec8_sub_title'] ?? '' }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <h6 class="my-3 main-color">Section 9</h6>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="sec9_title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" name="sec9_title" class="form-control" id="sec9_title" value="{{ $data['sec9_title'] ?? '' }}" aria-describedby="sec9_title" placeholder="Enter Title">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="imageInput10" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name10">
-                                                                @if(isset($data['sec10_image']))
-                                                                {{ $data['sec10_image'] ?? "" }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span>
-                                                            <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" data-num="10" name="sec10_image" accept="image/png, image/jpg, image/jpeg" id="imageInput10" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="sec9_sub_title" class="form-label black-color f-600">Enter Sub-Title</label>
-                                                        <textarea name="sec9_sub_title" class="form-control" id="sec9_sub_title" aria-describedby="sec9_sub_title" placeholder="Enter Sub-Title" cols="30" rows="3">{{ $data['sec9_sub_title'] ?? '' }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
 
 
                                     </div>
@@ -418,6 +256,9 @@
         }, 'File size must be less than {0} MB');
         $('#create_form').validate({
             rules: {
+                sec_heading: {
+                    required: true,
+                },
                 sec1_title: {
                     required: true,
                 },
@@ -450,7 +291,6 @@
                     filesize: 5
                 },
                 @endif
-
                 sec3_title: {
                     required: true,
                 },
@@ -498,85 +338,6 @@
                 },
                 @else
                 sec5_image: {
-                    filesize: 5
-                },
-                @endif
-
-                sec6_title: {
-                    required: true,
-                },
-                sec6_sub_title: {
-                    required: true,
-                },
-                @if(!isset($data['sec6_image']))
-                sec6_image: {
-                    required: true,
-                    filesize: 5
-                },
-                @else
-                sec6_image: {
-                    filesize: 5
-                },
-                @endif
-
-                sec7_title: {
-                    required: true,
-                },
-                sec7_sub_title: {
-                    required: true,
-                },
-                @if(!isset($data['sec7_image']))
-                sec7_image: {
-                    required: true,
-                    filesize: 5
-                },
-                @else
-                sec7_image: {
-                    filesize: 5
-                },
-                @endif
-
-                sec8_title: {
-                    required: true,
-                },
-                sec8_sub_title: {
-                    required: true,
-                },
-                @if(!isset($data['sec8_image']))
-                sec8_image: {
-                    required: true,
-                    filesize: 5
-                },
-                @else
-                sec8_image: {
-                    filesize: 5
-                },
-                @endif
-
-                sec9_title: {
-                    required: true,
-                },
-                sec9_sub_title: {
-                    required: true,
-                },
-                @if(!isset($data['sec9_image']))
-                sec9_image: {
-                    required: true,
-                    filesize: 5
-                },
-                @else
-                sec9_image: {
-                    filesize: 5
-                },
-                @endif
-
-                @if(!isset($data['sec10_image']))
-                sec10_image: {
-                    required: true,
-                    filesize: 5
-                },
-                @else
-                sec10_image: {
                     filesize: 5
                 },
                 @endif

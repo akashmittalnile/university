@@ -47,11 +47,7 @@
                                 <p class="pricing">${{ number_format($item->price, 2, '.', ',') }}</p>
                                 @endif
                                 <hr>
-                                <ul class="features">
-                                    @foreach ($item->description as $text)
-                                        <li class="text-capitalize">{{ $text }}</li>
-                                    @endforeach
-                                </ul>
+                                <p>{{ $item->description ?? 'NA' }}</p>
 
                                 @if($item->current_plan)
                                     <a href="javascript:void(0)">

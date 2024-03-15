@@ -227,7 +227,6 @@ class FrontendController extends Controller
                     $item->current_plan = false;
                     $item->current_plan_price = $myPlans->price ?? 0;
                 } 
-                $item->description = explode(",", $item->description);
             }
             // dd($plans);
             return view("frontend.subscription", compact('plans'));
@@ -253,7 +252,10 @@ class FrontendController extends Controller
     public function about()
     {
         $about = Content::where("name", 'about')->first();
-        return view("frontend.about", compact('about'));
+        $data = unserialize($about->value);
+        $how = Content::where("name", 'how_we_do_it')->first();
+        $data2 = unserialize($how->value);
+        return view("frontend.about", compact('about', 'how', 'data', 'data2'));
     }
 
     public function affiliate()
@@ -322,7 +324,6 @@ class FrontendController extends Controller
                 $item->current_plan = false;
                 $item->current_plan_price = $myPlans->price ?? 0;
             } 
-            $item->description = explode(",", $item->description);
         }
         $network = Content::where("name", 'mark-network')->first();
         $data = unserialize($network->value);

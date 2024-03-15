@@ -166,6 +166,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // about us
         Route::get("about", [ContentController::class, 'about'])->name('about');
         Route::post("about", [ContentController::class, 'aboutSave'])->name('about.save');
+        Route::get("how_we_do_it", [ContentController::class, 'about2'])->name('how_we_do_it');
+        Route::post("how_we_do_it_save", [ContentController::class, 'aboutSave2'])->name('how_we_do_it.save');
 
         // mark network
         Route::get("mark-network", [ContentController::class, 'markNetwork'])->name('markNetwork');

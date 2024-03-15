@@ -67,7 +67,7 @@
         </a>
         <a href="{{ route('admin.about') }}">
             <li class="sidebar-list-item {{ Route::is('admin.about') ? 'active' : '' }}">
-                <i class="bi bi-list-ul me-2"></i>About Us
+                <i class="bi bi-list-ul me-2"></i>Manage About Us
             </li>
         </a>
         <a href="{{ route('admin.gallery') }}">

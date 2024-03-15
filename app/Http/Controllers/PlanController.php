@@ -19,9 +19,6 @@ class PlanController extends Controller
     public function index()
     {
         $plans = Plan::orderBy("price", "asc")->get();
-        foreach ($plans as  $item) {
-            $item->description = explode(",", $item->description);
-        }
         return view('admin.plans.index', compact('plans'));
     }
 
@@ -63,17 +60,8 @@ class PlanController extends Controller
     public function update(Request $request, $id)
     {
         $plan = Plan::where('id', $id)->first();
-        $plan->podcasts = $request->podcasts;
-        $plan->gallary = $request->gallery;
-        $plan->ebooks = $request->ebooks;
 
-
-        $description = [];
-        $description[] = $request->podcasts ? "Access $request->podcasts podcasts" : 'All podcasts unlimited access.';
-        $description[] = $request->gallery ? "Access $request->gallery Accomplishment Gallery" : 'All Accomplishment Gallery unlimited access.';
-        $description[] = $request->ebooks ? "Access $request->ebooks ebooks" : 'All ebooks unlimited access.';
-        // $description[] = $request->details;
-        $plan->description = implode(",", $description);
+        $plan->description = $request->description;
         $plan->updated_at = date('Y-m-d H:i:s');
         $plan->save();
         return redirect()->back()->with("success", "Plan updated Successfully");

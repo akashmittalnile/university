@@ -59,7 +59,7 @@
                                                                 @endif
                                                             </span>
                                                             <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" name="sec1_image" accept="image/png, image/jpg, image/jpeg" id="imageInput1" />
+                                                            <input type="file" data-num="1" name="sec1_image" accept="image/png, image/jpg, image/jpeg" id="imageInput1" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,7 +94,7 @@
                                                                 @endif
                                                             </span>
                                                             <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" name="sec2_image" accept="image/png, image/jpg, image/jpeg" id="imageInput2" />
+                                                            <input type="file" data-num="2" name="sec2_image" accept="image/png, image/jpg, image/jpeg" id="imageInput2" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -195,23 +195,16 @@
         return false;
     }
 
-    document.getElementById('imageInput1').addEventListener('change', function(event) {
+    $(document).on("change", "*[id^='imageInput']", function(event) {
+        let num = $(this).data('num');
         const fileInput = event.target;
         if (fileInput.files.length > 0) {
             const selectedFile = fileInput.files[0];
             // Display the audio image
             const objectURL = URL.createObjectURL(selectedFile);
-            $("#image_name1").text(selectedFile.name);
+            $("#image_name"+num).text(selectedFile.name);
         }
-    });
-    document.getElementById('imageInput2').addEventListener('change', function(event) {
-        const fileInput = event.target;
-        if (fileInput.files.length > 0) {
-            const selectedFile = fileInput.files[0];
-            // Display the audio image
-            const objectURL = URL.createObjectURL(selectedFile);
-            $("#image_name2").text(selectedFile.name);
-        }
-    });
+    })
+
 </script>
 @endsection
