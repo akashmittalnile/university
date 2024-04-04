@@ -121,6 +121,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         //  transaction logs
         Route::get("transaction-logs", [PlanController::class, 'transactionLogs'])->name('transaction.logs');
+        Route::get("download-transaction-logs-list", [PlanController::class, 'downloadTransactionList'])->name('transaction.download.logs.list');
 
         //  ebooks
         Route::get("ebooks", [EbookController::class, 'index'])->name('ebooks');

@@ -33,10 +33,12 @@
         </div>
     </div>
 
-    @if($user->status==0)
+    @if($user->status==0 || $user->status==3)
     <div class="d-flex align-items-center justify-content-end mt-4">
         <a href="{{ route('admin.users.approve.reject', ['id' => encrypt_decrypt('encrypt', $user->id), 'status' => encrypt_decrypt('encrypt', 1)]) }}"><button class="outline-btn">Approve</button></a>
+        @if($user->status==0)
         <a href="{{ route('admin.users.approve.reject', ['id' => encrypt_decrypt('encrypt', $user->id), 'status' => encrypt_decrypt('encrypt', 3)]) }}"><button class="common-btn ms-3">Reject</button></a>
+        @endif
     </div>
     @endif
 
@@ -181,7 +183,6 @@
                                     <thead>
                                         <tr>
                                             <th scope="col" class="text-capitalize">Sr No.</th>
-                                            <th scope="col" class="text-capitalize">Name</th>
                                             <th scope="col" class="text-capitalize">Subscription Plan</th>
                                             <th scope="col" class="text-capitalize">Amount Paid</th>
                                             <th scope="col" class="text-capitalize">Billing Type</th>
@@ -193,7 +194,6 @@
                                         @forelse($transactions as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1 }}</th>
-                                            <td class="text-capitalize">{{ $item->user->name }}</td>
                                             <td>{{ $item->plan->name }}</td>
                                             <td>{{ $item->plan->currency = 'inr' ? '₹' : '$' }}{{ number_format((float)($item->plan->price), 2, '.', ',') }}
                                             </td>

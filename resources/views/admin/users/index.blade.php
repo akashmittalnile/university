@@ -94,7 +94,7 @@
                                                 Status
                                             </th>
                                             <th scope="col" class="text-capitalize">
-                                                Registered Date
+                                                Registered On
                                             </th>
                                             <th scope="col" class="text-capitalize text-center">
                                                 Action

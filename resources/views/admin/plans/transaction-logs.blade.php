@@ -32,6 +32,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="main-cards">
+                    @php
+                        $full = url()->full();
+                        $current = url()->current();
+                        $arr = explode($current, $full);
+                        $str = '';
+                        for ($i = 1; $i < strlen($arr[1]); $i++) {
+                            $str .= $arr[1][$i];
+                        }
+                        $arr[1] = $str;
+                    @endphp
+                    <a href="{{ route('admin.transaction.download.logs.list', $arr[1]) }}"><button style="border-radius: 0 !important; padding: 11px 35px !important;" class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
                     <div class="transaction-details">
                         <form action="" method="get">
                             <div class="search-box ms-auto d-flex">

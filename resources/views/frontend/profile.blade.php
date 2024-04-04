@@ -105,7 +105,7 @@
                         <label for="floatingInput1">Full Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput2" placeholder="Email" value="{{ auth()->user()->email ?? '' }}" name="email">
+                        <input type="email" class="form-control" id="floatingInput2" placeholder="Email" value="{{ auth()->user()->email ?? '' }}" name="email" disabled>
                         <label for="floatingInput2">Email address</label>
                     </div>
                     <div class="form-floating mb-3">

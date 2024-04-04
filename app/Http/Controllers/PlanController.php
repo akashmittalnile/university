@@ -233,4 +233,47 @@ class PlanController extends Controller
             return errorMsg('Exception => ' . $e->getMessage());
         }
     }
+
+    public function downloadTransactionList(Request $request)
+    {
+        try{
+            $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id');
+            if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
+            if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
+            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->get();
+            return $this->downloadtransactionsReportFile($transactions);
+        } catch (\Exception $e) {
+            return errorMsg($e->getMessage());
+        }
+    }
+
+    public function downloadtransactionsReportFile($data)
+    {
+        try{
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename="Transaction logs "' . time() . '.csv');
+            $output = fopen("php://output", "w");
+
+            fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On'));
+
+            if (count($data) > 0) {
+                foreach ($data as $key => $row) {
+                    if ($row->user && $row->plan){
+                        $final = [
+                            $key + 1,
+                            $row->user->name,
+                            $row->plan->name,
+                            '$'.number_format(intval($row->plan->price), 2, '.', ','),
+                            ucfirst($row->plan->type),
+                            '1st of Every Month',
+                            date('d M Y, h:i:s a', strtotime($row->created_at)),
+                        ];
+                    }
+                    fputcsv($output, $final);
+                }
+            }
+        }catch (\Exception $e) {
+            return errorMsg($e->getMessage());
+        }
+    }
 }

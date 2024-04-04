@@ -57,7 +57,7 @@ class UserController extends Controller
             header('Content-Disposition: attachment; filename="Users list "' . time() . '.csv');
             $output = fopen("php://output", "w");
 
-            fputcsv($output, array('S.no', 'Name', 'Email Address', 'Phone Number', 'Status', 'Registered Date'));
+            fputcsv($output, array('S.no', 'Name', 'Email Address', 'Phone Number', 'Status', 'Registered On'));
 
             if (count($data) > 0) {
                 foreach ($data as $key => $row) {
