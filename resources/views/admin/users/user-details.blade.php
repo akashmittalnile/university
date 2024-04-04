@@ -1,6 +1,13 @@
 @extends('layouts.admin.app')
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/user-details.css') }}" />
+<style>
+    .reject-btn{box-shadow: none;}
+    .reject-btn:hover{
+        background-color: white !important;
+        box-shadow: none;
+    }
+</style>
 @endpush
 @push('js')
 <script src="{{ assets('admin/js/user-details.js') }}"></script>
@@ -48,7 +55,7 @@
                     <div class="col-md-3">
                         @if($user->status == 3)
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <a href="javascript:void(0)"><button class="outline-btn border border-danger text-danger">Rejected</button></a>
+                            <a href="javascript:void(0)"><button class="outline-btn border border-danger reject-btn text-danger">Rejected</button></a>
                         </div>
                         @elseif($user->status == 0)
                         <div class="d-flex align-items-center justify-content-center mt-2">

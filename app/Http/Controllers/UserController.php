@@ -22,8 +22,59 @@ class UserController extends Controller
         if($request->filled('status')){
             $users->where('status', $request->status);
         }
+        if($request->filled('date')){
+            $users->whereDate('created_at', $request->date);
+        }
         $users = $users->orderByDesc('id')->paginate(config("app.records_per_page"));
         return view('admin.users.index', compact('users', 'count'));
+    }
+
+    public function downloadUserList(Request $request)
+    {
+        try{
+            $users = User::where("admin", 0);
+            if ($request->filled('search')) {
+                $search = trim(request('search'));
+                $users->where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("phone", "LIKE", "%$search%");
+            }
+            if($request->filled('status')){
+                $users->where('status', $request->status);
+            }
+            if($request->filled('date')){
+                $users->whereDate('created_at', $request->date);
+            }
+            $users = $users->orderByDesc('id')->get();
+            return $this->downloadUsersReportFile($users);
+        } catch (\Exception $e) {
+            return errorMsg($e->getMessage());
+        }
+    }
+
+    public function downloadUsersReportFile($data)
+    {
+        try{
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename="Users list "' . time() . '.csv');
+            $output = fopen("php://output", "w");
+
+            fputcsv($output, array('S.no', 'Name', 'Email Address', 'Phone Number', 'Status', 'Registered Date'));
+
+            if (count($data) > 0) {
+                foreach ($data as $key => $row) {
+                    $final = [
+                        $key + 1,
+                        $row->name ?? null,
+                        $row->email ?? null,
+                        $row->phone ?? null,
+                        (($row->status==0) ? 'Pending' : (($row->status == 1) ? 'Active' : (($row->status == 2) ? 'Inactive' : 'Rejected'))),
+                        date('d M, Y', strtotime($row->created_at)),
+                    ];
+                    fputcsv($output, $final);
+                }
+            }
+        }catch (\Exception $e) {
+            return errorMsg($e->getMessage());
+        }
     }
 
     public function viewDetails($id, Request $request)

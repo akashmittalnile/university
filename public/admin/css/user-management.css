@@ -26,3 +26,4 @@
 .pagination .page-link:focus, .pagination .page-link:hover{box-shadow: none;border: 1px solid #3fab40;}
 .pagination .page-item.active .page-link{box-shadow: none;border: 1px solid #3fab40; background-color: white; color: #3fab40;}
 .page-link i{    font-size: 14px;}
+.profile-img img{width: 60px;height: 60px;object-fit: cover;border-radius: 50%;border: 1px solid rgb(215, 215, 215);}

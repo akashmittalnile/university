@@ -9,7 +9,6 @@
     <main class="main-container dashboard">
         <div class="main-title d-flex align-items-center">
             <div class="page-title d-flex align-items-center">
-                <a href="{{ route('admin.plans.index') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
                 <h3 class="font-weight-bold black-color">
                     Transaction Logs
                 </h3>
@@ -44,7 +43,7 @@
                                     <button class="search-btn">
                                         <i class="bi bi-search"></i>
                                     </button>
-                                    <button class="search-btn bg-danger" type="button" onclick="location.replace('{{ route('admin.plans.transaction.logs') }}')"><i class="bi bi-arrow-clockwise"></i></button>
+                                    <button class="search-btn bg-danger" type="button" onclick="location.replace('{{ route('admin.transaction.logs') }}')"><i class="bi bi-arrow-clockwise"></i></button>
                                 </div>
                             </div>
                         </form>

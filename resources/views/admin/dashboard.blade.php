@@ -115,7 +115,7 @@
                         }
                         $arr[1] = $str;
                     @endphp
-                    
+                    <a href="{{ route('admin.dashboard.download.report', $arr[1]) }}"><button style="border-radius: 0 !important; padding: 11px 35px !important;" class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
                     <div class="transaction-details">
                         <div class="transation-detail-box common-card common-shadow">
                             <!-- <button class="btn" id="partners" onclick="showContent('partners')">
@@ -127,7 +127,6 @@
                             <form action="" method="get">
                                 <div class="search-box ms-auto d-flex" style="width: 70%;">
                                     <div class="input-group mb-2" style="width: 100%;">
-                                        <a href="{{ route('admin.dashboard.download.report', $arr[1]) }}"><button style="border-radius: 0 !important; padding: 11px 35px !important;" class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
 
                                         <input type="text" class="form-control common-shadow" name="search" placeholder="Search by user name, amount" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
 

@@ -34,11 +34,26 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="main-cards">
+                    @php
+                        $full = url()->full();
+                        $current = url()->current();
+                        $arr = explode($current, $full);
+                        $str = '';
+                        for ($i = 1; $i < strlen($arr[1]); $i++) {
+                            $str .= $arr[1][$i];
+                        }
+                        $arr[1] = $str;
+                    @endphp
+                    <a href="{{ route('admin.users.download.list', $arr[1]) }}"><button style="border-radius: 0 !important; padding: 11px 35px !important;" class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
                     <div class="transaction-details">
                         <form action="" method="get">
-                            <div class="search-box ms-auto d-flex">
+                            <div class="search-box ms-auto d-flex" style="width: 100%;">
                                 <div class="input-group mb-2" style="margin-left: 30%;">
-                                    <input style="width: 34%;" type="text" class="form-control common-shadow" name="search" placeholder="Search by name, email, phone number" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
+
+
+                                    <input style="width: 25%;" type="text" class="form-control common-shadow" name="search" placeholder="Search by name, email, phone number" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
+
+                                    <input style="width: 10%;" type="date" class="form-control common-shadow" name="date" id="userDate" value="{{ request()->has('date') ? request('date') : '' }}">
 
                                     <select name="status" id="userStatus" class="form-control common-shadow" style="cursor: pointer;">
                                         <option @if(request()->status == "") selected @endif value="">All Users</option>
@@ -51,7 +66,9 @@
                                     <button class="search-btn">
                                         <i class="bi bi-search"></i>
                                     </button>
+
                                     <button class="search-btn bg-danger" type="button" onclick="location.replace('{{ route('admin.users.index') }}')"><i class="bi bi-arrow-clockwise"></i></button>
+
                                 </div>
                             </div>
                         </form>
@@ -61,6 +78,9 @@
                                 <table class="table table-hover common-shadow">
                                     <thead>
                                         <tr>
+                                            <th scope="col" class="text-capitalize">
+                                                User Image
+                                            </th>
                                             <th scope="col" class="text-capitalize">
                                                 Name
                                             </th>
@@ -73,6 +93,9 @@
                                             <th scope="col" class="text-capitalize">
                                                 Status
                                             </th>
+                                            <th scope="col" class="text-capitalize">
+                                                Registered Date
+                                            </th>
                                             <th scope="col" class="text-capitalize text-center">
                                                 Action
                                             </th>
@@ -81,10 +104,16 @@
                                     <tbody>
                                         @forelse ($users as $item)
                                             <tr>
+                                                <td style="width: 11%;">
+                                                    <div class="profile-img">
+                                                        <img src="{{ isset($item->profile) ? assets("uploads/profile/".$item->profile) : assets('admin/images/no-image.jpg') }}" alt="">
+                                                    </div>
+                                                </td>
                                                 <td class="text-capitalize">{{ $item->name }}</td>
                                                 <td>{{ $item->email }}</td>
                                                 <td>+1 {{ $item->phone }}</td>
                                                 <td>@if($item->status==0) Pending @elseif($item->status == 1) Active @elseif($item->status == 2) Inactive @elseif($item->status == 3) Rejected @endif</td>
+                                                <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         {{-- <a href="#"><button class="outline-btn ">

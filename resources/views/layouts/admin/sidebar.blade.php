@@ -22,6 +22,12 @@
                     Membership Plans
             </li>
         </a>
+        <a href="{{ route('admin.transaction.logs') }}">
+            <li class="sidebar-list-item {{ Route::is('admin.transaction*') ? 'active' : '' }}">
+                <i class="bi bi-clipboard2-data me-2"></i>Manage
+                    Transaction Logs
+            </li>
+        </a>
         <a href="{{ route('admin.ebooks') }}">
             <li class="sidebar-list-item {{ Route::is('admin.ebooks*') ? 'active' : '' }}">
                 <i class="bi bi-file-text me-2"></i>Manage

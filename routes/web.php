@@ -108,6 +108,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         //  user management
         Route::get("users", [UserController::class, 'index'])->name('users.index');
+        Route::get("download-user-list", [UserController::class, 'downloadUserList'])->name('users.download.list');
         Route::get("view-details/{id}", [UserController::class, 'viewDetails'])->name('users.view.details');
         Route::post('user-change-status', [UserController::class, 'userChangeStatus'])->name('users.change.status');
         Route::get('approve-reject/{id}/{status}', [UserController::class, 'approveReject'])->name('users.approve.reject');
@@ -117,7 +118,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource("plans", PlanController::class);
         Route::post("plans-update/{id}", [PlanController::class, 'update'])->name('plan.update');
         Route::get("fetch-plans", [PlanController::class, 'getPlans'])->name('plans.fetch');
-        Route::get("transaction-logs", [PlanController::class, 'transactionLogs'])->name('plans.transaction.logs');
+
+        //  transaction logs
+        Route::get("transaction-logs", [PlanController::class, 'transactionLogs'])->name('transaction.logs');
 
         //  ebooks
         Route::get("ebooks", [EbookController::class, 'index'])->name('ebooks');

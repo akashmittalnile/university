@@ -57,9 +57,9 @@
     <div class="row page-content">
         <div class="page-content">
             <div class="d-flex align-items-center justify-content-end">
-                <a href="{{ route('admin.plans.transaction.logs') }}"><button class="outline-btn">
+                <!-- <a href="{{ route('admin.transaction.logs') }}"><button class="outline-btn">
                         Plan Payment Transaction Logs
-                    </button></a>
+                    </button></a> -->
 
                 <a href="{{ route('admin.plans.fetch') }}"><button class="common-btn ms-3">
                         Sync Plans
