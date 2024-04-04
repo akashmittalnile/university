@@ -24,4 +24,4 @@
 .page-item:first-child .page-link{border-radius: 50%;background-color: #3fab40;color: white;padding: 6px 0px;}
 .pagination .page-link:focus, .pagination .page-link:hover{box-shadow: none;border: 1px solid #3fab40;}
 .pagination .page-item.active .page-link{box-shadow: none;border: 1px solid #3fab40; background-color: white; color: #3fab40;}
-.page-link i{    font-size: 14px;}
+.page-link i{font-size: 14px;}

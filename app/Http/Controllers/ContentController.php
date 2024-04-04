@@ -853,8 +853,9 @@ class ContentController extends Controller
     public function socialMedia(Request $request)
     {
         try {
+            $count = SocialMedia::where('status', 1)->count();
             $data = SocialMedia::where('status', 1)->orderByDesc('id')->paginate(config("app.records_per_page"));
-            return view("admin.content.social-media")->with(compact('data'));
+            return view("admin.content.social-media")->with(compact('data', 'count'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }

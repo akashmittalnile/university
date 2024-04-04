@@ -44,7 +44,9 @@
                         }
                         $arr[1] = $str;
                     @endphp
-                    <a href="{{ route('admin.users.download.list', $arr[1]) }}"><button style="border-radius: 0 !important; padding: 11px 35px !important;" class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
+                    <div>
+                        <a style="width: 18%;" href="{{ route('admin.users.download.list', $arr[1]) }}"><button style="border-radius: 0 !important; padding: 11px 35px !important;" class="d-btn download-btn outline-btn">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
+                    </div>
                     <div class="transaction-details">
                         <form action="" method="get">
                             <div class="search-box ms-auto d-flex" style="width: 100%;">

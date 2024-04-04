@@ -23,7 +23,9 @@
             <h3 class="font-weight-bold black-color">
                 Manage Social Media Links
             </h3>
-
+            <div class="count-bg ms-2">
+                <p class=" white-color">{{ sprintf('%02d', $count) }}</p>
+            </div>
         </div>
         <div class="profile-link">
             <a href="#">
