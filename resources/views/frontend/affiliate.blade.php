@@ -1,6 +1,11 @@
 @extends('layouts.frontend.app')
 @push('css')
 <link rel="stylesheet" href="{{ assets('frontend/css/affiliate-links.css') }}">
+<style>
+    a{
+        text-decoration: none !important;
+    }
+</style>
 @endpush
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
@@ -70,23 +75,25 @@
             <div class="business-link-contents">
 
                 @forelse($link as $key => $value)
-                <div class="link-box mb-3 block">
-                    <div class="row align-items-center">
-                        <div class="col-md-3">
-                            <div class="left-section">
-                                <img src="{{ assets('uploads/content/'.$value->image) }}" alt="image" class="img-fluid">
+                <a href="{{ $value->links ?? 'NA' }}" target="_blank">
+                    <div class="link-box mb-3 block">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <div class="left-section">
+                                    <img src="{{ assets('uploads/content/'.$value->image) }}" alt="image" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="right-section">
-                                <h4 class="black-color mb-4 f-600">{{ $value->title ?? 'NA' }}</h4>
-                                <p class="text-color">{{ $value->description ?? 'NA' }}</p>
-                                <br>
-                                <!-- <a href="{{ $value->links ?? 'NA' }}" target="_blank"><button class="btn learn-more-btn mt-2">Learn More<i class="bi bi-arrow-right ms-3"></i></button></a> -->
+                            <div class="col-md-9">
+                                <div class="right-section">
+                                    <h4 class="black-color mb-4 f-600">{{ $value->title ?? 'NA' }}</h4>
+                                    <p class="text-color">{{ $value->description ?? 'NA' }}</p>
+                                    <br>
+                                    <!-- <a href="{{ $value->links ?? 'NA' }}" target="_blank"><button class="btn learn-more-btn mt-2">Learn More<i class="bi bi-arrow-right ms-3"></i></button></a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 @empty
                 @endforelse
 
