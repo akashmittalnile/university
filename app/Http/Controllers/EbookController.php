@@ -68,7 +68,6 @@ class EbookController extends Controller
                 $ebook->thumbnail = $name;
             }
             $ebook->description = $request->description;
-            $ebook->cancellation_policy = $request->cancellation_policy;
             $ebook->status = 1;
             $ebook->save();
 
@@ -144,7 +143,6 @@ class EbookController extends Controller
                 $ebook->thumbnail = $name;
             }
             $ebook->description = $request->description;
-            $ebook->cancellation_policy = $request->cancellation_policy;
             $ebook->updated_at = date('Y-m-d H:i:s');
             $ebook->save();
 

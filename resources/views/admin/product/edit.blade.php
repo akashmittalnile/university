@@ -106,12 +106,6 @@
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="5" placeholder="Type your description">{{ $product->description ?? '' }}</textarea>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div>
-                                    <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Product Cancellation Policy</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="cancellation_policy" rows="3" placeholder="Enter cancellation policy">{{ $product->policy ?? '' }}</textarea>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
@@ -252,10 +246,6 @@
                     required: true,
                 },
                 description: {
-                    required: true,
-                    maxlength: 191,
-                },
-                cancellation_policy: {
                     required: true,
                     maxlength: 191,
                 },

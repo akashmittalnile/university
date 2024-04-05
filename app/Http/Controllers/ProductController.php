@@ -42,7 +42,6 @@ class ProductController extends Controller
                 'price' => 'required',
                 'thumbnail' => 'required',
                 'description' => 'required',
-                'cancellation_policy' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -57,7 +56,6 @@ class ProductController extends Controller
 
                 $product->title = $request->name;
                 $product->description = $request->description;
-                $product->policy = $request->cancellation_policy;
                 $product->price = $request->price;
                 $product->status = 1;
                 $product->save();
@@ -98,7 +96,6 @@ class ProductController extends Controller
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
-                'cancellation_policy' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -118,7 +115,6 @@ class ProductController extends Controller
     
                 $product->title = $request->name;
                 $product->description = $request->description;
-                $product->policy = $request->cancellation_policy;
                 $product->price = $request->price;
                 $product->status = 1;
                 $product->updated_at = date('Y-m-d H:i:s');

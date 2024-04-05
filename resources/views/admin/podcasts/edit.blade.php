@@ -189,14 +189,6 @@
                                             placeholder="Type your description"> {{ $podcast ? $podcast->description : '' }}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div>
-                                        <label for="exampleFormControlTextarea1"
-                                            class="form-label black-color f-600">Cancellation Policy</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="cancellation_policy" rows="3"
-                                            placeholder="Enter cancellation policy">{{ $podcast ? $podcast->cancellation_policy : '' }}</textarea>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
@@ -258,10 +250,6 @@
                         required: true,
                         maxlength: 191,
 
-                    },
-                    cancellation_policy: {
-                        required: true,
-                        maxlength: 191,
                     },
 
                 },

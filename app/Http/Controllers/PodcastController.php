@@ -79,7 +79,6 @@ class PodcastController extends Controller
                 $podcast->thumbnail = $name;
             }
             $podcast->description = $request->description;
-            $podcast->cancellation_policy = $request->cancellation_policy;
             $podcast->save();
 
             return response()->json([
@@ -169,7 +168,6 @@ class PodcastController extends Controller
                 $podcast->thumbnail = $name;
             }
             $podcast->description = $request->description;
-            $podcast->cancellation_policy = $request->cancellation_policy;
             $podcast->status = 1;
             $podcast->updated_at = date('Y-m-d H:i:s');
             $podcast->save();

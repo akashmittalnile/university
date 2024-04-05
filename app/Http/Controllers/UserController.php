@@ -129,7 +129,7 @@ class UserController extends Controller
                             $row->plan->name,
                             '$'.number_format(intval($row->plan->price), 2, '.', ','),
                             ucfirst($row->plan->type),
-                            '1st of Every Month',
+                            date('d M Y', strtotime('+1 month'.$row->created_at)),
                             date('d M Y, h:i:s a', strtotime($row->created_at)),
                         ];
                     }

@@ -227,7 +227,8 @@ class PlanController extends Controller
             $count = UserPlanDetail::count();
             $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id');
             if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
-            if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
+            if($request->filled('from_date')) $transactions->whereDate('user_plan_details.created_at', '>=', date('Y-m-d', strtotime($request->from_date)));
+            if($request->filled('to_date')) $transactions->whereDate('user_plan_details.created_at', '<=', date('Y-m-d', strtotime($request->to_date)));
             $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->paginate(config("app.records_per_page"));
             return view('admin.plans.transaction-logs')->with(compact('transactions', 'count'));
         } catch (\Exception $e) {
@@ -266,7 +267,7 @@ class PlanController extends Controller
                             $row->plan->name,
                             '$'.number_format(intval($row->plan->price), 2, '.', ','),
                             ucfirst($row->plan->type),
-                            '1st of Every Month',
+                            date('d M Y', strtotime('+1 month'.$row->created_at)),
                             date('d M Y, h:i:s a', strtotime($row->created_at)),
                         ];
                     }

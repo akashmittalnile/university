@@ -49,11 +49,13 @@
                     </div>
                     <div class="transaction-details">
                         <form action="" method="get">
-                            <div class="search-box ms-auto d-flex">
+                            <div class="search-box ms-auto d-flex" style="width: 100%;">
                                 <div class="input-group mb-2" style="margin-left: 30%;">
                                     <input type="text" class="form-control common-shadow" name="search" placeholder="Search by user name, amount" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
 
-                                    <input type="date" max="{{date('Y-m-d')}}" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="form-control common-shadow"/>
+                                    <input title="From Date" type="date" max="{{date('Y-m-d')}}" id="dateDetail" value="{{ request()->has('from_date') ? request('from_date') : '' }}" name="from_date" class="form-control common-shadow"/>
+
+                                    <input title="To Date" type="date" max="{{date('Y-m-d')}}" id="dateDetail" value="{{ request()->has('to_date') ? request('to_date') : '' }}" name="to_date" class="form-control common-shadow"/>
 
                                     <button class="search-btn">
                                         <i class="bi bi-search"></i>

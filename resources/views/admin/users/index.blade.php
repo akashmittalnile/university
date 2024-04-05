@@ -55,7 +55,7 @@
 
                                     <input style="width: 25%;" type="text" class="form-control common-shadow" name="search" placeholder="Search by name, email, phone number" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
 
-                                    <input style="width: 10%;" type="date" class="form-control common-shadow" name="date" id="userDate" value="{{ request()->has('date') ? request('date') : '' }}">
+                                    <input title="Registered On" style="width: 10%;" type="date" class="form-control common-shadow" name="date" id="userDate" value="{{ request()->has('date') ? request('date') : '' }}">
 
                                     <select name="status" id="userStatus" class="form-control common-shadow" style="cursor: pointer;">
                                         <option @if(request()->status == "") selected @endif value="">All Users</option>

@@ -121,12 +121,6 @@
                                     <textarea class="post-area" id="post_text" name="description">{!! $blog->description !!}</textarea>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-12">
-                                <div>
-                                    <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Blog Cancellation Policy</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="cancellation_policy" rows="3" placeholder="Enter cancellation policy">{{ $blog->policy ?? '' }}</textarea>
-                                </div>
-                            </div> -->
                         </div>
 
                     </div>

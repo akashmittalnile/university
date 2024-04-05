@@ -56,7 +56,6 @@ class BlogController extends Controller
                 $blog->title = $request->name;
                 $blog->description = $request->description;
                 $blog->links = $request->link;
-                $blog->policy = $request->cancellation_policy ?? null;
                 $blog->status = 1;
                 $blog->save();
 
@@ -116,7 +115,6 @@ class BlogController extends Controller
                 $blog->title = $request->name;
                 $blog->links = $request->link;
                 $blog->description = $request->description;
-                $blog->policy = $request->cancellation_policy ?? null;
                 $blog->status = 1;
                 $blog->updated_at = date('Y-m-d H:i:s');
                 $blog->save();

@@ -126,14 +126,6 @@
                                             placeholder="Type your description">{{ $ebook ? $ebook->description : '' }}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div>
-                                        <label for="exampleFormControlTextarea1"
-                                            class="form-label black-color f-600">Cancellation Policy</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="cancellation_policy" rows="3"
-                                            placeholder="Enter cancellation policy">{{ $ebook ? $ebook->cancellation_policy : '' }}</textarea>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="d-flex mt-3 mb-4">
@@ -156,17 +148,14 @@
                     name: {
                         required: true,
                         maxlength: 200,
-
                     },
                     free: {
                         required: true,
                         maxlength: 191,
-
                     },
                     pdf_file: {
                         required: true,
                         maxlength: 191,
-
                     },
                     thumbnail: {
                         required: true,
@@ -175,17 +164,10 @@
                     plans: {
                         required: true,
                     },
-
                     description: {
                         required: true,
                         maxlength: 191,
-
                     },
-                    cancellation_policy: {
-                        required: true,
-                        maxlength: 191,
-                    },
-
                 },
                 errorElement: "span",
                 errorPlacement: function(error, element) {

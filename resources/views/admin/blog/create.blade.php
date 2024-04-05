@@ -104,12 +104,6 @@
                                     <textarea class="post-area" id="post_text" name="description" rows="5" placeholder="Type your description"></textarea>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-12">
-                                <div>
-                                    <label for="exampleFormControlTextarea1" class="form-label black-color f-600">Blog Cancellation Policy</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="cancellation_policy" rows="3" placeholder="Enter cancellation policy"></textarea>
-                                </div>
-                            </div> -->
                         </div>
 
                     </div>
@@ -240,90 +234,6 @@
                     return false;
                 }
                 form.submit();
-                let formData = new FormData(form);
-                $.ajax({
-                    type: 'post',
-                    url: form.action,
-                    data: formData,
-                    dataType: 'json',
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $("#preloader").show()
-                    },
-                    complete: function() {
-                        $("#preloader").hide()
-                    },
-                    success: function(response) {
-                        if (response.status) {
-                            Swal.fire(
-                                'Success',
-                                response.message,
-                                'success'
-                            ).then((result) => {
-                                if (result.value) {
-                                    var url = $('#redirect_url').val();
-                                    if (response.redirect) {
-                                        window.location = response.route;
-                                    }
-                                    if (url !== undefined || url != null) {
-                                        window.location = url;
-                                    } else {
-                                        location.reload(true);
-                                    }
-                                }
-                            });;
-
-                            return false;
-                        }
-
-                        if (!response.status) {
-                            Swal.fire(
-                                'Error',
-                                response.message,
-                                'error'
-                            );
-                            console.log(response.message);
-                            return false;
-                        }
-                    },
-                    error: function(data) {
-                        if (data.status == 422) {
-                            let li_htm = '';
-                            var form = $("#create_form");
-                            $.each(data.responseJSON.errors, function(k, v) {
-                                const $input = form.find(
-                                    `input[name=${k}],select[name=${k}],textarea[name=${k}]`
-                                );
-                                if ($input.next('small').length) {
-                                    $input.next('small').html(v);
-                                    if (k == 'services' || k == 'membership') {
-                                        $('#myselect').next('small').html(v);
-                                    }
-                                } else {
-                                    $input.after(
-                                        `<small class='text-danger'>${v}</small>`
-                                    );
-                                    if (k == 'services' || k == 'membership') {
-                                        $('#myselect').after(
-                                            `<small class='text-danger'>${v[0]}</small>`
-                                        );
-                                    }
-                                }
-                                li_htm += `<li>${v}</li>`;
-                            });
-
-                            return false;
-                        } else {
-                            Swal.fire(
-                                'Error',
-                                data.statusText,
-                                'error'
-                            );
-                            return false;
-                        }
-                    }
-                });
             }
         });
     });
