@@ -93,7 +93,7 @@ if (!function_exists('sendMail')) {
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://nileprojects.in/universitypmo/demo/testmail.php',
+            CURLOPT_URL => 'https://econoprojectex.com/demo/testmail.php',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
