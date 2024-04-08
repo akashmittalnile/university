@@ -792,8 +792,6 @@ class ContentController extends Controller
                 [
                     'banner_title' => 'required',
                     "banner_sub_title" => 'required',
-                    "you_title" => 'required',
-                    "you_link" => 'required',
                     "banner_image" => 'file|max:10240',
                 ]
             );
@@ -814,8 +812,6 @@ class ContentController extends Controller
                     'banner_title' => $request->banner_title,
                     'banner_sub_title' => $request->banner_sub_title,
                     'banner_image' => $name,
-                    'you_title' => $request->you_title,
-                    'you_link' => $request->you_link,
                 );
                 $content->value = serialize($val);
                 $content->updated_at = date('Y-m-d H:i:s');

@@ -61,11 +61,11 @@
         <div class="side-head mt-3">
             <p class="white-color m-0 p-0">Manage Page Content</p>
         </div>
-        <a href="{{ route('admin.image') }}">
+        <!-- <a href="{{ route('admin.image') }}">
             <li class="sidebar-list-item {{ Route::is('admin.image') ? 'active' : '' }}">
                 <i class="bi bi-card-image me-2"></i>Manage Image
             </li>
-        </a>
+        </a> -->
         <a href="{{ route('admin.manage.home') }}">
             <li class="sidebar-list-item {{ (Route::is('admin.manage.home') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges')) ? 'active' : '' }}">
                 <i class="bi bi-list-ul me-2"></i>Manage Home

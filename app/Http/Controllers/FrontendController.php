@@ -15,6 +15,7 @@ use App\Models\Product;
 use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\UserPlanDetail;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -246,7 +247,8 @@ class FrontendController extends Controller
         $data = unserialize($home->value);
         $badges = Badge::where('status', 1)->get();
         $test = Testimonial::where('status', 1)->orderByDesc('id')->get();
-        return view("index")->with(compact('home', 'badges', 'data', 'test'));
+        $video = Video::where('status', 1)->orderByDesc('id')->get();
+        return view("index")->with(compact('home', 'badges', 'data', 'test', 'video'));
     }
 
     public function about()

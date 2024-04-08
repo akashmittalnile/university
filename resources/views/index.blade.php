@@ -53,7 +53,7 @@
     </section>
     @endif
 
-    <section class="youtube">
+    <!-- <section class="youtube">
         <div class="container">
             <p class="white-color text-center">{{ $data['you_title'] ?? 'NA' }}</p>
             <div class="youtube-video mt-4">
@@ -63,7 +63,35 @@
                     allowfullscreen></iframe>
             </div>
         </div>
+    </section> -->
+
+    @if(count($video) > 0)
+    <section class="youtube">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="owl-carousel owl-theme pmoCarousel">
+                        @forelse($video as $key => $val)
+                        <div class="item">
+                            <div class="shadow-effect">
+                                <iframe src="{{ $val->link ?? 'https://www.youtube.com/embed/XV1cOGaZUq0?si=LMIXLag_k_VxIP1k' }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <!-- <img style="margin: 0; max-width: 350px" class="img-circle img-fluid rounded"
+                                    src="{{ assets('uploads/testimonial/'.$val->image) }}"
+                                    alt=""> -->
+                                <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
+                                <!-- <p>{{ $val->description ?? 'NA' }}</p>
+                                <hr class="main-color">
+                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4> -->
+                            </div>
+                        </div>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+    @endif
 
     @if(count($badges) > 0)
     <section class="testimonial">
@@ -118,3 +146,19 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+    $('.pmoCarousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: false,
+        dots: false,
+        responsive:{
+            1000:{
+                items: 1
+            },
+        }
+    });
+</script>
+@endpush

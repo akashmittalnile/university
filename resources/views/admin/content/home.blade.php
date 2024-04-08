@@ -29,6 +29,7 @@
                 <div class="e-book-details">
                     <div class="d-flex align-items-center justify-content-end mb-3">
                         <a href="{{ route('admin.manage.testimonial') }}"><button class="btn common-btn top-btn me-4">Manage Testimonials</button></a>
+                        <a href="{{ route('admin.manage.videos') }}"><button class="btn common-btn top-btn me-4">Manage Youtube Videos</button></a>
                         <a href="{{ route('admin.affiliate.badges') }}"><button class="btn common-btn top-btn me-4">Manage Affiliate Badges</button></a>
                     </div>
                     <div class="about-us">
@@ -39,7 +40,7 @@
                                 <div class="common-card">
                                     <div class="row align-items-center">
                                         <h6 class="mb-3 main-color">Section 1</h6>
-                                        <div class="border-bottom row">
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3 field_error">
                                                     <label for="banner_title" class="form-label black-color f-600">Enter Banner Title</label>
@@ -75,7 +76,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h6 class="my-3 main-color">Section 2</h6>
+
+                                        <!-- <h6 class="my-3 main-color">Section 2</h6>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <div class="mb-3 field_error">
@@ -91,7 +93,8 @@
                                                     <input type="url" name="you_link" class="form-control" id="you_link" value="{{ $data['you_link'] ?? '' }}" aria-describedby="you_link" placeholder="Enter Youtube Video Link">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
+                                        
                                     </div>
                                 </div>
                                 <div class="d-flex mt-3 mb-4">
@@ -131,13 +134,6 @@
                     filesize: 5
                 },
                 @endif
-                you_title: {
-                    required: true,
-                },
-                you_link: {
-                    required: true,
-                    url: true
-                },
             },
             errorElement: "span",
             errorPlacement: function(error, element) {

@@ -12,6 +12,7 @@ use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -225,10 +226,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // home
         Route::get("manage-home", [ContentController::class, 'home'])->name('manage.home');
         Route::post("manage-home-save", [ContentController::class, 'homeSave'])->name('manage.home.save');
+
+        // testimonial
         Route::get("manage-testimonial", [TestimonialController::class, 'testimonial'])->name('manage.testimonial');
         Route::post("manage-testimonial-save", [TestimonialController::class, 'testimonialSave'])->name('manage.testimonial.save');
         Route::get("manage-testimonial-delete/{id}", [TestimonialController::class, 'testimonialDelete'])->name('manage.testimonial.delete');
         Route::post("manage-testimonial-update", [TestimonialController::class, 'testimonialUpdate'])->name('manage.testimonial.update');
+
+        // youtube video
+        Route::get("manage-youtube-video", [VideoController::class, 'videos'])->name('manage.videos');
+        Route::post("manage-youtube-video-save", [VideoController::class, 'videoSave'])->name('manage.videos.save');
+        Route::get("manage-youtube-video-delete/{id}", [VideoController::class, 'videoDelete'])->name('manage.videos.delete');
+        Route::post("manage-youtube-video-update", [VideoController::class, 'videoUpdate'])->name('manage.videos.update');
 
         // Admin Profile
         Route::get("profile", [AdminController::class, 'profile'])->name('profile');
