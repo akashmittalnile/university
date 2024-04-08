@@ -24,7 +24,7 @@
                             @endif
                         </div>
                         <h5 class="black-color text-capitalize mt-3">{{ $val->title ?? 'NA' }}</h5>
-                        <p class="mt-3 text-color text-capitalize m-0 p-0">{!! $val->description !!}</p>
+                        <div class="mt-3 text-color text-capitalize m-0 p-0 desc">{!! $val->description !!}</div>
                         
                         <a target="_blank" href="{{ $val->links }}"><button class="btn learn-more-btn">Read me <i class="bi bi-arrow-right ms-2"></i></button></a>
                        

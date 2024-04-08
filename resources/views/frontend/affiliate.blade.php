@@ -14,7 +14,7 @@
     $('.pmoCarousel').owlCarousel({
         loop: false,
         margin: 10,
-        nav: true,
+        nav: false,
         dots: false,
         responsive:{
             0:{

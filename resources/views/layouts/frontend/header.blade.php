@@ -1,5 +1,5 @@
 <div id="header">
-    <div class="container">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-default navbar-fixed-top">
             <div class="navbar-brand d-block d-lg-none" href="#">
                 <a href="index.html"><img src="{{ isset(adminData()->business_logo) ? assets('uploads/logo/'.adminData()->business_logo) : assets('frontend/images/logo.png') }}" alt=""></a>
@@ -53,7 +53,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ auth()->user()->name }}
+                                {{ isset(auth()->user()->name) ? explode(" ", auth()->user()->name)[0] : "More" }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a></li>

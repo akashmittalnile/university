@@ -31,6 +31,7 @@
                 <div class="common-card">
                     <form action="{{ route('admin.ebooks.update', encrypt_decrypt('encrypt', $ebook->id)) }}" method="post" enctype="multipart/form-data" id="update_form">@csrf
                         <div class="row align-items-center">
+                        <input type="hidden" id="redirect_url" value="{{ route('admin.ebooks') }}">
                             <div class="col-md-4">
                                 <div class="mb-3 field_error">
                                     <label for="name" class="form-label black-color f-600">Enter E-Book Name</label>
