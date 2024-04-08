@@ -56,7 +56,8 @@
                                     <div class="img-box" style="height: 75%;">
                                         <img id style="height: 100%;" src="{{ assets("uploads/testimonial/$item->image") }}" alt="image" class="img-fluid">
                                     </div>
-                                    <div class="d-flex mt-4">
+                                    <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 mt-2">{{ $item->title ?? 'NA' }}</p>
+                                    <div class="d-flex mt-2">
                                         <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.manage.testimonial.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
                                         <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Testimonial</button></a>
                                     </div>

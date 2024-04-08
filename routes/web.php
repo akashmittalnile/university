@@ -204,13 +204,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('uploaded-image-delete/{id}', [ImageController::class, "uploadedImageDelete"])->name('uploaded.image.delete');
         Route::post("image", [ImageController::class, 'imageSave'])->name('image.save');
 
-        // affiliate badges
-        Route::get("affiliate-badges", [AffliateBadgesController::class, 'affiliateBadges'])->name('affiliate.badges');
-        Route::post('affiliate-image-upload', [AffliateBadgesController::class, "imageUpload"])->name('affiliate.image.upload');
-        Route::post('affiliate-image-delete', [AffliateBadgesController::class, "imageDelete"])->name('affiliate.image.delete');
-        Route::get('affiliate-uploaded-image-delete/{id}', [AffliateBadgesController::class, "uploadedImageDelete"])->name('affiliate.uploaded.image.delete');
-        Route::post("affiliate-image", [AffliateBadgesController::class, 'imageSave'])->name('affiliate.image.save');
-
         // mark burnet
         Route::get("markBurnet", [ContentController::class, 'markBurnet'])->name('markBurnet');
         Route::post("markBurnet", [ContentController::class, 'markBurnetSave'])->name('markBurnet.save');
@@ -238,6 +231,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("manage-youtube-video-save", [VideoController::class, 'videoSave'])->name('manage.videos.save');
         Route::get("manage-youtube-video-delete/{id}", [VideoController::class, 'videoDelete'])->name('manage.videos.delete');
         Route::post("manage-youtube-video-update", [VideoController::class, 'videoUpdate'])->name('manage.videos.update');
+
+        // affiliate badges
+        Route::get("manage-affiliate-badges", [AffliateBadgesController::class, 'affiliateBadges'])->name('manage.affiliate-badges');
+        Route::post("manage-affiliate-badges-save", [AffliateBadgesController::class, 'imageSave'])->name('manage.affiliate-badges.save');
+        Route::get("manage-affiliate-badges-delete/{id}", [AffliateBadgesController::class, 'imageDelete'])->name('manage.affiliate-badges.delete');
+        Route::post("manage-affiliate-badges-update", [AffliateBadgesController::class, 'imageUpdate'])->name('manage.affiliate-badges.update');
 
         // Admin Profile
         Route::get("profile", [AdminController::class, 'profile'])->name('profile');

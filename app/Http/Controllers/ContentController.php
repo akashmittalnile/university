@@ -793,12 +793,16 @@ class ContentController extends Controller
                     'banner_title' => 'required',
                     "banner_sub_title" => 'required',
                     "banner_image" => 'file|max:10240',
+                    'community_title' => 'required',
+                    "community_sub_title" => 'required',
+                    "community_image" => 'file|max:10240',
                 ]
             );
             $content = Content::where("name", "home")->first();
             if ($content) {
                 $unser = unserialize($content->value);
-                $name = $unser['banner_image'] ?? null;
+                $name1 = $unser['banner_image'] ?? null;
+                $name2 = $unser['community_image'] ?? null;
                 if ($request->hasFile("banner_image")) {
                     if (isset($unser['banner_image'])) {
                         $link = public_path() . "/uploads/content/" . $unser['banner_image'];
@@ -806,12 +810,24 @@ class ContentController extends Controller
                             unlink($link);
                         }
                     }
-                    $name = fileUpload($request->banner_image, "uploads/content");
+                    $name1 = fileUpload($request->banner_image, "uploads/content");
+                }
+                if ($request->hasFile("community_image")) {
+                    if (isset($unser['community_image'])) {
+                        $link = public_path() . "/uploads/content/" . $unser['community_image'];
+                        if (file_exists($link)) {
+                            unlink($link);
+                        }
+                    }
+                    $name2 = fileUpload($request->community_image, "uploads/content");
                 }
                 $val = array(
                     'banner_title' => $request->banner_title,
                     'banner_sub_title' => $request->banner_sub_title,
-                    'banner_image' => $name,
+                    'banner_image' => $name1,
+                    'community_title' => $request->community_title,
+                    'community_sub_title' => $request->community_sub_title,
+                    'community_image' => $name2,
                 );
                 $content->value = serialize($val);
                 $content->updated_at = date('Y-m-d H:i:s');

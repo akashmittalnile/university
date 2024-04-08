@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="what-we-do" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/about/{{($data['sec3_image'] ?? null)}}' )">
+    <div class="what-we-do" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/about/{{($data['sec3_image'] ?? null)}}' ), background-repeat: no-repeat;">
         <div class="container">
             <h1 class="text-center white-color">
                 {{ $data['sec3_title'] ?? 'NA' }}

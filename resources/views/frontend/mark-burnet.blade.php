@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="merch" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' )">
+    <div class="merch" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' ), background-repeat: no-repeat;">
         <div class="container">
             <h1 class="white-color f-600 text-center mb-3">{{ $data['sec3_title'] ?? 'NA' }}</h1>
             <p class="white-color text-justify text-center">{{ $data['sec3_sub_title'] ?? 'NA' }}</p>

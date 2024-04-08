@@ -11,8 +11,8 @@ class AffliateBadgesController extends Controller
     public function affiliateBadges()
     {
         try{
-            $gallery = Badge::orderByDesc('id')->paginate(config("app.ebook_per_page"));
-            return view("admin.content.affiliate-badges", compact("gallery"));
+            $data = Badge::orderByDesc('id')->paginate(config("app.ebook_per_page"));
+            return view("admin.content.affiliate-badges", compact("data"));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -22,72 +22,84 @@ class AffliateBadgesController extends Controller
     public function imageSave(Request $request)
     {
         try{
-            if(isset($request->update)){
-                $id = encrypt_decrypt('decrypt', $request->id);
-                $gallery = Badge::where('id', $id)->first();
-                if(isset($gallery->path)){
-                    $link = public_path() . "/uploads/badges/" . $gallery->path;
-                    if (File::exists($link)) {
-                        unlink($link);
-                    }
-                }
-                $name = fileUpload($request->thumbnail, "uploads/badges");
-                Badge::where('id', $id)->update(['path'=> $name]);
-                return redirect()->back()->with('success', 'Image Updated Successfully');
-            } else {
-                $array_of_image = json_decode($request->array_of_image);
-                if (is_array($array_of_image) && count($array_of_image) > 0) {
-                    foreach ($array_of_image as $val) {
-                        Badge::create([
-                            'type' => 'image',
-                            'status' => 1,
-                            'path' => $val
-                        ]);
-                    }
-                }
-                return redirect()->back()->with('success', 'Image Added Successfully');
+            $request->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $image = new Badge;
+            $image->title = $request->title;
+            
+            if ($request->hasFile("image")) {
+                $name = fileUpload($request->image, "uploads/badges");
+                $image->path = $name;
             }
+            $image->description = $request->description;
+            $image->status = 1;
+            $image->save();
+
+            return response()->json([
+                'message' => 'Affiliate Badge Created Successfully.',
+                'status' => 200
+            ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
     }
 
-    public function imageUpload(Request $request)
+    public function imageDelete($id)
     {
-        try {
-            $name = fileUpload($request->file, "uploads/badges");
-            return response()->json(['status' => true, 'file_name' => $name, 'key' => 1]);
-        } catch (\Exception $e) {
-            return errorMsg('Exception => ' . $e->getMessage());
-        }
-    }
-
-    public function imageDelete(Request $request)
-    {
-        try {
-            $filename =  $request->get('filename');
-            $link = public_path() . "/uploads/badges/" . $filename;
-            if (File::exists($link)) {
-                unlink($link);
-                return response()->json(['status' => true, 'file_name' => $filename, 'key' => 2]);
-            }
-            return response()->json(['status' => false, 'file_name' => $filename, 'key' => 2]);
-        } catch (\Exception $e) {
-            return errorMsg('Exception => ' . $e->getMessage());
-        }
-    }
-
-    public function uploadedImageDelete($id)
-    {
-        try {
+        try{
             $id = encrypt_decrypt('decrypt', $id);
-            $attr = Badge::where('id', $id)->first();
-            $link = public_path() . "/uploads/badges/" . $attr->path;
+            $image = Badge::where('id', $id)->first();
+
+            $link = public_path() . "/uploads/badges/" . $image->path;
             if (file_exists($link)) {
                 unlink($link);
             }
+
             Badge::where('id', $id)->delete();
-            return redirect()->back()->with('idredirect',  1);
+            return redirect()->back()->with('success', 'Affiliate Badge Deleted Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function imageUpdate(Request $request)
+    {
+        try{
+            $request->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->id);
+            $image = Badge::where('id', $id)->first();
+            $image->title = $request->title;
+            
+            if ($request->hasFile("image")) {
+                if(isset($image->path)){
+                    $link = public_path() . "/uploads/badges/" . $image->path;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $name = fileUpload($request->image, "uploads/badges");
+                $image->path = $name;
+            }
+
+            $image->description = $request->description;
+            $image->status = 1;
+            $image->save();
+
+            return response()->json([
+                'message' => 'Affiliate Badge Updated Successfully.',
+                'status' => 200
+            ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }

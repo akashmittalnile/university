@@ -30,7 +30,7 @@
                     <div class="d-flex align-items-center justify-content-end mb-3">
                         <a href="{{ route('admin.manage.testimonial') }}"><button class="btn common-btn top-btn me-4">Manage Testimonials</button></a>
                         <a href="{{ route('admin.manage.videos') }}"><button class="btn common-btn top-btn me-4">Manage Youtube Videos</button></a>
-                        <a href="{{ route('admin.affiliate.badges') }}"><button class="btn common-btn top-btn me-4">Manage Affiliate Badges</button></a>
+                        <a href="{{ route('admin.manage.affiliate-badges') }}"><button class="btn common-btn top-btn me-4">Manage Affiliate Badges</button></a>
                     </div>
                     <div class="about-us">
                         <form action="{{ route('admin.manage.home.save') }}" method="post" enctype="multipart/form-data" id="create_form">
@@ -40,7 +40,7 @@
                                 <div class="common-card">
                                     <div class="row align-items-center">
                                         <h6 class="mb-3 main-color">Section 1</h6>
-                                        <div class="row">
+                                        <div class="border-bottom row">
                                             <div class="col-md-6">
                                                 <div class="mb-3 field_error">
                                                     <label for="banner_title" class="form-label black-color f-600">Enter Banner Title</label>
@@ -77,23 +77,43 @@
                                             </div>
                                         </div>
 
-                                        <!-- <h6 class="my-3 main-color">Section 2</h6>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
+                                        <h6 class="my-3 main-color">Section 2</h6>
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="mb-3 field_error">
-                                                    <label for="you_title" class="form-label black-color f-600">Enter Youtube Title</label>
-                                                    <input type="text" name="you_title" class="form-control" id="you_title" value="{{ $data['you_title'] ?? '' }}" aria-describedby="you_title" placeholder="Enter Youtube Title">
+                                                    <label for="community_title" class="form-label black-color f-600">Enter Community Title</label>
+                                                    <input type="text" name="community_title" class="form-control" id="community_title" value="{{ $data['community_title'] ?? '' }}" aria-describedby="community_title" placeholder="Enter Community Title">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="imageInput2" class="form-label black-color f-600">Upload Community Background Image</label>
+                                                    <div class="file-upload d-flex align-items-center mb-3 field">
+                                                        <div class="file btn black-color upload-btn">
+                                                            <span id="image_name2">
+                                                                @if(isset($data['community_image']))
+                                                                {{ $data['community_image'] ?? "" }}
+                                                                @else
+                                                                Upload Background Photos
+                                                                @endif
+                                                            </span>
+                                                            <i class="bi bi-file-image ms-2 main-color"></i>
+                                                            <input type="file" name="community_image" accept="image/png, image/jpg, image/jpeg" id="imageInput2" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-3">
+                                                    <div class="mb-3 field_error">
+                                                        <label for="community_sub_title" class="form-label black-color f-600">Enter Community Sub-Title</label>
+
+                                                        <textarea name="community_sub_title" class="form-control" id="community_sub_title" aria-describedby="community_sub_title" placeholder="Enter Community Sub-Title" cols="30" rows="5">{{ $data['community_sub_title'] ?? '' }}</textarea>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <div class="mb-3 field_error">
-                                                    <label for="you_link" class="form-label black-color f-600">Enter Youtube Video Embed (link/src)</label>
-                                                    <input type="url" name="you_link" class="form-control" id="you_link" value="{{ $data['you_link'] ?? '' }}" aria-describedby="you_link" placeholder="Enter Youtube Video Link">
-                                                </div>
-                                            </div>
-                                        </div> -->
                                         
                                     </div>
                                 </div>
@@ -134,6 +154,22 @@
                     filesize: 5
                 },
                 @endif
+                community_title: {
+                    required: true,
+                },
+                community_sub_title: {
+                    required: true,
+                },
+                @if(!isset($data['community_image']))
+                community_image: {
+                    required: true,
+                    filesize: 5
+                },
+                @else
+                community_image: {
+                    filesize: 5
+                },
+                @endif
             },
             errorElement: "span",
             errorPlacement: function(error, element) {
@@ -168,16 +204,16 @@
 
     document.getElementById('imageInput').addEventListener('change', function(event) {
         const fileInput = event.target;
-        const imageDisplay = document.getElementById('imageDisplay');
-
         if (fileInput.files.length > 0) {
             const selectedFile = fileInput.files[0];
-
-            // Display the audio image
-            const objectURL = URL.createObjectURL(selectedFile);
             $("#image_name").text(selectedFile.name);
-            // Set the audio source to the selected file
-            imageDisplay.src = objectURL;
+        }
+    });
+    document.getElementById('imageInput2').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        if (fileInput.files.length > 0) {
+            const selectedFile = fileInput.files[0];
+            $("#image_name2").text(selectedFile.name);
         }
     });
 </script>

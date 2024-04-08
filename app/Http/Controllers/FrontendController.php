@@ -248,7 +248,25 @@ class FrontendController extends Controller
         $badges = Badge::where('status', 1)->get();
         $test = Testimonial::where('status', 1)->orderByDesc('id')->get();
         $video = Video::where('status', 1)->orderByDesc('id')->get();
-        return view("index")->with(compact('home', 'badges', 'data', 'test', 'video'));
+        $plans = Plan::orderBy("price", "asc")->get();
+        if(isset(auth()->user()->id)){
+            $myPlans = UserPlanDetail::leftJoin('plans as p', 'p.id', '=', 'user_plan_details.plan_id')->where('user_id', auth()->user()->id)->where('end_date', '>=', $now)->select('user_plan_details.plan_id', 'user_plan_details.id', 'p.price')->orderByDesc('id')->first();
+        }
+        foreach ($plans as  $item) {
+            if(!isset($myPlans->id) && ($item->price == 0)){
+                if(isset(auth()->user()->id))
+                    $item->current_plan = true;
+                else $item->current_plan = false;
+                $item->current_plan_price = 0;
+            } elseif (isset($myPlans->id) && ($item->id == $myPlans->plan_id)) {
+                $item->current_plan = true;
+                $item->current_plan_price = $myPlans->price ?? 0;
+            } else {
+                $item->current_plan = false;
+                $item->current_plan_price = $myPlans->price ?? 0;
+            } 
+        }
+        return view("index")->with(compact('home', 'badges', 'data', 'test', 'video', 'plans'));
     }
 
     public function about()

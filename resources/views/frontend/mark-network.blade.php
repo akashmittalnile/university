@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-position-2">
-                    <div class="right-section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec1_image']}}' )">
+                    <div class="right-section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec1_image']}}' ), background-repeat: no-repeat;">
 
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' )">
+    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' ), background-repeat: no-repeat;">
         <div class="container">
             <h1 class="mb-4 white-color text-center">{{ $data['sec3_title'] ?? 'NA' }}</h1>
             <p class="text-center white-color">{{ $data['sec3_sub_title'] ?? 'NA' }}</p>
