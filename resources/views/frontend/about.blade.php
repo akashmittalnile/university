@@ -46,6 +46,38 @@
             </div>
         </div>
     </div>
+
+    @if(count($team) > 0)
+    <section class="why-you-select" style="margin-top: 80px;">
+        <div class="container">
+            <h1 class="text-center black-color">Team Members</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="customers-testimonials" class="owl-carousel">
+
+                        @forelse($team as $key => $val)
+                        <div class="item">
+                            <div class="shadow-effect img-box">
+                                <img style="margin: 0; max-width: 350px; height: 300px; object-fit: cover; object-position: center;" class="img-circle img-fluid rounded"
+                                    src="{{ assets('uploads/team/'.$val->image) }}"
+                                    alt="">
+                                <div class="overlay">
+                                    <h6 class="main-color mt-5 text-left">{{ $val->name ?? 'NA' }}</h6>
+                                    <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
+                                    <hr class="main-color">
+                                    <p>{{ $val->company_name ?? 'NA' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
     <div class="what-we-do" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/about/{{($data['sec3_image'] ?? null)}}' ), background-repeat: no-repeat;">
         <div class="container">
             <h1 class="text-center white-color">

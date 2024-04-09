@@ -14,8 +14,8 @@
 <main class="main-container dashboard">
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
-            <a href="{{ route('admin.manage.home') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
-            <h3 class="font-weight-bold black-color">Manage Testimonial</h3>
+            <a href="{{ route('admin.about') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
+            <h3 class="font-weight-bold black-color">Manage Team Member</h3>
         </div>
         <div class="profile-link">
             <a href="#">
@@ -44,7 +44,7 @@
                     </form> -->
                 </div>
 
-                <a href="javascript:void(0)" style="width: 19%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn ms-2">Add Testimonial<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="javascript:void(0)" style="width: 21%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn ms-2">Add Team Member<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">
@@ -54,19 +54,19 @@
                             <div class="slid col-4 mb-4">
                                 <div class="box-slid common-card float w-100">
                                     <div class="img-box" style="height: 75%;">
-                                        <img id style="height: 100%;" src="{{ assets("uploads/testimonial/$item->image") }}" alt="image" class="img-fluid">
+                                        <img id style="height: 350px; width: 350px" src="{{ assets("uploads/team/$item->image") }}" alt="image" class="img-fluid">
                                     </div>
-                                    <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 mt-2">{{ $item->title ?? 'NA' }}</p>
+                                    <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 pt-1 mt-2">{{ $item->name ?? 'NA' }}</p>
                                     <div class="d-flex mt-2">
-                                        <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.manage.testimonial.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
-                                        <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Testimonial</button></a>
+                                        <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.team.member.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
+                                        <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-name="{{ $item->name }}" data-company="{{ $item->company_name }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Detail</button></a>
                                     </div>
                                 </div>
                             </div>
                             @empty
                             <div class="text-center mt-5">
                                 <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
-                                <h4 class="p-4 text-center my-2 w-100">No testimonials found</h4>
+                                <h4 class="p-4 text-center my-2 w-100">No team members found</h4>
                             </div>
                             @endforelse
                             <div class="d-flex justify-content-center">
@@ -87,28 +87,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Edit Testimonial</h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Edit Team Member</h4>
                 
-                <form action="{{ route('admin.manage.testimonial.update') }}" method="post" enctype="multipart/form-data" id="update_form">
+                <form action="{{ route('admin.team.member.update') }}" method="post" enctype="multipart/form-data" id="update_form">
                     @csrf
                     <div class="edit-ebook">
-                        <input type="hidden" id="redirect_url" value="{{ route('admin.manage.testimonial') }}">
+                        <input type="hidden" id="redirect_url" value="{{ route('admin.team.member') }}">
                         <div class="common-card" style="box-shadow: none;">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="mb-3 field_error">
-                                        <label for="editTitle" class="form-label black-color f-600">Enter Title</label>
-                                        <input type="text" name="title" class="form-control" id="editTitle" value="" aria-describedby="banner_title" placeholder="Enter Title">
+                                        <label for="editName" class="form-label black-color f-600">Enter Name</label>
+                                        <input type="text" name="name" class="form-control" id="editName" value="" aria-describedby="banner_name" placeholder="Enter Name">
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <div class="mb-3 field_error">
-                                            <label for="editDescription" class="form-label black-color f-600">Enter Description</label>
-                                            <textarea name="description" id="editDescription" placeholder="Enter Description" class="form-control" cols="30" rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="editId" name="id" value="">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
@@ -132,6 +123,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <div class="mb-3 field_error">
+                                            <label for="editCompany" class="form-label black-color f-600">Enter Company Name</label>
+                                            <textarea name="company_name" id="editCompany" placeholder="Enter Company Name" class="form-control" cols="30" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="editId" name="id" value="">
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center mb-3">
@@ -153,26 +153,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Testimonial</h4>
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Team Member</h4>
 
-                <form action="{{ route('admin.manage.testimonial.save') }}" method="post" enctype="multipart/form-data" id="create_form">
+                <form action="{{ route('admin.team.member.save') }}" method="post" enctype="multipart/form-data" id="create_form">
                     @csrf
                     <div class="edit-ebook">
-                        <input type="hidden" id="redirect_url" value="{{ route('admin.manage.testimonial') }}">
+                        <input type="hidden" id="redirect_url" value="{{ route('admin.team.member') }}">
                         <div class="common-card" style="box-shadow: none;">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="mb-3 field_error">
-                                        <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                        <input type="text" name="title" class="form-control" id="title" value="" aria-describedby="banner_title" placeholder="Enter Title">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <div class="mb-3 field_error">
-                                            <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                            <textarea name="description" id="description" class="form-control" placeholder="Enter Description" cols="30" rows="5"></textarea>
-                                        </div>
+                                        <label for="name" class="form-label black-color f-600">Enter Name</label>
+                                        <input type="text" name="name" class="form-control" id="name" value="" aria-describedby="banner_name" placeholder="Enter Name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -197,6 +189,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <div class="mb-3 field_error">
+                                            <label for="company_name" class="form-label black-color f-600">Enter Company Name</label>
+                                            <textarea name="company_name" id="company_name" class="form-control" placeholder="Enter Company Name" cols="30" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center mb-3">
@@ -218,7 +218,7 @@
             </div>
             <div class="modal-body">
                 <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
-                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Testimonial</b> ?</h6>
+                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Team Member</b> ?</h6>
                 <img src="{{ assets('admin/images/delete.png') }}" alt="image" class="img-fluid">
             </div>
             <form action="" method="get" id="delete_form">
@@ -268,8 +268,8 @@
     $(document).on('click', "#imgEditBtn", function() {
         $("#edit_image_name").text($(this).data('img'));
         $("#editId").val($(this).data('id'));
-        $("#editTitle").val($(this).data('title'));
-        $("#editDescription").val($(this).data('description'));
+        $("#editName").val($(this).data('name'));
+        $("#editCompany").val($(this).data('company'));
         $("#editDesignation").val($(this).data('designation'));
         $("#editFile").modal('show');
     });
@@ -303,13 +303,13 @@
         }, 'File size must be less than {0} MB');
         $('#create_form').validate({
             rules: {
-                title: {
+                name: {
+                    required: true,
+                },
+                company_name: {
                     required: true,
                 },
                 designation: {
-                    required: true,
-                },
-                description: {
                     required: true,
                 },
                 image: {
@@ -430,13 +430,13 @@
         });
         $('#update_form').validate({
             rules: {
-                title: {
+                name: {
+                    required: true,
+                },
+                company_name: {
                     required: true,
                 },
                 designation: {
-                    required: true,
-                },
-                description: {
                     required: true,
                 },
                 image: {

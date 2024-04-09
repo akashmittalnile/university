@@ -174,6 +174,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get("how_we_do_it", [ContentController::class, 'about2'])->name('how_we_do_it');
         Route::post("how_we_do_it_save", [ContentController::class, 'aboutSave2'])->name('how_we_do_it.save');
 
+        // team members
+        Route::get("team-member", [ContentController::class, 'teamMember'])->name('team.member');
+        Route::post("team-member-save", [ContentController::class, 'teamMemberSave'])->name('team.member.save');
+        Route::get("team-member-delete/{id}", [ContentController::class, 'teamMemberDelete'])->name('team.member.delete');
+        Route::post("team-member-update", [ContentController::class, 'teamMemberUpdate'])->name('team.member.update');
+
         // mark network
         Route::get("mark-network", [ContentController::class, 'markNetwork'])->name('markNetwork');
         Route::post("mark-network", [ContentController::class, 'markNetworkSave'])->name('markNetwork.save');

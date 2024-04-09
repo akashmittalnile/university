@@ -12,6 +12,7 @@ use App\Models\GalleryAttribute;
 use App\Models\Plan;
 use App\Models\Podcast;
 use App\Models\Product;
+use App\Models\TeamMember;
 use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\UserPlanDetail;
@@ -275,7 +276,8 @@ class FrontendController extends Controller
         $data = unserialize($about->value);
         $how = Content::where("name", 'how_we_do_it')->first();
         $data2 = unserialize($how->value);
-        return view("frontend.about", compact('about', 'how', 'data', 'data2'));
+        $team = TeamMember::where('status', 1)->orderByDesc('id')->get();
+        return view("frontend.about", compact('about', 'how', 'data', 'data2', 'team'));
     }
 
     public function affiliate()

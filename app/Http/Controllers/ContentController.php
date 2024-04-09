@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Content;
 use App\Models\GalleryAttribute;
 use App\Models\SocialMedia;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -298,6 +299,107 @@ class ContentController extends Controller
                 $content->save();
             }
             return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function teamMember()
+    {
+        try{
+            $data = TeamMember::orderByDesc('id')->paginate(config("app.ebook_per_page"));
+            return view("admin.content.team-member", compact("data"));
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+        
+    }
+
+    public function teamMemberSave(Request $request)
+    {
+        try{
+            $request->validate(
+                [
+                    'name' => 'required',
+                    'company_name' => 'required',
+                    'designation' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $team = new TeamMember;
+            $team->name = $request->name;
+            $team->designation = $request->designation;
+            
+            if ($request->hasFile("image")) {
+                $name = fileUpload($request->image, "uploads/team");
+                $team->image = $name;
+            }
+            $team->company_name = $request->company_name;
+            $team->status = 1;
+            $team->save();
+
+            return response()->json([
+                'message' => 'Team Member Added Successfully.',
+                'status' => 200
+            ]);
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function teamMemberDelete($id)
+    {
+        try{
+            $id = encrypt_decrypt('decrypt', $id);
+            $team = TeamMember::where('id', $id)->first();
+
+            $link = public_path() . "/uploads/team/" . $team->image;
+            if (file_exists($link)) {
+                unlink($link);
+            }
+
+            TeamMember::where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Team Member Deleted Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function teamMemberUpdate(Request $request)
+    {
+        try{
+            $request->validate(
+                [
+                    'name' => 'required',
+                    'company_name' => 'required',
+                    'designation' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->id);
+            $team = TeamMember::where('id', $id)->first();
+            $team->name = $request->name;
+            $team->designation = $request->designation;
+            
+            if ($request->hasFile("image")) {
+                if(isset($team->image)){
+                    $link = public_path() . "/uploads/team/" . $team->image;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $name = fileUpload($request->image, "uploads/team");
+                $team->image = $name;
+
+            }
+            $team->company_name = $request->company_name;
+            $team->status = 1;
+            $team->save();
+
+            return response()->json([
+                'message' => 'Team Member Updated Successfully.',
+                'status' => 200
+            ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }

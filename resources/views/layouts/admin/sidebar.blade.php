@@ -67,12 +67,12 @@
             </li>
         </a> -->
         <a href="{{ route('admin.manage.home') }}">
-            <li class="sidebar-list-item {{ (Route::is('admin.manage.home') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges')) ? 'active' : '' }}">
+            <li class="sidebar-list-item {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges')) ? 'active' : '' }}">
                 <i class="bi bi-list-ul me-2"></i>Manage Home
             </li>
         </a>
         <a href="{{ route('admin.about') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.about') ? 'active' : '' }}">
+            <li class="sidebar-list-item {{ (Route::is('admin.about') || Route::is('admin.team.member')) ? 'active' : '' }}">
                 <i class="bi bi-list-ul me-2"></i>Manage About Us
             </li>
         </a>

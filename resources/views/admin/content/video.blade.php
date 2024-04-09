@@ -44,7 +44,7 @@
                     </form> -->
                 </div>
 
-                <a href="javascript:void(0)" style="width: 17%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn">Add Video<i class="bi bi-plus-circle ms-2"></i></button></a>
+                <a href="javascript:void(0)" style="width: 15%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="common-btn">Add Video<i class="bi bi-plus-circle ms-2"></i></button></a>
             </div>
             <div class="mt-1">
                 <div class="transaction-details">
