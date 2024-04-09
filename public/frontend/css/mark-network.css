@@ -6,7 +6,7 @@
 .membership .left-section{background-color: #3fab40;padding: 30px;border-radius: 15px;}
 .become-a-member h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .become-a-member p{font-size: 16px;}
-.become-a-member{height: 65vh; margin-top: 100px;padding: 50px 30px;background: url("../images/membership-2.jpg");background-position: center;padding: 50px 0px;background-repeat: no-repeat;background-size: cover; }
+.become-a-member{height: 65vh; margin-top: 0px;padding: 50px 30px;background: url("../images/membership-2.jpg");background-position: center;padding: 50px 0px;background-repeat: no-repeat;background-size: cover; }
 .membership-cards .card ul{margin-left: 0;padding-left: 0;}
 .membership-cards .card ul li{list-style: none;padding: 10px;}
 .membership-cards .card {padding: 50px 30px;border-radius: 15px;border: 0;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}

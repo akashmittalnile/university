@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AffliateBadgesController;
+use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\EbookController;
@@ -10,9 +10,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -223,26 +221,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("business-hours-save", [ContentController::class, 'businessHourSave'])->name('business.hour.save');
 
         // home
-        Route::get("manage-home", [ContentController::class, 'home'])->name('manage.home');
-        Route::post("manage-home-save", [ContentController::class, 'homeSave'])->name('manage.home.save');
+        Route::get("manage-home", [AdminHomeController::class, 'home'])->name('manage.home');
+        Route::get("manage-home-edit/{id}", [AdminHomeController::class, 'homeEdit'])->name('manage.home.edit');
+        Route::get("manage-home-preview/{id}", [AdminHomeController::class, 'homePreview'])->name('manage.home.preview');
+        Route::post("manage-home-save", [AdminHomeController::class, 'homeSave'])->name('manage.home.save');
 
         // testimonial
-        Route::get("manage-testimonial", [TestimonialController::class, 'testimonial'])->name('manage.testimonial');
-        Route::post("manage-testimonial-save", [TestimonialController::class, 'testimonialSave'])->name('manage.testimonial.save');
-        Route::get("manage-testimonial-delete/{id}", [TestimonialController::class, 'testimonialDelete'])->name('manage.testimonial.delete');
-        Route::post("manage-testimonial-update", [TestimonialController::class, 'testimonialUpdate'])->name('manage.testimonial.update');
+        Route::get("manage-testimonial", [AdminHomeController::class, 'testimonial'])->name('manage.testimonial');
+        Route::post("manage-testimonial-save", [AdminHomeController::class, 'testimonialSave'])->name('manage.testimonial.save');
+        Route::get("manage-testimonial-delete/{id}", [AdminHomeController::class, 'testimonialDelete'])->name('manage.testimonial.delete');
+        Route::post("manage-testimonial-update", [AdminHomeController::class, 'testimonialUpdate'])->name('manage.testimonial.update');
 
         // youtube video
-        Route::get("manage-youtube-video", [VideoController::class, 'videos'])->name('manage.videos');
-        Route::post("manage-youtube-video-save", [VideoController::class, 'videoSave'])->name('manage.videos.save');
-        Route::get("manage-youtube-video-delete/{id}", [VideoController::class, 'videoDelete'])->name('manage.videos.delete');
-        Route::post("manage-youtube-video-update", [VideoController::class, 'videoUpdate'])->name('manage.videos.update');
+        Route::get("manage-youtube-video", [AdminHomeController::class, 'videos'])->name('manage.videos');
+        Route::post("manage-youtube-video-save", [AdminHomeController::class, 'videoSave'])->name('manage.videos.save');
+        Route::get("manage-youtube-video-delete/{id}", [AdminHomeController::class, 'videoDelete'])->name('manage.videos.delete');
+        Route::post("manage-youtube-video-update", [AdminHomeController::class, 'videoUpdate'])->name('manage.videos.update');
 
         // affiliate badges
-        Route::get("manage-affiliate-badges", [AffliateBadgesController::class, 'affiliateBadges'])->name('manage.affiliate-badges');
-        Route::post("manage-affiliate-badges-save", [AffliateBadgesController::class, 'imageSave'])->name('manage.affiliate-badges.save');
-        Route::get("manage-affiliate-badges-delete/{id}", [AffliateBadgesController::class, 'imageDelete'])->name('manage.affiliate-badges.delete');
-        Route::post("manage-affiliate-badges-update", [AffliateBadgesController::class, 'imageUpdate'])->name('manage.affiliate-badges.update');
+        Route::get("manage-affiliate-badges", [AdminHomeController::class, 'affiliateBadges'])->name('manage.affiliate-badges');
+        Route::post("manage-affiliate-badges-save", [AdminHomeController::class, 'imageSave'])->name('manage.affiliate-badges.save');
+        Route::get("manage-affiliate-badges-delete/{id}", [AdminHomeController::class, 'imageDelete'])->name('manage.affiliate-badges.delete');
+        Route::post("manage-affiliate-badges-update", [AdminHomeController::class, 'imageUpdate'])->name('manage.affiliate-badges.update');
 
         // Admin Profile
         Route::get("profile", [AdminController::class, 'profile'])->name('profile');

@@ -4,18 +4,18 @@
     <link rel="stylesheet" href="{{ assets('frontend/css/mark-network.css') }}">
 @endpush
 @section('content')
-    <section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['banner_image']}}' ), background-repeat: no-repeat;">
+    <section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$banner->image}}' ), background-repeat: no-repeat;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="left-section">
-                        <h1 class="white-color f-600">{{ $data['banner_title'] ?? 'NA' }}</h1>
+                        <h1 class="white-color f-600">{{ $banner->title ?? 'NA' }}</h1>
                         <!-- <p class="white-color mt-3 f-500 text-capitalize">We help you deliver them with confidence</p> -->
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="right-section">
-                        <h5 class="text-capitalize white-color">{{ $data['banner_sub_title'] ?? 'NA' }}</h5>
+                        <h5 class="text-capitalize white-color">{{ $banner->description ?? 'NA' }}</h5>
                         @if(!isset(auth()->user()->id))
                         <a href="{{ route('signup') }}"><button class="btn common-btn mt-4">Sign Up</button></a>
                         @endif
@@ -35,14 +35,16 @@
 
                         @forelse($test as $key => $val)
                         <div class="item">
-                            <div class="shadow-effect">
-                                <img style="margin: 0; max-width: 350px" class="img-circle img-fluid rounded"
-                                    src="{{ assets('uploads/testimonial/'.$val->image) }}"
-                                    alt="">
-                                <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
-                                <p>{{ $val->description ?? 'NA' }}</p>
-                                <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
+                            <div class="customers-testimonials-card">
+                                <div class="customers-testimonials-image">
+                                    <img src="{{ assets('uploads/testimonial/'.$val->image) }}"alt="">
+                                </div>
+                                <div class="customers-testimonials-content">
+                                    <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
+                                    <p>{{ $val->description ?? 'NA' }}</p>
+                                    <hr class="main-color">
+                                    <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
+                                </div>
                             </div>
                         </div>
                         @empty
@@ -104,12 +106,16 @@
 
                         @forelse($badges as $key => $val)
                         <div class="item">
-                            <div class="shadow-effect" style="width: 350px; padding: 10px;">
-                                <img style="margin: 0; max-width: 350px" class="img-circle img-fluid rounded"
-                                    src="{{ assets('uploads/badges/'.$val->path) }}"
-                                    alt="">
+                            <div class="affiliate-badges-card">
+                                <div class="affiliate-c-media">
+                                    <img 
+                                        src="{{ assets('uploads/badges/'.$val->path) }}"
+                                        alt="">
+                                </div>
+                                <div class="affiliate-Badges-media">
                                 <h6 class="main-color mt-2 text-left">{{ $val->title ?? '' }}</h6>
                                 <p>{{ $val->description ?? '' }}</p>
+                                </div>
                             </div>
                         </div>
                         @empty
@@ -122,10 +128,10 @@
     </section>
     @endif
 
-    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['community_image']}}' ), background-repeat: no-repeat;">
+    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$community->image}}' ), background-repeat: no-repeat;">
         <div class="container">
-            <h1 class="mb-4 white-color text-center">{{ $data['community_title'] ?? 'NA' }}</h1>
-            <p class="text-center white-color">{{ $data['community_sub_title'] ?? 'NA' }}</p>
+            <h1 class="mb-4 white-color text-center">{{ $community->title ?? 'NA' }}</h1>
+            <p class="text-center white-color">{{ $community->description ?? 'NA' }}</p>
         </div>
     </div>
     <div class="container">
@@ -232,7 +238,7 @@
     $('.pmoCarousel').owlCarousel({
         loop: true,
         margin: 10,
-        nav: false,
+        nav: true,
         dots: false,
         responsive:{
             1000:{

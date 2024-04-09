@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Ebook;
 use App\Models\GalleryAttribute;
+use App\Models\ManageHome;
 use App\Models\Plan;
 use App\Models\Podcast;
 use App\Models\Product;
@@ -245,8 +246,8 @@ class FrontendController extends Controller
     public function index()
     {
         $now = Carbon::now();
-        $home = Content::where('name', 'home')->first();
-        $data = unserialize($home->value);
+        $banner = ManageHome::where('section_code', 'banner')->first();
+        $community = ManageHome::where('section_code', 'community')->first();
         $badges = Badge::where('status', 1)->get();
         $test = Testimonial::where('status', 1)->orderByDesc('id')->get();
         $video = Video::where('status', 1)->orderByDesc('id')->get();
@@ -268,7 +269,7 @@ class FrontendController extends Controller
                 $item->current_plan_price = $myPlans->price ?? 0;
             } 
         }
-        return view("index")->with(compact('home', 'badges', 'data', 'test', 'video', 'plans'));
+        return view("index")->with(compact('banner', 'badges', 'community', 'test', 'video', 'plans'));
     }
 
     public function about()

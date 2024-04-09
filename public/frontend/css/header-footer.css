@@ -23,7 +23,7 @@ ul.navbar-nav li.nav-item {
     /* margin-right: 25px; */padding: 10px;
 }
 ul.navbar-nav li.nav-item:last-child {
-    margin-right: 0;
+    margin-right: 0; 
 }
 ul.navbar-nav li.nav-item a.nav-link {
     color: #fbfbfb;
@@ -116,7 +116,7 @@ ul.navbar-nav li.nav-item a.nav-link.active {
 /* --------------------toggle button css end----------------------- */
 
 /* ---------------contact------------ */
-.contact{background: url("../images/contact-bg.jpg");background-position: top;background-repeat: no-repeat;background-size: cover; margin-top: 100px;padding: 50px 30px;}
+.contact{background: url("../images/contact-bg.jpg");background-position: top;background-repeat: no-repeat;background-size: cover; margin-top: 0px;padding: 50px 30px;}
 .contact form{background-color: rgb(255 255 255 / 46%);padding: 50px 30px;border-radius: 15px;width: 90%;}
 .contact form .form-control{ border: 1px solid #97e798;font-size: 14px;color: #4e4e4e;}
 .contact form .form-control:focus{border: 1px solid #3fab40;box-shadow: none;}
