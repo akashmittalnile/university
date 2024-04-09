@@ -244,6 +244,7 @@ class FrontendController extends Controller
 
     public function index()
     {
+        $now = Carbon::now();
         $home = Content::where('name', 'home')->first();
         $data = unserialize($home->value);
         $badges = Badge::where('status', 1)->get();
