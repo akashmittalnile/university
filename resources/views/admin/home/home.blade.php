@@ -33,7 +33,7 @@
 
                             <input style="width: 25%;" type="text" class="form-control common-shadow" name="search" placeholder="Search by section name" value="{{ request()->has('search') ? request('search') : '' }}" aria-describedby="basic-addon2" />
 
-                            <input title="Last Modified On" style="width: 10%;" type="date" class="form-control common-shadow" name="date" id="userDate" value="{{ request()->has('date') ? request('date') : '' }}" max="{{date('Y-m-d')}}">
+                            <!-- <input title="Last Modified On" style="width: 10%;" type="date" class="form-control common-shadow" name="date" id="userDate" value="{{ request()->has('date') ? request('date') : '' }}" max="{{date('Y-m-d')}}"> -->
 
                             <button class="search-btn">
                                 <i class="bi bi-search"></i>

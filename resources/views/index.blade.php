@@ -2,6 +2,20 @@
 @push('css')
     <link rel="stylesheet" href="{{ assets('frontend/css/home.css') }}">
     <link rel="stylesheet" href="{{ assets('frontend/css/mark-network.css') }}">
+    <style>
+        .stripe-button-el {
+            opacity: 1;
+        }
+        .current-plan{background-color: #d81b1b;
+            position: absolute;
+            border-radius: 10px 0px 10px 0px;left: auto;right: 0;
+            margin-top: -13px;
+            padding: 5px 10px;
+            z-index: 9;}
+        .current-plan p{color: #ffffff;font-size: 14px;}
+        .current-div{position: relative;}
+        .current-plan p{margin: 0;padding: 0;}
+    </style>
 @endpush
 @section('content')
     <section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$banner->image}}' ), background-repeat: no-repeat;">
