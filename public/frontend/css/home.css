@@ -32,11 +32,38 @@
     text-align: center;
     border: 1px solid #ECECEC;
     /* width: 60%; */
-    aspect-ratio: 3 / 2;
     box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.02);
+    display: flex;gap: 20px;
 }
 
+.affiliate-c-media {
+    width: 300px;
+    height: 300px;
+    position: relative;    
+    margin: 0 auto;
+    border: 1px solid #ECECEC;
+}
+.affiliate-c-media img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
 
+.affiliate-Badges-content{flex: 1;}
+.affiliate-Badges-content h6{    font-size: 16px; text-align: left;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3fab40;}
+
+.affiliate-Badges-content p{    font-size: 14px; text-align: left;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;}
 
 /* ---------testimonial--------------- */
 

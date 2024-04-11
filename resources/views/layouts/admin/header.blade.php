@@ -15,6 +15,7 @@
         @endif
     </div>
     <div class="profile-link">
+        @hasSection('heading')
         <a href="#">
             <div class="d-flex align-items-center">
                 <div class="profile-pic">
@@ -25,5 +26,6 @@
                 </div>
             </div>
         </a>
+        @endif
     </div>
 </div>
