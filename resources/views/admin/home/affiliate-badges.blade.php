@@ -15,7 +15,7 @@
     <div class="main-title d-flex align-items-center">
         <div class="page-title d-flex align-items-center">
             <a href="{{ route('admin.manage.home') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
-            <h3 class="font-weight-bold black-color">Manage Affiliate Badges</h3>
+            <h3 class="font-weight-bold black-color">Manage Achievements</h3>
         </div>
         <div class="profile-link">
             <a href="#">

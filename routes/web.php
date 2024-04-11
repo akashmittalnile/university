@@ -224,7 +224,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get("manage-home", [AdminHomeController::class, 'home'])->name('manage.home');
         Route::get("manage-home-edit/{id}", [AdminHomeController::class, 'homeEdit'])->name('manage.home.edit');
         Route::get("manage-home-preview/{id}", [AdminHomeController::class, 'homePreview'])->name('manage.home.preview');
-        Route::post("manage-home-save", [AdminHomeController::class, 'homeSave'])->name('manage.home.save');
+        Route::post("manage-home/banner-save", [AdminHomeController::class, 'homeBannerSave'])->name('manage.home.banner.save');
+        Route::post("manage-home/community-save", [AdminHomeController::class, 'homeCommunitySave'])->name('manage.home.community.save');
 
         // testimonial
         Route::get("manage-testimonial", [AdminHomeController::class, 'testimonial'])->name('manage.testimonial');
@@ -238,11 +239,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get("manage-youtube-video-delete/{id}", [AdminHomeController::class, 'videoDelete'])->name('manage.videos.delete');
         Route::post("manage-youtube-video-update", [AdminHomeController::class, 'videoUpdate'])->name('manage.videos.update');
 
-        // affiliate badges
-        Route::get("manage-affiliate-badges", [AdminHomeController::class, 'affiliateBadges'])->name('manage.affiliate-badges');
-        Route::post("manage-affiliate-badges-save", [AdminHomeController::class, 'imageSave'])->name('manage.affiliate-badges.save');
-        Route::get("manage-affiliate-badges-delete/{id}", [AdminHomeController::class, 'imageDelete'])->name('manage.affiliate-badges.delete');
-        Route::post("manage-affiliate-badges-update", [AdminHomeController::class, 'imageUpdate'])->name('manage.affiliate-badges.update');
+        // affiliate badges or achievements
+        Route::get("manage-achievements", [AdminHomeController::class, 'affiliateBadges'])->name('manage.affiliate-badges');
+        Route::post("manage-achievement-save", [AdminHomeController::class, 'imageSave'])->name('manage.affiliate-badges.save');
+        Route::get("manage-achievement-delete/{id}", [AdminHomeController::class, 'imageDelete'])->name('manage.affiliate-badges.delete');
+        Route::post("manage-achievement-update", [AdminHomeController::class, 'imageUpdate'])->name('manage.affiliate-badges.update');
 
         // Admin Profile
         Route::get("profile", [AdminController::class, 'profile'])->name('profile');

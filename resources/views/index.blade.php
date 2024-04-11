@@ -112,7 +112,7 @@
 
     @if(count($badges) > 0)
     <section class="testimonial">
-        <h1 class="mt-4 text-center f-600">Affiliate <b class="main-color"> Badges</b></h1>
+        <h1 class="mt-4 text-center f-600">Achievements</h1>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

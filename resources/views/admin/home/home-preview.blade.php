@@ -113,10 +113,10 @@
     @endif
     @endif
 
-    @if($home->section_code == 'badge')
+    @if($home->section_code == 'achievement')
     @if(count($badges) > 0)
     <section class="testimonial">
-        <h1 class="mt-4 text-center f-600">Affiliate <b class="main-color"> Badges</b></h1>
+        <h1 class="mt-4 text-center f-600">Achievement</h1>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

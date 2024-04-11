@@ -15,11 +15,16 @@ class AdminHomeController extends Controller
     public function home(Request $request)
     {
         try {
-            $data = ManageHome::orderByDesc('id');
+            $data = ManageHome::where('status', 1);
             if($request->filled('search')) $data->where('section_code', 'LIKE', '%'. $request->search . '%');
             if($request->filled('date')) $data->whereDate('updated_at', $request->date);
-            $data = $data->paginate(config("app.records_per_page"));
-            return view("admin.home.home")->with(compact('data'));
+            $datas = $data->paginate(config("app.records_per_page"));
+            $test = Testimonial::orderByDesc('id')->get();
+            $video = Video::orderByDesc('id')->get();
+            $badges = Badge::orderByDesc('id')->get();
+            $home = ManageHome::where('section_code', 'banner')->first();
+            $community = ManageHome::where('section_code', 'community')->first();
+            return view("admin.home.home")->with(compact('datas', 'test', 'badges', 'video', 'home', 'community'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -34,7 +39,7 @@ class AdminHomeController extends Controller
             elseif($home->section_code == 'community') return view('admin.home.home-edit')->with(compact('home'));
             elseif($home->section_code == 'testimonial') return redirect()->route('admin.manage.testimonial');
             elseif($home->section_code == 'video') return redirect()->route('admin.manage.videos');
-            elseif($home->section_code == 'badge') return redirect()->route('admin.manage.affiliate-badges');
+            elseif($home->section_code == 'achievement') return redirect()->route('admin.manage.affiliate-badges');
             else return redirect()->back()->with('error', 'Invalid section');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
@@ -55,31 +60,65 @@ class AdminHomeController extends Controller
         }
     }
 
-    public function homeSave(Request $request)
+    public function homeBannerSave(Request $request)
     {
         try {
             $request->validate(
                 [
-                    'id' => 'required',
-                    'title' => 'required',
-                    "description" => 'required',
+                    'banner_id' => 'required',
+                    'banner_title' => 'required',
+                    "banner_description" => 'required',
                     "banner_image" => 'file|max:10240',
                 ]
             );
-            $id = encrypt_decrypt('decrypt', $request->id);
+            $id = encrypt_decrypt('decrypt', $request->banner_id);
             $home = ManageHome::where('id', $id)->first();
-            if ($request->hasFile("image")) {
+            if ($request->hasFile("banner_image")) {
                 if (isset($home->image)) {
                     $link = public_path() . "/uploads/home/" . $home->image;
                     if (file_exists($link)) {
                         unlink($link);
                     }
                 }
-                $name = fileUpload($request->image, "uploads/home");
+                $name = fileUpload($request->banner_image, "uploads/home");
                 $home->image = $name;
             }
-            $home->title = $request->title;
-            $home->description = $request->description;
+            $home->title = $request->banner_title;
+            $home->description = $request->banner_description;
+            $home->status = 1;
+            $home->updated_at = date('Y-m-d H:i:s');
+            $home->save();
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function homeCommunitySave(Request $request)
+    {
+        try {
+            $request->validate(
+                [
+                    'community_id' => 'required',
+                    'community_title' => 'required',
+                    "community_description" => 'required',
+                    "community_image" => 'file|max:10240',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->community_id);
+            $home = ManageHome::where('id', $id)->first();
+            if ($request->hasFile("community_image")) {
+                if (isset($home->image)) {
+                    $link = public_path() . "/uploads/home/" . $home->image;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $name = fileUpload($request->community_image, "uploads/home");
+                $home->image = $name;
+            }
+            $home->title = $request->community_title;
+            $home->description = $request->community_description;
             $home->status = 1;
             $home->updated_at = date('Y-m-d H:i:s');
             $home->save();
@@ -122,10 +161,11 @@ class AdminHomeController extends Controller
             $testimonials->status = 1;
             $testimonials->save();
 
-            return response()->json([
-                'message' => 'Testimonial Created Successfully.',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Testimonial Created Successfully.');
+            // return response()->json([
+            //     'message' => 'Testimonial Created Successfully.',
+            //     'status' => 200
+            // ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -179,10 +219,11 @@ class AdminHomeController extends Controller
             $testimonials->status = 1;
             $testimonials->save();
 
-            return response()->json([
-                'message' => 'Testimonial Updated Successfully.',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Testimonial Updated Successfully.');
+            // return response()->json([
+            //     'message' => 'Testimonial Updated Successfully.',
+            //     'status' => 200
+            // ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -213,10 +254,11 @@ class AdminHomeController extends Controller
             $video->status = 1;
             $video->save();
 
-            return response()->json([
-                'message' => 'Youtube Video Added Successfully.',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Youtube Video Added Successfully.');
+            // return response()->json([
+            //     'message' => 'Youtube Video Added Successfully.',
+            //     'status' => 200
+            // ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -249,10 +291,11 @@ class AdminHomeController extends Controller
             $video->status = 1;
             $video->save();
 
-            return response()->json([
-                'message' => 'Youtube Video Details Updated Successfully.',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Youtube Video Details Updated Successfully.');
+            // return response()->json([
+            //     'message' => 'Youtube Video Details Updated Successfully.',
+            //     'status' => 200
+            // ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -290,10 +333,11 @@ class AdminHomeController extends Controller
             $image->status = 1;
             $image->save();
 
-            return response()->json([
-                'message' => 'Affiliate Badge Created Successfully.',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Achievement Created Successfully.');
+            // return response()->json([
+            //     'message' => 'Achievement Created Successfully.',
+            //     'status' => 200
+            // ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -311,7 +355,7 @@ class AdminHomeController extends Controller
             }
 
             Badge::where('id', $id)->delete();
-            return redirect()->back()->with('success', 'Affiliate Badge Deleted Successfully.');
+            return redirect()->back()->with('success', 'Achievement Deleted Successfully.');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -346,10 +390,11 @@ class AdminHomeController extends Controller
             $image->status = 1;
             $image->save();
 
-            return response()->json([
-                'message' => 'Affiliate Badge Updated Successfully.',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Achievement Updated Successfully.');
+            // return response()->json([
+            //     'message' => 'Achievement Updated Successfully.',
+            //     'status' => 200
+            // ]);
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
