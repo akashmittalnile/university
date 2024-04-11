@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('heading', 'Manage Blog')
+@section('count', sprintf('%02d', $count))
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/manage-podcasts.css') }}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -9,27 +11,7 @@
 @endpush
 @section('content')
 <!-- Main -->
-<main class="main-container dashboard">
-    <div class="main-title d-flex align-items-center">
-        <div class="page-title d-flex align-items-center">
-            <h3 class="font-weight-bold black-color">Manage Blog</h3>
-            <div class="count-bg ms-2">
-                <p class=" white-color">{{ sprintf('%02d', $count) }}</p>
-            </div>
-        </div>
-        <div class="profile-link">
-            <a href="#">
-                <div class="d-flex align-items-center">
-                    <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
-                    </div>
-                    <div class="button-link">
-                        <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+
     <div class="row ">
         <div class="col-md-12">
             <div class="search-items page-content">
@@ -83,7 +65,7 @@
             </div>
         </div>
     </div>
-</main>
+
 <!-- deleteFile modal -->
 <div class="modal fade" id="deleteFile" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

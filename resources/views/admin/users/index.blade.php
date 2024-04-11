@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('heading', 'User Management')
+@section('count', sprintf('%02d', $count))
 @push('css')
     <link rel="stylesheet" href="{{ assets('admin/css/user-management.css') }}" />
 @endpush
@@ -6,30 +8,6 @@
     <script src="{{ assets('admin/js/dashboard.js') }}"></script>
 @endpush
 @section('content')
-    <main class="main-container dashboard">
-        <div class="main-title d-flex align-items-center">
-            <div class="page-title d-flex align-items-center">
-                <h3 class="font-weight-bold black-color">
-                    User Management
-                </h3>
-                <div class="count-bg ms-2">
-                    <p class=" white-color">{{ sprintf('%02d', $count) }}</p>
-                </div>
-            </div>
-            <div class="profile-link">
-                <a href="#">
-                    <div class="d-flex align-items-center">
-                        <div class="profile-pic">
-                            <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
-                        </div>
-                        <div class="button-link">
-                            <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i
-                                    class="bi bi-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-md-12">
@@ -142,5 +120,5 @@
                 </div>
             </div>
         </div>
-    </main>
+    
 @endsection

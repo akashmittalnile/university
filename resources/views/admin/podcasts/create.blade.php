@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('heading', 'Add New Podcast')
+@section('back', route('admin.podcasts'))
 @push('css')
     <link rel="stylesheet" href="{{ assets('admin/css/add-new-podcast.css') }}" />
 @endpush
@@ -7,29 +9,7 @@
     <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 @endpush
 @section('content')
-    <main class="main-container dashboard">
-        <div class="main-title d-flex align-items-center">
-            <div class="page-title d-flex align-items-center">
-                <a href="{{ route('admin.podcasts') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
-                <h3 class="font-weight-bold black-color">
-                    Add New Podcast
-                </h3>
-            </div>
-            <div class="profile-link">
-                <a href="#">
-                    <div class="d-flex align-items-center">
-                        <div class="profile-pic">
-                            <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image"
-                                class="img-fluid me-2" />
-                        </div>
-                        <div class="button-link">
-                            <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i
-                                    class="bi bi-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+    
         <div class="row">
             <div class="page-content">
                 <form action="{{ route('admin.podcasts.store') }}"
@@ -182,7 +162,7 @@
                     <form>
             </div>
         </div>
-    </main>
+    
     <script>
         $(document).on("change", "input[name='fileType']", function(){
             let value = $(this).val();

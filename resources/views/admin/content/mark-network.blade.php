@@ -1,28 +1,11 @@
 @extends('layouts.admin.app')
+@section('heading', 'Mark Network')
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/edit-podcast.css') }}" />
 @endpush
 @section('content')
 <!-- Main -->
-<main class="main-container dashboard">
-    <div class="main-title d-flex align-items-center">
-        <div class="page-title d-flex align-items-center">
 
-            <h3 class="font-weight-bold black-color">Mark Network</h3>
-        </div>
-        <div class="profile-link">
-            <a href="#">
-                <div class="d-flex align-items-center">
-                    <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
-                    </div>
-                    <div class="button-link">
-                        <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="main-cards">
@@ -157,7 +140,6 @@
         </div>
     </div>
 
-</main>
 <!-- End Main -->
 <script>
     $(document).ready(function() {

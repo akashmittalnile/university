@@ -30,7 +30,10 @@
     <div class="grid-container">
 
         @include('layouts.admin.sidebar')
-        @yield('content')
+        <main class="main-container dashboard">
+            @include('layouts.admin.header')
+            @yield('content')
+        </main>
 
     </div>
 

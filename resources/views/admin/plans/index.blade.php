@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('heading', 'Manage Membership Plans')
+@section('count', sprintf('%02d', count($plans)))
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/manage-membership-plan.css') }}" />
 <style>
@@ -31,29 +33,7 @@
 @endpush
 @section('content')
 <!-- Main -->
-<main class="main-container dashboard">
-    <div class="main-title d-flex align-items-center">
-        <div class="page-title d-flex align-items-center">
-            <h3 class="font-weight-bold black-color">
-                Manage Membership Plans
-            </h3>
-            <div class="count-bg ms-2">
-                <p class="white-color">{{ sprintf('%02d', count($plans))}}</p>
-            </div>
-        </div>
-        <div class="profile-link">
-            <a href="#">
-                <div class="d-flex align-items-center">
-                    <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
-                    </div>
-                    <div class="button-link">
-                        <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+
     <div class="row page-content">
         <div class="page-content">
             <div class="d-flex align-items-center justify-content-end">
@@ -98,7 +78,7 @@
             </div>
         </div>
     </div>
-</main>
+
 <!-- End Main -->
 <!-- updatePlan modal -->
 <div class="modal fade" id="updatePlan" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">

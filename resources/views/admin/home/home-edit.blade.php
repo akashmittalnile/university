@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('heading', 'Manage '. $home->section_code ?? 'NA')
+@section('back', route('admin.manage.home'))
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/add-new-podcast.css') }}" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/min/dropzone.min.css">
@@ -22,27 +24,7 @@
 <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 @endpush
 @section('content')
-<main class="main-container dashboard">
-    <div class="main-title d-flex align-items-center">
-        <div class="page-title d-flex align-items-center">
-            <a href="{{ route('admin.manage.home') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
-            <h3 class="font-weight-bold black-color text-capitalize">
-                Manage {{ $home->section_code ?? 'NA' }}
-            </h3>
-        </div>
-        <div class="profile-link">
-            <a href="#">
-                <div class="d-flex align-items-center">
-                    <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2" />
-                    </div>
-                    <div class="button-link">
-                        <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+
     <div class="row">
         <div class="page-content">
             <form action="{{ route('admin.manage.home.save') }}" method="post" enctype="multipart/form-data" id="create_form">
@@ -95,7 +77,7 @@
                 <form>
         </div>
     </div>
-</main>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.0/dropzone.js"></script>
 <script type="text/javascript">
 

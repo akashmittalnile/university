@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('heading', 'User Details')
+@section('back', route('admin.users.index'))
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/user-details.css') }}" />
 <style>
@@ -13,26 +15,7 @@
 <script src="{{ assets('admin/js/user-details.js') }}"></script>
 @endpush
 @section('content')
-<main class="main-container dashboard">
-    <div class="main-title d-flex align-items-center">
-        <div class="page-title d-flex align-items-center">
-            <a href="{{ route('admin.users.index') }}"><i class="bi bi-arrow-left-circle-fill main-color me-3"></i></a>
-            <h3 class="font-weight-bold black-color">User Details</h3>
-        </div>
-        <div class="profile-link">
-            <a href="#">
-                <div class="d-flex align-items-center">
-                    <div class="profile-pic">
-                        <img src="{{ isset(auth()->user()->profile) ? assets("uploads/profile/".auth()->user()->profile) : assets('admin/images/no-image.jpg')}}" alt="profile image" class="img-fluid me-2">
-                    </div>
-                    <div class="button-link">
-                        <a href="{{ route('admin.profile') }}" class="profile-name">{{auth()->user()->name ?? 'Admin Profile'}}<i class="bi bi-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
+    
     @if($user->status==0 || $user->status==3)
     <div class="d-flex align-items-center justify-content-end mt-4">
         <a href="{{ route('admin.users.approve.reject', ['id' => encrypt_decrypt('encrypt', $user->id), 'status' => encrypt_decrypt('encrypt', 1)]) }}"><button class="outline-btn">Approve</button></a>
@@ -347,7 +330,7 @@
         </div>
     </div>
 
-</main>
+
 
 <script type="text/javascript">
     $(document).on('change', '#flexSwitchCheckChecked', function(e) {
