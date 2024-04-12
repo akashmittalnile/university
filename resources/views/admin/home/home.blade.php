@@ -379,8 +379,8 @@
                                                 <div class="affiliate-c-media">
                                                     <img src="{{ assets('uploads/badges/'.$val->path) }}" alt="">
                                                 </div>
-                                                <div class="affiliate-Badges-media">
-                                                    <h6 class="main-color mt-2 text-left">{{ $val->title ?? '' }}</h6>
+                                                <div class="affiliate-Badges-content">
+                                                    <h6>{{ $val->title ?? '' }}</h6>
                                                     <p>{{ $val->description ?? '' }}</p>
                                                 </div>
                                             </div>
@@ -854,6 +854,18 @@
         });
 
         $('.pmoCarousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            responsive: {
+                1000: {
+                    items: 1
+                },
+            }
+        });
+
+        $('#customers-testimonials1').owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
