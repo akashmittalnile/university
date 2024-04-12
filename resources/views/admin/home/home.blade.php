@@ -35,7 +35,8 @@
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">Banner<i class="bi bi-chevron-down" style="margin-left: 15px;"></i></h3>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> Banner<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -87,7 +88,9 @@
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">Community<i class="bi bi-chevron-down" style="margin-left: 15px;"></i></h3>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-person-gear"></i>
+                                                    </span> Community<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -139,7 +142,8 @@
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">Testimonials<i class="bi bi-chevron-down" style="margin-left: 15px;"></i></h3>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}"><span class="edit-pmu-collapse-icon"><i class="bi bi-person-vcard"></i>
+                                                    </span> Testimonials<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -151,18 +155,18 @@
                                             <a href="javascript:void(0)" style="width: 19%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="outline-btn ms-2">Add Testimonial<i class="bi bi-plus-circle ms-2"></i></button></a>
                                         </div>
                                         <div class="transaction-details">
-                                            <div class="">
+                                            <div class="achievements-scroll">
                                                 <div class="owl-carouse row">
                                                     @forelse ($test as $item)
-                                                    <div class="slid col-4 mb-4">
-                                                        <div class="box-slid common-card float w-100">
-                                                            <div class="img-box" style="height: 75%;">
-                                                                <img id style="height: 100%;" src="{{ assets("uploads/testimonial/$item->image") }}" alt="image" class="img-fluid">
+                                                    <div class="slid col-md-3 mb-4">
+                                                        <div class="testimonials-box-slid">
+                                                            <div class="testimonials-image">
+                                                                <img  src="{{ assets("uploads/testimonial/$item->image") }}" >
                                                             </div>
-                                                            <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 mt-2">{{ $item->title ?? 'NA' }}</p>
-                                                            <div class="d-flex mt-2">
-                                                                <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.manage.testimonial.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button></a>
-                                                                <a href="javascript:void(0)"><button id="imgEditBtn" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Testimonial</button></a>
+                                                            <p class="testimonials-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <div class="testimonials-action">
+                                                                <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.manage.testimonial.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button>
+                                                                <button id="imgEditBtn" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Testimonial</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -182,7 +186,9 @@
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">Achievements<i class="bi bi-chevron-down" style="margin-left: 15px;"></i></h3>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-award"></i>
+                                                    </span> Key Achievements<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -191,28 +197,28 @@
                                     </div>
                                     <div class="edit-pmu-section collapse-course-form collapse" id="collapse{{$data->id}}">
                                         <div class="text-end">
-                                            <a href="javascript:void(0)" style="width: 17%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileAchieve" class="outline-btn ms-2">Add Achievement<i class="bi bi-plus-circle ms-2"></i></button></a>
+                                            <a href="javascript:void(0)" style="width: 17%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileAchieve" class="outline-btn ms-2">Add Key Achievement<i class="bi bi-plus-circle ms-2"></i></button></a>
                                         </div>
                                         <div class="transaction-details">
-                                            <div class="">
+                                            <div class="achievements-scroll">
                                                 <div class="owl-carouse row">
                                                     @forelse ($badges as $item)
-                                                    <div class="slid col-4 mb-4">
-                                                        <div class="box-slid common-card float w-100">
-                                                            <div class="img-box" style="height: 75%;">
-                                                                <img id style="height: 100%;" src="{{ assets("uploads/badges/$item->path") }}" alt="image" class="img-fluid">
+                                                    <div class="slid col-md-3 mb-4">
+                                                        <div class="achievements-box-slid">
+                                                            <div class="achievements-img" >
+                                                                <img  src="{{ assets("uploads/badges/$item->path") }}">
                                                             </div>
-                                                            <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 mt-2">{{ $item->title ?? 'NA' }}</p>
-                                                            <div class="d-flex mt-2">
-                                                                <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form_achieve').attr('action','{{ route('admin.manage.affiliate-badges.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileAchieve">Delete</button></a>
-                                                                <a href="javascript:void(0)"><button style="width: 137px;" id="imgEditBtnAchieve" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->path }}">Edit Achievement</button></a>
+                                                            <p class="achievements-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <div class="achievements-action">
+                                                                <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form_achieve').attr('action','{{ route('admin.manage.affiliate-badges.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileAchieve">Delete</button>
+                                                               <button  id="imgEditBtnAchieve" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->path }}">Edit Key Achievement</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     @empty
                                                     <div class="text-center mt-5">
                                                         <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
-                                                        <h4 class="p-4 text-center my-2 w-100">No achievements found</h4>
+                                                        <h4 class="p-4 text-center my-2 w-100">No key achievements found</h4>
                                                     </div>
                                                     @endforelse
                                                 </div>
@@ -225,7 +231,8 @@
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">Youtube Video<i class="bi bi-chevron-down" style="margin-left: 15px;"></i></h3>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}"><span class="edit-pmu-collapse-icon"><i class="bi bi-play-btn"></i>
+                                                    </span> Youtube Video<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -237,18 +244,18 @@
                                             <a href="javascript:void(0)" style="width: 15%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileVideo" class="outline-btn">Add Video<i class="bi bi-plus-circle ms-2"></i></button></a>
                                         </div>
                                         <div class="transaction-details">
-                                            <div class="">
+                                            <div class="achievements-scroll">
                                                 <div class="owl-carouse row">
                                                     @forelse ($video as $item)
-                                                    <div class="slid col-4 mb-4">
-                                                        <div class="box-slid common-card float w-100">
-                                                            <div class="img-box">
+                                                    <div class="slid col-md-3 mb-4">
+                                                        <div class="video-box-slid">
+                                                            <div class="video-media">
                                                                 <iframe src="{{ $item->link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                             </div>
-                                                            <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 mt-2">{{ $item->title ?? 'NA' }}</p>
-                                                            <div class="d-flex mt-2">
-                                                                <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form_video').attr('action','{{ route('admin.manage.videos.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileVideo">Delete</button></a>
-                                                                <a href="javascript:void(0)"><button id="imgEditBtnVideo" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-link="{{ $item->link }}">Edit Video</button></a>
+                                                            <p  class="videos-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <div class="videos-action">
+                                                                <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form_video').attr('action','{{ route('admin.manage.videos.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileVideo">Delete</button>
+                                                                <button id="imgEditBtnVideo" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-link="{{ $item->link }}">Edit Video</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -360,7 +367,7 @@
 
                     @if(count($badges) > 0)
                     <section class="testimonial d-none">
-                        <h1 class="mt-4 text-center f-600">Achievements</h1>
+                        <h1 class="mt-4 text-center f-600">Key Achievements</h1>
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -724,7 +731,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Achievement</h4>
+                    <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Key Achievement</h4>
 
                     <form action="{{ route('admin.manage.affiliate-badges.save') }}" method="post" enctype="multipart/form-data" id="create_form_achieve">
                         @csrf
@@ -781,7 +788,7 @@
                 </div>
                 <div class="modal-body">
                     <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
-                    <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Achievement</b> ?</h6>
+                    <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Key Achievement</b> ?</h6>
                     <img src="{{ assets('admin/images/delete.png') }}" alt="image" class="img-fluid">
                 </div>
                 <form action="" method="get" id="delete_form_achieve">

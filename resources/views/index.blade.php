@@ -128,7 +128,7 @@
 
 @if(count($badges) > 0)
 <section class="testimonial">
-    <h1 class="mt-4 text-center f-600">Achievements</h1>
+    <h1 class="mt-4 text-center f-600">Key Achievements</h1>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -151,18 +151,6 @@
 
                 </div>
             </div>
-
-            <!-- <div class="col-md-12">
-                <div class="affiliate-badges-card">
-                    <div class="affiliate-c-media">
-                        <img src="{{ assets('uploads/badges/'.$val->path) }}" alt="">
-                    </div>
-                    <div class="affiliate-Badges-content">
-                        <h6>{{ $val->title ?? '' }}</h6>
-                        <p>{{ $val->description ?? '' }}</p>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>
@@ -290,7 +278,7 @@
     $('#customers-testimonials1').owlCarousel({
         loop: true,
         margin: 10,
-        nav: false,
+        nav: true,
         dots: false,
         responsive: {
             1000: {

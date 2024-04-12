@@ -53,7 +53,7 @@
             <h1 class="text-center black-color">Team Members</h1>
             <div class="row">
                 <div class="col-sm-12">
-                    <div id="customers-testimonials" class="owl-carousel">
+                    <div id="customers-testimonials10" class="owl-carousel">
 
                         @forelse($team as $key => $val)
                         <div class="item">
@@ -138,6 +138,7 @@
             </div>
         </div>
     </div>
+
     <div class="how-we-do">
         <div class="container">
             <h1 class="text-center black-color">
@@ -169,6 +170,7 @@
             </div>
         </div>
     </div>
+
     <div class="how-we-do-cards">
         <div class="container">
             <div class="row">
@@ -210,6 +212,7 @@
             </div>
         </div>
     </div>
+
     <div class="why-you-select">
         <div class="container">
             <h1 class="black-color head-1 mb-4">
@@ -261,6 +264,7 @@
             </div>
         </div>
     </div>
+
     <div class="how-we-offer">
         <div class="container">
             <div class="row">
@@ -313,6 +317,7 @@
             </div>
         </div>
     </div>
+
     <div class="who-is-it-for">
         <div class="container">
             <div class="who-is-it-for-contents">
@@ -336,6 +341,7 @@
             </div>
         </div>
     </div>
+
     <div class="global-impact">
         <div class="container">
             <div class="row align-items-center">
@@ -432,4 +438,21 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function(){
+        $('#customers-testimonials10').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+            }
+        });
+        $(".owl-prev").html('<');
+        $(".owl-next").html('>');
+    })
+</script>
 @endsection

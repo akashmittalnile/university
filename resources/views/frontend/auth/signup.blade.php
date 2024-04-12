@@ -7,14 +7,20 @@
         <div class="container">
             <div class="sign-up-contents">
                 <div class="row">
-                    <div class="col-md-7">
-                        <div class="img-box">
+                    <div class="col-md-6">
+                        <div id="outer">
+                          <div id="inner-container">
+                            <div class="innertext"><span class="innertext-heading">Sign Up</span></div>
+                            <div class="innertext"><span class="innertext-paragraph">Projects are a Nightmare!</span></div>
+                          </div>
+                        </div>
+                       <!--  <div class="img-box">
                             <div class="sign-up-head">
                                 <h1 class="text-center white-color">Sign Up</h1>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <form action="{{ route('user.register') }}" method="POST" id="signin_form">
                             @csrf
                             <input type="hidden" id="redirect_url" value="{{ route('signin') }}">

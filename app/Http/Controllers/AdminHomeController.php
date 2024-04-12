@@ -333,7 +333,7 @@ class AdminHomeController extends Controller
             $image->status = 1;
             $image->save();
 
-            return redirect()->back()->with('success', 'Achievement Created Successfully.');
+            return redirect()->back()->with('success', 'Key Achievement Created Successfully.');
             // return response()->json([
             //     'message' => 'Achievement Created Successfully.',
             //     'status' => 200
@@ -355,7 +355,7 @@ class AdminHomeController extends Controller
             }
 
             Badge::where('id', $id)->delete();
-            return redirect()->back()->with('success', 'Achievement Deleted Successfully.');
+            return redirect()->back()->with('success', 'Key Achievement Deleted Successfully.');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -390,7 +390,7 @@ class AdminHomeController extends Controller
             $image->status = 1;
             $image->save();
 
-            return redirect()->back()->with('success', 'Achievement Updated Successfully.');
+            return redirect()->back()->with('success', 'Key Achievement Updated Successfully.');
             // return response()->json([
             //     'message' => 'Achievement Updated Successfully.',
             //     'status' => 200

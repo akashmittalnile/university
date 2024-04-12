@@ -1,4 +1,5 @@
 @extends('layouts.admin.app')
+@section('heading', 'Profile')
 @push('css')
 <link rel="stylesheet" href="{{ assets('admin/css/profile.css') }}" />
 @endpush
@@ -6,19 +7,7 @@
 <script src="{{ assets('admin/js/profile.js') }}"></script>
 @endpush
 @section('content')
-<main class="main-container dashboard">
-    <div class="main-title d-flex align-items-center">
-        <div class="page-title">
-            <h3 class="font-weight-bold black-color">Profile</h3>
-        </div>
-        <div class="profile-link">
-            <a href="javascript:void(0)">
-                <div class="d-flex align-items-center">
-                    
-                </div>
-            </a>
-        </div>
-    </div>
+    
     <div class="row ">
         <div class="col-md-12">
             <div class="main-cards">
@@ -103,7 +92,7 @@
             </div>
         </div>
     </div>
-</main>
+
 <!-- edit-profile-modal -->
 <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="edit-profile-modalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-lg">

@@ -117,7 +117,7 @@
                 </form>
 
                 <div class="content active" id="partnersContent">
-                    <div class="pay-details">
+                    <div class="pay-details eptex-table">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -148,7 +148,7 @@
                                 @forelse ($transactions as $i => $item)
                                 @if ($item->user && $item->plan)
                                 <tr>
-                                    <th scope="row">{{ $i + 1 }}</th>
+                                    <td><div class="sno">{{ $i + 1 }}</td>
                                     <td class="text-capitalize">{{ $item->user->name }}</td>
                                     <td>{{ $item->plan->name }}</td>
                                     <td>${{ number_format((float)($item->plan->price), 2, '.', ',') }}
@@ -203,8 +203,9 @@
 </div>
 
 <div class="col-md-12">
-    <div class="Overview-card">
-        <div class="Overview-card-chart">
+    <div class="eptexcard">
+        <div class="card-body">
+        <div class="transactionchart-card-chart">
             <div class="" id="transactionchart"></div>
         </div>
     </div>

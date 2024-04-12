@@ -1,5 +1,5 @@
 a{text-decoration: none;}
-.sign-up{background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../images/8.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding-top: 9%;padding-bottom: 50px;}
+.sign-up{background:url("../images/contact-bg.jpg"); /*linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../images/6.jpg");*/background-position: center;background-repeat: no-repeat;background-size: cover;padding-top: 9%;padding-bottom: 50px;}
 .left-section{padding: 100px 30px;}
 .left-section h1{line-height: 90px;text-shadow: 2px 2px #212020;font-size: 65px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .left-section p{font-size: 25px;}
@@ -8,7 +8,7 @@ a{text-decoration: none;}
 .right-section button{padding: 15px 55px;font-weight: 600; }
 .sign-up-contents{background: #ffffffcc;border-radius: 10px;}
 .sign-up form{padding: 30px;}
-.sign-up form .form-control{border: 0;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
+.sign-up form .form-control{border:1px solid #3fab40;box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;}
 .sign-up form button{width: 100%;height: 50px;}
 .sign-up img{width: 100%;height: 100%;border-radius: 10px 0px 0px 10px;}
 .sign-up .img-box{height: 100%; background: url("../images/sign-up-bg.svg");background-position: center;background-repeat: no-repeat;background-size: cover;padding-top: 6%;padding-bottom: 50px;}
@@ -36,3 +36,63 @@ a{text-decoration: none;}
     top: 0;
 }
 .upload-btn{background-color: rgb(230 255 230);font-size: 13px;border: 1px dashed #3fab40;padding: 12px 40px;border-radius: 5px;width: 100%;}
+
+
+
+.sign-up .container{max-width: 70%;}
+
+
+#outer {
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 0px 10px;
+  background-image: url("../images/sign-in.svg");
+  position: relative;
+  overflow: hidden;    background-position: center;
+}
+#inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 0px;
+}
+.innertext {
+    display: inline;
+    position: relative;
+    border-top-right-radius: 20px;
+    background-color: rgb(221 246 227 / 97%);
+    padding: 5px 25px 5px 25px;
+    
+}
+.innertext:first-child::before,
+.innertext::after {
+  content: "";
+  display: block;
+  width: 40px;    /* double the radius */
+  height: 40px;   /* double the radius */
+  background-color: transparent;
+  position: absolute;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0 20px 0 0 rgb(221 246 227 / 97%);  /* this to create the inverted corner border radius area, if you desire to change the positon you can control it via the first two values 0 20px which represents the x & y */
+}
+.innertext::before {
+  top: -40px;
+  left: 0;
+}
+.innertext::after {
+  right: -40px;
+  bottom: 0;
+}
+.innertext span {
+  position: relative;
+  z-index: 1;   /* to overcome the overlapping with the text */
+}
+
+.innertext-heading{    font-weight: 600;
+    color: #3fab40;
+    font-size: 2rem;    margin-top: 0;
+    margin-bottom: 0;}
+
+
+.innertext-paragraph{    color: #474747;    font-size: 14px;}

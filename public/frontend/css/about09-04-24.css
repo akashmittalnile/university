@@ -3,17 +3,17 @@
 .vision-purpose .left-section p{font-size: 25px;}
 .vision-purpose .right-section{background-color: #3fab40;padding: 0px 0px 35px 35px;}
 .vision-purpose .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
-.my-story{margin-top:40px;}
+.my-story{margin-top: 100px;}
 .my-story .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
 .my-story .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
 .my-story  h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .my-story .head{margin-bottom: -50px; position: relative;}
-.what-we-do{margin-top: 0px;background: linear-gradient( rgb(19 78 42 / 0%), rgb(37 130 24 / 50%) ), url("../images/what-we-do-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
+.what-we-do{margin-top: 100px;background: linear-gradient( rgb(19 78 42 / 0%), rgb(37 130 24 / 50%) ), url("../images/what-we-do-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
 .what-we-do h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .what-we-do .sub-text{font-size: 18px;}
 .what-we-do-box{ padding: 30px; background: #44953a96;border: 1px solid white;border-radius: 15px;    width: 90%;  margin-top: 50px; margin: 0 auto;  margin-top: 50px; }
 .what-we-do-box li{list-style: none;color: rgb(245, 245, 245);padding: 10px;}
-.how-we-do{margin-top: 0px;background: url("../images/how-we-do-img.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;padding-bottom: 250px;}
+.how-we-do{margin-top: 100px;background: url("../images/how-we-do-img.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;padding-bottom: 250px;}
 .how-we-do .sub-head{font-size: 18px;}
 .how-we-do-box{background-color: #ffffff8f;padding: 0px 30px 0px 30px;border-radius: 15px;margin-top: 50px;}
 .how-we-do-box h3{font-size: 24px;font-weight: 600;}
@@ -22,9 +22,9 @@
 .how-we-do-cards .card{padding: 30px 20px 50px 20px;height: 100%; border-radius: 15px; border: 0;background-color: #3fab40c4; color: white;}
 .how-we-do-cards .card h5, .how-we-do-cards .card p{margin: 0;padding: 0;}
 .how-we-do-cards .card img{width: 50px;height: auto;margin: 0 auto;display: block;margin-bottom: 20px;}
-.how-we-do-cards {margin-top: -140px;} 
+.how-we-do-cards {margin-top: -140px;}
 .how-we-do-cards .img-bg{padding: 20px; background-color: transparent;width: 90px;height: 90px;margin: 0 auto;border-radius: 50%;box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;}
-.why-you-select{margin-top: 40px;}
+.why-you-select{margin-top: 100px;}
 .why-you-select h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .why-you-select-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
 .why-you-select-box i{color: #3fab40;font-size: 16px;}
@@ -32,7 +32,7 @@
 .why-you-select-box{padding: 30px;border-radius: 15px;}
 .why-you-select .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
 .why-you-select .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
-.how-we-offer{margin-top: 40px;}
+.how-we-offer{margin-top: 150px;}
 .how-we-offer h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .how-we-offer .left-section{background-color: #3fab40;padding: 0px 20px 20px 0px;}
 .how-we-offer .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
@@ -40,12 +40,12 @@
 .how-we-offer-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
 .how-we-offer-box i{color: #3fab40;font-size: 16px;}
 .how-we-offer-box ul{padding-left: 0;}
-.who-is-it-for{margin-top: 0px;background: url("../images/who-is-it.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
+.who-is-it-for{margin-top: 100px;background: url("../images/who-is-it.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;padding: 50px 0px;}
 .who-is-it-for-contents{background: #ffffffe6;  padding: 50px 30px; border-radius: 15px;}
 .who-is-it-for h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .who-is-it-for .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
 .who-is-it-for .left-section{background-color: #008d21a1;padding: 0px 20px 20px 0px;}
-.global-impact{margin-top: 40px;} 
+.global-impact{margin-top: 100px;} 
 .global-impact h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 .global-impact .right-section{background-color: #3fab40;padding: 0px 0px 20px 20px;}
 .global-impact .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
@@ -198,57 +198,3 @@ display: inline-block;
   .overlay h6{
     text-transform: uppercase;
   }
-
-
-
-.team-members-card {
-    display: flex;
-    gap: 30px;
-    padding: 1rem;
-    background: #e8f8e9;
-    position: relative;
-    margin-bottom: 1rem;
-    box-shadow: rgb(63 171 64 / 6%) 0px 4px 13px;
-    border-radius: 0px;
-    border-bottom: 4px solid #fff;
-}
-
-.team-members-card-image {
-    position: relative;
-    width: 300px;
-    height: 390px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.team-members-card-image img {
-    height: 100%;
-    max-width: 100% !important;
-    margin: 0 !important;
-    object-fit: cover;
-}
-.team-members-card-content {
-    flex: 1;
-}
-
-
-
-#Team-Members .owl-nav {margin-top: 5px;text-align: center; }
-#Team-Members .owl-nav button.owl-prev span,
-#Team-Members  .owl-nav button.owl-next span {
-    width: 40px;
-    height: 40px;
-    background:#3fab40;
-    display: inline-block;
-    line-height: 35px;
-    font-size: 35px;
-    border-radius: 5px;
-    margin: 1px;    color: #fff;
-
-}
-
-#Team-Members  button{position: absolute;  top: 40%; }
-#Team-Members  button.owl-prev {left: 0; }
-#Team-Members  button.owl-next {right: 0;}
-

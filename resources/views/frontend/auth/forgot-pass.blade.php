@@ -7,14 +7,19 @@
         <div class="container">
             <div class="sign-up-contents">
                 <div class="row">
-                    <div class="col-md-7">
-                        <div class="img-box">
-                            <div class="sign-up-head">
-                                <h1 class="text-center white-color">Forgot Password</h1>
-                            </div>
+                    <div class="col-md-6">
+                        <div id="outer">
+                          <div id="inner-container">
+                            <div class="innertext"><span class="innertext-heading">Forgot Password</span></div>
+                          </div>
                         </div>
+                        <!-- <div class="img-box">
+                            <div class="sign-up-head">
+                                <h1 class="text-center white-color"></h1>
+                            </div>
+                        </div> -->
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <form action="{{ route('forgot.password.send-otp') }}" method="POST" id="signin_form">
                             @csrf
                             <h3 class="main-color f-600">Great!!</h3>

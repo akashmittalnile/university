@@ -1,3 +1,4 @@
+<div class="admin-header">
 <div class="main-title d-flex align-items-center">
     <div class="page-title d-flex align-items-center">
         @hasSection('back')
@@ -16,6 +17,7 @@
     </div>
     <div class="profile-link">
         @hasSection('heading')
+        @if(!(Route::is('admin.profile')))
         <a href="#">
             <div class="d-flex align-items-center">
                 <div class="profile-pic">
@@ -27,5 +29,7 @@
             </div>
         </a>
         @endif
+        @endif
     </div>
+</div>
 </div>
