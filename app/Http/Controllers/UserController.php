@@ -214,8 +214,8 @@ class UserController extends Controller
 
             $data['name'] = $user->name;
             $data['to_mail'] = $user->email;
-            $data['subject'] = 'Welcome to University PMO Family';
-            $data['body'] = "Congratulations, $user->name! We are so glad you joined. Please wait until your account was approved by administrator.";
+            $data['subject'] = 'Econoprojectex registeration request sent successfully';
+            $data['body'] = "Hi $user->name, Thanks for registering on the Econoprojectex we have received your request to join the account. We will send you an email once your account will be approved usually the waiting time is around 24-48 hours thanks for your patience. Thanks.";
             sendMail($data);
 
             return response()->json(['status' => 200, 'message' => 'User registered successfully']);

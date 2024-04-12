@@ -1,9 +1,10 @@
 #header {
-    background-color: #3fab40;
+    background-color: #3FAB40;
     height: 100px;
     z-index: 99;
-    position: fixed;
+    position: sticky;
     width: 100%;
+    top: 0;
 }
 .navbar {
     padding: 0;

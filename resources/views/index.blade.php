@@ -62,7 +62,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <div id="customers-testimonials" class="owl-carousel">
-
                     @forelse($test as $key => $val)
                     <div class="item">
                         <div class="customers-testimonials-card">
@@ -70,10 +69,9 @@
                                 <img src="{{ assets('uploads/testimonial/'.$val->image) }}" alt="">
                             </div>
                             <div class="customers-testimonials-content">
-                                <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
+                                <h6>{{ $val->title ?? 'NA' }}</h6>
                                 <p>{{ $val->description ?? 'NA' }}</p>
-                                <hr class="main-color">
-                                <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
+                                <h4 class="client-name"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
                             </div>
                         </div>
                     </div>
@@ -142,7 +140,7 @@
                             </div>
                             <div class="affiliate-Badges-content">
                                 <h6>{{ $val->title ?? '' }}</h6>
-                                <p>{{ $val->description ?? '' }}</p>
+                                <div>{!! $val->description ?? '' !!}</div>
                             </div>
                         </div>
                     </div>
@@ -151,6 +149,18 @@
 
                 </div>
             </div>
+
+            <!-- <div class="col-md-12">
+                <div class="affiliate-badges-card">
+                    <div class="affiliate-c-media">
+                        <img src="{{ assets('uploads/badges/'.$val->path) }}" alt="">
+                    </div>
+                    <div class="affiliate-Badges-content">
+                        <h6>{{ $val->title ?? '' }}</h6>
+                        <p>{{ $val->description ?? '' }}</p>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </section>
@@ -268,10 +278,16 @@
         margin: 10,
         nav: true,
         dots: false,
-        responsive: {
-            1000: {
-                items: 1
+        responsive:{
+            0:{
+                items:1,
             },
+            600:{
+                items:1,
+            },
+            1000:{
+                items:1,
+            }
         }
     });
 
@@ -280,10 +296,39 @@
         margin: 10,
         nav: true,
         dots: false,
-        responsive: {
-            1000: {
-                items: 1
+        responsive:{
+            0:{
+                items:1,
             },
+            600:{
+                items:1,
+            },
+            1000:{
+                items:1,
+            }
+        }
+    });
+
+
+    $('#customers-testimonials').owlCarousel({
+        loop: true,
+        center: true,
+        items: 3,
+        margin: 0,
+        autoplay: true,
+        dots:true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive:{
+            0:{
+                items:1,
+            },
+            600:{
+                items:2,
+            },
+            1000:{
+                items:3,
+            }
         }
     });
 </script>

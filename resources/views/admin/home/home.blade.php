@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="{{ assets('frontend/css/mark-network.css') }}">
 @endpush
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css">
 <!-- Main -->
 
 
@@ -53,10 +54,10 @@
                                                         <input type="hidden" name="banner_id" value="{{ encrypt_decrypt('encrypt', $data->id) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="@if(isset($data->image)) col-md-5 @else col-md-6 @endif">
                                                     <div class="mb-3">
                                                         <label for="imageInput{{ $data->id }}" class="form-label black-color f-600">Upload Image</label>
-                                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                                        <div class="file-upload d-flex align-items-center mb-3 field flex-column">
                                                             <div class="file btn black-color upload-btn">
                                                                 <span id="image_name{{ $data->id }}">
                                                                     @if(isset($data->image))
@@ -67,9 +68,17 @@
                                                                 </span> <i class="bi bi-file-image ms-2 main-color"></i>
                                                                 <input type="file" data-num="{{ $data->id }}" name="banner_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data->id }}" />
                                                             </div>
+                                                            <div class="alert alert-danger mt-2 text-dark" role="alert">
+                                                                Please upload an image greater than or equal to recommended size (1348 X 600)
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @if(isset($data->image))
+                                                <div class="col-md-1">
+                                                    <a target="_blank" href="{{ assets('uploads/home/'.$data->image) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
+                                                </div>
+                                                @endif
                                                 <div class="col-md-12">
                                                     <div class="mb-3 field_error">
                                                         <label for="description" class="form-label black-color f-600">Enter Description</label>
@@ -106,7 +115,7 @@
                                                         <input type="text" required class="form-control" name="community_title" id="community_title" value="{{ $data->title ?? '' }}" aria-describedby="community_title" placeholder="Enter Title" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="@if(isset($data->image)) col-md-5 @else col-md-6 @endif">
                                                     <div class="mb-3">
                                                         <label for="imageInput{{ $data->id }}" class="form-label black-color f-600">Upload Image</label>
                                                         <div class="file-upload d-flex align-items-center mb-3 field">
@@ -124,6 +133,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @if(isset($data->image))
+                                                <div class="col-md-1">
+                                                    <a target="_blank" href="{{ assets('uploads/home/'.$data->image) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
+                                                </div>
+                                                @endif
                                                 <div class="col-md-12">
                                                     <div class="mb-3 field_error">
                                                         <label for="community_description" class="form-label black-color f-600">Enter Description</label>
@@ -381,7 +395,7 @@
                                                 </div>
                                                 <div class="affiliate-Badges-content">
                                                     <h6>{{ $val->title ?? '' }}</h6>
-                                                    <p>{{ $val->description ?? '' }}</p>
+                                                    <div>{!! $val->description ?? '' !!}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -440,13 +454,16 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="editImageInput" class="form-label black-color f-600">Upload Image</label>
-                                            <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file-upload d-flex flex-column align-items-center mb-3 field">
                                                 <div class="file btn black-color upload-btn">
                                                     <span id="edit_image_name">
                                                         Upload Image
                                                     </span>
                                                     <i class="bi bi-file-image ms-2 main-color"></i>
                                                     <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="editImageInput" />
+                                                </div>
+                                                <div class="alert alert-danger mt-2 text-dark w-100" role="alert">
+                                                    Please upload an image greater than or equal to recommended size (370 X 180)
                                                 </div>
                                             </div>
                                         </div>
@@ -505,13 +522,16 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="imageInput200" class="form-label black-color f-600">Upload Image</label>
-                                            <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file-upload d-flex flex-column align-items-center mb-3 field">
                                                 <div class="file btn black-color upload-btn">
                                                     <span id="image_name200">
                                                         Upload Image
                                                     </span>
                                                     <i class="bi bi-file-image ms-2 main-color"></i>
                                                     <input type="file" data-num="200" name="image" accept="image/png, image/jpg, image/jpeg" id="imageInput200" />
+                                                </div>
+                                                <div class="alert alert-danger mt-2 text-dark w-100" role="alert">
+                                                    Please upload an image greater than or equal to recommended size (370 X 180)
                                                 </div>
                                             </div>
                                         </div>
@@ -690,7 +710,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <div class="mb-3 field_error">
-                                                <label for="editDescription" class="form-label black-color f-600">Enter Description</label>
+                                                <label for="editDescriptionAchieve" class="form-label black-color f-600">Enter Description</label>
                                                 <textarea name="description" id="editDescriptionAchieve" placeholder="Enter Description" class="form-control" cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
@@ -748,8 +768,8 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <div class="mb-3 field_error">
-                                                <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                <textarea name="description" id="description" class="form-control" placeholder="Enter Description" cols="30" rows="5"></textarea>
+                                                <label for="makeMeSummernote1" class="form-label black-color f-600">Enter Description</label>
+                                                <textarea name="description" id="makeMeSummernote1" class="form-control" placeholder="Enter Description" cols="50" rows="20"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -804,6 +824,7 @@
     </div>
 
 <!-- End Main -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
     $('#uploadFile, #uploadFileVideo, #uploadFileAchieve').on('hidden.bs.modal', function(e) {
         $("#image_name200").text("Upload Image");
@@ -831,13 +852,20 @@
         $("#edit_image_name_achieve").text($(this).data('img'));
         $("#editIdAchieve").val($(this).data('id'));
         $("#editTitleAchieve").val($(this).data('title'));
-        $("#editDescriptionAchieve").val($(this).data('description'));
         $("#editDesignationAchieve").val($(this).data('designation'));
+        $("#editDescriptionAchieve").summernote({
+            height: 200
+        });
+        $("#editDescriptionAchieve").summernote('code', $(this).data('description'));
         $("#editFileAchieve").modal('show');
     });
 
 
     $(document).ready(function() {
+        $("#makeMeSummernote1").summernote({
+            height: 200
+        });
+        
         $(document).on('click', ".common-btn", function() {
             $("#" + $(this).data('id')).submit();
         });
