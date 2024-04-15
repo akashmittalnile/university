@@ -3,14 +3,13 @@
 <link rel="stylesheet" href="{{ assets('frontend/css/about.css') }}">
 @endpush
 @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
 <script src="{{ assets('frontend/js/about.js') }}"></script>
 @endpush
 @section('content')
 <section class="about-us">
     <div class="container">
         <div class="vision-purpose">
-            <div class="row align-items-center">
+            <div class="row align-items-center mb-3">
                 <div class="col-md-4">
                     <div class="left-section">
                         <h1 class="text-md-end black-color">
@@ -24,22 +23,22 @@
                     </div>
                 </div>
             </div>
-            <p class="text-color text-justify mt-5">
+            <p class="my-story-descr">
                 {{ $data['sec1_sub_title'] ?? 'NA' }}
             </p>
         </div>
         <div class="my-story">
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-md-6">
                     <div class="left-section">
                         <img src="{{ assets('uploads/about/'.($data['sec2_image'] ?? null)) }}" class="img-fluid" />
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="head mb-2">
-                        <h1 class="black-color mb-0 pb-0">{{ $data['sec2_title'] ?? 'NA' }}</h1>
+                    <div class="heading-title">
+                        <h1>{{ $data['sec2_title'] ?? 'NA' }}</h1>
                     </div>
-                    <p class="text-color text-justify mt-3">
+                    <p class="my-story-descr">
                         {{ $data['sec2_sub_title'] ?? 'NA' }}
                     </p>
                 </div>
@@ -48,29 +47,38 @@
     </div>
 
     @if(count($team) > 0)
-    <section class="why-you-select" style="margin-top: 80px;">
+    <section class="team-members-section">
+        <h1>Team Members</h1>
         <div class="container">
-            <h1 class="text-center black-color">Team Members</h1>
             <div class="row">
                 <div class="col-sm-12">
-                    <div id="customers-testimonials10" class="owl-carousel">
+                    <div id="TeamMembers" class="owl-carousel">
 
-                        @forelse($team as $key => $val)
+                        @forelse($team as $key => $val) 
                         <div class="item">
-                            <div class="shadow-effect img-box">
-                                <img style="margin: 0; max-width: 350px; height: 300px; object-fit: cover; object-position: center;" class="img-circle img-fluid rounded"
-                                    src="{{ assets('uploads/team/'.$val->image) }}"
-                                    alt="">
-                                <div class="overlay">
-                                    <h6 class="main-color mt-5 text-left">{{ $val->name ?? 'NA' }}</h6>
-                                    <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
-                                    <hr class="main-color">
-                                    <p>{{ $val->company_name ?? 'NA' }}</p>
+                            <div class="team-members-card">
+
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <div class="team-members-card-image">
+                                            <img src="{{ assets('uploads/team/'.$val->image) }}"alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="team-members-card-content">
+                                            <div class="team-quotes">"</div>
+                                            <div class="team-members-card-content-innner">
+                                            <p>" {{ $val->company_name ?? 'NA' }} "</p>
+                                            <h4>{{ $val->name ?? 'NA' }}</h4>
+                                            <h6><i class="bi bi-dash-lg me-2"></i>{{ $val->designation ?? 'NA' }}</h6></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         @empty
                         @endforelse
+
                     </div>
                 </div>
             </div>
@@ -332,7 +340,7 @@
                             <h1 class="black-color head-1 mb-4">
                                 {{ $data['sec6_title'] ?? 'NA' }}
                             </h1>
-                            <p class="text-color text-justify">
+                            <p class="global-descr  text-justify">
                                 {{ $data['sec6_sub_title'] ?? 'NA' }}
                             </p>
                         </div>
@@ -350,7 +358,7 @@
                         <h1 class="black-color text-md-end head-1 mb-0 pb-0">
                             {{ $data['sec7_title'] ?? 'NA' }}
                         </h1>
-                        <p class="text-color text-md-end">
+                        <p class="global-descr text-md-end">
                             {{ $data['sec7_sub_title'] ?? 'NA' }}
                         </p>
                     </div>
@@ -377,7 +385,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="why-you-select-box common-shadow">
-                        <p>
+                        <p class="global-descr">
                             {{ $data['sec8_sub_title'] ?? 'NA' }}
                         </p>
                         <!-- <ul>
@@ -421,10 +429,10 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="left-section">
-                        <h1 class="black-color text-md-end head-1 mb-0 pb-0">
+                        <h1 class="heading-title-text text-end">
                             {{ $data['sec9_title'] ?? 'NA' }}
                         </h1>
-                        <p class="text-color text-md-end">
+                        <p class="global-descr text-md-end">
                             {{ $data['sec9_sub_title'] ?? 'NA' }}
                         </p>
                     </div>
@@ -440,19 +448,17 @@
 </section>
 <script>
     $(document).ready(function(){
-        $('#customers-testimonials10').owlCarousel({
+        $("#customers-testimonials1").owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
             dots: false,
             responsive: {
-                0: {
+                1000: {
                     items: 1
                 },
             }
         });
-        $(".owl-prev").html('<');
-        $(".owl-next").html('>');
     })
 </script>
 @endsection

@@ -46,7 +46,9 @@
 .who-is-it-for .left-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
 .who-is-it-for .left-section{background-color: #008d21a1;padding: 0px 20px 20px 0px;}
 .global-impact{margin-top: 40px;} 
-.global-impact h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
+.global-impact h1{    font-weight: 600;
+    font-size: 2rem;
+    color: #3fab40; margin: 0 0 1rem 0; padding: 0;}
 .global-impact .right-section{background-color: #3fab40;padding: 0px 0px 20px 20px;}
 .global-impact .right-section img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
 .global-impact-box li{list-style: none;color: #474747;padding: 10px;font-size: 14px;}
@@ -66,7 +68,10 @@
     .vision-purpose{padding: 10px;}
     .vision-purpose .right-section { padding: 0px 0px 15px 15px; }
     .my-story { margin-top: 50px;padding: 10px;}
-    .my-story h1{font-size: 35px;margin-top: 15px;;}
+    .my-story h1{font-size: 36px;
+    padding: 0 0 1rem 1px;
+    margin: 0;
+    font-weight: 600;}
     .what-we-do{margin-top: 50px;padding: 30px 10px;}
     .what-we-do h1{font-size: 35px;}
     .what-we-do-box{width: 100%; padding: 10px;}
@@ -95,7 +100,7 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
     .how-we-offer .right-section img { margin-left: -104px; margin-top: -563px;  }
 }
-#customers-testimonials .item,  #customers-testimonials1 .item{
+/*#customers-testimonials .item,  #customers-testimonials1 .item{
     text-align: justify;
     padding: 50px;
     margin-bottom:80px;
@@ -197,11 +202,59 @@ display: inline-block;
   }
   .overlay h6{
     text-transform: uppercase;
-  }
+  }*/
+
+.my-story .heading-title h1,
+.why-you-select h1{
+    font-size: 36px;
+    padding: 0 0 1rem 1px;
+    margin: 0;
+    font-weight: 600;
+}
+
+p.my-story-descr{
+    line-height: 28px;
+    text-align: justify;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+p.global-descr{
+    line-height: 28px;
+    text-align: justify;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.heading-title-text{font-weight: 600;
+    font-size: 2rem;
+    color: #3fab40;}
 
 
 
-.team-members-card {
+
+
+
+
+
+
+
+
+
+
+
+section.team-members-section {
+    padding: 2rem 0;
+}
+section.team-members-section h1 {
+    font-size: 36px;
+    text-align: center;
+    padding: 0 0 1rem 1px;
+    margin: 0;
+    font-weight: 600;
+}
+/*.team-members-card {
     display: flex;
     gap: 30px;
     padding: 1rem;
@@ -211,32 +264,84 @@ display: inline-block;
     box-shadow: rgb(63 171 64 / 6%) 0px 4px 13px;
     border-radius: 0px;
     border-bottom: 4px solid #fff;
-}
-
+    background: url(../images/contact-bg.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
 .team-members-card-image {
     position: relative;
-    width: 300px;
-    height: 390px;
+    width: 100%;
+    height: 370px;
     margin: auto;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
 }
-
+.team-quotes {
+    font-size: 300px;
+    position: absolute;
+    z-index: 1;
+    color:rgb(255 255 255 / 12%);
+    transform: rotate(20deg);
+}
 .team-members-card-image img {
-    height: 100%;
+    max-height: 100%;
     max-width: 100% !important;
-    margin: 0 !important;
-    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: auto !important;
 }
+.team-members-card-content-innner{position: relative;z-index: 2}
 .team-members-card-content {
-    flex: 1;
+    background: #bee5bf;
+    padding: 2rem;
+    border-radius: 20px;
+    position: relative;
+    background: url(../images/what-we-do-bg.jpg);
+    background-size: auto;
+    background-position: left;
+}
+.team-members-card-content p {
+    line-height: 28px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    color: #fff;
+}
+
+.team-members-card-content h6 {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    
+}
+
+.team-members-card-content h4 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    padding: 0;
+      color: #fff;
+      text-align: center;
 }
 
 
 
-#Team-Members .owl-nav {margin-top: 5px;text-align: center; }
-#Team-Members .owl-nav button.owl-prev span,
-#Team-Members  .owl-nav button.owl-next span {
+
+#TeamMembers .owl-nav {margin-top: 5px;text-align: center; }
+#TeamMembers .owl-nav button.owl-prev span,
+#TeamMembers  .owl-nav button.owl-next span {
     width: 40px;
     height: 40px;
     background:#3fab40;
@@ -248,7 +353,15 @@ display: inline-block;
 
 }
 
-#Team-Members  button{position: absolute;  top: 40%; }
-#Team-Members  button.owl-prev {left: 0; }
-#Team-Members  button.owl-next {right: 0;}
+#TeamMembers  button{position: absolute;  top: 40%; }
+#TeamMembers  button.owl-prev {left: 0; }
+#TeamMembers  button.owl-next {right: 0;}
+
+
+
+
+@media(max-width: 991px){
+  #TeamMembers button{position: relative;  }
+
+}
 
