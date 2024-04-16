@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Ebook;
 use App\Models\GalleryAttribute;
+use App\Models\ManageAboutUs;
 use App\Models\ManageHome;
 use App\Models\Plan;
 use App\Models\Podcast;
@@ -274,12 +275,23 @@ class FrontendController extends Controller
 
     public function about()
     {
-        $about = Content::where("name", 'about')->first();
-        $data = unserialize($about->value);
-        $how = Content::where("name", 'how_we_do_it')->first();
-        $data2 = unserialize($how->value);
+        $data1 = ManageAboutUs::where('section_code', 'vision')->first();
+        $data2 = ManageAboutUs::where('section_code', 'story')->first();
+        $data3 = ManageAboutUs::where('section_code', 'we_do')->first();
+        $data4 = ManageAboutUs::where('section_code', 'select')->first();
+        $data5 = ManageAboutUs::where('section_code', 'differ')->first();
+        $data6 = ManageAboutUs::where('section_code', 'who_is')->first();
+        $data7 = ManageAboutUs::where('section_code', 'global')->first();
+        $data8 = ManageAboutUs::where('section_code', 'partner')->first();
+        $data9 = ManageAboutUs::where('section_code', 'support')->first();
+        $how = ManageAboutUs::where('section_code', 'how')->first();
+        $how1 = ManageAboutUs::where('section_code', 'how1')->first();
+        $how2 = ManageAboutUs::where('section_code', 'how2')->first();
+        $how3 = ManageAboutUs::where('section_code', 'how3')->first();
+        $how4 = ManageAboutUs::where('section_code', 'how4')->first();
+        $how5 = ManageAboutUs::where('section_code', 'how5')->first();
         $team = TeamMember::where('status', 1)->orderByDesc('id')->get();
-        return view("frontend.about", compact('about', 'how', 'data', 'data2', 'team'));
+        return view("frontend.about", compact('how', 'how1', 'how2', 'how3', 'how4', 'how5', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data8', 'data9', 'team'));
     }
 
     public function affiliate()

@@ -12,3 +12,34 @@ audio{background-color: #f1f3f4;    height: 33px; width: 100%;}
 .form-check-input:checked {  background-color: #3fab40;  border-color: #3fab40; }
 .price-radio input{width: 100%!important;padding: 20px 12px;}
 .bold-label { font-weight: bold; }
+.box-slid .outline-btn {
+    border: 1px solid rgb(236, 70, 70);
+    color: rgb(236, 70, 70);
+}
+.box-slid .outline-btn:hover {
+    background-color: rgb(236, 70, 70);
+    color: white;
+}
+.modal .common-btn {
+    background-color: rgb(236, 70, 70);
+    border: 1px solid rgb(236, 70, 70);
+}
+.modal .common-btn:hover {
+    background-color: transparent;
+    color: rgb(236, 70, 70);
+}
+.modal-header {
+    border-bottom: 0;
+}
+.modal-footer {
+    border-top: 0;
+}
+.modal-body {
+    padding-top: 0;
+}
+.modal img.delete {
+    width: 28%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 30px;
+}

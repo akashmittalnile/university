@@ -15,16 +15,14 @@ class AdminHomeController extends Controller
     public function home(Request $request)
     {
         try {
-            $data = ManageHome::where('status', 1);
-            if($request->filled('search')) $data->where('section_code', 'LIKE', '%'. $request->search . '%');
-            if($request->filled('date')) $data->whereDate('updated_at', $request->date);
-            $datas = $data->paginate(config("app.records_per_page"));
+            $banner = ManageHome::where('status', 1)->where('section_code', 'banner')->first();
+            $data = ManageHome::where('status', 1)->where('section_code', 'community')->first();
             $test = Testimonial::orderByDesc('id')->get();
             $video = Video::orderByDesc('id')->get();
             $badges = Badge::orderByDesc('id')->get();
             $home = ManageHome::where('section_code', 'banner')->first();
             $community = ManageHome::where('section_code', 'community')->first();
-            return view("admin.home.home")->with(compact('datas', 'test', 'badges', 'video', 'home', 'community'));
+            return view("admin.home.home")->with(compact('banner', 'data', 'test', 'badges', 'video', 'home', 'community'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -65,29 +63,41 @@ class AdminHomeController extends Controller
         try {
             $request->validate(
                 [
-                    'banner_id' => 'required',
                     'banner_title' => 'required',
                     "banner_description" => 'required',
                     "banner_image" => 'file|max:10240',
                 ]
             );
-            $id = encrypt_decrypt('decrypt', $request->banner_id);
-            $home = ManageHome::where('id', $id)->first();
-            if ($request->hasFile("banner_image")) {
-                if (isset($home->image)) {
-                    $link = public_path() . "/uploads/home/" . $home->image;
-                    if (file_exists($link)) {
-                        unlink($link);
+            if(isset($request->banner_id) && $request->banner_id != ''){
+                $id = encrypt_decrypt('decrypt', $request->banner_id);
+                $home = ManageHome::where('id', $id)->where('section_code', 'banner')->first();
+                if ($request->hasFile("banner_image")) {
+                    if (isset($home->image)) {
+                        $link = public_path() . "/uploads/home/" . $home->image;
+                        if (file_exists($link)) {
+                            unlink($link);
+                        }
                     }
+                    $name = fileUpload($request->banner_image, "uploads/home");
+                    $home->image = $name;
                 }
-                $name = fileUpload($request->banner_image, "uploads/home");
-                $home->image = $name;
+                $home->title = $request->banner_title;
+                $home->description = $request->banner_description;
+                $home->status = 1;
+                $home->updated_at = date('Y-m-d H:i:s');
+                $home->save();
+            } else {
+                $home = new ManageHome;
+                if ($request->hasFile("banner_image")) {
+                    $name = fileUpload($request->banner_image, "uploads/home");
+                    $home->image = $name;
+                }
+                $home->section_code = 'banner';
+                $home->title = $request->banner_title;
+                $home->description = $request->banner_description;
+                $home->status = 1;
+                $home->save();
             }
-            $home->title = $request->banner_title;
-            $home->description = $request->banner_description;
-            $home->status = 1;
-            $home->updated_at = date('Y-m-d H:i:s');
-            $home->save();
             return redirect()->back()->with('success', 'Content Updated Successfully');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
@@ -99,29 +109,41 @@ class AdminHomeController extends Controller
         try {
             $request->validate(
                 [
-                    'community_id' => 'required',
                     'community_title' => 'required',
                     "community_description" => 'required',
                     "community_image" => 'file|max:10240',
                 ]
             );
-            $id = encrypt_decrypt('decrypt', $request->community_id);
-            $home = ManageHome::where('id', $id)->first();
-            if ($request->hasFile("community_image")) {
-                if (isset($home->image)) {
-                    $link = public_path() . "/uploads/home/" . $home->image;
-                    if (file_exists($link)) {
-                        unlink($link);
+            if(isset($request->community_id) && $request->community_id != ''){
+                $id = encrypt_decrypt('decrypt', $request->community_id);
+                $home = ManageHome::where('id', $id)->where('section_code', 'community')->first();
+                if ($request->hasFile("community_image")) {
+                    if (isset($home->image)) {
+                        $link = public_path() . "/uploads/home/" . $home->image;
+                        if (file_exists($link)) {
+                            unlink($link);
+                        }
                     }
+                    $name = fileUpload($request->community_image, "uploads/home");
+                    $home->image = $name;
                 }
-                $name = fileUpload($request->community_image, "uploads/home");
-                $home->image = $name;
+                $home->title = $request->community_title;
+                $home->description = $request->community_description;
+                $home->status = 1;
+                $home->updated_at = date('Y-m-d H:i:s');
+                $home->save();
+            } else {
+                $home = new ManageHome;
+                if ($request->hasFile("community_image")) {
+                    $name = fileUpload($request->community_image, "uploads/home");
+                    $home->image = $name;
+                }
+                $home->section_code = 'community';
+                $home->title = $request->community_title;
+                $home->description = $request->community_description;
+                $home->status = 1;
+                $home->save();
             }
-            $home->title = $request->community_title;
-            $home->description = $request->community_description;
-            $home->status = 1;
-            $home->updated_at = date('Y-m-d H:i:s');
-            $home->save();
             return redirect()->back()->with('success', 'Content Updated Successfully');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());

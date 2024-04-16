@@ -22,51 +22,44 @@
                     <div class="col-md-12">
                         <div class="pmu-courses-form-section pmu-addcourse-form">
                             <div class="pmu-courses-form column edit-ebook">
-                                @if ($datas->isEmpty())
-                                <tr>
-                                    <td colspan="10">
-                                        <h5 style="text-align: center">No Record Found</h5>
-                                    </td>
-                                </tr>
-                                @else
-
-                                @foreach ($datas as $data)
-                                @if($data->section_code == 'banner')
+                               
                                 <div class="edit-pmu-form-item">
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">
-                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> Banner<i class="bi bi-chevron-down" ></i></h3>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapseBanner">
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $banner->title ?? 'Banner' }}<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
                                             <a href="javascript:void(0)" class="preview" data-name="banner"><button class="common-btn ms-2"> Preview </button></a>
                                         </div>
                                     </div>
-                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapse{{$data->id}}">
-                                        <form action="{{ route('admin.manage.home.banner.save') }}" method="post" enctype="multipart/form-data" id="create_form{{ $data->id }}">@csrf
+                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapseBanner">
+                                        <form action="{{ route('admin.manage.home.banner.save') }}" method="post" enctype="multipart/form-data" id="banner_form">@csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3 field_error">
                                                         <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                        <input type="text" required class="form-control" name="banner_title" id="title" value="{{ $data->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
-                                                        <input type="hidden" name="banner_id" value="{{ encrypt_decrypt('encrypt', $data->id) }}">
+                                                        <input type="text" required class="form-control" name="banner_title" id="title" value="{{ $banner->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                        @if(isset($banner->id))
+                                                        <input type="hidden" name="banner_id" value="{{ encrypt_decrypt('encrypt', $banner->id) }}">
+                                                        @endif
                                                     </div>
                                                 </div>
-                                                <div class="@if(isset($data->image)) col-md-5 @else col-md-6 @endif">
+                                                <div class="@if(isset($banner->image)) col-md-5 @else col-md-6 @endif">
                                                     <div class="mb-3">
-                                                        <label for="imageInput{{ $data->id }}" class="form-label black-color f-600">Upload Image</label>
+                                                        <label for="imageInput{{ $banner->id ?? 452 }}" class="form-label black-color f-600">Upload Image</label>
                                                         <div class="file-upload d-flex align-items-center mb-3 field flex-column">
                                                             <div class="file btn black-color upload-btn">
-                                                                <span id="image_name{{ $data->id }}">
-                                                                    @if(isset($data->image))
-                                                                    {{ $data->image }}
+                                                                <span id="image_name{{ $banner->id ?? 452 }}">
+                                                                    @if(isset($banner->image))
+                                                                    {{ $banner->image }}
                                                                     @else
                                                                     Upload Image
                                                                     @endif
                                                                 </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                                <input type="file" data-num="{{ $data->id }}" name="banner_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data->id }}" />
+                                                                <input type="file" @if(!isset($banner->image)) required @endif data-num="{{ $banner->id ?? 452 }}" name="banner_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $banner->id ?? 452 }}" />
                                                             </div>
                                                             <div class="alert alert-danger mt-2 text-dark" role="alert">
                                                                 Please upload an image greater than or equal to recommended size (1348 X 600)
@@ -74,89 +67,30 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @if(isset($data->image))
+                                                @if(isset($banner->image))
                                                 <div class="col-md-1">
-                                                    <a target="_blank" href="{{ assets('uploads/home/'.$data->image) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
+                                                    <a target="_blank" href="{{ assets('uploads/home/'.$banner->image) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
                                                 </div>
                                                 @endif
                                                 <div class="col-md-12">
                                                     <div class="mb-3 field_error">
                                                         <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                        <textarea class="post-area form-control" required id="description" name="banner_description" rows="3" placeholder="Enter Description">{{ $data->description ?? '' }}</textarea>
+                                                        <textarea class="post-area form-control" required id="description" name="banner_description" rows="3" placeholder="Enter Description">{{ $banner->description ?? '' }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex mt-3 mb-4">
-                                                    <button type="button" data-id="create_form{{ $data->id }}" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
+                                                    <button type="button" data-id="banner_form" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-                                @elseif($data->section_code == 'community')
+                                
                                 <div class="edit-pmu-form-item">
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">
-                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-person-gear"></i>
-                                                    </span> Community<i class="bi bi-chevron-down" ></i></h3>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0)" class="preview" data-name="become-a-member"><button class="common-btn ms-2"> Preview </button></a>
-                                        </div>
-                                    </div>
-                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapse{{$data->id}}">
-                                        <form action="{{ route('admin.manage.home.community.save') }}" method="post" enctype="multipart/form-data" id="create_form{{ $data->id }}">@csrf
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="community_title" class="form-label black-color f-600">Enter Title</label>
-                                                        <input type="text" required class="form-control" name="community_title" id="community_title" value="{{ $data->title ?? '' }}" aria-describedby="community_title" placeholder="Enter Title" />
-                                                    </div>
-                                                </div>
-                                                <div class="@if(isset($data->image)) col-md-5 @else col-md-6 @endif">
-                                                    <div class="mb-3">
-                                                        <label for="imageInput{{ $data->id }}" class="form-label black-color f-600">Upload Image</label>
-                                                        <div class="file-upload d-flex align-items-center mb-3 field">
-                                                            <div class="file btn black-color upload-btn">
-                                                                <span id="image_name{{ $data->id }}">
-                                                                    @if(isset($data->image))
-                                                                    {{ $data->image }}
-                                                                    @else
-                                                                    Upload Image
-                                                                    @endif
-                                                                </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                                <input type="file" data-num="{{ $data->id }}" name="community_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data->id }}" />
-                                                                <input type="hidden" name="community_id" value="{{ encrypt_decrypt('encrypt', $data->id) }}">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @if(isset($data->image))
-                                                <div class="col-md-1">
-                                                    <a target="_blank" href="{{ assets('uploads/home/'.$data->image) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
-                                                </div>
-                                                @endif
-                                                <div class="col-md-12">
-                                                    <div class="mb-3 field_error">
-                                                        <label for="community_description" class="form-label black-color f-600">Enter Description</label>
-                                                        <textarea class="post-area form-control" required id="community_description" name="community_description" rows="3" placeholder="Enter Description">{{ $data->description ?? '' }}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex mt-3 mb-4">
-                                                    <button type="button" data-id="create_form{{ $data->id }}" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                @elseif($data->section_code == 'testimonial')
-                                <div class="edit-pmu-form-item">
-                                    <div class="edit-pmu-heading">
-                                        <div class="edit-pmu-text d-flex flex-row align-items-center">
-                                            <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}"><span class="edit-pmu-collapse-icon"><i class="bi bi-person-vcard"></i>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapseTestimonial"><span class="edit-pmu-collapse-icon"><i class="bi bi-person-vcard"></i>
                                                     </span> Testimonials<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
@@ -164,7 +98,7 @@
                                             <a href="javascript:void(0)" class="preview" data-name="testimonials"><button class="common-btn ms-2"> Preview </button></a>
                                         </div>
                                     </div>
-                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapse{{$data->id}}">
+                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapseTestimonial">
                                         <div class="text-end">
                                             <a href="javascript:void(0)" style="width: 19%;"><button data-bs-toggle="modal" data-bs-target="#uploadFile" class="outline-btn ms-2">Add Testimonial<i class="bi bi-plus-circle ms-2"></i></button></a>
                                         </div>
@@ -195,57 +129,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                @elseif($data->section_code == 'achievement')
+
                                 <div class="edit-pmu-form-item">
                                     <div class="edit-pmu-heading">
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}">
-                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-award"></i>
-                                                    </span> Key Achievements<i class="bi bi-chevron-down" ></i></h3>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0)" class="preview" data-name="testimonial"><button class="common-btn ms-2"> Preview </button></a>
-                                        </div>
-                                    </div>
-                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapse{{$data->id}}">
-                                        <div class="text-end">
-                                            <a href="javascript:void(0)" style="width: 17%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileAchieve" class="outline-btn ms-2">Add Key Achievement<i class="bi bi-plus-circle ms-2"></i></button></a>
-                                        </div>
-                                        <div class="transaction-details">
-                                            <div class="achievements-scroll">
-                                                <div class="owl-carouse row">
-                                                    @forelse ($badges as $item)
-                                                    <div class="slid col-md-3 mb-4">
-                                                        <div class="achievements-box-slid">
-                                                            <div class="achievements-img" >
-                                                                <img  src="{{ assets("uploads/badges/$item->path") }}">
-                                                            </div>
-                                                            <p class="achievements-title">{{ $item->title ?? 'NA' }}</p>
-                                                            <div class="achievements-action">
-                                                                <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form_achieve').attr('action','{{ route('admin.manage.affiliate-badges.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileAchieve">Delete</button>
-                                                               <button  id="imgEditBtnAchieve" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->path }}">Edit Key Achievement</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    @empty
-                                                    <div class="text-center mt-5">
-                                                        <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
-                                                        <h4 class="p-4 text-center my-2 w-100">No key achievements found</h4>
-                                                    </div>
-                                                    @endforelse
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @elseif($data->section_code == 'video')
-                                <div class="edit-pmu-form-item">
-                                    <div class="edit-pmu-heading">
-                                        <div class="edit-pmu-text d-flex flex-row align-items-center">
-                                            <div class="edit-pmu-text-title mx-2">
-                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapse{{$data->id}}"><span class="edit-pmu-collapse-icon"><i class="bi bi-play-btn"></i>
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapseVideo"><span class="edit-pmu-collapse-icon"><i class="bi bi-play-btn"></i>
                                                     </span> Youtube Video<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
@@ -253,7 +142,7 @@
                                             <a href="javascript:void(0)" class="preview" data-name="youtube"><button class="common-btn ms-2"> Preview </button></a>
                                         </div>
                                     </div>
-                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapse{{$data->id}}">
+                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapseVideo">
                                         <div class="text-end">
                                             <a href="javascript:void(0)" style="width: 15%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileVideo" class="outline-btn">Add Video<i class="bi bi-plus-circle ms-2"></i></button></a>
                                         </div>
@@ -284,11 +173,112 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endif
-
-
-                                @endforeach
-                                @endif
+                                
+                                <div class="edit-pmu-form-item">
+                                    <div class="edit-pmu-heading">
+                                        <div class="edit-pmu-text d-flex flex-row align-items-center">
+                                            <div class="edit-pmu-text-title mx-2">
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapseAchieve">
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-award"></i>
+                                                    </span> Key Achievements<i class="bi bi-chevron-down" ></i></h3>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:void(0)" class="preview" data-name="testimonial"><button class="common-btn ms-2"> Preview </button></a>
+                                        </div>
+                                    </div>
+                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapseAchieve">
+                                        <div class="text-end">
+                                            <a href="javascript:void(0)" style="width: 17%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileAchieve" class="outline-btn ms-2">Add Key Achievement<i class="bi bi-plus-circle ms-2"></i></button></a>
+                                        </div>
+                                        <div class="transaction-details">
+                                            <div class="achievements-scroll">
+                                                <div class="owl-carouse row">
+                                                    @forelse ($badges as $item)
+                                                    <div class="slid col-md-3 mb-4">
+                                                        <div class="achievements-box-slid">
+                                                            <div class="achievements-img" >
+                                                                <img  src="{{ assets("uploads/badges/$item->path") }}">
+                                                            </div>
+                                                            <p class="achievements-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <div class="achievements-action">
+                                                                <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form_achieve').attr('action','{{ route('admin.manage.affiliate-badges.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileAchieve">Delete</button>
+                                                               <button  id="imgEditBtnAchieve" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->path }}">Edit Key Achievement</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @empty
+                                                    <div class="text-center mt-5">
+                                                        <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
+                                                        <h4 class="p-4 text-center my-2 w-100">No key achievements found</h4>
+                                                    </div>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="edit-pmu-form-item">
+                                    <div class="edit-pmu-heading">
+                                        <div class="edit-pmu-text d-flex flex-row align-items-center">
+                                            <div class="edit-pmu-text-title mx-2">
+                                                <h3 data-bs-toggle="collapse" data-bs-target="#collapseCommunity">
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-person-gear"></i>
+                                                    </span> {{ $data->title ?? 'Community' }}<i class="bi bi-chevron-down" ></i></h3>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:void(0)" class="preview" data-name="become-a-member"><button class="common-btn ms-2"> Preview </button></a>
+                                        </div>
+                                    </div>
+                                    <div class="edit-pmu-section collapse-course-form collapse" id="collapseCommunity">
+                                        <form action="{{ route('admin.manage.home.community.save') }}" method="post" enctype="multipart/form-data" id="community_form">@csrf
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3 field_error">
+                                                        <label for="community_title" class="form-label black-color f-600">Enter Title</label>
+                                                        <input type="text" required class="form-control" name="community_title" id="community_title" value="{{ $data->title ?? '' }}" aria-describedby="community_title" placeholder="Enter Title" />
+                                                    </div>
+                                                </div>
+                                                <div class="@if(isset($data->image)) col-md-5 @else col-md-6 @endif">
+                                                    <div class="mb-3">
+                                                        <label for="imageInput{{ $data->id ?? 225 }}" class="form-label black-color f-600">Upload Image</label>
+                                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                                            <div class="file btn black-color upload-btn">
+                                                                <span id="image_name{{ $data->id ?? 225 }}">
+                                                                    @if(isset($data->image))
+                                                                    {{ $data->image }}
+                                                                    @else
+                                                                    Upload Image
+                                                                    @endif
+                                                                </span> <i class="bi bi-file-image ms-2 main-color"></i>
+                                                                <input type="file" @if(!isset($data->image)) required @endif data-num="{{ $data->id ?? 225 }}" name="community_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data->id ?? 225 }}" />
+                                                                @if(isset($data->id))
+                                                                <input type="hidden" name="community_id" value="{{ encrypt_decrypt('encrypt', $data->id) }}">
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @if(isset($data->image))
+                                                <div class="col-md-1">
+                                                    <a target="_blank" href="{{ assets('uploads/home/'.$data->image) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
+                                                </div>
+                                                @endif
+                                                <div class="col-md-12">
+                                                    <div class="mb-3 field_error">
+                                                        <label for="community_description" class="form-label black-color f-600">Enter Description</label>
+                                                        <textarea class="post-area form-control" required id="community_description" name="community_description" rows="3" placeholder="Enter Description">{{ $data->description ?? '' }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex mt-3 mb-4">
+                                                    <button type="button" data-id="community_form" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -307,7 +297,11 @@
                 </div>
 
                 <div class="modal-body">
-                    <section class="banner d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$home->image}}' ), background-repeat: no-repeat;">
+                    @if(isset($home->image))
+                    <section class="banner d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/uploads/home/{{$home->image}}' ); background-repeat: no-repeat; background-size: cover;">
+                    @else
+                    <section class="banner d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/frontend/images/8.jpg' ); background-repeat: no-repeat; background-size: cover;">
+                    @endif
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
@@ -409,7 +403,11 @@
                     </section>
                     @endif
 
-                    <div class="become-a-member d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$community->image}}' ), background-repeat: no-repeat;">
+                    @if(isset($community->image))
+                    <div class="become-a-member d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/uploads/home/{{$community->image}}' ); background-repeat: no-repeat; background-size: cover;">
+                    @else
+                    <div class="become-a-member d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/frontend/images/membership-1.jpg' ); background-repeat: no-repeat; background-size: cover;">
+                    @endif
                         <div class="container">
                             <h1 class="mb-4 white-color text-center">{{ $community->title ?? 'NA' }}</h1>
                             <p class="text-center white-color">{{ $community->description ?? 'NA' }}</p>
@@ -908,6 +906,64 @@
         $.validator.addMethod('filesize', function(value, element, param) {
             return this.optional(element) || (element.files[0].size <= param * 1000000)
         }, 'File size must be less than {0} MB');
+        $('#banner_form').validate({
+            rules: {
+                banner_title: {
+                    required: true,
+                },
+                banner_description: {
+                    required: true,
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+        $('#community_form').validate({
+            rules: {
+                community_title: {
+                    required: true,
+                },
+                community_description: {
+                    required: true,
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
         $('#create_form').validate({
             rules: {
                 title: {
@@ -921,7 +977,7 @@
                 },
                 image: {
                     required: true,
-                    filesize: 1
+                    filesize: 5
                 },
             },
             errorElement: "span",
@@ -956,7 +1012,7 @@
                     required: true,
                 },
                 image: {
-                    filesize: 1
+                    filesize: 5
                 },
             },
             errorElement: "span",
@@ -1051,7 +1107,7 @@
                 },
                 image: {
                     required: true,
-                    filesize: 1
+                    filesize: 5
                 },
             },
             errorElement: "span",
@@ -1085,7 +1141,7 @@
                     required: true,
                 },
                 image: {
-                    filesize: 1
+                    filesize: 5
                 },
             },
             errorElement: "span",

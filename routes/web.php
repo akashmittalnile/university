@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAboutUsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\BlogController;
@@ -167,16 +168,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get("social-media-delete/{id}", [ContentController::class, 'socialMediaDelete'])->name('social.media.delete');
 
         // about us
-        Route::get("about", [ContentController::class, 'about'])->name('about');
+        Route::get("about", [AdminAboutUsController::class, 'about'])->name('about');
+        Route::post("about-vision-save", [AdminAboutUsController::class, 'aboutVisionSave'])->name('about.vision.save');
+        Route::post("about-story-save", [AdminAboutUsController::class, 'aboutStorySave'])->name('about.story.save');
+        Route::post("team-member-save", [AdminAboutUsController::class, 'teamMemberSave'])->name('team.member.save');
+        Route::get("team-member-delete/{id}", [AdminAboutUsController::class, 'teamMemberDelete'])->name('team.member.delete');
+        Route::post("team-member-update", [AdminAboutUsController::class, 'teamMemberUpdate'])->name('team.member.update');
+        Route::post("about-we-do-save", [AdminAboutUsController::class, 'aboutWeDoSave'])->name('about.we_do.save');
+        Route::post("about-how-save", [AdminAboutUsController::class, 'aboutHowSave'])->name('about.how.save');
+        Route::post("about-select-save", [AdminAboutUsController::class, 'aboutSelectSave'])->name('about.select.save');
+        Route::post("about-differ-save", [AdminAboutUsController::class, 'aboutDifferSave'])->name('about.differ.save');
+        Route::post("about-who-is-save", [AdminAboutUsController::class, 'aboutWhoIsSave'])->name('about.who_is.save');
+        Route::post("about-global-save", [AdminAboutUsController::class, 'aboutGlobalSave'])->name('about.global.save');
+        Route::post("about-partner-save", [AdminAboutUsController::class, 'aboutPartnerSave'])->name('about.partner.save');
+        Route::post("about-support-save", [AdminAboutUsController::class, 'aboutSupportSave'])->name('about.support.save');
+
+        
         Route::post("about", [ContentController::class, 'aboutSave'])->name('about.save');
         Route::get("how_we_do_it", [ContentController::class, 'about2'])->name('how_we_do_it');
         Route::post("how_we_do_it_save", [ContentController::class, 'aboutSave2'])->name('how_we_do_it.save');
 
-        // team members
         Route::get("team-member", [ContentController::class, 'teamMember'])->name('team.member');
-        Route::post("team-member-save", [ContentController::class, 'teamMemberSave'])->name('team.member.save');
-        Route::get("team-member-delete/{id}", [ContentController::class, 'teamMemberDelete'])->name('team.member.delete');
-        Route::post("team-member-update", [ContentController::class, 'teamMemberUpdate'])->name('team.member.update');
 
         // mark network
         Route::get("mark-network", [ContentController::class, 'markNetwork'])->name('markNetwork');
