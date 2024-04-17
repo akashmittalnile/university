@@ -76,7 +76,7 @@ Route::get('/verify-otp/{email}', [FrontendController::class, 'verifyOTP'])->nam
 Route::post('/verifying-otp', [FrontendController::class, 'verifyingOTP'])->name('verifying.otp');
 Route::get('/reset-password/{email}', [FrontendController::class, 'resetPassword'])->name('reset.password');
 Route::post('/update-password', [FrontendController::class, 'updatePassword'])->name('update.password');
-
+Route::stripeWebhooks('stripe-auto-payment');
 
 
 // Admin Routes
