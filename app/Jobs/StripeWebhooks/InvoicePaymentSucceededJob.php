@@ -9,8 +9,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Spatie\WebhookClient\Models\WebhookCall;
-use App\Models\Webhookpayment;
 use App\Models\User;
+use App\Models\UserPlanDetail;
 
 class InvoicePaymentSucceededJob implements ShouldQueue
 {
@@ -32,21 +32,15 @@ class InvoicePaymentSucceededJob implements ShouldQueue
     {
         $charge = $this->webhookCall->payload['data']['object'] ;
         // do your work here
-        echo "<pre>";
-        print_r($charge);
-        echo "</pre>";
-        die();
-        $user = User::where('stripe_id',$charge['customer'])->first();
+        // echo "<pre>";
+        // print_r($charge);
+        // echo "</pre>";
+        // die();
+        $user = User::where('email',$charge['customer_email'])->first();
         if($user)
         {
-            $payment = new Webhookpayment();
-            $payment->amount = ($charge['amount_paid'] / 100) ;
-            $payment->userid = $user->id;
-            $payment->stripe_price = $this->webhookCall->payload['data']['object']['lines']['data'][0]['plan']['id'];
-            $payment->subscription = $this->webhookCall->payload['data']['object']['lines']['data'][0]['subscription'];
-            $payment->subscriptionitem = $this->webhookCall->payload['data']['object']['lines']['data'][0]['subscription_item'];
-            $payment->created_at = date('Y-m-d H:i:s');
-            $payment->updated_at = date('Y-m-d H:i:s');
+            $payment = UserPlanDetail::where("subs_id", $charge['subscription'])->where("status", "Active")->first();
+            $payment->transaction_id = $charge['charge'] ?? null;
             $payment->save();
         }
         

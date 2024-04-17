@@ -154,13 +154,13 @@ class PlanController extends Controller
                 ]);
 
                 // charing user for subscription
-                $charge = \Stripe\Charge::create(
-                    array(
-                        "amount" => $plan->price * 100,
-                        "currency" => $plan->currency,
-                        "customer" => $customer->id
-                    )
-                );
+                // $charge = \Stripe\Charge::create(
+                //     array(
+                //         "amount" => $plan->price * 100,
+                //         "currency" => $plan->currency,
+                //         "customer" => $customer->id
+                //     )
+                // );
             } else {
                 return response()->json(['error' => 'Stripe customer could not be created'], 400);
             }
@@ -172,30 +172,26 @@ class PlanController extends Controller
 
             // checking if already a plan exists
             $msg = 'upgraded';
-            if ($subscription && $charge) {
+            if ($subscription) {
 
                 $user_plan_exists = UserPlanDetail::where("user_id", $user_id)->where("status", "Active")->count();
                 if ($user_plan_exists) {
                     $user_plan_exists = UserPlanDetail::where("user_id", $user_id)->where("status", "Active")->first();
                     $user_plan_exists->status = "Inactive";
                     $user_plan_exists->save();
+                    $stripe->subscriptions->cancel($user_plan_exists->subs_id, []);
                     if ($user_plan_exists->plan->price > $plan->price) {
                         $msg = "downgraded";
-                    }
-                    try {
-                        $this->cancelPlan($user_plan_exists->subs_id);
-                    } catch (\Throwable $th) {
                     }
                 }
 
                 $user_plan = new UserPlanDetail();
                 $user_plan->user_id = $user_id;
                 $user_plan->subs_id = $subscription->id;
-                $user_plan->transaction_id = $charge->id;
                 $user_plan->plan_id = $plan_id;
                 $user_plan->status = "Active";
                 $user_plan->start_date = Carbon::now();
-                $user_plan->end_date = Carbon::now()->addDay(28);
+                $user_plan->end_date = Carbon::now()->addDay(30);
                 $user_plan->save();
             }
             session()->forget("email");

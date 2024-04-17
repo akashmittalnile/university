@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Stripewebhooks;
 
+use App\Models\UserPlanDetail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,7 +10,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Spatie\WebhookClient\Models\WebhookCall;
-use App\Models\Webhookpayment;
 
 
 class ChargeSucceededJob implements ShouldQueue
@@ -33,14 +33,14 @@ class ChargeSucceededJob implements ShouldQueue
     {
         $charge = $this->webhookCall->payload['data']['object'] ;
         // do your work here
-        echo "<pre>";
-        print_r($charge);
-        echo "</pre>";
-        die();
+        // echo "<pre>";
+        // print_r($charge);
+        // echo "</pre>";
+        // die();
         if($this->webhookCall->payload['type'] == 'invoice.payment_succeeded')
         {
-            $payment = new Webhookpayment();
-            $payment->amount = ($charge['amount'] / 100) ;
+            $payment = UserPlanDetail::where("subs_id", $charge['subscription'])->where("status", "Active")->first();
+            $payment->transaction_id = $charge['charge'] ?? null;
             $payment->save();
         }
 
