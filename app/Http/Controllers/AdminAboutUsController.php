@@ -573,16 +573,7 @@ class AdminAboutUsController extends Controller
                     "how_image1" => 'file|max:10240',
                     'how_title2' => 'required',
                     "how_description2" => 'required',
-                    "how_image3" => 'file|max:10240',
-                    'how_title3' => 'required',
-                    "how_description3" => 'required',
-                    "how_image3" => 'file|max:10240',
-                    'how_title4' => 'required',
-                    "how_description4" => 'required',
-                    "how_image4" => 'file|max:10240',
-                    'how_title5' => 'required',
-                    "how_description5" => 'required',
-                    "how_image5" => 'file|max:10240',
+                    "how_image2" => 'file|max:10240',
                 ]
             );
             if (isset($request->how_head_id) && $request->how_head_id != ''){
@@ -627,59 +618,41 @@ class AdminAboutUsController extends Controller
                 }
                 ManageAboutUs::create(['title' => $request->how_title2, 'description' => $request->how_description2, 'image1' => $name, 'section_code' => 'how2', 'status' => 1]);
             }
-            if (isset($request->how_id3) && $request->how_id3 != '') {
-                $id = encrypt_decrypt('decrypt', $request->how_id3);
-                $about = ManageAboutUs::where('id', $id)->where('section_code', 'how3')->first();
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+    
+    public function aboutHow2Save(Request $request)
+    {
+        // dd($request->all());
+        try {
+            $request->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    'section' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->id);
+            if (isset($request->id) && $request->id != '' && $id != 0) {
+                $about = ManageAboutUs::where('id', $id)->where('section_code', $request->section)->first();
                 $name = $about->image1;
-                if ($request->hasFile("how_image3")) {
+                if ($request->hasFile("image")) {
                     if (isset($about->image1)) {
                         $link = public_path() . "/uploads/about/" . $about->image1;
                         if (file_exists($link)) unlink($link);
                     }
-                    $name = fileUpload($request->how_image3, "uploads/about");
+                    $name = fileUpload($request->image, "uploads/about");
                 }
-                ManageAboutUs::where('id', $id)->where('section_code', 'how3')->update(['title'=> $request->how_title3, 'description' => $request->how_description3, 'image1' => $name, 'updated_at'=> date('Y-m-d H:i:s')]);
+                ManageAboutUs::where('id', $id)->where('section_code', $request->section)->update(['title'=> $request->title, 'description' => $request->description, 'image1' => $name, 'updated_at'=> date('Y-m-d H:i:s')]);
             } else {
-                if ($request->hasFile("how_image3")) {
-                    $name = fileUpload($request->how_image3, "uploads/about");
+                if ($request->hasFile("image")) {
+                    $name = fileUpload($request->image, "uploads/about");
                 }
-                ManageAboutUs::create(['title' => $request->how_title3, 'description' => $request->how_description3, 'image1' => $name, 'section_code' => 'how3', 'status' => 1]);
-            }
-            if (isset($request->how_id4) && $request->how_id4 != '') {
-                $id = encrypt_decrypt('decrypt', $request->how_id4);
-                $about = ManageAboutUs::where('id', $id)->where('section_code', 'how4')->first();
-                $name = $about->image1;
-                if ($request->hasFile("how_image4")) {
-                    if (isset($about->image1)) {
-                        $link = public_path() . "/uploads/about/" . $about->image1;
-                        if (file_exists($link)) unlink($link);
-                    }
-                    $name = fileUpload($request->how_image4, "uploads/about");
-                }
-                ManageAboutUs::where('id', $id)->where('section_code', 'how4')->update(['title'=> $request->how_title4, 'description' => $request->how_description4, 'image1' => $name, 'updated_at'=> date('Y-m-d H:i:s')]);
-            } else {
-                if ($request->hasFile("how_image4")) {
-                    $name = fileUpload($request->how_image4, "uploads/about");
-                }
-                ManageAboutUs::create(['title' => $request->how_title4, 'description' => $request->how_description4, 'image1' => $name, 'section_code' => 'how4', 'status' => 1]);
-            }
-            if (isset($request->how_id5) && $request->how_id5 != '') {
-                $id = encrypt_decrypt('decrypt', $request->how_id5);
-                $about = ManageAboutUs::where('id', $id)->where('section_code', 'how5')->first();
-                $name = $about->image1;
-                if ($request->hasFile("how_image5")) {
-                    if (isset($about->image1)) {
-                        $link = public_path() . "/uploads/about/" . $about->image1;
-                        if (file_exists($link)) unlink($link);
-                    }
-                    $name = fileUpload($request->how_image5, "uploads/about");
-                }
-                ManageAboutUs::where('id', $id)->where('section_code', 'how5')->update(['title'=> $request->how_title5, 'description' => $request->how_description5, 'image1' => $name, 'updated_at'=> date('Y-m-d H:i:s')]);
-            } else {
-                if ($request->hasFile("how_image5")) {
-                    $name = fileUpload($request->how_image5, "uploads/about");
-                }
-                ManageAboutUs::create(['title' => $request->how_title5, 'description' => $request->how_description5, 'image1' => $name, 'section_code' => 'how5', 'status' => 1]);
+                ManageAboutUs::create(['title' => $request->title, 'description' => $request->description, 'image1' => $name, 'section_code' => $request->section, 'status' => 1]);
             }
             return redirect()->back()->with('success', 'Content Updated Successfully');
         } catch (\Exception $e) {

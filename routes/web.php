@@ -176,6 +176,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("team-member-update", [AdminAboutUsController::class, 'teamMemberUpdate'])->name('team.member.update');
         Route::post("about-we-do-save", [AdminAboutUsController::class, 'aboutWeDoSave'])->name('about.we_do.save');
         Route::post("about-how-save", [AdminAboutUsController::class, 'aboutHowSave'])->name('about.how.save');
+        Route::post("about-how2-save", [AdminAboutUsController::class, 'aboutHow2Save'])->name('about.how2.save');
         Route::post("about-select-save", [AdminAboutUsController::class, 'aboutSelectSave'])->name('about.select.save');
         Route::post("about-differ-save", [AdminAboutUsController::class, 'aboutDifferSave'])->name('about.differ.save');
         Route::post("about-who-is-save", [AdminAboutUsController::class, 'aboutWhoIsSave'])->name('about.who_is.save');

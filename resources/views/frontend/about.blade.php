@@ -24,7 +24,7 @@
                 </div>
             </div>
             <p class="my-story-descr">
-                {{ $data1->description ?? 'NA' }}
+                {!! $data1->description ?? 'NA' !!}
             </p>
         </div>
         <div class="my-story">
@@ -39,7 +39,7 @@
                         <h1>{{ $data2->title ?? 'NA' }}</h1>
                     </div>
                     <p class="my-story-descr">
-                        {{ $data2->description ?? 'NA' }}
+                        {!! $data2->description ?? 'NA' !!}
                     </p>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                                         <div class="team-members-card-content">
                                             <div class="team-quotes">"</div>
                                             <div class="team-members-card-content-innner">
-                                            <p>" {{ $val->company_name ?? 'NA' }} "</p>
+                                            <p>" {!! $val->company_name ?? 'NA' !!} "</p>
                                             <h4>{{ $val->name ?? 'NA' }}</h4>
                                             <h6><i class="bi bi-dash-lg me-2"></i>{{ $val->designation ?? 'NA' }}</h6></div>
                                         </div>
@@ -92,7 +92,7 @@
                 {{ $data3->title ?? 'NA' }}
             </h1>
             <div class="what-we-do-box common-shadow">
-                <p class="white-color sub-text text-center">{{ $data3->description ?? 'NA' }}</p>
+                <p class="white-color sub-text text-center">{!! $data3->description ?? 'NA' !!}</p>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
                             {{ $how1->title ?? 'NA' }}
                         </h3>
                         <p class="black-color">
-                            {{ $how1->description ?? 'NA' }}
+                            {!! $how1->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                             {{ $how2->title ?? 'NA' }}
                         </h3>
                         <p class="black-color">
-                            {{ $how2->description ?? 'NA' }}
+                            {!! $how2->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                         </div>
                         <h5 class="f-600 mt-3">{{ $how3->title ?? 'NA' }}</h5>
                         <p class="mt-3">
-                            {{ $how3->description ?? 'NA' }}
+                            {!! $how3->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                             {{ $how4->title ?? 'NA' }}
                         </h5>
                         <p class="mt-3">
-                            {{ $how4->description ?? 'NA' }}
+                            {!! $how4->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                         </div>
                         <h5 class="f-600 mt-3">{{ $how5->title ?? 'NA' }}</h5>
                         <p class="mt-3">
-                            {{ $how5->description ?? 'NA' }}
+                            {!! $how5->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                 <div class="col-md-6">
                     <div class="why-you-select-box common-shadow">
                         <p>
-                            {{ $data4->description ?? 'NA' }}
+                            {!! $data4->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
                 <div class="col-md-12">
                     <div class="how-we-offer-box mt-md-4 mt-sm-0">
                         <p>
-                            {{ $data5->description ?? 'NA' }}
+                            {!! $data5->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                                 {{ $data6->title ?? 'NA' }}
                             </h1>
                             <p class="global-descr  text-justify">
-                                {{ $data6->description ?? 'NA' }}
+                                {!! $data6->description ?? 'NA' !!}
                             </p>
                         </div>
                     </div>
@@ -253,7 +253,7 @@
                             {{ $data7->title ?? 'NA' }}
                         </h1>
                         <p class="global-descr text-md-end">
-                            {{ $data7->description ?? 'NA' }}
+                            {!! $data7->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
                 <div class="col-md-6">
                     <div class="why-you-select-box common-shadow">
                         <p class="global-descr">
-                            {{ $data8->description ?? 'NA' }}
+                            {!! $data8->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>
@@ -297,7 +297,7 @@
                             {{ $data9->title ?? 'NA' }}
                         </h1>
                         <p class="global-descr text-md-end">
-                            {{ $data9->description ?? 'NA' }}
+                            {!! $data9->description ?? 'NA' !!}
                         </p>
                     </div>
                 </div>

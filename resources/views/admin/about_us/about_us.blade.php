@@ -70,8 +70,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="vision_description" rows="3" placeholder="Enter Description">{{ $data1->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote1" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote1" name="vision_description" rows="3" placeholder="Enter Description">{{ $data1->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -135,8 +135,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="story_description" rows="3" placeholder="Enter Description">{{ $data2->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote2" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote2" name="story_description" rows="3" placeholder="Enter Description">{{ $data2->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -245,8 +245,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="we_do_description" rows="3" placeholder="Enter Description">{{ $data3->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote3" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote3" name="we_do_description" rows="3" placeholder="Enter Description">{{ $data3->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -321,8 +321,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="how_description1" rows="3" placeholder="Enter Description">{{ $how1->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote11" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote11" name="how_description1" rows="3" placeholder="Enter Description">{{ $how1->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -363,137 +363,63 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="how_description2" rows="3" placeholder="Enter Description">{{ $how2->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote12" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote12" name="how_description2" rows="3" placeholder="Enter Description">{{ $how2->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
                                             <hr>
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="how_title3" id="title" value="{{ $how3->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
-                                                    @if(isset($how3->id))
-                                                    <input type="hidden" name="how_id3" value="{{ encrypt_decrypt('encrypt', $how3->id) }}">
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="@if(isset($how3->image1)) col-md-5 @else col-md-6 @endif">
-                                                <div class="mb-3">
-                                                    <label for="imageInput{{ $how3->id ?? 235 }}" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field flex-column">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name{{ $how3->id ?? 235 }}">
-                                                                @if(isset($how3->image1))
-                                                                {{ $how3->image1 }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" @if(!isset($how3->image1)) required @endif data-num="{{ $how3->id ?? 235 }}" name="how_image3" accept="image/png, image/jpg, image/jpeg, image/svg" id="imageInput{{ $how3->id ?? 235 }}" />
+
+                                            <div class="how-we-do-cards mt-3 my-3">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4 bottom-margin">
+                                                            <div class="card common-shadow float">
+                                                                <div class="img-bg">
+                                                                    <img src="{{ isset($how3->image1) ? assets('uploads/about/'.($how3->image1 ?? null)) : assets('frontend/images/growth.svg') }}" alt="image" class="img-fluid" />
+                                                                </div>
+                                                                <h5 class="f-600 mt-3">{{ $how3->title ?? 'NA' }}</h5>
+                                                                <p class="mt-3">
+                                                                    {!! $how3->description ?? 'NA' !!}
+                                                                </p>
+                                                                <div class="d-flex justify-content-center mt-3">
+                                                                    <a href="javascript:void(0)" data-section="how3" data-id="{{ encrypt_decrypt('encrypt', $how3->id ?? 0) }}" data-title="{{ $how3->title ?? '' }}" data-desc="{{ $how3->description ?? '' }}" data-img="{{ $how3->image1 ?? '' }}" data-image="{{ isset($how3->image1) ? assets('uploads/about/'.$how3->image1) : assets('frontend/images/growth.svg') }}" class="editHowInput common-btn ms-2">Edit<i class="bi bi-floppy ms-2"></i></a>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="alert alert-danger mt-2 text-dark" role="alert">
-                                                            Please upload an image greater than or equal to recommended size (500 X 500)
+                                                        <div class="col-md-4 bottom-margin">
+                                                            <div class="card common-shadow float">
+                                                                <div class="img-bg">
+                                                                    <img src="{{ isset($how4->image1) ? assets('uploads/about/'.($how4->image1 ?? null)) : assets('frontend/images/innovation.svg') }}" alt="image" class="img-fluid" />
+                                                                </div>
+                                                                <h5 class="f-600 mt-3">
+                                                                    {{ $how4->title ?? 'NA' }}
+                                                                </h5>
+                                                                <p class="mt-3">
+                                                                    {!! $how4->description ?? 'NA' !!}
+                                                                </p>
+                                                                <div class="d-flex justify-content-center mt-3">
+                                                                    <a href="javascript:void(0)" data-section="how4" data-id="{{ encrypt_decrypt('encrypt', $how4->id ?? 0) }}" data-title="{{ $how4->title ?? '' }}" data-desc="{{ $how4->description ?? '' }}" data-img="{{ $how4->image1 ?? '' }}" data-image="{{ isset($how4->image1) ? assets('uploads/about/'.$how4->image1) : assets('frontend/images/growth.svg') }}" class="editHowInput common-btn ms-2">Edit<i class="bi bi-floppy ms-2"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 bottom-margin">
+                                                            <div class="card common-shadow float">
+                                                                <div class="img-bg">
+                                                                    <img src="{{ isset($how5->image1) ? assets('uploads/about/'.($how5->image1 ?? null)) : assets('frontend/images/change.svg') }}" alt="image" class="img-fluid" />
+                                                                </div>
+                                                                <h5 class="f-600 mt-3">{{ $how5->title ?? 'NA' }}</h5>
+                                                                <p class="mt-3">
+                                                                    {!! $how5->description ?? 'NA' !!}
+                                                                </p>
+                                                                <div class="d-flex justify-content-center mt-3">
+                                                                    <a href="javascript:void(0)" data-section="how5" data-id="{{ encrypt_decrypt('encrypt', $how5->id ?? 0) }}" data-title="{{ $how5->title ?? '' }}" data-desc="{{ $how5->description ?? '' }}" data-img="{{ $how5->image1 ?? '' }}" data-image="{{ isset($how5->image1) ? assets('uploads/about/'.$how5->image1) : assets('frontend/images/growth.svg') }}" class="editHowInput common-btn ms-2">Edit<i class="bi bi-floppy ms-2"></i></a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if(isset($how3->image1))
-                                            <div class="col-md-1">
-                                                <a target="_blank" href="{{ assets('uploads/about/'.$how3->image1) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
-                                            </div>
-                                            @endif
-                                            <div class="col-md-12">
-                                                <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="how_description3" rows="3" placeholder="Enter Description">{{ $how3->description ?? '' }}</textarea>
-                                                </div>
-                                            </div>
-
-                                            <hr>
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="how_title4" id="title" value="{{ $how4->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
-                                                    @if(isset($how4->id))
-                                                    <input type="hidden" name="how_id4" value="{{ encrypt_decrypt('encrypt', $how4->id) }}">
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="@if(isset($how4->image1)) col-md-5 @else col-md-6 @endif">
-                                                <div class="mb-3">
-                                                    <label for="imageInput{{ $how4->id ?? 611 }}" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field flex-column">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name{{ $how4->id ?? 611 }}">
-                                                                @if(isset($how4->image1))
-                                                                {{ $how4->image1 }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" @if(!isset($how4->image1)) required @endif data-num="{{ $how4->id ?? 611 }}" name="how_image4" accept="image/png, image/jpg, image/jpeg, image/svg" id="imageInput{{ $how4->id ?? 611 }}" />
-                                                        </div>
-                                                        <div class="alert alert-danger mt-2 text-dark" role="alert">
-                                                            Please upload an image greater than or equal to recommended size (500 X 500)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @if(isset($how4->image1))
-                                            <div class="col-md-1">
-                                                <a target="_blank" href="{{ assets('uploads/about/'.$how4->image1) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
-                                            </div>
-                                            @endif
-                                            <div class="col-md-12">
-                                                <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="how_description4" rows="3" placeholder="Enter Description">{{ $how4->description ?? '' }}</textarea>
-                                                </div>
-                                            </div>
-
-                                            <hr>
-                                            <div class="col-md-6">
-                                                <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="how_title5" id="title" value="{{ $how5->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
-                                                    @if(isset($how5->id))
-                                                    <input type="hidden" name="how_id5" value="{{ encrypt_decrypt('encrypt', $how5->id) }}">
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="@if(isset($how5->image1)) col-md-5 @else col-md-6 @endif">
-                                                <div class="mb-3">
-                                                    <label for="imageInput{{ $how5->id ?? 565 }}" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field flex-column">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name{{ $how5->id ?? 565 }}">
-                                                                @if(isset($how5->image1))
-                                                                {{ $how5->image1 }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" @if(!isset($how5->image1)) required @endif data-num="{{ $how5->id ?? 565 }}" name="how_image5" accept="image/png, image/jpg, image/jpeg, image/svg" id="imageInput{{ $how5->id ?? 565 }}" />
-                                                        </div>
-                                                        <div class="alert alert-danger mt-2 text-dark" role="alert">
-                                                            Please upload an image greater than or equal to recommended size (500 X 500)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @if(isset($how5->image1))
-                                            <div class="col-md-1">
-                                                <a target="_blank" href="{{ assets('uploads/about/'.$how5->image1) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
-                                            </div>
-                                            @endif
-                                            <div class="col-md-12">
-                                                <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="how_description5" rows="3" placeholder="Enter Description">{{ $how5->description ?? '' }}</textarea>
-                                                </div>
-                                            </div>
-
 
                                             <div class="d-flex mt-3 mb-4">
                                                 <button type="submit" data-id="how_form" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
@@ -556,8 +482,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="select_description" rows="3" placeholder="Enter Description">{{ $data4->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote4" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote4" name="select_description" rows="3" placeholder="Enter Description">{{ $data4->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -646,8 +572,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="differ_description" rows="3" placeholder="Enter Description">{{ $data5->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote5" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote5" name="differ_description" rows="3" placeholder="Enter Description">{{ $data5->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -711,8 +637,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="who_is_description" rows="3" placeholder="Enter Description">{{ $data6->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote6" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote6" name="who_is_description" rows="3" placeholder="Enter Description">{{ $data6->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -776,8 +702,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="global_description" rows="3" placeholder="Enter Description">{{ $data7->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote7" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote7" name="global_description" rows="3" placeholder="Enter Description">{{ $data7->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -841,8 +767,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="partner_description" rows="3" placeholder="Enter Description">{{ $data8->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote8" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote8" name="partner_description" rows="3" placeholder="Enter Description">{{ $data8->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -906,8 +832,8 @@
                                             @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="description" name="support_description" rows="3" placeholder="Enter Description">{{ $data9->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote9" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote9" name="support_description" rows="3" placeholder="Enter Description">{{ $data9->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
@@ -953,7 +879,7 @@
                                 </div>
                             </div>
                             <p class="my-story-descr">
-                                {{ $data1->description ?? 'NA' }}
+                                {!! $data1->description ?? 'NA' !!}
                             </p>
                         </div>
                         <div class="my-story story d-none">
@@ -968,7 +894,7 @@
                                         <h1>{{ $data2->title ?? 'NA' }}</h1>
                                     </div>
                                     <p class="my-story-descr">
-                                        {{ $data2->description ?? 'NA' }}
+                                        {!! $data2->description ?? 'NA' !!}
                                     </p>
                                 </div>
                             </div>
@@ -997,7 +923,7 @@
                                                         <div class="team-members-card-content">
                                                             <div class="team-quotes">"</div>
                                                             <div class="team-members-card-content-innner">
-                                                                <p>" {{ $val->company_name ?? 'NA' }} "</p>
+                                                                <p>" {!! $val->company_name ?? 'NA' !!} "</p>
                                                                 <h4>{{ $val->name ?? 'NA' }}</h4>
                                                                 <h6><i class="bi bi-dash-lg me-2"></i>{{ $val->designation ?? 'NA' }}</h6>
                                                             </div>
@@ -1023,7 +949,7 @@
                                 {{ $data3->title ?? 'NA' }}
                             </h1>
                             <div class="what-we-do-box common-shadow">
-                                <p class="white-color sub-text text-center">{{ $data3->description ?? 'NA' }}</p>
+                                <p class="white-color sub-text text-center">{!! $data3->description ?? 'NA' !!}</p>
                             </div>
                         </div>
                     </div>
@@ -1042,7 +968,7 @@
                                 <div class="col-md-6">
                                     <div class="why-you-select-box common-shadow">
                                         <p>
-                                            {{ $data4->description ?? 'NA' }}
+                                            {!! $data4->description ?? 'NA' !!}
                                         </p>
                                     </div>
                                 </div>
@@ -1069,7 +995,7 @@
                                 <div class="col-md-12">
                                     <div class="how-we-offer-box mt-md-4 mt-sm-0">
                                         <p>
-                                            {{ $data5->description ?? 'NA' }}
+                                            {!! $data5->description ?? 'NA' !!}
                                         </p>
                                     </div>
                                 </div>
@@ -1092,7 +1018,7 @@
                                                 {{ $data6->title ?? 'NA' }}
                                             </h1>
                                             <p class="global-descr  text-justify">
-                                                {{ $data6->description ?? 'NA' }}
+                                                {!! $data6->description ?? 'NA' !!}
                                             </p>
                                         </div>
                                     </div>
@@ -1110,7 +1036,7 @@
                                             {{ $data7->title ?? 'NA' }}
                                         </h1>
                                         <p class="global-descr text-md-end">
-                                            {{ $data7->description ?? 'NA' }}
+                                            {!! $data7->description ?? 'NA' !!}
                                         </p>
                                     </div>
                                 </div>
@@ -1137,7 +1063,7 @@
                                 <div class="col-md-6">
                                     <div class="why-you-select-box common-shadow">
                                         <p class="global-descr">
-                                            {{ $data8->description ?? 'NA' }}
+                                            {!! $data8->description ?? 'NA' !!}
                                         </p>
                                     </div>
                                 </div>
@@ -1154,7 +1080,7 @@
                                             {{ $data9->title ?? 'NA' }}
                                         </h1>
                                         <p class="global-descr text-md-end">
-                                            {{ $data9->description ?? 'NA' }}
+                                            {!! $data9->description ?? 'NA' !!}
                                         </p>
                                     </div>
                                 </div>
@@ -1181,7 +1107,7 @@
                                                 {{ $how1->title ?? 'NA' }}
                                             </h3>
                                             <p class="black-color">
-                                                {{ $how1->description ?? 'NA' }}
+                                                {!! $how1->description ?? 'NA' !!}
                                             </p>
                                         </div>
                                     </div>
@@ -1192,7 +1118,7 @@
                                                 {{ $how2->title ?? 'NA' }}
                                             </h3>
                                             <p class="black-color">
-                                                {{ $how2->description ?? 'NA' }}
+                                                {!! $how2->description ?? 'NA' !!}
                                             </p>
                                         </div>
                                     </div>
@@ -1210,7 +1136,7 @@
                                             </div>
                                             <h5 class="f-600 mt-3">{{ $how3->title ?? 'NA' }}</h5>
                                             <p class="mt-3">
-                                                {{ $how3->description ?? 'NA' }}
+                                                {!! $how3->description ?? 'NA' !!}
                                             </p>
                                         </div>
                                     </div>
@@ -1223,7 +1149,7 @@
                                                 {{ $how4->title ?? 'NA' }}
                                             </h5>
                                             <p class="mt-3">
-                                                {{ $how4->description ?? 'NA' }}
+                                                {!! $how4->description ?? 'NA' !!}
                                             </p>
                                         </div>
                                     </div>
@@ -1234,7 +1160,7 @@
                                             </div>
                                             <h5 class="f-600 mt-3">{{ $how5->title ?? 'NA' }}</h5>
                                             <p class="mt-3">
-                                                {{ $how5->description ?? 'NA' }}
+                                                {!! $how5->description ?? 'NA' !!}
                                             </p>
                                         </div>
                                     </div>
@@ -1244,6 +1170,64 @@
                     </div>
 
                 </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editFileHow" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Edit Details</h4>
+
+                <form action="{{ route('admin.about.how2.save') }}" method="post" enctype="multipart/form-data" id="update_form_how">
+                    @csrf
+                    <div class="edit-ebook">
+                        <div class="common-card" style="box-shadow: none;">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="mb-3 field_error">
+                                        <label for="editTitleHow" class="form-label black-color f-600">Enter Title</label>
+                                        <input type="text" name="title" class="form-control" id="editTitleHow" value="" aria-describedby="banner_name" placeholder="Enter Title">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="editImageInputHow" class="form-label black-color f-600">Upload Image</label>
+                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file btn black-color upload-btn">
+                                                <span id="edit_image_name_how">
+                                                    Upload Image
+                                                </span>
+                                                <i class="bi bi-file-image ms-2 main-color"></i>
+                                                <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="editImageInputHow" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <div class="mb-3 field_error">
+                                            <label for="editDescriptionHow" class="form-label black-color f-600">Enter Description</label>
+                                            <textarea name="description" id="editDescriptionHow" placeholder="Enter Description" class="form-control" cols="30" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="editIdHow" name="id" value="">
+                                    <input type="hidden" id="editSectionHow" name="section" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center mb-3">
+                            <button type="button" id="edit-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" id="edit-model-submit-btn" class="w-50 btn outline-btn">Update<i class="bi bi-floppy ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -1362,8 +1346,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <div class="mb-3 field_error">
-                                            <label for="company_name" class="form-label black-color f-600">Enter Company Name</label>
-                                            <textarea name="company_name" id="company_name" class="form-control" placeholder="Enter Company Name" cols="30" rows="3"></textarea>
+                                            <label for="makeMeSummernote10" class="form-label black-color f-600">Enter Company Name</label>
+                                            <textarea name="company_name" id="makeMeSummernote10" class="form-control" placeholder="Enter Company Name" cols="30" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1403,9 +1387,13 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
     $(document).ready(function() {
-
+        $("*[id^='makeMeSummernote']").summernote({
+            height: 200
+        });
+        
         $("#TeamMembers").owlCarousel({
             loop: true,
             margin: 10,
@@ -1418,11 +1406,26 @@
             }
         });
 
+        $(document).on('click', ".editHowInput", function() {
+            $("#edit_image_name_how").text($(this).data('img'));
+            $("#editIdHow").val($(this).data('id'));
+            $("#editSectionHow").val($(this).data('section'));
+            $("#editTitleHow").val($(this).data('title'));
+            $("#editDescriptionHow").summernote({
+                height: 200
+            });
+            $("#editDescriptionHow").summernote('code', $(this).data('desc'));
+            $("#editFileHow").modal('show');
+        });
+
         $(document).on('click', "#imgEditBtnTeam", function() {
             $("#edit_image_name_team").text($(this).data('img'));
             $("#editIdTeam").val($(this).data('id'));
             $("#editNameTeam").val($(this).data('name'));
-            $("#editCompanyTeam").val($(this).data('company'));
+            $("#editCompanyTeam").summernote({
+                height: 200
+            });
+            $("#editCompanyTeam").summernote('code', $(this).data('company'));
             $("#editDesignationTeam").val($(this).data('designation'));
             $("#editFileTeam").modal('show');
         });
@@ -1735,24 +1738,6 @@
                 how_description2: {
                     required: true,
                 },
-                how_title3: {
-                    required: true,
-                },
-                how_description3: {
-                    required: true,
-                },
-                how_title4: {
-                    required: true,
-                },
-                how_description4: {
-                    required: true,
-                },
-                how_title5: {
-                    required: true,
-                },
-                how_description5: {
-                    required: true,
-                },
             },
             errorElement: "span",
             errorPlacement: function(error, element) {
@@ -1765,6 +1750,41 @@
 
             },
             unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+
+        $('#update_form_how').validate({
+            rules: {
+                title: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+                image: {
+                    filesize: 5
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                // error.addClass("invalid-feedback");
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                // $(element).removeClass("text-danger");
                 $(element).removeClass("border border-danger");
                 $(element).closest(".file").removeClass("border border-danger");
                 $(element).closest(".form-check").removeClass("border border-danger");
@@ -1788,7 +1808,7 @@
                 },
                 image: {
                     required: true,
-                    filesize: 1
+                    filesize: 5
                 },
             },
             errorElement: "span",
@@ -1826,7 +1846,7 @@
                     required: true,
                 },
                 image: {
-                    filesize: 1
+                    filesize: 5
                 },
             },
             errorElement: "span",
@@ -1867,6 +1887,13 @@
         if (fileInput.files.length > 0) {
             const selectedFile = fileInput.files[0];
             $("#edit_image_name_team").text(selectedFile.name);
+        }
+    });
+    document.getElementById('editImageInputHow').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        if (fileInput.files.length > 0) {
+            const selectedFile = fileInput.files[0];
+            $("#edit_image_name_how").text(selectedFile.name);
         }
     });
 </script>

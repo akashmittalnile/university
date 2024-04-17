@@ -86,11 +86,11 @@
                                     @else
                                         @if($key == 1)
                                         <div class="pricing-price">${{ number_format($item->price, 2, '.', ',') }}
-                                            <span class="pricing-period">/ month</span>
+                                            <span class="pricing-period">/ {{ $item->type ?? 'month' }}</span>
                                         </div>
                                         @else
                                         <div class="pricing-price" style="height: 14.5vh;">${{ number_format($item->price, 2, '.', ',') }}
-                                            <span class="pricing-period">/ month</span>
+                                            <span class="pricing-period">/ {{ $item->type ?? 'month' }}</span>
                                         </div>
                                         @endif
                                     @endif
