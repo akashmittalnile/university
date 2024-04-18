@@ -4,7 +4,7 @@
     </div>
 
     <ul class="sidebar-list">
-        
+
         <a href="{{ route('admin.dashboard') }}">
             <li class="sidebar-list-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
                 <i class="bi bi-grid me-2"></i>Dashboard
@@ -28,81 +28,78 @@
                     Transaction Logs
             </li>
         </a>
-        <a href="{{ route('admin.ebooks') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.ebooks*') ? 'active' : '' }}">
-                <i class="bi bi-file-text me-2"></i>Manage
-                    E-book
-            </li>
-        </a>
-        <a href="{{ route('admin.podcasts') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.podcasts*') ? 'active' : '' }}">
-                <i class="bi bi-file-text me-2"></i>Manage
-                    Podcast
-            </li>
-        </a>
-        <a href="{{ route('admin.product') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.product*') ? 'active' : '' }}">
-                <i class="bi bi-file-text me-2"></i>Manage
-                    Products
-            </li>
-        </a>
-        <a href="{{ route('admin.blog') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.blog*') ? 'active' : '' }}">
-                <i class="bi bi-file-text me-2"></i>Manage
-                    Blogs
-            </li>
-        </a>
+
+        <div class="side-head mt-3 text-light" data-bs-toggle="collapse" data-bs-target="#collapseContent">
+            Manage Page Content <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="collapseContent" class="collapse  {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges') || Route::is('admin.about') || Route::is('admin.team.member') || Route::is('admin.gallery') || Route::is('admin.markNetwork') || Route::is('admin.affiliate') || Route::is('admin.markBurnet')) ? 'show' : '' }}">
+            <a href="{{ route('admin.manage.home') }}">
+                <li class="sidebar-list-item {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges')) ? 'active' : '' }}">
+                    <i class="bi bi-list-ul me-2"></i>Manage Home
+                </li>
+            </a>
+            <a href="{{ route('admin.about') }}">
+                <li class="sidebar-list-item {{ (Route::is('admin.about') || Route::is('admin.team.member')) ? 'active' : '' }}">
+                    <i class="bi bi-list-ul me-2"></i>Manage About Us
+                </li>
+            </a>
+            <a href="{{ route('admin.gallery') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.gallery') ? 'active' : '' }}">
+                    <i class="bi bi-card-image me-2"></i>Accomplishment Gallery
+                </li>
+            </a>
+            <a href="{{ route('admin.markNetwork') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.markNetwork') ? 'active' : '' }}">
+                    <i class="bi bi-files me-2"></i>Mark Network
+                </li>
+            </a>
+            <a href="{{ route('admin.affiliate') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.affiliate') ? 'active' : '' }}">
+                    <i class="bi bi-box-arrow-up-right me-2"></i>Business Services
+                </li>
+            </a>
+            <a href="{{ route('admin.markBurnet') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.markBurnet') ? 'active' : '' }}">
+                    <i class="bi bi-buildings me-2"></i>Mark Burnet Foundation
+                </li>
+            </a>
+        </div>
+    
+
+        <div class="side-head mt-3 text-light" data-bs-toggle="collapse" data-bs-target="#collapseResources">
+            Resources <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="collapseResources" class="collapse {{ (Route::is('admin.ebooks*') || Route::is('admin.podcasts*') || Route::is('admin.product*') || Route::is('admin.blog*')) ? 'show' : '' }}">
+            <a href="{{ route('admin.ebooks') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.ebooks*') ? 'active' : '' }}">
+                    <i class="bi bi-file-text me-2"></i>Manage E-book
+                </li>
+            </a>
+            <a href="{{ route('admin.podcasts') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.podcasts*') ? 'active' : '' }}">
+                    <i class="bi bi-file-text me-2"></i>Manage Podcast
+                </li>
+            </a>
+            <a href="{{ route('admin.product') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.product*') ? 'active' : '' }}">
+                    <i class="bi bi-file-text me-2"></i>Manage Products
+                </li>
+            </a>
+            <a href="{{ route('admin.blog') }}">
+                <li class="sidebar-list-item {{ Route::is('admin.blog*') ? 'active' : '' }}">
+                    <i class="bi bi-file-text me-2"></i>Manage Blogs
+                </li>
+            </a>
+        </div>
+
+        
         <a href="{{ route('admin.social.media') }}">
             <li class="sidebar-list-item {{ Route::is('admin.social.media*') ? 'active' : '' }}">
                 <i class="bi bi-file-text me-2"></i>Manage
                     Social Media Links
             </li>
         </a>
-        <div class="side-head mt-3">
-            <p class="white-color m-0 p-0">Manage Page Content</p>
-        </div>
-        <!-- <a href="{{ route('admin.image') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.image') ? 'active' : '' }}">
-                <i class="bi bi-card-image me-2"></i>Manage Image
-            </li>
-        </a> -->
-        <a href="{{ route('admin.manage.home') }}">
-            <li class="sidebar-list-item {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges')) ? 'active' : '' }}">
-                <i class="bi bi-list-ul me-2"></i>Manage Home
-            </li>
-        </a>
-        <a href="{{ route('admin.about') }}">
-            <li class="sidebar-list-item {{ (Route::is('admin.about') || Route::is('admin.team.member')) ? 'active' : '' }}">
-                <i class="bi bi-list-ul me-2"></i>Manage About Us
-            </li>
-        </a>
-        <a href="{{ route('admin.gallery') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.gallery') ? 'active' : '' }}">
-                <i class="bi bi-card-image me-2"></i>Accomplishment
-                    Gallery
-            </li>
-        </a>
-        <a href="{{ route('admin.markNetwork') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.markNetwork') ? 'active' : '' }}">
-                <i class="bi bi-files me-2"></i>Mark Network
-            </li>
-        </a>
-        <a href="{{ route('admin.affiliate') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.affiliate') ? 'active' : '' }}">
-                <i class="bi bi-box-arrow-up-right me-2"></i>Business Services
-            </li>
-        </a>
-        <a href="{{ route('admin.markBurnet') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.markBurnet') ? 'active' : '' }}">
-                <i class="bi bi-buildings me-2"></i>Mark Burnet
-                    Foundation
-            </li>
-        </a>
-        <!-- <a href="{{ route('admin.resources') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.resources') ? 'active' : '' }}">
-                <i class="bi bi-book me-2"></i>Resources
-            </li>
-        </a> -->
+        
         <a href="{{ route('admin.contacts') }}">
             <li class="sidebar-list-item {{ (Route::is('admin.contacts') || Route::is('admin.business.hours')) ? 'active' : '' }}">
                 <i class="bi bi-person-rolodex me-2"></i>Contact

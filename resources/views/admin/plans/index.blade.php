@@ -21,17 +21,28 @@
 @push('js')
 <script src="{{ assets('admin/js/dashboard.js') }}"></script>
 <script>
+    
+    $(document).ready(function() {
+        $("*[id^='makeMeSummernote1']").summernote({
+            height: 200
+        });
+    });
+
     function updatePlan(ele) {
+        $("#makeMeSummernote1").summernote({
+                height: 200
+            });
+        $("#makeMeSummernote1").summernote('code', ele.getAttribute('data-description'));
         $("#updatePlan").modal("show");
         const form = document.getElementById("update_form");
         const nameText = document.getElementById("name");
         nameText.innerHTML = ele.getAttribute('data-name');
         form.setAttribute("action", ele.getAttribute('data-url'));
-        form.description.value = ele.getAttribute('data-description');
     }
 </script>
 @endpush
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css">
 <!-- Main -->
 
     <div class="row page-content">
@@ -62,7 +73,7 @@
                         </div>
                         <ul class="mt-3">
                             <li class="text-capitalize black-color">
-                                {{ $item->description ?? 'NA' }}
+                                {!! $item->description ?? 'NA' !!}
                             </li>
                         </ul>
                         <div class="text-center">
@@ -92,8 +103,8 @@
                 <form action="" id="update_form" method="post">
                     @csrf
                     <div class="form-group py-2">
-                        <label class="mb-1" for="description">Description</label>
-                        <textarea name="description" id="description"  cols="30" rows="10"></textarea>
+                        <label class="mb-1" for="makeMeSummernote1">Description</label>
+                        <textarea name="description" id="makeMeSummernote1"  cols="30" rows="10"></textarea>
                     </div>
                     <div class="modal-footer justify-content-center mb-3" style="border-top: none !important;">
                         <button type="submit" class="btn common-btn">Update</button>
@@ -105,4 +116,5 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 @endsection

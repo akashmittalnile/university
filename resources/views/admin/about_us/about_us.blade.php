@@ -1280,8 +1280,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <div class="mb-3 field_error">
-                                            <label for="editCompanyTeam" class="form-label black-color f-600">Enter Company Name</label>
-                                            <textarea name="company_name" id="editCompanyTeam" placeholder="Enter Company Name" class="form-control" cols="30" rows="3"></textarea>
+                                            <label for="editCompanyTeam" class="form-label black-color f-600">Enter Description</label>
+                                            <textarea name="company_name" id="editCompanyTeam" placeholder="Enter Description" class="form-control" cols="30" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" id="editIdTeam" name="id" value="">
@@ -1346,8 +1346,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <div class="mb-3 field_error">
-                                            <label for="makeMeSummernote10" class="form-label black-color f-600">Enter Company Name</label>
-                                            <textarea name="company_name" id="makeMeSummernote10" class="form-control" placeholder="Enter Company Name" cols="30" rows="3"></textarea>
+                                            <label for="makeMeSummernote10" class="form-label black-color f-600">Enter Description</label>
+                                            <textarea name="company_name" id="makeMeSummernote10" class="form-control" placeholder="Enter Description" cols="30" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
