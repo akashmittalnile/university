@@ -106,6 +106,7 @@ p,h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px 13px 20px;
+    background-color: #fff;
   }
   
   .sidebar-title > span {
@@ -128,32 +129,63 @@ p,h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
       text-decoration: none;
   }
   
-  .sidebar-list-item {
+  /*.sidebar-list-item {
     padding: 15px 10px;
     border-radius: 0px 28px 28px 0px;
     color: #ffffff;
-  }
-  
+  } 
+*/
+
+.sidebar-list li.sidebar-list-item.sidebar-subnav ul {
+    margin: 0;
+    padding: 0 0 0 0px;
+    list-style: none;
+}
+
+.sidebar-list li.sidebar-list-item.sidebar-subnav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 8px 8px 42px;
+    display: inline-block;
+    font-size: 13px;
+     width: 100%;
+}
+
+.sidebar-list li.sidebar-list-item.sidebar-subnav ul li.active a {
+      background-color: #3fab40;
+}
+
   .sidebar-list-item:hover,.sidebar-list-item.active  {
+    background-color:#2a892b;
     cursor: pointer;
-    background-color: rgb(92 203 97);
-    cursor: pointer;
-    border-right: 8px solid #3fab40;
   }
   .side-head{    padding: 17px 10px;
     border-top: 1px solid #50c968;
     border-bottom: 1px solid #50c968;margin-bottom: 10px;}
   .sidebar-list-item > a {
     text-decoration: none;
-    color: rgb(245, 245, 245);
-  }
+    color:#fff;
+    padding: 15px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+ .sidebar-list-item > a:not([href]):not([class]){
+    color:#fff;
+    text-decoration: none;
+}
+
+
+
+
+
   .sidebar-list-item.logout-item{margin-top: 115px;}
   .sidebar-list-item.logout-item > p{font-size: 12px;}
   .profile-link .profile-pic img{border-radius: 50%;width: 50px;height: 50px;object-fit: cover;border: 1px solid white;}
   .profile-name{color: #171717;text-decoration: none;font-weight: 500;transition: 0.3s ease;}
   .profile-name:hover{color: #3fab40;}
   .button-link button{border-radius: 30px; margin-left: -30px;z-index: -111;position: relative;padding: 10px 15px 10px 38px;}
-  .sidebar-logo{width: 103px;margin: 0 auto;display: block;box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;}
+  .sidebar-logo{width: 103px;margin: 0 auto;display: block;}
   .sidebar-responsive {
     display: inline !important;
     position: absolute;

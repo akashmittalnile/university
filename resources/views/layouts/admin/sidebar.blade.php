@@ -4,114 +4,114 @@
     </div>
 
     <ul class="sidebar-list">
-
-        <a href="{{ route('admin.dashboard') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+        <li class="sidebar-list-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}">
                 <i class="bi bi-grid me-2"></i>Dashboard
-            </li>
-        </a>
-        <a href="{{ route('admin.users.index') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.users*') ? 'active' : '' }}">
+            </a>
+        </li>
+        <li class="sidebar-list-item {{ Route::is('admin.users*') ? 'active' : '' }}">
+            <a href="{{ route('admin.users.index') }}">
                 <i class="bi bi-person-check me-2"></i>User
                     Management
-            </li>
-        </a>
-        <a href="{{ route('admin.plans.index') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.plans*') ? 'active' : '' }}">
-                <i class="bi bi-clipboard2-data me-2"></i>Manage
+            </a>
+        </li>
+        <li class="sidebar-list-item {{ Route::is('admin.plans*') ? 'active' : '' }}">
+            <a href="{{ route('admin.plans.index') }}">
+                <i class="bi bi-award me-2"></i>Manage
                     Membership Plans
-            </li>
-        </a>
-        <a href="{{ route('admin.transaction.logs') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.transaction*') ? 'active' : '' }}">
-                <i class="bi bi-clipboard2-data me-2"></i>Manage
-                    Transaction Logs
-            </li>
-        </a>
+            </a>
+        </li>
+        <li class="sidebar-list-item {{ Route::is('admin.transaction*') ? 'active' : '' }}">
+            <a href="{{ route('admin.transaction.logs') }}">
+                <i class="bi bi-cash-coin me-2"></i>Manage Transaction Logs
+            </a>
+        </li>
 
-        <div class="side-head mt-3 text-light" data-bs-toggle="collapse" data-bs-target="#collapseContent">
-            Manage Page Content <i class="bi bi-chevron-down"></i>
-        </div>
-        <div id="collapseContent" class="collapse  {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges') || Route::is('admin.about') || Route::is('admin.team.member') || Route::is('admin.gallery') || Route::is('admin.markNetwork') || Route::is('admin.affiliate') || Route::is('admin.markBurnet')) ? 'show' : '' }}">
-            <a href="{{ route('admin.manage.home') }}">
+        <li class="sidebar-list-item sidebar-subnav {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges') || Route::is('admin.about') || Route::is('admin.team.member') || Route::is('admin.gallery') || Route::is('admin.markNetwork') || Route::is('admin.affiliate') || Route::is('admin.markBurnet')) ? 'active' : '' }}">
+            <a data-bs-toggle="collapse" data-bs-target="#collapseContent">
+                <i class="bi bi-file-richtext me-2"></i> Manage Page Content <i class="bi bi-chevron-down"></i>
+            </a>
+
+            <ul id="collapseContent" class="collapse  {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges') || Route::is('admin.about') || Route::is('admin.team.member') || Route::is('admin.gallery') || Route::is('admin.markNetwork') || Route::is('admin.affiliate') || Route::is('admin.markBurnet')) ? 'show' : '' }}">
                 <li class="sidebar-list-item {{ (Route::is('admin.manage.home') || Route::is('admin.manage.videos') || Route::is('admin.manage.affiliate-badges') || Route::is('admin.manage.testimonial') || Route::is('admin.affiliate.badges')) ? 'active' : '' }}">
-                    <i class="bi bi-list-ul me-2"></i>Manage Home
+                    <a href="{{ route('admin.manage.home') }}">
+                        <i class="bi bi-list-ul me-2"></i>Manage Home
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.about') }}">
                 <li class="sidebar-list-item {{ (Route::is('admin.about') || Route::is('admin.team.member')) ? 'active' : '' }}">
-                    <i class="bi bi-list-ul me-2"></i>Manage About Us
+                    <a href="{{ route('admin.about') }}">
+                        <i class="bi bi-list-ul me-2"></i>Manage About Us
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.gallery') }}">
                 <li class="sidebar-list-item {{ Route::is('admin.gallery') ? 'active' : '' }}">
-                    <i class="bi bi-card-image me-2"></i>Accomplishment Gallery
+                    <a href="{{ route('admin.gallery') }}">
+                        <i class="bi bi-card-image me-2"></i>Accomplishment Gallery
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.markNetwork') }}">
                 <li class="sidebar-list-item {{ Route::is('admin.markNetwork') ? 'active' : '' }}">
-                    <i class="bi bi-files me-2"></i>Mark Network
+                    <a href="{{ route('admin.markNetwork') }}">
+                        <i class="bi bi-files me-2"></i>Mark Network
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.affiliate') }}">
                 <li class="sidebar-list-item {{ Route::is('admin.affiliate') ? 'active' : '' }}">
-                    <i class="bi bi-box-arrow-up-right me-2"></i>Business Services
+                    <a href="{{ route('admin.affiliate') }}">
+                        <i class="bi bi-box-arrow-up-right me-2"></i>Business Services
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.markBurnet') }}">
                 <li class="sidebar-list-item {{ Route::is('admin.markBurnet') ? 'active' : '' }}">
-                    <i class="bi bi-buildings me-2"></i>Mark Burnet Foundation
+                    <a href="{{ route('admin.markBurnet') }}">
+                        <i class="bi bi-buildings me-2"></i>Mark Burnet Foundation
+                    </a>
                 </li>
-            </a>
-        </div>
+            </ul>
+        </li>
     
-
-        <div class="side-head mt-3 text-light" data-bs-toggle="collapse" data-bs-target="#collapseResources">
-            Resources <i class="bi bi-chevron-down"></i>
-        </div>
-        <div id="collapseResources" class="collapse {{ (Route::is('admin.ebooks*') || Route::is('admin.podcasts*') || Route::is('admin.product*') || Route::is('admin.blog*')) ? 'show' : '' }}">
-            <a href="{{ route('admin.ebooks') }}">
+        <li class="sidebar-list-item sidebar-subnav  {{ (Route::is('admin.ebooks*') || Route::is('admin.podcasts*') || Route::is('admin.product*') || Route::is('admin.blog*')) ? 'active' : '' }}" >
+            <a  data-bs-toggle="collapse" data-bs-target="#collapseResources">
+                <i class="bi bi-gear me-2"></i> Resources <i class="bi bi-chevron-down"></i>
+            </a>
+            <ul id="collapseResources" class="collapse {{ (Route::is('admin.ebooks*') || Route::is('admin.podcasts*') || Route::is('admin.product*') || Route::is('admin.blog*')) ? 'show' : '' }}">
                 <li class="sidebar-list-item {{ Route::is('admin.ebooks*') ? 'active' : '' }}">
-                    <i class="bi bi-file-text me-2"></i>Manage E-book
+                    <a href="{{ route('admin.ebooks') }}">
+                        <i class="bi bi-file-text me-2"></i>Manage E-book
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.podcasts') }}">
                 <li class="sidebar-list-item {{ Route::is('admin.podcasts*') ? 'active' : '' }}">
-                    <i class="bi bi-file-text me-2"></i>Manage Podcast
+                    <a href="{{ route('admin.podcasts') }}">
+                        <i class="bi bi-file-text me-2"></i>Manage Podcast
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.product') }}">
                 <li class="sidebar-list-item {{ Route::is('admin.product*') ? 'active' : '' }}">
-                    <i class="bi bi-file-text me-2"></i>Manage Products
+                    <a href="{{ route('admin.product') }}">
+                        <i class="bi bi-file-text me-2"></i>Manage Products
+                    </a>
                 </li>
-            </a>
-            <a href="{{ route('admin.blog') }}">
-                <li class="sidebar-list-item {{ Route::is('admin.blog*') ? 'active' : '' }}">
-                    <i class="bi bi-file-text me-2"></i>Manage Blogs
-                </li>
-            </a>
-        </div>
 
-        
-        <a href="{{ route('admin.social.media') }}">
-            <li class="sidebar-list-item {{ Route::is('admin.social.media*') ? 'active' : '' }}">
-                <i class="bi bi-file-text me-2"></i>Manage
+                <li class="sidebar-list-item {{ Route::is('admin.blog*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.blog') }}">
+                        <i class="bi bi-file-text me-2"></i>Manage Blogs
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-list-item {{ Route::is('admin.social.media*') ? 'active' : '' }}">
+            <a href="{{ route('admin.social.media') }}">
+                <i class="bi bi-link me-2"></i>Manage
                     Social Media Links
-            </li>
-        </a>
-        
-        <a href="{{ route('admin.contacts') }}">
-            <li class="sidebar-list-item {{ (Route::is('admin.contacts') || Route::is('admin.business.hours')) ? 'active' : '' }}">
-                <i class="bi bi-person-rolodex me-2"></i>Contact
-                    Us
-            </li>
-        </a>
-        <a href="{{ route('admin.logout') }}" id="trigger-logout-btn logout-btn">
-            <li class="sidebar-list-item logout-item">
+            </a>
+        </li>
+        <li class="sidebar-list-item {{ (Route::is('admin.contacts') || Route::is('admin.business.hours')) ? 'active' : '' }}">
+            <a href="{{ route('admin.contacts') }}">
+                <i class="bi bi-person-rolodex me-2"></i>Contact Us
+            </a>
+        </li>
+        <li class="sidebar-list-item logout-item">
+            <a href="{{ route('admin.logout') }}" id="trigger-logout-btn logout-btn">
                 <i class="bi-box-arrow-left me-2"></i>
                 Logout
-            </li>
-        </a>
+            </a>
+        </li>
     </ul>
 </aside>
 <script>

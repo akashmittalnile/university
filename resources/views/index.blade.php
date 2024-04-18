@@ -277,6 +277,9 @@
     $('.pmoCarousel').owlCarousel({
         loop: true,
         margin: 10,
+        autoplay: true,
+        smartSpeed: 450,
+        autoplayTimeout: 2000,
         nav: true,
         dots: false,
         responsive:{
