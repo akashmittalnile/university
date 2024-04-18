@@ -47,7 +47,7 @@
                                 <p class="pricing">${{ number_format($item->price, 2, '.', ',') }}</p>
                                 @endif
                                 <hr>
-                                <p>{{ $item->description ?? 'NA' }}</p>
+                                <p>{!! $item->description ?? 'NA' !!}</p>
 
                                 @if($item->current_plan)
                                     <a href="javascript:void(0)">

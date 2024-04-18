@@ -100,7 +100,7 @@
                                     @endif
                                 </div>
 
-                                <p class="px-4">{{ $item->description ?? 'NA' }}</p>
+                                <p class="px-4">{!! $item->description ?? 'NA' !!}</p>
                                 
                                 @if($item->current_plan)
                                 <a class="mb-4" href="javascript:void(0)"><button class="btn buy-btn btn-green">Subscribed</button></a>
