@@ -74,8 +74,8 @@
                                                 @endif
                                                 <div class="col-md-12">
                                                     <div class="mb-3 field_error">
-                                                        <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                        <textarea class="post-area form-control" required id="description" name="banner_description" rows="3" placeholder="Enter Description">{{ $banner->description ?? '' }}</textarea>
+                                                        <label for="makeMeSummernote5" class="form-label black-color f-600">Enter Description</label>
+                                                        <textarea class="post-area form-control" required id="makeMeSummernote5" name="banner_description" rows="3" placeholder="Enter Description">{{ $banner->description ?? '' }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex mt-3 mb-4">
@@ -312,7 +312,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="right-section">
-                                        <h5 class="text-capitalize white-color">{{ $home->description ?? 'NA' }}</h5>
+                                        <h5 class="text-capitalize white-color">{!! $home->description ?? 'NA' !!}</h5>
                                         <!-- <a href="javascript:void(0)"><button class="btn common-btn mt-4">Sign Up</button></a> -->
                                     </div>
                                 </div>
@@ -599,7 +599,7 @@
                                             <input type="text" name="title" class="form-control" id="editTitleVideo" value="" aria-describedby="banner_title" placeholder="Enter Youtube Title">
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-11">
                                         <div class="mb-3">
                                             <div class="mb-3 field_error">
                                                 <label for="editDescription" class="form-label black-color f-600">Enter Youtube Video Embed (link/src)</label>
@@ -607,6 +607,17 @@
                                             </div>
                                         </div>
                                         <input type="hidden" id="editIdVideo" name="id" value="">
+                                    </div>
+                                    <div class="col-md-1 d-flex justify-content-center mt-2">
+                                        <a style="border-radius: 50%; color: black; font-size: 2rem" data-num="1" class="toggle-info-a" href="javascript:void(0)"><i class="bi bi-info-circle-fill"></i></a>
+                                    </div>
+                                    <div class="col-md-12 alert alert-danger text-dark d-none" id="toggle-info-div1">
+                                        <ul>
+                                            <li>Copy the video URL in browser.</li>
+                                            <li>Right click on the video and choose Copy embed code.</li>
+                                            <li>It will give you this type of URL iframe width='889' height='500' src='https://www.youtube.com/embed/rck3MnC7OXA' title='Intro to Project Management | Google Project Management Certificate' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen iframe.</li>
+                                            <li>Lastly just copy the URL inside the src i.e https://www.youtube.com/embed/rck3MnC7OXA this one and paste in the admin.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -642,11 +653,22 @@
                                             <input type="text" name="title" class="form-control" id="title" value="" aria-describedby="banner_title" placeholder="Enter Youtube Title">
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-11">
                                         <div class="mb-3 field_error">
                                             <label for="description" class="form-label black-color f-600">Enter Youtube Video Embed (link/src)</label>
                                             <input type="url" name="link" class="form-control" id="link" value="" aria-describedby="link" placeholder="Enter Youtube Video Embed (link/src)">
                                         </div>
+                                    </div>
+                                    <div class="col-md-1 d-flex justify-content-center mt-2">
+                                        <a style="border-radius: 50%; color: black; font-size: 2rem" data-num="2" class="toggle-info-a" href="javascript:void(0)"><i class="bi bi-info-circle-fill"></i></a>
+                                    </div>
+                                    <div class="col-md-12 alert alert-danger text-dark d-none" id="toggle-info-div2">
+                                        <ul>
+                                            <li>Copy the video URL in browser.</li>
+                                            <li>Right click on the video and choose Copy embed code.</li>
+                                            <li>It will give you this type of URL iframe width='889' height='500' src='https://www.youtube.com/embed/rck3MnC7OXA' title='Intro to Project Management | Google Project Management Certificate' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen iframe.</li>
+                                            <li>Lastly just copy the URL inside the src i.e https://www.youtube.com/embed/rck3MnC7OXA this one and paste in the admin.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -824,6 +846,11 @@
 <!-- End Main -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
+    $(document).on('click', ".toggle-info-a", function() {
+        let num = $(this).data('num');
+        $("#toggle-info-div"+num).toggleClass('d-none');
+    });
+
     $('#uploadFile, #uploadFileVideo, #uploadFileAchieve').on('hidden.bs.modal', function(e) {
         $("#image_name200").text("Upload Image");
         $("#image_name100").text("Upload Image");
@@ -860,7 +887,7 @@
 
 
     $(document).ready(function() {
-        $("#makeMeSummernote1").summernote({
+        $("*[id^='makeMeSummernote']").summernote({
             height: 200
         });
         

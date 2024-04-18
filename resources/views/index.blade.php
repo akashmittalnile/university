@@ -34,7 +34,7 @@
 </style>
 @endpush
 @section('content')
-<section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$banner->image}}' ), background-repeat: no-repeat;">
+<section class="banner" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./public/uploads/home/{{$banner->image}}' ); background-repeat: no-repeat; background-size: cover;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-6">
                 <div class="right-section">
-                    <h5 class="text-capitalize white-color">{{ $banner->description ?? 'NA' }}</h5>
+                    <h5 class="text-capitalize white-color">{!! $banner->description ?? 'NA' !!}</h5>
                     @if(!isset(auth()->user()->id))
                     <a href="{{ route('signup') }}"><button class="btn common-btn mt-4">Sign Up</button></a>
                     @endif
@@ -166,7 +166,7 @@
 </section>
 @endif
 
-<div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$community->image}}' ), background-repeat: no-repeat;">
+<div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./public/uploads/home/{{$community->image}}' ); background-repeat: no-repeat; background-size: cover;">
     <div class="container">
         <h1 class="mb-4 white-color text-center">{{ $community->title ?? 'NA' }}</h1>
         <p class="text-center white-color">{{ $community->description ?? 'NA' }}</p>
