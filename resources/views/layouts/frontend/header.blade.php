@@ -19,8 +19,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about') }}">About Us</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('accomplishment') }}">Accomplishment Gallery</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('key.achievements') }}">Key Achievements</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('markNetwork') }}">Mark Network</a>
@@ -35,7 +38,7 @@
                         <a class="nav-link" href="{{ route('affiliate') }}">Business Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('markBurnet') }}">Mark Burnet Foundation</a>
+                        <a class="nav-link" href="{{ route('markBurnet') }}">Mark Burnett Foundation</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

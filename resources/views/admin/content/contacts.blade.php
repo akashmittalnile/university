@@ -12,7 +12,7 @@
                 <div class="main-cards">
                     <div class="e-book-details">
                         <div class="d-flex align-items-center mb-3 justify-content-end">
-                            <a href="{{ route('admin.business.hours') }}"><button class="btn common-btn top-btn me-4">Manage Business Hours</button></a>
+                            <!-- <a href="{{ route('admin.business.hours') }}"><button class="btn common-btn top-btn me-4">Manage Business Hours</button></a> -->
                             <a href="{{ route('admin.contact.download.report') }}"><button class="btn outline-btn top-btn me-4">Download Report<i class="bi bi-cloud-arrow-down ms-2"></i></button></a>
                             
                         </div>

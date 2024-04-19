@@ -249,7 +249,7 @@ class FrontendController extends Controller
         $now = Carbon::now();
         $banner = ManageHome::where('section_code', 'banner')->first();
         $community = ManageHome::where('section_code', 'community')->first();
-        $badges = Badge::where('status', 1)->get();
+        $badges = Badge::where('status', 1)->limit(10)->orderByDesc('id')->get();
         $test = Testimonial::where('status', 1)->orderByDesc('id')->get();
         $video = Video::where('status', 1)->orderByDesc('id')->get();
         $plans = Plan::orderBy("price", "asc")->get();
@@ -338,6 +338,12 @@ class FrontendController extends Controller
     {
         $gallery = GalleryAttribute::orderByDesc('id')->get();
         return view("frontend.accomplishment")->with(compact('gallery'));
+    }
+
+    public function keyAchievements()
+    {
+        $badges = Badge::where('status', 1)->orderByDesc('id')->get();
+        return view("frontend.achievements")->with(compact('badges'));
     }
 
     public function markNetwork()

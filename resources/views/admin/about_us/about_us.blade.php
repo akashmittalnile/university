@@ -23,7 +23,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseVision">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data1->title ?? 'Our Vision & Purpose' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data1->title ?? 'Our Vision & Purpose' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -34,16 +34,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseVision">
                                     <form action="{{ route('admin.about.vision.save') }}" method="post" enctype="multipart/form-data" id="vision_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="vision_title" id="title" value="{{ $data1->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle1" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="vision_title" id="makeMeSummerTitle1" cols="30" rows="10">{{ $data1->title ?? '' }}</textarea>
                                                     @if(isset($data1->id))
                                                     <input type="hidden" name="vision_id" value="{{ encrypt_decrypt('encrypt', $data1->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data1->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data1->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data1->id ?? 452 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -88,7 +88,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseStory">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data2->title ?? 'My Story' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data2->title ?? 'My Story' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -99,16 +99,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseStory">
                                     <form action="{{ route('admin.about.story.save') }}" method="post" enctype="multipart/form-data" id="story_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="story_title" id="title" value="{{ $data2->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle2" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="story_title" id="makeMeSummerTitle2" cols="30" rows="10">{{ $data2->title ?? '' }}</textarea>
                                                     @if(isset($data2->id))
                                                     <input type="hidden" name="story_id" value="{{ encrypt_decrypt('encrypt', $data2->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data2->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data2->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data2->id ?? 472 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -198,7 +198,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseWeDo">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data3->title ?? 'What We Do' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data3->title ?? 'What We Do' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -209,16 +209,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseWeDo">
                                     <form action="{{ route('admin.about.we_do.save') }}" method="post" enctype="multipart/form-data" id="we_do_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="we_do_title" id="title" value="{{ $data3->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle3" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="we_do_title" id="makeMeSummerTitle3" cols="30" rows="10">{{ $data3->title ?? '' }}</textarea>
                                                     @if(isset($data3->id))
                                                     <input type="hidden" name="we_do_id" value="{{ encrypt_decrypt('encrypt', $data3->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data3->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data3->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data3->id ?? 875 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -263,7 +263,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseHow">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $how->title ?? 'How We Do It' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $how->title ?? 'How We Do It' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -276,8 +276,8 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Heading Title</label>
-                                                    <input type="text" required class="form-control" name="how_head_title" id="title" value="{{ $how->title ?? '' }}" aria-describedby="title" placeholder="Enter Heading Title" />
+                                                    <label for="makeMeSummerTitle12" class="form-label black-color f-600">Enter Heading Title</label>
+                                                    <textarea name="how_head_title" id="makeMeSummerTitle12" cols="30" rows="10">{{ $how->title ?? '' }}</textarea>
                                                     @if(isset($how->id))
                                                     <input type="hidden" name="how_head_id" value="{{ encrypt_decrypt('encrypt', $how->id) }}">
                                                     @endif
@@ -285,16 +285,16 @@
                                             </div>
 
                                             <hr>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="how_title1" id="title" value="{{ $how1->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle4" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="how_title1" id="makeMeSummerTitle4" cols="30" rows="10">{{ $how1->title ?? '' }}</textarea>
                                                     @if(isset($how1->id))
                                                     <input type="hidden" name="how_id1" value="{{ encrypt_decrypt('encrypt', $how1->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($how1->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($how1->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $how1->id ?? 423 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -327,16 +327,16 @@
                                             </div>
 
                                             <hr>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="how_title2" id="title" value="{{ $how2->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle5" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="how_title2" id="makeMeSummerTitle5" cols="30" rows="10">{{ $how2->title ?? '' }}</textarea>
                                                     @if(isset($how2->id))
                                                     <input type="hidden" name="how_id2" value="{{ encrypt_decrypt('encrypt', $how2->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($how2->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($how2->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $how2->id ?? 8460 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -369,7 +369,6 @@
                                             </div>
 
                                             <hr>
-
                                             <div class="how-we-do-cards mt-3 my-3">
                                                 <div class="container">
                                                     <div class="row">
@@ -435,7 +434,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseSelect">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data4->title ?? 'Why You Select Us?' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data4->title ?? 'Why You Select Us?' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -446,16 +445,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseSelect">
                                     <form action="{{ route('admin.about.select.save') }}" method="post" enctype="multipart/form-data" id="select_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="select_title" id="title" value="{{ $data4->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle6" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="select_title" id="makeMeSummerTitle6" cols="30" rows="10">{{ $data4->title ?? '' }}</textarea>
                                                     @if(isset($data4->id))
                                                     <input type="hidden" name="select_id" value="{{ encrypt_decrypt('encrypt', $data4->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data4->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data4->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data4->id ?? 645 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -500,7 +499,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseDiffer">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data5->title ?? 'How We Differ' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data5->title ?? 'How We Differ' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -513,8 +512,8 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="differ_title" id="title" value="{{ $data5->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle7" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="differ_title" id="makeMeSummerTitle7" cols="30" rows="10">{{ $data5->title ?? '' }}</textarea>
                                                     @if(isset($data5->id))
                                                     <input type="hidden" name="differ_id" value="{{ encrypt_decrypt('encrypt', $data5->id) }}">
                                                     @endif
@@ -590,7 +589,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseWhoIs">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data6->title ?? 'Who Is It For?' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data6->title ?? 'Who Is It For?' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -601,16 +600,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseWhoIs">
                                     <form action="{{ route('admin.about.who_is.save') }}" method="post" enctype="multipart/form-data" id="who_is_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="who_is_title" id="title" value="{{ $data6->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle8" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="who_is_title" id="makeMeSummerTitle8" cols="30" rows="10">{{ $data6->title ?? '' }}</textarea>
                                                     @if(isset($data6->id))
                                                     <input type="hidden" name="who_is_id" value="{{ encrypt_decrypt('encrypt', $data6->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data6->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data6->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data6->id ?? 1964 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -655,7 +654,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseGlobal">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data7->title ?? 'Our Global Impact' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data7->title ?? 'Our Global Impact' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -666,16 +665,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseGlobal">
                                     <form action="{{ route('admin.about.global.save') }}" method="post" enctype="multipart/form-data" id="global_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="global_title" id="title" value="{{ $data7->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle9" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="global_title" id="makeMeSummerTitle9" cols="30" rows="10">{{ $data7->title ?? '' }}</textarea>
                                                     @if(isset($data7->id))
                                                     <input type="hidden" name="global_id" value="{{ encrypt_decrypt('encrypt', $data7->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data7->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data7->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data7->id ?? 9860 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -720,7 +719,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapsePartner">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data8->title ?? 'Partners' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data8->title ?? 'Partners' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -731,16 +730,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapsePartner">
                                     <form action="{{ route('admin.about.partner.save') }}" method="post" enctype="multipart/form-data" id="partner_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="partner_title" id="title" value="{{ $data8->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle10" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="partner_title" id="makeMeSummerTitle10" cols="30" rows="10">{{ $data8->title ?? '' }}</textarea>
                                                     @if(isset($data8->id))
                                                     <input type="hidden" name="partner_id" value="{{ encrypt_decrypt('encrypt', $data8->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data8->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data8->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data8->id ?? 1407 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -785,7 +784,7 @@
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
                                             <h3 data-bs-toggle="collapse" data-bs-target="#collapseSupport">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $data9->title ?? 'Supporters' }} <i class="bi bi-chevron-down"></i>
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data9->title ?? 'Supporters' !!} <i class="bi bi-chevron-down"></i>
                                             </h3>
                                         </div>
                                     </div>
@@ -796,16 +795,16 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseSupport">
                                     <form action="{{ route('admin.about.support.save') }}" method="post" enctype="multipart/form-data" id="support_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="mb-3 field_error">
-                                                    <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                    <input type="text" required class="form-control" name="support_title" id="title" value="{{ $data9->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                    <label for="makeMeSummerTitle11" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="support_title" id="makeMeSummerTitle11" cols="30" rows="10">{{ $data9->title ?? '' }}</textarea>
                                                     @if(isset($data9->id))
                                                     <input type="hidden" name="support_id" value="{{ encrypt_decrypt('encrypt', $data9->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data9->image1)) col-md-5 @else col-md-6 @endif">
+                                            <div class="@if(isset($data9->image1)) col-md-3 @else col-md-4 @endif">
                                                 <div class="mb-3">
                                                     <label for="imageInput{{ $data9->id ?? 6548 }}" class="form-label black-color f-600">Upload Image</label>
                                                     <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -868,7 +867,7 @@
                                 <div class="col-md-4">
                                     <div class="left-section">
                                         <h1 class="text-md-end black-color">
-                                            {{ $data1->title ?? 'NA' }}
+                                            {!! $data1->title ?? 'NA' !!}
                                         </h1>
                                     </div>
                                 </div>
@@ -891,7 +890,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="heading-title">
-                                        <h1>{{ $data2->title ?? 'NA' }}</h1>
+                                        <h1>{!! $data2->title ?? 'NA' !!}</h1>
                                     </div>
                                     <p class="my-story-descr">
                                         {!! $data2->description ?? 'NA' !!}
@@ -946,7 +945,7 @@
                     <div class="what-we-do we_do d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/uploads/about/{{($data3->image1 ?? null)}}' ); background-repeat: no-repeat; background-size: cover;"> @else <div class="what-we-do we_do d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/frontend/images/conference.jpg'); background-repeat: no-repeat; background-size: cover;"> @endif
                         <div class="container">
                             <h1 class="text-center white-color">
-                                {{ $data3->title ?? 'NA' }}
+                                {!! $data3->title ?? 'NA' !!}
                             </h1>
                             <div class="what-we-do-box common-shadow">
                                 <p class="white-color sub-text text-center">{!! $data3->description ?? 'NA' !!}</p>
@@ -957,7 +956,7 @@
                     <div class="why-you-select select d-none">
                         <div class="container">
                             <h1 class="black-color head-1 mb-4">
-                                {{ $data4->title ?? 'NA' }}
+                                {!! $data4->title ?? 'NA' !!}
                             </h1>
                             <div class="row align-items-center">
                                 <div class="col-md-6">
@@ -986,7 +985,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h1 class="black-color head-1 mb-4">
-                                        {{ $data5->title ?? 'NA' }}
+                                        {!! $data5->title ?? 'NA' !!}
                                     </h1>
                                     <div class="right-section">
                                         <img src="{{ isset($data5->image2) ? assets('uploads/about/'.($data5->image2)) : assets('frontend/images/blog-img.jpg') }}" alt="image" class="img-fluid" />
@@ -1015,7 +1014,7 @@
                                     <div class="col-md-6">
                                         <div class="right-section">
                                             <h1 class="black-color head-1 mb-4">
-                                                {{ $data6->title ?? 'NA' }}
+                                                {!! $data6->title ?? 'NA' !!}
                                             </h1>
                                             <p class="global-descr  text-justify">
                                                 {!! $data6->description ?? 'NA' !!}
@@ -1033,7 +1032,7 @@
                                 <div class="col-md-6">
                                     <div class="left-section">
                                         <h1 class="black-color text-md-end head-1 mb-0 pb-0">
-                                            {{ $data7->title ?? 'NA' }}
+                                            {!! $data7->title ?? 'NA' !!}
                                         </h1>
                                         <p class="global-descr text-md-end">
                                             {!! $data7->description ?? 'NA' !!}
@@ -1052,7 +1051,7 @@
                     <div class="why-you-select partner d-none">
                         <div class="container">
                             <h1 class="black-color head-1 mb-4">
-                                {{ $data8->title ?? 'NA' }}
+                                {!! $data8->title ?? 'NA' !!}
                             </h1>
                             <div class="row align-items-center">
                                 <div class="col-md-6">
@@ -1077,7 +1076,7 @@
                                 <div class="col-md-6">
                                     <div class="left-section">
                                         <h1 class="heading-title-text text-end">
-                                            {{ $data9->title ?? 'NA' }}
+                                            {!! $data9->title ?? 'NA' !!}
                                         </h1>
                                         <p class="global-descr text-md-end">
                                             {!! $data9->description ?? 'NA' !!}
@@ -1097,14 +1096,14 @@
                         <div class="how-we-do">
                             <div class="container">
                                 <h1 class="text-center black-color">
-                                    {{ $how->title ?? 'NA' }}
+                                    {!! $how->title ?? 'NA' !!}
                                 </h1>
                                 <div class="row">
                                     <div class="col-md-6 bottom-margin">
                                         <div class="how-we-do-box common-shadow h-100 float">
                                             <img src="{{ isset($how1->image1) ? assets('uploads/about/'.($how1->image1 ?? null)) : assets('frontend/images/requirement.svg') }}" alt="image" class="img-fluid" />
                                             <h3 class="text-capitalize main-color mb-3">
-                                                {{ $how1->title ?? 'NA' }}
+                                                {!! $how1->title ?? 'NA' !!}
                                             </h3>
                                             <p class="black-color">
                                                 {!! $how1->description ?? 'NA' !!}
@@ -1115,7 +1114,7 @@
                                         <div class="how-we-do-box common-shadow h-100 float">
                                             <img src="{{ isset($how2->image1) ? assets('uploads/about/'.($how2->image1 ?? null)) : assets('frontend/images/we-create.svg') }}" alt="image" class="img-fluid" />
                                             <h3 class="text-capitalize main-color mb-3">
-                                                {{ $how2->title ?? 'NA' }}
+                                                {!! $how2->title ?? 'NA' !!}
                                             </h3>
                                             <p class="black-color">
                                                 {!! $how2->description ?? 'NA' !!}
@@ -1134,7 +1133,7 @@
                                             <div class="img-bg">
                                                 <img src="{{ isset($how3->image1) ? assets('uploads/about/'.($how3->image1 ?? null)) : assets('frontend/images/growth.svg') }}" alt="image" class="img-fluid" />
                                             </div>
-                                            <h5 class="f-600 mt-3">{{ $how3->title ?? 'NA' }}</h5>
+                                            <h5 class="f-600 mt-3">{!! $how3->title ?? 'NA' !!}</h5>
                                             <p class="mt-3">
                                                 {!! $how3->description ?? 'NA' !!}
                                             </p>
@@ -1146,7 +1145,7 @@
                                                 <img src="{{ isset($how4->image1) ? assets('uploads/about/'.($how4->image1 ?? null)) : assets('frontend/images/innovation.svg') }}" alt="image" class="img-fluid" />
                                             </div>
                                             <h5 class="f-600 mt-3">
-                                                {{ $how4->title ?? 'NA' }}
+                                                {!! $how4->title ?? 'NA' !!}
                                             </h5>
                                             <p class="mt-3">
                                                 {!! $how4->description ?? 'NA' !!}
@@ -1158,7 +1157,7 @@
                                             <div class="img-bg">
                                                 <img src="{{ isset($how5->image1) ? assets('uploads/about/'.($how5->image1 ?? null)) : assets('frontend/images/change.svg') }}" alt="image" class="img-fluid" />
                                             </div>
-                                            <h5 class="f-600 mt-3">{{ $how5->title ?? 'NA' }}</h5>
+                                            <h5 class="f-600 mt-3">{!! $how5->title ?? 'NA' !!}</h5>
                                             <p class="mt-3">
                                                 {!! $how5->description ?? 'NA' !!}
                                             </p>
@@ -1193,7 +1192,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-3 field_error">
                                         <label for="editTitleHow" class="form-label black-color f-600">Enter Title</label>
-                                        <input type="text" name="title" class="form-control" id="editTitleHow" value="" aria-describedby="banner_name" placeholder="Enter Title">
+                                        <textarea name="title" id="editTitleHow" cols="30" rows="10"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -1393,6 +1392,9 @@
         $("*[id^='makeMeSummernote']").summernote({
             height: 200
         });
+        $("*[id^='makeMeSummerTitle']").summernote({
+            height: 100
+        });
         
         $("#TeamMembers").owlCarousel({
             loop: true,
@@ -1410,10 +1412,13 @@
             $("#edit_image_name_how").text($(this).data('img'));
             $("#editIdHow").val($(this).data('id'));
             $("#editSectionHow").val($(this).data('section'));
-            $("#editTitleHow").val($(this).data('title'));
+            $("#editTitleHow").summernote({
+                height: 100
+            });
             $("#editDescriptionHow").summernote({
                 height: 200
             });
+            $("#editTitleHow").summernote('code', $(this).data('title'));
             $("#editDescriptionHow").summernote('code', $(this).data('desc'));
             $("#editFileHow").modal('show');
         });

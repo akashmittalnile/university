@@ -43,11 +43,11 @@
                         <i class="bi bi-list-ul me-2"></i>Manage About Us
                     </a>
                 </li>
-                <li class="sidebar-list-item {{ Route::is('admin.gallery') ? 'active' : '' }}">
+                <!-- <li class="sidebar-list-item {{ Route::is('admin.gallery') ? 'active' : '' }}">
                     <a href="{{ route('admin.gallery') }}">
                         <i class="bi bi-card-image me-2"></i>Accomplishment Gallery
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-list-item {{ Route::is('admin.markNetwork') ? 'active' : '' }}">
                     <a href="{{ route('admin.markNetwork') }}">
                         <i class="bi bi-files me-2"></i>Mark Network
@@ -60,7 +60,7 @@
                 </li>
                 <li class="sidebar-list-item {{ Route::is('admin.markBurnet') ? 'active' : '' }}">
                     <a href="{{ route('admin.markBurnet') }}">
-                        <i class="bi bi-buildings me-2"></i>Mark Burnet Foundation
+                        <i class="bi bi-buildings me-2"></i>Mark Burnett Foundation
                     </a>
                 </li>
             </ul>

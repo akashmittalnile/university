@@ -51,6 +51,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
 Route::get('/accomplishment-gallery', [FrontendController::class, 'accomplishment'])->name('accomplishment');
+Route::get('/key-achievements', [FrontendController::class, 'keyAchievements'])->name('key.achievements');
 Route::get('/mark-network', [FrontendController::class, 'markNetwork'])->name('markNetwork');
 Route::get('/mark-burnet-foundation', [FrontendController::class, 'markBurnet'])->name('markBurnet');
 Route::get('/all-resources', [FrontendController::class, 'resources'])->name('resources');

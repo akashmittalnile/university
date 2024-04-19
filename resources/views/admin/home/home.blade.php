@@ -28,7 +28,7 @@
                                         <div class="edit-pmu-text d-flex flex-row align-items-center">
                                             <div class="edit-pmu-text-title mx-2">
                                                 <h3 data-bs-toggle="collapse" data-bs-target="#collapseBanner">
-                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {{ $banner->title ?? 'Banner' }}<i class="bi bi-chevron-down" ></i></h3>
+                                                    <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $banner->title ?? 'Banner' !!}<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -38,16 +38,16 @@
                                     <div class="edit-pmu-section collapse-course-form collapse" id="collapseBanner">
                                         <form action="{{ route('admin.manage.home.banner.save') }}" method="post" enctype="multipart/form-data" id="banner_form">@csrf
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <div class="mb-3 field_error">
-                                                        <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                                        <input type="text" required class="form-control" name="banner_title" id="title" value="{{ $banner->title ?? '' }}" aria-describedby="title" placeholder="Enter Title" />
+                                                        <label for="makeMeSummerTitle1" class="form-label black-color f-600">Enter Title</label>
+                                                        <textarea name="banner_title" id="makeMeSummerTitle1" cols="30" rows="10">{{ $banner->title ?? '' }}</textarea>
                                                         @if(isset($banner->id))
                                                         <input type="hidden" name="banner_id" value="{{ encrypt_decrypt('encrypt', $banner->id) }}">
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <div class="@if(isset($banner->image)) col-md-5 @else col-md-6 @endif">
+                                                <div class="@if(isset($banner->image)) col-md-3 @else col-md-4 @endif">
                                                     <div class="mb-3">
                                                         <label for="imageInput{{ $banner->id ?? 452 }}" class="form-label black-color f-600">Upload Image</label>
                                                         <div class="file-upload d-flex align-items-center mb-3 field flex-column">
@@ -111,7 +111,7 @@
                                                             <div class="testimonials-image">
                                                                 <img  src="{{ assets("uploads/testimonial/$item->image") }}" >
                                                             </div>
-                                                            <p class="testimonials-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <p class="testimonials-title">{!! $item->title ?? 'NA' !!}</p>
                                                             <div class="testimonials-action">
                                                                 <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form').attr('action','{{ route('admin.manage.testimonial.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFile">Delete</button>
                                                                 <button id="imgEditBtn" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-designation="{{ $item->designation }}" data-img="{{ $item->image }}">Edit Testimonial</button>
@@ -155,7 +155,7 @@
                                                             <div class="video-media">
                                                                 <iframe src="{{ $item->link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                             </div>
-                                                            <p  class="videos-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <p  class="videos-title">{!! $item->title ?? 'NA' !!}</p>
                                                             <div class="videos-action">
                                                                 <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form_video').attr('action','{{ route('admin.manage.videos.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileVideo">Delete</button>
                                                                 <button id="imgEditBtnVideo" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-link="{{ $item->link }}">Edit Video</button>
@@ -200,7 +200,7 @@
                                                             <div class="achievements-img" >
                                                                 <img  src="{{ assets("uploads/badges/$item->path") }}">
                                                             </div>
-                                                            <p class="achievements-title">{{ $item->title ?? 'NA' }}</p>
+                                                            <p class="achievements-title">{!! $item->title ?? 'NA' !!}</p>
                                                             <div class="achievements-action">
                                                                 <button class="outline-delete-btn" data-bs-toggle="modal" onclick="$('#delete_form_achieve').attr('action','{{ route('admin.manage.affiliate-badges.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileAchieve">Delete</button>
                                                                <button  id="imgEditBtnAchieve" class="Edit-btn" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->path }}">Edit Key Achievement</button>
@@ -225,7 +225,7 @@
                                             <div class="edit-pmu-text-title mx-2">
                                                 <h3 data-bs-toggle="collapse" data-bs-target="#collapseCommunity">
                                                     <span class="edit-pmu-collapse-icon"><i class="bi bi-person-gear"></i>
-                                                    </span> {{ $data->title ?? 'Community' }}<i class="bi bi-chevron-down" ></i></h3>
+                                                    </span> {!! $data->title ?? 'Community' !!}<i class="bi bi-chevron-down" ></i></h3>
                                             </div>
                                         </div>
                                         <div>
@@ -235,13 +235,13 @@
                                     <div class="edit-pmu-section collapse-course-form collapse" id="collapseCommunity">
                                         <form action="{{ route('admin.manage.home.community.save') }}" method="post" enctype="multipart/form-data" id="community_form">@csrf
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <div class="mb-3 field_error">
-                                                        <label for="community_title" class="form-label black-color f-600">Enter Title</label>
-                                                        <input type="text" required class="form-control" name="community_title" id="community_title" value="{{ $data->title ?? '' }}" aria-describedby="community_title" placeholder="Enter Title" />
+                                                        <label for="makeMeSummerTitle2" class="form-label black-color f-600">Enter Title</label>
+                                                        <textarea name="community_title" id="makeMeSummerTitle2" cols="30" rows="10">{{ $data->title ?? '' }}</textarea>
                                                     </div>
                                                 </div>
-                                                <div class="@if(isset($data->image)) col-md-5 @else col-md-6 @endif">
+                                                <div class="@if(isset($data->image)) col-md-3 @else col-md-4 @endif">
                                                     <div class="mb-3">
                                                         <label for="imageInput{{ $data->id ?? 225 }}" class="form-label black-color f-600">Upload Image</label>
                                                         <div class="file-upload d-flex align-items-center mb-3 field">
@@ -268,8 +268,8 @@
                                                 @endif
                                                 <div class="col-md-12">
                                                     <div class="mb-3 field_error">
-                                                        <label for="community_description" class="form-label black-color f-600">Enter Description</label>
-                                                        <textarea class="post-area form-control" required id="community_description" name="community_description" rows="3" placeholder="Enter Description">{{ $data->description ?? '' }}</textarea>
+                                                        <label for="makeMeSummernote2" class="form-label black-color f-600">Enter Description</label>
+                                                        <textarea class="post-area form-control" required id="makeMeSummernote2" name="community_description" rows="3" placeholder="Enter Description">{{ $data->description ?? '' }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex mt-3 mb-4">
@@ -306,7 +306,7 @@
                             <div class="row align-items-center">
                                 <div class="col-md-6">
                                     <div class="left-section">
-                                        <h1 class="white-color f-600">{{ $home->title ?? 'NA' }}</h1>
+                                        <h1 class="white-color f-600">{!! $home->title ?? 'NA' !!}</h1>
                                         <!-- <p class="white-color mt-3 f-500 text-capitalize">We help you deliver them with confidence</p> -->
                                     </div>
                                 </div>
@@ -335,10 +335,10 @@
                                                     <img src="{{ assets('uploads/testimonial/'.$val->image) }}" alt="">
                                                 </div>
                                                 <div class="customers-testimonials-content">
-                                                    <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
-                                                    <p>{{ $val->description ?? 'NA' }}</p>
+                                                    <h6 class="main-color mt-2 text-left">{!! $val->title ?? 'NA' !!}</h6>
+                                                    <p>{!! $val->description ?? 'NA' !!}</p>
                                                     <hr class="main-color">
-                                                    <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{{ $val->designation ?? 'NA' }}</h4>
+                                                    <h4 class="client-name black-color f-500"><i class="bi bi-dash-lg me-2 main-color"></i>{!! $val->designation ?? 'NA' !!}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -361,7 +361,7 @@
                                         <div class="item">
                                             <div class="shadow-effect">
                                                 <iframe src="{{ $val->link ?? 'https://www.youtube.com/embed/XV1cOGaZUq0?si=LMIXLag_k_VxIP1k' }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                <h6 class="main-color mt-2 text-left">{{ $val->title ?? 'NA' }}</h6>
+                                                <h6 class="main-color mt-2 text-left">{!! $val->title ?? 'NA' !!}</h6>
                                             </div>
                                         </div>
                                         @empty
@@ -388,7 +388,7 @@
                                                     <img src="{{ assets('uploads/badges/'.$val->path) }}" alt="">
                                                 </div>
                                                 <div class="affiliate-Badges-content">
-                                                    <h6>{{ $val->title ?? '' }}</h6>
+                                                    <h6>{!! $val->title ?? '' !!}</h6>
                                                     <div>{!! $val->description ?? '' !!}</div>
                                                 </div>
                                             </div>
@@ -409,8 +409,8 @@
                     <div class="become-a-member d-none" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/frontend/images/membership-1.jpg' ); background-repeat: no-repeat; background-size: cover;">
                     @endif
                         <div class="container">
-                            <h1 class="mb-4 white-color text-center">{{ $community->title ?? 'NA' }}</h1>
-                            <p class="text-center white-color">{{ $community->description ?? 'NA' }}</p>
+                            <h1 class="mb-4 white-color text-center">{!! $community->title ?? 'NA' !!}</h1>
+                            <p class="text-center white-color">{!! $community->description ?? 'NA' !!}</p>
                         </div>
                     </div>
                 </div>
@@ -437,7 +437,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3 field_error">
                                             <label for="editTitle" class="form-label black-color f-600">Enter Title</label>
-                                            <input type="text" name="title" class="form-control" id="editTitle" value="" aria-describedby="banner_title" placeholder="Enter Title">
+                                            <textarea name="title" class="form-control" id="editTitle" id="" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -505,15 +505,15 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <div class="mb-3 field_error">
-                                            <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                            <input type="text" name="title" class="form-control" id="title" value="" aria-describedby="banner_title" placeholder="Enter Title">
+                                            <label for="makeMeSummerTitle3" class="form-label black-color f-600">Enter Title</label>
+                                            <textarea name="title" class="form-control" id="makeMeSummerTitle3" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <div class="mb-3 field_error">
-                                                <label for="description" class="form-label black-color f-600">Enter Description</label>
-                                                <textarea name="description" id="description" class="form-control" placeholder="Enter Description" cols="30" rows="5"></textarea>
+                                                <label for="makeMeSummernote3" class="form-label black-color f-600">Enter Description</label>
+                                                <textarea name="description" id="makeMeSummernote3" class="form-control" placeholder="Enter Description" cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -596,7 +596,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3 field_error">
                                             <label for="editTitle" class="form-label black-color f-600">Enter Youtube Title</label>
-                                            <input type="text" name="title" class="form-control" id="editTitleVideo" value="" aria-describedby="banner_title" placeholder="Enter Youtube Title">
+                                            <textarea name="title" class="form-control" id="editTitleVideo" id="" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-11">
@@ -649,8 +649,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <div class="mb-3 field_error">
-                                            <label for="title" class="form-label black-color f-600">Enter Youtube Title</label>
-                                            <input type="text" name="title" class="form-control" id="title" value="" aria-describedby="banner_title" placeholder="Enter Youtube Title">
+                                            <label for="makeMeSummerTitle4" class="form-label black-color f-600">Enter Youtube Title</label>
+                                            <textarea name="title" class="form-control" id="makeMeSummerTitle4" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-11">
@@ -724,7 +724,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3 field_error">
                                             <label for="editTitle" class="form-label black-color f-600">Enter Title</label>
-                                            <input type="text" name="title" class="form-control" id="editTitleAchieve" value="" aria-describedby="banner_title" placeholder="Enter Title">
+                                            <textarea name="title" class="form-control" id="editTitleAchieve" id="" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -781,8 +781,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <div class="mb-3 field_error">
-                                            <label for="title" class="form-label black-color f-600">Enter Title</label>
-                                            <input type="text" name="title" class="form-control" id="title" value="" aria-describedby="banner_title" placeholder="Enter Title">
+                                            <label for="makeMeSummerTitle5" class="form-label black-color f-600">Enter Title</label>
+                                            <textarea name="title" class="form-control" id="makeMeSummerTitle5" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -860,7 +860,10 @@
     $(document).on('click', "#imgEditBtn", function() {
         $("#edit_image_name").text($(this).data('img'));
         $("#editId").val($(this).data('id'));
-        $("#editTitle").val($(this).data('title'));
+        $("#editTitle").summernote({
+            height: 100
+        });
+        $("#editTitle").summernote('code', $(this).data('title'));
         $("#editDescription").val($(this).data('description'));
         $("#editDesignation").val($(this).data('designation'));
         $("#editFile").modal('show');
@@ -868,7 +871,10 @@
 
     $(document).on('click', "#imgEditBtnVideo", function() {
         $("#editIdVideo").val($(this).data('id'));
-        $("#editTitleVideo").val($(this).data('title'));
+        $("#editTitleVideo").summernote({
+            height: 100
+        });
+        $("#editTitleVideo").summernote('code', $(this).data('title'));
         $("#editLinkVideo").val($(this).data('link'));
         $("#editFileVideo").modal('show');
     });
@@ -876,11 +882,14 @@
     $(document).on('click', "#imgEditBtnAchieve", function() {
         $("#edit_image_name_achieve").text($(this).data('img'));
         $("#editIdAchieve").val($(this).data('id'));
-        $("#editTitleAchieve").val($(this).data('title'));
         $("#editDesignationAchieve").val($(this).data('designation'));
         $("#editDescriptionAchieve").summernote({
             height: 200
         });
+        $("#editTitleAchieve").summernote({
+            height: 100
+        });
+        $("#editTitleAchieve").summernote('code', $(this).data('title'));
         $("#editDescriptionAchieve").summernote('code', $(this).data('description'));
         $("#editFileAchieve").modal('show');
     });
@@ -889,6 +898,10 @@
     $(document).ready(function() {
         $("*[id^='makeMeSummernote']").summernote({
             height: 200
+        });
+
+        $("*[id^='makeMeSummerTitle']").summernote({
+            height: 100
         });
         
         $(document).on('click', ".common-btn", function() {
