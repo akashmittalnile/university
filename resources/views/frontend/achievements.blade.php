@@ -7,25 +7,20 @@
     <h1 class="black-color head-1 mb-4 mt-5 text-center">Key <b class="main-color">Achievements</b></h1>
     <div class="container">
         <div class="row">
+            @forelse($badges as $key => $val)
             <div class="col-sm-12">
-                <div id="customers-testimonials1" class="owl-carousel">
-
-                    @forelse($badges as $key => $val)
-                    <div class="item">
-                        <div class="affiliate-badges-card">
-                            <div class="affiliate-c-media">
-                                <img src="{{ assets('uploads/badges/'.$val->path) }}" alt="">
-                            </div>
-                            <div class="affiliate-Badges-content">
-                                <h6>{!! $val->title ?? '' !!}</h6>
-                                <div>{!! $val->description ?? '' !!}</div>
-                            </div>
-                        </div>
+                <div class="affiliate-badges-card mb-3">
+                    <div class="affiliate-c-media">
+                        <img src="{{ assets('uploads/badges/'.$val->path) }}" alt="">
                     </div>
-                    @empty
-                    @endforelse
-
+                    <div class="affiliate-Badges-content">
+                        <h6>{!! $val->title ?? '' !!}</h6>
+                        <div>{!! $val->description ?? '' !!}</div>
+                    </div>
                 </div>
+            </div>
+         @empty
+            @endforelse
             </div>
 
         </div>

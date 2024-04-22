@@ -1390,10 +1390,26 @@
 <script>
     $(document).ready(function() {
         $("*[id^='makeMeSummernote']").summernote({
-            height: 200
+            height: 200,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         $("*[id^='makeMeSummerTitle']").summernote({
-            height: 100
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         
         $("#TeamMembers").owlCarousel({
@@ -1413,10 +1429,26 @@
             $("#editIdHow").val($(this).data('id'));
             $("#editSectionHow").val($(this).data('section'));
             $("#editTitleHow").summernote({
-                height: 100
+                height: 100,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ],
             });
             $("#editDescriptionHow").summernote({
-                height: 200
+                height: 200,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ],
             });
             $("#editTitleHow").summernote('code', $(this).data('title'));
             $("#editDescriptionHow").summernote('code', $(this).data('desc'));
@@ -1428,7 +1460,15 @@
             $("#editIdTeam").val($(this).data('id'));
             $("#editNameTeam").val($(this).data('name'));
             $("#editCompanyTeam").summernote({
-                height: 200
+                height: 200,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ],
             });
             $("#editCompanyTeam").summernote('code', $(this).data('company'));
             $("#editDesignationTeam").val($(this).data('designation'));

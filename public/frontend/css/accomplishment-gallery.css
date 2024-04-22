@@ -1,5 +1,5 @@
 .accomplishment-gallery h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
-.accomplishment-gallery{padding-top: 10%;}
+.accomplishment-gallery{padding:2rem 0; }
 #flexbox { display: flex; flex-wrap: wrap;  padding: 0 4px; }
 .column { flex: 25%; max-width: 25%; padding: 0 4px; }
 .column img { vertical-align: middle;}

@@ -22,3 +22,18 @@ a:hover, a:focus, a:active { text-decoration: none; }
 .footer p { font-size: 16px; color: rgba(255, 255, 255, 0.5); }
 .cke_1.cke_chrome{box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px!important; border: 2px solid #3eda3f!important;}
 .top-btn{padding: 10px 15px;}
+
+
+.mark-mentorship-image {
+    background-color: #3fab40;
+    padding: 0px 0px 20px 20px;
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.mark-mentorship-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

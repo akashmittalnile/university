@@ -8,14 +8,25 @@
 .donate-support .left-section .img-box img{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
 .donate-support .left-section .img-box{background-color: #008d21a1;padding: 0px 20px 20px 0px;}
 .donate-support .img-2{margin-left: -30px;margin-top: -150px;box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;}
-.merch{padding: 50px 0px; margin-top: 100px;background:  url("../images/merch-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
+.merch{padding: 50px 0px; margin-top: 0px;background:  url("../images/merch-bg.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;}
 .merch .signup-btn{width: 200px;}
 .image-slider{margin-top: 50px;}
 .parent{ display: flex; align-items: center; justify-content: center; height: 100%; }
 .carousel{ max-width: 100%; }
 .slide { max-height: 400px; }
 .box-slide {width: 100%; background-color: #EAE8E8; display: flex; align-items: center; justify-content: center; flex-direction: column; height: 250px; }
-.aboutImageSlide { width: 100%; height: 350px; object-fit: cover; border: 3px solid white; }
+.aboutImageSlide {width: 320px; height: 350px; border: 3px solid #3fab4038; border-radius: 15px; margin: auto; background: #fff; }
+.aboutImageSlide img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;    
+    margin: auto; 
+}
 .merch h1{font-size: 45px;letter-spacing: 3px;font-family: 'Comfortaa';font-weight: 600;}
 @media(max-width: 991px){
     .mark-burnet{padding-top: 30%;}
@@ -30,3 +41,12 @@
     .merch{margin-top: 50px;padding: 50px 10px;}
     
 }
+
+
+.sponserpartner-section {background: linear-gradient(180deg, #ebf6eb, rgba(255, 255, 255, 0) 100%); padding: 2rem 0; position: relative; } 
+.sponserpartner-image-info {background-color: #3fab40; padding: 0px 0px 20px 20px; height: 500px; width: 100%; position: relative; } 
+.sponserpartner-image-info img {width: 100%; height: 100%; object-fit: cover; } 
+.sponserpartner-title-info{margin-bottom: 1rem;} 
+.sponserpartner-title-info h1 { font-weight: bold; margin: 0; padding: 0;  }
+
+.donatesupport-section{padding: 2rem 0; position: relative;}

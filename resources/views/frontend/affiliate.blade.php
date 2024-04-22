@@ -57,9 +57,11 @@
                         <div class="owl-carousel owl-theme pmoCarousel">
                             @forelse($product as $key => $value)
                             <div class="item">
-                                <a href="{{ route('products') }}">
-                                    <img src="{{ assets("uploads/products/".$value->image) }}" class="aboutImageSlide">
-                                </a>
+                                <div class="aboutImageSlide">
+                                    <a href="{{ route('products') }}">
+                                        <img src="{{ assets("uploads/products/".$value->image) }}" >
+                                    </a>
+                                </div>
                             </div>
                             @empty
                             @endforelse
@@ -98,8 +100,8 @@
                 @endforelse
 
                 @if(count($link)>3)
-                <div class="text-center mt-4">
-                    <a href="javascript:void(0)" id="loadMore"><button class="btn common-btn mt-md-5 mt-sm-2 load-more-btn">Load More<i class="bi bi-arrow-down ms-3"></i></button></a>
+                <div class="text-center ">
+                    <a href="javascript:void(0)" id="loadMore"><button class="btn common-btn mt-md-2 mt-sm-2 load-more-btn">Load More<i class="bi bi-arrow-down ms-3"></i></button></a>
                     <a href="javascript:void(0)" class="d-none" id="showLess"><button class="btn common-btn">Show Less<i class="bi bi-arrow-up ms-3"></i></button></a>
                 </div>
                 @endif

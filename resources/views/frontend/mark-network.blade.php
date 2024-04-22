@@ -14,27 +14,57 @@
     .current-plan p{color: #ffffff;font-size: 14px;}
     .current-div{position: relative;}
     .current-plan p{margin: 0;padding: 0;}
+
+.mark-membership-section{position: relative; padding: 2rem 0;}
+.community-section{position: relative; padding: 2rem 0;background: linear-gradient(180deg, #ebf6eb, rgba(255, 255, 255, 0) 100%); }
+
+
+
+    .mark-mentorship-image {
+    background-color: #3fab40;
+    padding: 0px 0px 20px 20px;
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.mark-mentorship-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mark-mentorship-content h1 {
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    text-align: center;
+}
+
 </style>
 @endpush
 @section('content')
-<section class="mark-network">
-    <div class="container">
-        <div class="membership">
+<section class="marknetwork">
+    <div class="mark-membership-section">
+        <div class="container">
             <div class="row">
-                <div class="col-md-4 col-position-1">
-                    <div class="left-section">
-                        <h1 class="mb-4 white-color">{{ $data['sec1_title'] ?? 'NA' }}</h1>
-                        <p class="white-color text-justify">{{ $data['sec1_sub_title'] ?? 'NA' }}</p>
+                <div class="col-md-12">
+                    <div class="mark-mentorship-image" >
+                        <img src="{{ assets('uploads/content/'.$data['sec1_image']) }}">
                     </div>
                 </div>
-                <div class="col-md-8 col-position-2">
-                    <div class="right-section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec1_image']}}' ), background-repeat: no-repeat;">
-
+                <div class="col-md-12">
+                    <div class="mark-mentorship-content">
+                        <h1>{{ $data['sec1_title'] ?? 'NA' }}</h1>
+                        <p>{{ $data['sec1_sub_title'] ?? 'NA' }}</p>
                     </div>
                 </div>
+               
             </div>
         </div>
-        <div class="community">
+    </div>
+    <div class="community-section">
+        <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 ">
                     <div class="left-section">

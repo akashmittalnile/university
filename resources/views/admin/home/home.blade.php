@@ -861,7 +861,15 @@
         $("#edit_image_name").text($(this).data('img'));
         $("#editId").val($(this).data('id'));
         $("#editTitle").summernote({
-            height: 100
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         $("#editTitle").summernote('code', $(this).data('title'));
         $("#editDescription").val($(this).data('description'));
@@ -872,7 +880,15 @@
     $(document).on('click', "#imgEditBtnVideo", function() {
         $("#editIdVideo").val($(this).data('id'));
         $("#editTitleVideo").summernote({
-            height: 100
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         $("#editTitleVideo").summernote('code', $(this).data('title'));
         $("#editLinkVideo").val($(this).data('link'));
@@ -884,10 +900,26 @@
         $("#editIdAchieve").val($(this).data('id'));
         $("#editDesignationAchieve").val($(this).data('designation'));
         $("#editDescriptionAchieve").summernote({
-            height: 200
+            height: 200,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         $("#editTitleAchieve").summernote({
-            height: 100
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         $("#editTitleAchieve").summernote('code', $(this).data('title'));
         $("#editDescriptionAchieve").summernote('code', $(this).data('description'));
@@ -897,11 +929,27 @@
 
     $(document).ready(function() {
         $("*[id^='makeMeSummernote']").summernote({
-            height: 200
+            height: 200,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
 
         $("*[id^='makeMeSummerTitle']").summernote({
-            height: 100
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ],
         });
         
         $(document).on('click', ".common-btn", function() {
