@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 @forelse($blogs as $key => $val)
-                <div class="col-md-4 mb-3 block">
+                <div class="col-md-3 mb-3 block">
                     <div class="card float">
                         <div class="img-box">
                             @if(isset($val->image))
@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row">
                         @forelse($ebooks as $val)
-                        <div class="col-md-4 mb-3 current-div">
+                        <div class="col-md-3 mb-3 current-div">
                             <div class="current-plan me-auto">
                                 <p>{{ $val['plan_name'] ?? 'NA' }}</p>
                             </div>
@@ -152,7 +152,7 @@
                 <div class="container">
                     <div class="row">
                         @forelse($podcasts as $val)
-                        <div class="col-md-4 mb-3 current-div">
+                        <div class="col-md-3 mb-3 current-div">
                             <div class="current-plan me-auto">
                                 <p>{{ $val['plan_name'] ?? 'NA' }}</p>
                             </div>

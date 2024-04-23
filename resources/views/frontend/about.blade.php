@@ -41,11 +41,11 @@
                     <h1>{!! $data2->title ?? 'NA' !!}</h1>
                 </div>
             </div>
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="story-image-info">
                     <img src="{{ isset($data2->image1) ? assets('uploads/about/'.($data2->image1 ?? null)) : assets('frontend/images/no-image.jpg') }}" />
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-md-12">
                 <div class="story-content-info">

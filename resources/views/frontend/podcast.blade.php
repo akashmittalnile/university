@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row" id="list">
                 @forelse($podcasts as $key => $val)
-                <div class="col-md-4 mb-3 block current-div">
+                <div class="col-md-3 mb-3 block current-div">
                     <div class="current-plan me-auto">
                         <p>{{ $val['plan_name'] ?? 'NA' }}</p>
                     </div>

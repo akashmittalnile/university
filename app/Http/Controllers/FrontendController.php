@@ -11,6 +11,7 @@ use App\Models\Ebook;
 use App\Models\GalleryAttribute;
 use App\Models\ManageAboutUs;
 use App\Models\ManageBusinessService;
+use App\Models\ManageFoundation;
 use App\Models\ManageHome;
 use App\Models\ManageMarkNetwork;
 use App\Models\Plan;
@@ -377,10 +378,11 @@ class FrontendController extends Controller
 
     public function markBurnet()
     {
-        $product = Product::orderByDesc('id')->get();
-        $burnet = Content::where("name", 'mark-burnet')->first();
-        $data = unserialize($burnet->value);
-        return view("frontend.mark-burnet")->with(compact('burnet', 'data', 'product'));
+        $product = Product::orderByDesc('id')->orderByDesc('id')->get();
+        $data1 = ManageFoundation::where('section_code', 'partner')->first();
+        $data2 = ManageFoundation::where('section_code', 'donate')->first();
+        $data3 = ManageFoundation::where('section_code', 'product')->first();
+        return view("frontend.mark-burnet")->with(compact('data1', 'data2', 'data3', 'product'));
     }
 
     public function resources()

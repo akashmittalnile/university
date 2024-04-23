@@ -87,23 +87,12 @@ class AdminAboutUsController extends Controller
                 [
                     'story_title' => 'required',
                     "story_description" => 'required',
-                    "story_image" => 'file|max:10240',
                 ]
             );
             if (isset($request->story_id) && $request->story_id != '') {
                 // dd($request->all());
                 $id = encrypt_decrypt('decrypt', $request->story_id);
                 $about = ManageAboutUs::where('id', $id)->where('section_code', 'story')->first();
-                if ($request->hasFile("story_image")) {
-                    if (isset($about->image1)) {
-                        $link = public_path() . "/uploads/about/" . $about->image1;
-                        if (file_exists($link)) {
-                            unlink($link);
-                        }
-                    }
-                    $name = fileUpload($request->story_image, "uploads/about");
-                    $about->image1 = $name;
-                }
                 $about->title = $request->story_title ?? null;
                 $about->description = $request->story_description;
                 $about->status = 1;
@@ -111,10 +100,6 @@ class AdminAboutUsController extends Controller
                 $about->save();
             } else {
                 $about = new ManageAboutUs;
-                if ($request->hasFile("story_image")) {
-                    $name = fileUpload($request->story_image, "uploads/about");
-                    $about->image1 = $name;
-                }
                 $about->section_code = 'story';
                 $about->title = $request->story_title;
                 $about->description = $request->story_description;

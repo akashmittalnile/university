@@ -99,7 +99,7 @@
                                 <div class="edit-pmu-section collapse-course-form collapse" id="collapseStory">
                                     <form action="{{ route('admin.about.story.save') }}" method="post" enctype="multipart/form-data" id="story_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-8">
+                                            <div class="col-md-12">
                                                 <div class="mb-3 field_error">
                                                     <label for="makeMeSummerTitle2" class="form-label black-color f-600">Enter Title</label>
                                                     <textarea name="story_title" id="makeMeSummerTitle2" cols="30" rows="10">{{ $data2->title ?? '' }}</textarea>
@@ -108,31 +108,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data2->image1)) col-md-3 @else col-md-4 @endif">
-                                                <div class="mb-3">
-                                                    <label for="imageInput{{ $data2->id ?? 472 }}" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field flex-column">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name{{ $data2->id ?? 472 }}">
-                                                                @if(isset($data2->image1))
-                                                                {{ $data2->image1 }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" @if(!isset($data2->image1)) required @endif data-num="{{ $data2->id ?? 472 }}" name="story_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data2->id ?? 472 }}" />
-                                                        </div>
-                                                        <div class="alert alert-danger mt-2 text-dark" role="alert">
-                                                            Please upload an image greater than or equal to recommended size (1348 X 720)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @if(isset($data2->image1))
-                                            <div class="col-md-1">
-                                                <a target="_blank" href="{{ assets('uploads/about/'.$data2->image1) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
-                                            </div>
-                                            @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
                                                     <label for="makeMeSummernote2" class="form-label black-color f-600">Enter Description</label>

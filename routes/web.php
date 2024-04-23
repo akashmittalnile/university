@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAboutUsController;
 use App\Http\Controllers\AdminBusinessServiceController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminFoundationController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminMarkNetworkController;
 use App\Http\Controllers\BlogController;
@@ -55,7 +56,7 @@ Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
 Route::get('/accomplishment-gallery', [FrontendController::class, 'accomplishment'])->name('accomplishment');
 Route::get('/key-achievements', [FrontendController::class, 'keyAchievements'])->name('key.achievements');
 Route::get('/mark-network', [FrontendController::class, 'markNetwork'])->name('markNetwork');
-Route::get('/mark-burnet-foundation', [FrontendController::class, 'markBurnet'])->name('markBurnet');
+Route::get('/mark-burnett-foundation', [FrontendController::class, 'markBurnet'])->name('markBurnet');
 Route::get('/all-resources', [FrontendController::class, 'resources'])->name('resources');
 Route::get('/podcast', [FrontendController::class, 'podcast'])->name('podcast');
 Route::get('/view-podcast/{id}', [FrontendController::class, 'viewPodcast'])->name('view.podcast');
@@ -227,8 +228,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("image", [ImageController::class, 'imageSave'])->name('image.save');
 
         // mark burnet
-        Route::get("markBurnet", [ContentController::class, 'markBurnet'])->name('markBurnet');
-        Route::post("markBurnet", [ContentController::class, 'markBurnetSave'])->name('markBurnet.save');
+        Route::get("mark-burnett-foundation", [AdminFoundationController::class, 'markBurnett'])->name('markBurnet');
+        Route::post("mark-burnett-partner", [AdminFoundationController::class, 'partnerSave'])->name('markBurnett.partner.save');
+        Route::post("mark-burnett-donate", [AdminFoundationController::class, 'donateSave'])->name('markBurnett.donate.save');
+        Route::post("mark-burnett-product", [AdminFoundationController::class, 'productSave'])->name('markBurnett.product.save');
 
         // contacts
         Route::get("contacts", [ContentController::class, 'contacts'])->name('contacts');

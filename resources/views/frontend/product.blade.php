@@ -2,7 +2,7 @@
 @push('css')
 <link rel="stylesheet" href="{{ assets('frontend/css/resources.css') }}">
 <style>
-    .product-img {position: relative; height: 380px; width: 380px; margin: 0 auto; border-bottom: 1px solid #008d21a1; border-right: 1px solid #008d21a1; border-top: 1px solid #008d21a1; border-left: 1px solid #008d21a1;}
+    .product-img {position: relative; height: 240px; width: 100%; margin: 0 auto; border-bottom: 1px solid #008d21a1; border-right: 1px solid #008d21a1; border-top: 1px solid #008d21a1; border-left: 1px solid #008d21a1;}
     .product-img img{position: absolute; bottom: 0; left: 0; right: 0; top: 0; margin: auto; max-width: 100%; max-height: 100%;}
 
 </style>
@@ -18,8 +18,8 @@
     <div class="podcast-contents">
         <div class="container">
             <div class="row">
-                @forelse($product as $val)
-                <div class="col-md-4 mb-3 block ">
+                @forelse($product as $val) 
+                <div class="col-md-3 mb-3 block ">
                     <div class="card float w-100">
                         <div class="product-img">
                             <img src="{{ assets("uploads/products/".$val->image) }}" alt="image" class="img-fluid">

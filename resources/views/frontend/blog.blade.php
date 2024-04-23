@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 @forelse($blog as $val)
-                <div class="col-md-4 mb-3 block">
+                <div class="col-md-3 mb-3 block">
                     <div class="card float">
                         <div class="img-box">
                             @if(isset($val->image))
