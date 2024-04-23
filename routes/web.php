@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminAboutUsController;
+use App\Http\Controllers\AdminBusinessServiceController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminMarkNetworkController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\EbookController;
@@ -193,16 +195,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get("team-member", [ContentController::class, 'teamMember'])->name('team.member');
 
         // mark network
-        Route::get("mark-network", [ContentController::class, 'markNetwork'])->name('markNetwork');
-        Route::post("mark-network", [ContentController::class, 'markNetworkSave'])->name('markNetwork.save');
+        Route::get("mark-network", [AdminMarkNetworkController::class, 'markNetwork'])->name('markNetwork');
+        Route::post("mark-network-mentorship", [AdminMarkNetworkController::class, 'mentorShipSave'])->name('markNetwork.mentorship.save');
+        Route::post("mark-network-community", [AdminMarkNetworkController::class, 'communitySave'])->name('markNetwork.community.save');
+        Route::post("mark-network-member", [AdminMarkNetworkController::class, 'memberSave'])->name('markNetwork.member.save');
 
         // affiliate
-        Route::get("business-service", [ContentController::class, 'affiliate'])->name('affiliate');
-        Route::post("business-service-store", [ContentController::class, 'affiliateSave'])->name('affiliate.save');
-        Route::get("business-links", [ContentController::class, 'businessLinks'])->name('business.links');
-        Route::post("business-link-store", [ContentController::class, 'businessLinkSave'])->name('business.links.save');
-        Route::post("business-link-update", [ContentController::class, 'businessLinkUpdate'])->name('business.links.update');
-        Route::get("business-link-delete/{id}", [ContentController::class, 'businessLinkDelete'])->name('business.links.delete');
+        Route::get("business-service", [AdminBusinessServiceController::class, 'affiliate'])->name('affiliate');
+        Route::post("business-service-training-store", [AdminBusinessServiceController::class, 'affiliateTrainingSave'])->name('affiliate.training.save');
+        Route::post("business-service-product-store", [AdminBusinessServiceController::class, 'affiliateProductSave'])->name('affiliate.product.save');
+        Route::post("business-link-store", [AdminBusinessServiceController::class, 'businessLinkSave'])->name('business.links.save');
+        Route::post("business-link-update", [AdminBusinessServiceController::class, 'businessLinkUpdate'])->name('business.links.update');
+        Route::get("business-link-delete/{id}", [AdminBusinessServiceController::class, 'businessLinkDelete'])->name('business.links.delete');
 
         // resources
         Route::get("resources", [ContentController::class, 'resources'])->name('resources');

@@ -10,7 +10,9 @@ use App\Models\Content;
 use App\Models\Ebook;
 use App\Models\GalleryAttribute;
 use App\Models\ManageAboutUs;
+use App\Models\ManageBusinessService;
 use App\Models\ManageHome;
+use App\Models\ManageMarkNetwork;
 use App\Models\Plan;
 use App\Models\Podcast;
 use App\Models\Product;
@@ -297,10 +299,10 @@ class FrontendController extends Controller
     public function affiliate()
     {
         $product = Product::orderByDesc('id')->get();
-        $affiliate = Content::where("name", 'affiliate')->first();
-        $data = unserialize($affiliate->value);
-        $link = BusinessLink::orderByDesc("id")->get();
-        return view("frontend.affiliate")->with(compact('affiliate', 'data', 'product', 'link'));
+        $data1 = ManageBusinessService::where('section_code', 'training')->first();
+        $data2 = ManageBusinessService::where('section_code', 'product')->first();
+        $link = BusinessLink::orderByDesc("id")->orderByDesc('id')->get();
+        return view("frontend.affiliate")->with(compact('data1', 'data2', 'product', 'link'));
     }
 
     public function blog()
@@ -367,9 +369,10 @@ class FrontendController extends Controller
                 $item->current_plan_price = $myPlans->price ?? 0;
             } 
         }
-        $network = Content::where("name", 'mark-network')->first();
-        $data = unserialize($network->value);
-        return view("frontend.mark-network", compact("plans", "network", "data"));
+        $data1 = ManageMarkNetwork::where('section_code', 'mentorship')->first();
+        $data2 = ManageMarkNetwork::where('section_code', 'community')->first();
+        $data3 = ManageMarkNetwork::where('section_code', 'member')->first();
+        return view("frontend.mark-network", compact("plans", 'data1', 'data2', 'data3'));
     }
 
     public function markBurnet()

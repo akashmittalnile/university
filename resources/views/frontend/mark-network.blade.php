@@ -50,13 +50,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mark-mentorship-image" >
-                        <img src="{{ assets('uploads/content/'.$data['sec1_image']) }}">
+                        <img src="{{ isset($data1->image1) ? assets('uploads/mark-network/'.$data1->image1) : assets('frontend/images/mentor.jpg') }}">
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="mark-mentorship-content">
-                        <h1>{{ $data['sec1_title'] ?? 'NA' }}</h1>
-                        <p>{{ $data['sec1_sub_title'] ?? 'NA' }}</p>
+                        <h1>{!! $data1->title ?? 'NA' !!}</h1>
+                        <p>{!! $data1->description ?? 'NA' !!}</p>
                     </div>
                 </div>
                
@@ -69,23 +69,26 @@
                 <div class="col-md-6 ">
                     <div class="left-section">
                         <div class="img-box">
-                            <img src="{{ assets('uploads/content/'.$data['sec2_image']) }}" alt="image" class="img-fluid">
+                            <img src="{{ isset($data2->image1) ? assets('uploads/mark-network/'.$data2->image1) : assets('frontend/images/membership-2.jpg') }}" alt="image" class="img-fluid">
                         </div>
-                        <!-- <img src="images/community-2.jpg" alt="image" class="img-fluid img-2"> -->
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h1 class="mb-4 black-color">{{ $data['sec2_title'] ?? 'NA' }}</h1>
-                    <p class="text-color text-justify">{{ $data['sec2_sub_title'] ?? 'NA' }}</p>
+                    <h1 class="mb-4 black-color">{!! $data2->title ?? 'NA' !!}</h1>
+                    <p class="text-color text-justify">{!! $data2->description ?? 'NA' !!}</p>
                     <a href="{{ route('user.subscription') }}"><button class="btn common-btn mt-4">Join The Community</button></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec3_image']}}' ), background-repeat: no-repeat;">
+    @if(isset($data3->image1))
+    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 05)), url('public/uploads/mark-network/{{$data3->image1}}' ); background-repeat: no-repeat; background-size: cover;">
+    @else
+    <div class="become-a-member" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 05)), url('public/frontend/images/merch-bg.jpg' ); background-repeat: no-repeat; background-size: cover;">
+    @endif
         <div class="container">
-            <h1 class="mb-4 white-color text-center">{{ $data['sec3_title'] ?? 'NA' }}</h1>
-            <p class="text-center white-color">{{ $data['sec3_sub_title'] ?? 'NA' }}</p>
+            <h1 class="mb-4 white-color text-center">{!! $data3->title ?? 'NA' !!}</h1>
+            <div class="text-center white-color">{!! $data3->description ?? 'NA' !!}</div>
         </div>
     </div>
     <div class="container">

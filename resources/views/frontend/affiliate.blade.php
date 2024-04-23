@@ -35,19 +35,27 @@
 @endpush
 @section('content')
 <section class="affiliate-links">
-    <div class="project-manager" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec1_image']}}' ), background-repeat: no-repeat;"></div>
+    @if(isset($data1->image1))
+    <div class="project-manager" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0,0.5)), url('public/uploads/business-service/{{$data1->image1}}' ); background-repeat: no-repeat;background-size: cover;"></div>
+    @else
+    <div class="project-manager" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0,0.5)), url('public/frontend/images/video-bg.jpg' ); background-repeat: no-repeat; background-size: cover;"><div>
+    @endif
     <div class="join-community">
-        <h1 class="black-color text-center text-capitalize">{{ $data['sec1_title'] ?? 'NA' }}</h1>
-        <p class="black-color mt-4 text-center">{{ $data['sec1_sub_title'] ?? 'NA' }}</p>
+        <h1 class="black-color text-center text-capitalize">{!! $data1->title ?? 'NA' !!}</h1>
+        <div class="black-color mt-4 text-center">{!! $data1->description ?? 'NA' !!}</div>
         <div class="d-flex justify-content-center affiliate-buttons mt-5">
             <a href="{{ route('resources') }}"><button class="btn free-btn">Resources<i class="bi bi-arrow-right ms-3"></i></button></a>
             <a href="{{ route('user.subscription') }}"><button class="btn common-btn ms-md-3">Join the Community<i class="bi bi-arrow-right ms-3"></i></button></a>
         </div>
     </div>
-    <div class="affiliate-images" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/uploads/content/{{$data['sec2_image']}}' ), background-repeat: no-repeat;">
+    @if(isset($data2->image1))
+    <div class="affiliate-images" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('public/uploads/business-service/{{$data2->image1}}' ); background-repeat: no-repeat; background-size: cover;">
+    @else
+    <div class="affiliate-images" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('public/frontend/images/p-bg.jpg' ); background-repeat: no-repeat; background-size: cover;">
+    @endif
         <div class="container">
-            <h1 class="white-color text-center text-capitalize">{{ $data['sec2_title'] ?? 'NA' }}</h1>
-            <p class="white-color text-justify">{{ $data['sec2_sub_title'] ?? 'NA' }}</p>
+            <h1 class="white-color text-center text-capitalize">{!! $data2->title ?? 'NA' !!}</h1>
+            <div class="white-color text-justify">{!! $data2->description ?? 'NA' !!}</div>
             @if(!isset(auth()->user()->id))
                 <a href="{{ route('signup') }}"><button class="btn common-btn mt-1 signup-btn">Sign Up</button></a>
             @endif
@@ -82,7 +90,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-3">
                                 <div class="left-section">
-                                    <img src="{{ assets('uploads/content/'.$value->image) }}" alt="image" class="img-fluid">
+                                    <img src="{{ assets('uploads/business-service/'.$value->image) }}" alt="image" class="img-fluid">
                                 </div>
                             </div>
                             <div class="col-md-9">
