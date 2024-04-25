@@ -152,7 +152,10 @@
                         $arr[1] = $str;
                     @endphp
                     <div class="transation-detail-box  common-card common-shadow row">
-                        <div class="col-12">
+                        <div class="col-4">
+                            <h6 class="mt-2 f-600 black-color">Subscription</h6>
+                        </div>
+                        <div class="col-8">
                             <form action="" method="get" id="dateForm">
                             <input style="cursor: pointer;" type="date" id="dateDetail" value="{{ request()->has('receive_date') ? request('receive_date') : '' }}" name="receive_date" class="d-btn date-btn">
                             </form>
@@ -171,6 +174,7 @@
                                             <th scope="col" class="text-capitalize">Billing Type</th>
                                             <th scope="col" class="text-capitalize">Billing Due Date</th>
                                             <th scope="col" class="text-capitalize">Amount received on</th>
+                                            <th scope="col" class="text-capitalize">Purchased on</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -178,15 +182,17 @@
                                         <tr>
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>{{ $item->plan->name }}</td>
-                                            <td>{{ $item->plan->currency = 'inr' ? '₹' : '$' }}{{ number_format((float)($item->plan->price), 2, '.', ',') }}
+                                            <td>{{ $item->plan->currency == 'usd' ? '$' : '' }}{{ number_format((float)($item->plan->price), 2, '.', ',') }}
                                             </td>
                                             <td>{{ ucfirst($item->plan->type) }}</td>
                                             <td>
-                                                {{ date('d M Y', strtotime('+1 month'.$item->receive_date)) }}
+                                                {{ date('d M Y', strtotime('+1 month'.$item->renew_date)) }}
+                                            </td>
+                                            <td>
+                                                {{ date('d M Y', strtotime($item->renew_date)) }}
                                             </td>
                                             <td>
                                                 {{ date('d M Y, h:i:s a', strtotime($item->receive_date)) }}
-
                                             </td>
                                         </tr>
                                         @empty
@@ -198,132 +204,54 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- <div class="content" id="supportersContent">
-                            <table class="table  table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class="text-capitalize">Sr No.</th>
-                                        <th scope="col" class="text-capitalize">Name</th>
-                                        <th scope="col" class="text-capitalize">E-Book Name</th>
-                                        <th scope="col" class="text-capitalize">Amount Paid</th>
-                                        <th scope="col" class="text-capitalize">Billing Type</th>
-                                        <th scope="col" class="text-capitalize">Billing Due Date</th>
-                                        <th scope="col" class="text-capitalize">amount received on</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>John Doe</td>
-                                        <td>The key to our success</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>John Doe</td>
-                                        <td>Swimming in the deep end</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>John Doe</td>
-                                        <td>Leadership Perspectives</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>John Doe</td>
-                                        <td>The power of the plan</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>John Doe</td>
-                                        <td>The key to our success</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>John Doe</td>
-                                        <td>Leadership PerspectivesB</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">7</th>
-                                        <td>John Doe</td>
-                                        <td>The key to our success</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">8</th>
-                                        <td>John Doe</td>
-                                        <td>Swimming in the deep end</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">9</th>
-                                        <td>John Doe</td>
-                                        <td>Leadership Perspectives</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">10</th>
-                                        <td>John Doe</td>
-                                        <td>Swimming in the deep end</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">11</th>
-                                        <td>John Doe</td>
-                                        <td>Swimming in the deep end</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">12</th>
-                                        <td>John Doe</td>
-                                        <td>The key to our success</td>
-                                        <td>$299.00</td>
-                                        <td>Monthly</td>
-                                        <td>1st of Every Month</td>
-                                        <td>03 Sep 2023, 09:33:12 am</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        </div> -->
+        <div class="col-md-12">
+            <div class="main-cards">
+                <div class="transaction-details">
+                    <div class="transation-detail-box  common-card common-shadow row">
+                        <div class="col-12">
+                            <h6 class="mt-2 f-600 black-color">Invoice</h6>
+                        </div>
+                        <div class="col-12 content active" id="partnersContent">
+                            <div class="pay-details">
+                                <table class="table  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="text-capitalize">Sr No.</th>
+                                            <th scope="col" class="text-capitalize">Amount Paid</th>
+                                            <th scope="col" class="text-capitalize">Status</th>
+                                            <th scope="col" class="text-capitalize">Invoice Number</th>
+                                            <th scope="col" class="text-capitalize">Created On</th>
+                                            <th scope="col" class="text-capitalize">Download Invoice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($invoice as $key => $item)
+                                        <tr>
+                                            <th scope="row">{{ $key + 1 }}</th>
+                                            <td>{{ ($item->currency == 'usd' ? '$' : '') }}{{ isset($item->total) ? number_format((float)($item->total/100), 2, '.', '') : 0 }}</td>
+                                            <td>{{ $item->paid ? 'Paid' : 'Pending' }}</td>
+                                            <td>{{ $item->number ?? 'NA' }}</td>
+                                            <td>{{ date('d M, Y', $item->created) }}</td>
+                                            <td>
+                                                <a href="{{ $item->hosted_invoice_url }}" target="_blank"><button class="common-btn ms-2">Download</button></a>
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr class="text-center">
+                                            <td colspan="7">No record found</td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

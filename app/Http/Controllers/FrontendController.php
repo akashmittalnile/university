@@ -10,9 +10,11 @@ use App\Models\Content;
 use App\Models\Ebook;
 use App\Models\GalleryAttribute;
 use App\Models\ManageAboutUs;
+use App\Models\ManageAwardImage;
 use App\Models\ManageBusinessService;
 use App\Models\ManageFoundation;
 use App\Models\ManageHome;
+use App\Models\ManageInfo;
 use App\Models\ManageMarkNetwork;
 use App\Models\Plan;
 use App\Models\Podcast;
@@ -36,13 +38,14 @@ class FrontendController extends Controller
         try{
             $user = auth()->user();
             $currentPlan = UserPlanDetail::where("user_id", auth()->user()->id)->where("status", "Active")->first();
+            $currentPlanId = $currentPlan ? $currentPlan->id : null;
             $currentPlan = $currentPlan ? $currentPlan->plan : null;
             $plans = UserPlanDetail::where("user_id", auth()->user()->id)->get();
             $total = 0;
             foreach ($plans as $item) {
                 $total += $item->plan->price ?? 0;
             }
-            return view("frontend.profile", compact('user', 'currentPlan', 'total'));
+            return view("frontend.profile", compact('user', 'currentPlan', 'total', 'currentPlanId'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -287,6 +290,7 @@ class FrontendController extends Controller
         $data7 = ManageAboutUs::where('section_code', 'global')->first();
         $data8 = ManageAboutUs::where('section_code', 'partner')->first();
         $data9 = ManageAboutUs::where('section_code', 'support')->first();
+        $data10 = ManageAboutUs::where('section_code', 'award')->first();
         $how = ManageAboutUs::where('section_code', 'how')->first();
         $how1 = ManageAboutUs::where('section_code', 'how1')->first();
         $how2 = ManageAboutUs::where('section_code', 'how2')->first();
@@ -294,7 +298,9 @@ class FrontendController extends Controller
         $how4 = ManageAboutUs::where('section_code', 'how4')->first();
         $how5 = ManageAboutUs::where('section_code', 'how5')->first();
         $team = TeamMember::where('status', 1)->orderByDesc('id')->get();
-        return view("frontend.about", compact('how', 'how1', 'how2', 'how3', 'how4', 'how5', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data8', 'data9', 'team'));
+        $info = ManageInfo::where('status', 1)->orderByDesc('id')->get();
+        $award = ManageAwardImage::where('status', 1)->orderByDesc('id')->get();
+        return view("frontend.about", compact('how', 'how1', 'how2', 'how3', 'how4', 'how5', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data8', 'data9', 'data10', 'team', 'info', 'award'));
     }
 
     public function affiliate()

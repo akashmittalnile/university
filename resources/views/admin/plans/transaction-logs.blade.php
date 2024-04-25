@@ -67,7 +67,10 @@
                                                 Billing Due Date
                                             </th>
                                             <th scope="col" class="text-capitalize">
-                                                amount received on
+                                                Amount received on
+                                            </th>
+                                            <th scope="col" class="text-capitalize">
+                                                Purchased on
                                             </th>
                                         </tr>
                                     </thead>
@@ -82,11 +85,13 @@
                                                     </td>
                                                     <td>{{ ucfirst($item->plan->type) }}</td>
                                                     <td>
-                                                        {{ date('d M Y', strtotime('+1 month'.$item->receive_date)) }}
+                                                        {{ date('d M Y', strtotime('+1 month'.$item->renew_date)) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ date('d M Y', strtotime($item->renew_date)) }}
                                                     </td>
                                                     <td>
                                                         {{ date('d M Y, h:i:s a', strtotime($item->receive_date)) }}
-
                                                     </td>
                                                 </tr>
                                             @endif

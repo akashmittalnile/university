@@ -82,6 +82,71 @@
                                 </div>
                             </div>
 
+                            <!-- Supporter -->
+                            <div class="edit-pmu-form-item">
+                                <div class="edit-pmu-heading">
+                                    <div class="edit-pmu-text d-flex flex-row align-items-center">
+                                        <div class="edit-pmu-text-title mx-2">
+                                            <h3 data-bs-toggle="collapse" data-bs-target="#collapseSupport">
+                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data9->title ?? 'Supporters' !!} <i class="bi bi-chevron-down"></i>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="javascript:void(0)" class="preview" data-name="support"><button class="common-btn ms-2"> Preview </button></a>
+                                    </div>
+                                </div>
+                                <div class="edit-pmu-section collapse-course-form collapse" id="collapseSupport">
+                                    <form action="{{ route('admin.about.support.save') }}" method="post" enctype="multipart/form-data" id="support_form">@csrf
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="mb-3 field_error">
+                                                    <label for="makeMeSummerTitle11" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="support_title" id="makeMeSummerTitle11" cols="30" rows="10">{{ $data9->title ?? '' }}</textarea>
+                                                    @if(isset($data9->id))
+                                                    <input type="hidden" name="support_id" value="{{ encrypt_decrypt('encrypt', $data9->id) }}">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="@if(isset($data9->image1)) col-md-3 @else col-md-4 @endif">
+                                                <div class="mb-3">
+                                                    <label for="imageInput{{ $data9->id ?? 6548 }}" class="form-label black-color f-600">Upload Image</label>
+                                                    <div class="file-upload d-flex align-items-center mb-3 field flex-column">
+                                                        <div class="file btn black-color upload-btn">
+                                                            <span id="image_name{{ $data9->id ?? 6548 }}">
+                                                                @if(isset($data9->image1))
+                                                                {{ $data9->image1 }}
+                                                                @else
+                                                                Upload Image
+                                                                @endif
+                                                            </span> <i class="bi bi-file-image ms-2 main-color"></i>
+                                                            <input type="file" @if(!isset($data9->image1)) required @endif data-num="{{ $data9->id ?? 6548 }}" name="support_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data9->id ?? 1407 }}" />
+                                                        </div>
+                                                        <div class="alert alert-danger mt-2 text-dark" role="alert">
+                                                            Please upload an image greater than or equal to recommended size (1348 X 720)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @if(isset($data9->image1))
+                                            <div class="col-md-1">
+                                                <a target="_blank" href="{{ assets('uploads/about/'.$data9->image1) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
+                                            </div>
+                                            @endif
+                                            <div class="col-md-12">
+                                                <div class="mb-3 field_error">
+                                                    <label for="makeMeSummernote9" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote9" name="support_description" rows="3" placeholder="Enter Description">{{ $data9->description ?? '' }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex mt-3 mb-4">
+                                                <button type="submit" data-id="support_form" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <!-- My Story -->
                             <div class="edit-pmu-form-item">
                                 <div class="edit-pmu-heading">
@@ -119,6 +184,51 @@
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+
+                            <!-- Info -->
+                            <div class="edit-pmu-form-item">
+                                <div class="edit-pmu-heading">
+                                    <div class="edit-pmu-text d-flex flex-row align-items-center">
+                                        <div class="edit-pmu-text-title mx-2">
+                                            <h3 data-bs-toggle="collapse" data-bs-target="#collapseInfo"><span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i>
+                                                </span> Info<i class="bi bi-chevron-down"></i></h3>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="javascript:void(0)" class="preview" data-name="info"><button class="common-btn ms-2"> Preview </button></a>
+                                    </div>
+                                </div>
+                                <div class="edit-pmu-section collapse-course-form collapse" id="collapseInfo">
+                                    <div class="text-end">
+                                        <a href="javascript:void(0)" style="width: 15%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileInfo" class="outline-btn">Add Info<i class="bi bi-plus-circle ms-2"></i></button></a>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="achievements-scroll">
+                                            <div class="owl-carouse row">
+                                                @forelse ($info as $item)
+                                                <div class="slid col-3 mb-4">
+                                                    <div class="box-slid common-card float w-100">
+                                                        <div class="img-box" style="height: 75%;">
+                                                            <img id style="height: 230px; width: 230px; object-fit:cover; object-position:center;" src="{{ assets("uploads/info/$item->image") }}" alt="image" class="img-fluid">
+                                                        </div>
+                                                        <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 23px;" class="px-3 pt-1 mt-2 text-center">{{ $item->title ?? 'NA' }}</p>
+                                                        <div class="d-flex mt-2 justify-content-center">
+                                                            <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form_info').attr('action','{{ route('admin.info.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileInfo">Delete</button></a>
+                                                            <a href="javascript:void(0)"><button id="imgEditBtnInfo" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->image }}">Edit</button></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @empty
+                                                <div class="text-center mt-5">
+                                                    <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
+                                                    <h4 class="p-4 text-center my-2 w-100">No info found</h4>
+                                                </div>
+                                                @endforelse
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -753,68 +863,69 @@
                                 </div>
                             </div>
 
-                            <!-- Supporter -->
+                            <!-- Award -->
                             <div class="edit-pmu-form-item">
                                 <div class="edit-pmu-heading">
                                     <div class="edit-pmu-text d-flex flex-row align-items-center">
                                         <div class="edit-pmu-text-title mx-2">
-                                            <h3 data-bs-toggle="collapse" data-bs-target="#collapseSupport">
-                                                <span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i></span> {!! $data9->title ?? 'Supporters' !!} <i class="bi bi-chevron-down"></i>
-                                            </h3>
+                                            <h3 data-bs-toggle="collapse" data-bs-target="#collapseAward"><span class="edit-pmu-collapse-icon"><i class="bi bi-card-image"></i>
+                                                </span> {!! $data10->title ?? 'Awards & Recognitions' !!}<i class="bi bi-chevron-down"></i></h3>
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="javascript:void(0)" class="preview" data-name="support"><button class="common-btn ms-2"> Preview </button></a>
+                                        <a href="javascript:void(0)" class="preview" data-name="award"><button class="common-btn ms-2"> Preview </button></a>
                                     </div>
                                 </div>
-                                <div class="edit-pmu-section collapse-course-form collapse" id="collapseSupport">
-                                    <form action="{{ route('admin.about.support.save') }}" method="post" enctype="multipart/form-data" id="support_form">@csrf
+                                <div class="edit-pmu-section collapse-course-form collapse" id="collapseAward">
+                                    <form action="{{ route('admin.about.award.save') }}" method="post" enctype="multipart/form-data" id="award_form">@csrf
                                         <div class="row">
-                                            <div class="col-md-8">
+                                            <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="makeMeSummerTitle11" class="form-label black-color f-600">Enter Title</label>
-                                                    <textarea name="support_title" id="makeMeSummerTitle11" cols="30" rows="10">{{ $data9->title ?? '' }}</textarea>
-                                                    @if(isset($data9->id))
-                                                    <input type="hidden" name="support_id" value="{{ encrypt_decrypt('encrypt', $data9->id) }}">
+                                                    <label for="makeMeSummerTitle19" class="form-label black-color f-600">Enter Title</label>
+                                                    <textarea name="award_title" id="makeMeSummerTitle19" cols="30" rows="10">{{ $data10->title ?? '' }}</textarea>
+                                                    @if(isset($data10->id))
+                                                    <input type="hidden" name="award_id" value="{{ encrypt_decrypt('encrypt', $data10->id) }}">
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="@if(isset($data9->image1)) col-md-3 @else col-md-4 @endif">
-                                                <div class="mb-3">
-                                                    <label for="imageInput{{ $data9->id ?? 6548 }}" class="form-label black-color f-600">Upload Image</label>
-                                                    <div class="file-upload d-flex align-items-center mb-3 field flex-column">
-                                                        <div class="file btn black-color upload-btn">
-                                                            <span id="image_name{{ $data9->id ?? 6548 }}">
-                                                                @if(isset($data9->image1))
-                                                                {{ $data9->image1 }}
-                                                                @else
-                                                                Upload Image
-                                                                @endif
-                                                            </span> <i class="bi bi-file-image ms-2 main-color"></i>
-                                                            <input type="file" @if(!isset($data9->image1)) required @endif data-num="{{ $data9->id ?? 6548 }}" name="support_image" accept="image/png, image/jpg, image/jpeg" id="imageInput{{ $data9->id ?? 1407 }}" />
-                                                        </div>
-                                                        <div class="alert alert-danger mt-2 text-dark" role="alert">
-                                                            Please upload an image greater than or equal to recommended size (1348 X 720)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @if(isset($data9->image1))
-                                            <div class="col-md-1">
-                                                <a target="_blank" href="{{ assets('uploads/about/'.$data9->image1) }}"><img width="50" style="margin-top: 33.5%;" src="{{ assets('admin/images/gallery.png') }}" alt=""></a>
-                                            </div>
-                                            @endif
                                             <div class="col-md-12">
                                                 <div class="mb-3 field_error">
-                                                    <label for="makeMeSummernote9" class="form-label black-color f-600">Enter Description</label>
-                                                    <textarea class="post-area form-control" required id="makeMeSummernote9" name="support_description" rows="3" placeholder="Enter Description">{{ $data9->description ?? '' }}</textarea>
+                                                    <label for="makeMeSummernote19" class="form-label black-color f-600">Enter Description</label>
+                                                    <textarea class="post-area form-control" required id="makeMeSummernote19" name="award_description" rows="3" placeholder="Enter Description">{{ $data10->description ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-3 mb-4">
-                                                <button type="submit" data-id="support_form" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
+                                                <button type="submit" data-id="award_form" class="common-btn ms-2">Update<i class="bi bi-floppy ms-2"></i></button>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="text-end">
+                                        <a href="javascript:void(0)" style="width: 15%;"><button data-bs-toggle="modal" data-bs-target="#uploadFileAward" class="outline-btn">Add Image<i class="bi bi-plus-circle ms-2"></i></button></a>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="achievements-scroll">
+                                            <div class="owl-carouse row">
+                                                @forelse ($award as $item)
+                                                <div class="slid col-3 mb-4">
+                                                    <div class="box-slid common-card float w-100">
+                                                        <div class="img-box" style="height: 75%;">
+                                                            <img id style="height: 230px; width: 230px; object-fit:cover; object-position:center;" src="{{ assets("uploads/award/$item->image") }}" alt="image" class="img-fluid">
+                                                        </div>
+                                                        <div class="d-flex mt-2 justify-content-center">
+                                                            <a href="javascript:void(0)"><button class="outline-btn" data-bs-toggle="modal" onclick="$('#delete_form_award').attr('action','{{ route('admin.award.delete', encrypt_decrypt('encrypt', $item->id)) }}')" data-bs-target="#deleteFileAward">Delete</button></a>
+                                                            <a href="javascript:void(0)"><button id="imgEditBtnAward" class="common-btn ms-2" data-id="{{ encrypt_decrypt('encrypt', $item->id) }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-img="{{ $item->image }}">Edit</button></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @empty
+                                                <div class="text-center mt-5">
+                                                    <img width="300" src="{{ assets('admin/images/no-data.svg') }}" alt="">
+                                                    <h4 class="p-4 text-center my-2 w-100">No images found</h4>
+                                                </div>
+                                                @endforelse
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1361,6 +1472,248 @@
     </div>
 </div>
 
+<div class="modal fade" id="editFileInfo" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Edit Info</h4>
+
+                <form action="{{ route('admin.info.update') }}" method="post" enctype="multipart/form-data" id="update_form_info">
+                    @csrf
+                    <div class="edit-ebook">
+                        <div class="common-card" style="box-shadow: none;">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="mb-3 field_error">
+                                        <label for="editTitleInfo" class="form-label black-color f-600">Enter Title</label>
+                                        <input type="text" name="title" class="form-control" id="editTitleInfo" value="" aria-describedby="banner_name" placeholder="Enter Title">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="editImageInputInfo" class="form-label black-color f-600">Upload Image</label>
+                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file btn black-color upload-btn">
+                                                <span id="edit_image_name_info">
+                                                    Upload Image
+                                                </span>
+                                                <i class="bi bi-file-image ms-2 main-color"></i>
+                                                <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="editImageInputInfo" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <div class="mb-3 field_error">
+                                            <label for="editCompanyInfo" class="form-label black-color f-600">Enter Description</label>
+                                            <textarea name="description" id="editDescriptionInfo" placeholder="Enter Description" class="form-control" cols="30" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="editIdInfo" name="id" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center mb-3">
+                            <button type="button" id="edit-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" id="edit-model-submit-btn" class="w-50 btn outline-btn">Update<i class="bi bi-floppy ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadFileInfo" tabindex="-1" aria-labelledby="uploadFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Info</h4>
+
+                <form action="{{ route('admin.info.save') }}" method="post" enctype="multipart/form-data" id="create_form_info">
+                    @csrf
+                    <div class="edit-ebook">
+                        <div class="common-card" style="box-shadow: none;">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="mb-3 field_error">
+                                        <label for="name" class="form-label black-color f-600">Enter Title</label>
+                                        <input type="text" name="title" class="form-control" id="name" value="" aria-describedby="banner_name" placeholder="Enter Title">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="imageInput4654" class="form-label black-color f-600">Upload Image</label>
+                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file btn black-color upload-btn">
+                                                <span id="image_name4654">
+                                                    Upload Image
+                                                </span>
+                                                <i class="bi bi-file-image ms-2 main-color"></i>
+                                                <input type="file" name="image" data-num="4654" accept="image/png, image/jpg, image/jpeg" id="imageInput4654" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <div class="mb-3 field_error">
+                                            <label for="description" class="form-label black-color f-600">Enter Description</label>
+                                            <textarea name="description" id="description" class="form-control" placeholder="Enter Description" cols="30" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center mb-3">
+                            <button type="button" id="upload-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" id="upload-model-submit-btn" class="w-50 btn outline-btn">Create<i class="bi bi-floppy ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteFileInfo" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
+                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Info</b> ?</h6>
+                <img src="{{ assets('admin/images/delete.png') }}" alt="image" class="img-fluid delete">
+            </div>
+            <form action="" method="get" id="delete_form_info">
+                @csrf
+                <div class="modal-footer justify-content-center mb-3">
+                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn common-btn">Yes, Delete</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editFileAward" tabindex="-1" aria-labelledby="editFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Edit Image</h4>
+
+                <form action="{{ route('admin.award.update') }}" method="post" enctype="multipart/form-data" id="update_form_award">
+                    @csrf
+                    <div class="edit-ebook">
+                        <div class="common-card" style="box-shadow: none;">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="editImageInputAward" class="form-label black-color f-600">Upload Image</label>
+                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file btn black-color upload-btn">
+                                                <span id="edit_image_name_award">
+                                                    Upload Image
+                                                </span>
+                                                <i class="bi bi-file-image ms-2 main-color"></i>
+                                                <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" id="editImageInputAward" />
+                                                <input type="hidden" id="editIdAward" name="id" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center mb-3">
+                            <button type="button" id="edit-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" id="edit-model-submit-btn" class="w-50 btn outline-btn">Update<i class="bi bi-floppy ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadFileAward" tabindex="-1" aria-labelledby="uploadFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color mb-3">Add Image</h4>
+
+                <form action="{{ route('admin.award.save') }}" method="post" enctype="multipart/form-data" id="create_form_award">
+                    @csrf
+                    <div class="edit-ebook">
+                        <div class="common-card" style="box-shadow: none;">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="imageInput9456" class="form-label black-color f-600">Upload Image</label>
+                                        <div class="file-upload d-flex align-items-center mb-3 field">
+                                            <div class="file btn black-color upload-btn">
+                                                <span id="image_name9456">
+                                                    Upload Image
+                                                </span>
+                                                <i class="bi bi-file-image ms-2 main-color"></i>
+                                                <input type="file" name="image" data-num="9456" accept="image/png, image/jpg, image/jpeg" id="imageInput9456" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center mb-3">
+                            <button type="button" id="upload-model-close-btn" class="btn common-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" id="upload-model-submit-btn" class="w-50 btn outline-btn">Create<i class="bi bi-floppy ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteFileAward" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
+                <h6 class="text-color text-center mt-3">Do you really want to delete the <b class="main-color">Image</b> ?</h6>
+                <img src="{{ assets('admin/images/delete.png') }}" alt="image" class="img-fluid delete">
+            </div>
+            <form action="" method="get" id="delete_form_award">
+                @csrf
+                <div class="modal-footer justify-content-center mb-3">
+                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn common-btn">Yes, Delete</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -1448,6 +1801,19 @@
             $("#editCompanyTeam").summernote('code', $(this).data('company'));
             $("#editDesignationTeam").val($(this).data('designation'));
             $("#editFileTeam").modal('show');
+        });
+
+        $(document).on('click', "#imgEditBtnInfo", function() {
+            $("#edit_image_name_info").text($(this).data('img'));
+            $("#editIdInfo").val($(this).data('id'));
+            $("#editTitleInfo").val($(this).data('title'));
+            $("#editDescriptionInfo").val($(this).data('description'));
+            $("#editFileInfo").modal('show');
+        });
+        $(document).on('click', "#imgEditBtnAward", function() {
+            $("#edit_image_name_award").text($(this).data('img'));
+            $("#editIdAward").val($(this).data('id'));
+            $("#editFileAward").modal('show');
         });
 
         $(document).on('click', ".preview", function() {
@@ -1891,6 +2257,166 @@
                 form.submit();
             }
         });
+
+        $('#create_form_info').validate({
+            rules: {
+                title: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+                image: {
+                    required: true,
+                    filesize: 5
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                // error.addClass("invalid-feedback");
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                // $(element).removeClass("text-danger");
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+
+        $('#update_form_info').validate({
+            rules: {
+                title: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+                image: {
+                    filesize: 5
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                // error.addClass("invalid-feedback");
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                // $(element).removeClass("text-danger");
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+
+        $('#award_form').validate({
+            rules: {
+                award_title: {
+                    required: true,
+                },
+                award_description: {
+                    required: true,
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+
+        $('#create_form_award').validate({
+            rules: {
+                image: {
+                    required: true,
+                    filesize: 5
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                // error.addClass("invalid-feedback");
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                // $(element).removeClass("text-danger");
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
+
+        $('#update_form_award').validate({
+            rules: {
+                image: {
+                    filesize: 5
+                },
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                // error.addClass("invalid-feedback");
+                element.addClass("border border-danger");
+                element.closest(".file").addClass("border border-danger");
+                element.closest(".form-check").addClass("border border-danger");
+            },
+            highlight: function(element, errorClass, validClass) {
+                $('.please-wait').hide();
+
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                // $(element).removeClass("text-danger");
+                $(element).removeClass("border border-danger");
+                $(element).closest(".file").removeClass("border border-danger");
+                $(element).closest(".form-check").removeClass("border border-danger");
+            },
+            submitHandler: function(form, event) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
     });
 
     $(document).on("change", "*[id^='imageInput']", function(event) {
@@ -1907,6 +2433,20 @@
         if (fileInput.files.length > 0) {
             const selectedFile = fileInput.files[0];
             $("#edit_image_name_team").text(selectedFile.name);
+        }
+    });
+    document.getElementById('editImageInputInfo').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        if (fileInput.files.length > 0) {
+            const selectedFile = fileInput.files[0];
+            $("#edit_image_name_info").text(selectedFile.name);
+        }
+    });
+    document.getElementById('editImageInputAward').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        if (fileInput.files.length > 0) {
+            const selectedFile = fileInput.files[0];
+            $("#edit_image_name_award").text(selectedFile.name);
         }
     });
     document.getElementById('editImageInputHow').addEventListener('change', function(event) {

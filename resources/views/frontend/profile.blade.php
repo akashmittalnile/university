@@ -2,6 +2,16 @@
 @push('css')
 <link rel="stylesheet" href="{{ assets('frontend/css/user-details.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<style>
+    .cancel .outline-btn{
+        border: 1px solid #e83030;
+        color: #e83030;
+    }
+    .cancel .outline-btn:hover{
+        background-color: #e83030;
+        color: white;
+    }
+</style>
 @endpush
 @push('js')
 <script src="{{ assets('frontend/js/user-details.js') }}"></script>
@@ -52,6 +62,13 @@
                                 <button class="common-btn" data-bs-toggle="modal" data-bs-target="#change-password-modal">Change Password</button>
                             </a>
                         </div>
+                        @if(isset($currentPlanId))
+                        <div class="cancel">
+                            <a href="javascript:void(0)">
+                                <button class="btn outline-btn" onclick="$('#delete_form').attr('action','{{ route('user.cancel.subscription', encrypt_decrypt('encrypt', $currentPlanId)) }}')" data-bs-toggle="modal" data-bs-target="#deleteFile">Cancel Subscription</button>
+                            </a>
+                        </div>
+                        @endif
                     </div>
                     
                 </div>
@@ -89,6 +106,28 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="deleteFile" tabindex="-1" aria-labelledby="deleteFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-capitalize text-center letter-space f-600 black-color">Are you Sure?</h4>
+                <h6 class="text-color text-center mt-3">Do you really want to cancel the <b class="main-color">Subscription</b></h6>
+            </div>
+            <form action="" method="get" id="delete_form">
+                @csrf
+                <div class="modal-footer justify-content-center mb-3 cancel">
+                    <button type="button" class="btn outline-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn common-btn">Yes, Cancel</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="edit-profile-modalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-lg">

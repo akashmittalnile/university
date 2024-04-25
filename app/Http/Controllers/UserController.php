@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Stripe\Stripe;
 use App\Models\User;
 use App\Models\UserPlanDetail;
 use Illuminate\Http\Request;
@@ -92,9 +93,16 @@ class UserController extends Controller
         $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id')->where("user_plan_details.user_id", $id);
         if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
         if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
-        $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->get();
+        $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date', 'user_plan_details.updated_at as renew_date')->orderBy("user_plan_details.id", "desc")->get();
 
-        return view('admin.users.user-details', compact('user', 'currentPlan', 'total', 'transactions'));
+        $invoice = array();
+        if(isset($user->customer_id) && $user->customer_id != ''){
+            $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
+            $invoice = $stripe->invoices->all(['customer'=> $user->customer_id]);
+        }
+        // dd($invoice);
+
+        return view('admin.users.user-details', compact('user', 'currentPlan', 'total', 'transactions', 'invoice'));
     }
 
     public function userDetailDownloadReport(Request $request, $id)
@@ -104,7 +112,7 @@ class UserController extends Controller
             $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id')->where("user_plan_details.user_id", $id);
             if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
             if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
-            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->get();
+            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date', 'user_plan_details.updated_at as renew_date')->orderBy("user_plan_details.id", "desc")->get();
             return $this->userDetailDownloadReportFile($transactions);
         } catch (\Exception $e) {
             return errorMsg($e->getMessage());
@@ -118,7 +126,7 @@ class UserController extends Controller
             header('Content-Disposition: attachment; filename="Membership transaction "' . time() . '.csv');
             $output = fopen("php://output", "w");
 
-            fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On'));
+            fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On', 'Purchased on'));
 
             if (count($data) > 0) {
                 foreach ($data as $key => $row) {
@@ -129,8 +137,9 @@ class UserController extends Controller
                             $row->plan->name,
                             '$'.number_format(intval($row->plan->price), 2, '.', ','),
                             ucfirst($row->plan->type),
-                            date('d M Y', strtotime('+1 month'.$row->created_at)),
-                            date('d M Y, h:i:s a', strtotime($row->created_at)),
+                            date('d M Y', strtotime('+1 month'.$row->renew_date)),
+                            date('d M Y', strtotime($row->renew_date)),
+                            date('d M Y, h:i:s a', strtotime($row->receive_date)),
                         ];
                     }
                     fputcsv($output, $final);

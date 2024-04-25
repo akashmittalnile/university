@@ -92,6 +92,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('profile', [FrontendController::class, 'profile'])->name('profile');
         Route::post("profile", [FrontendController::class, 'profile_update'])->name('profile.post');
         Route::get('subscription', [FrontendController::class, 'subscription'])->name('subscription');
+        Route::get('cancel-subscription/{id}', [PlanController::class, 'cancelSubscription'])->name('cancel.subscription');
         Route::post('purchase', [PlanController::class, 'purchase'])->name('purchase');
         Route::post('review', [PlanController::class, 'review'])->name('review');
         Route::get("logout", [UserController::class, 'logout'])->name('logout');
@@ -178,6 +179,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("team-member-save", [AdminAboutUsController::class, 'teamMemberSave'])->name('team.member.save');
         Route::get("team-member-delete/{id}", [AdminAboutUsController::class, 'teamMemberDelete'])->name('team.member.delete');
         Route::post("team-member-update", [AdminAboutUsController::class, 'teamMemberUpdate'])->name('team.member.update');
+        Route::post("info-save", [AdminAboutUsController::class, 'infoSave'])->name('info.save');
+        Route::get("info-delete/{id}", [AdminAboutUsController::class, 'infoDelete'])->name('info.delete');
+        Route::post("info-update", [AdminAboutUsController::class, 'infoUpdate'])->name('info.update');
+        Route::post("award-save", [AdminAboutUsController::class, 'awardSave'])->name('award.save');
+        Route::get("award-delete/{id}", [AdminAboutUsController::class, 'awardDelete'])->name('award.delete');
+        Route::post("award-update", [AdminAboutUsController::class, 'awardUpdate'])->name('award.update');
         Route::post("about-we-do-save", [AdminAboutUsController::class, 'aboutWeDoSave'])->name('about.we_do.save');
         Route::post("about-how-save", [AdminAboutUsController::class, 'aboutHowSave'])->name('about.how.save');
         Route::post("about-how2-save", [AdminAboutUsController::class, 'aboutHow2Save'])->name('about.how2.save');
@@ -187,6 +194,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post("about-global-save", [AdminAboutUsController::class, 'aboutGlobalSave'])->name('about.global.save');
         Route::post("about-partner-save", [AdminAboutUsController::class, 'aboutPartnerSave'])->name('about.partner.save');
         Route::post("about-support-save", [AdminAboutUsController::class, 'aboutSupportSave'])->name('about.support.save');
+        Route::post("about-award-save", [AdminAboutUsController::class, 'aboutAwardSave'])->name('about.award.save');
 
         
         Route::post("about", [ContentController::class, 'aboutSave'])->name('about.save');

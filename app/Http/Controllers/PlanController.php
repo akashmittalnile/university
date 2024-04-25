@@ -203,6 +203,18 @@ class PlanController extends Controller
         }
     }
 
+    public function cancelSubscription($id){
+        try{
+            $id = encrypt_decrypt('decrypt', $id);
+            $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
+            $plan = UserPlanDetail::where('id', $id)->where('status', 'Active')->first();
+            $stripe->subscriptions->cancel($plan->subs_id, []);
+            return redirect()->back()->with('success', 'Subscription Plan Cancelled Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
     public function cancelPlan($subs_id)
     {
         $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
@@ -225,7 +237,7 @@ class PlanController extends Controller
             if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
             if($request->filled('from_date')) $transactions->whereDate('user_plan_details.created_at', '>=', date('Y-m-d', strtotime($request->from_date)));
             if($request->filled('to_date')) $transactions->whereDate('user_plan_details.created_at', '<=', date('Y-m-d', strtotime($request->to_date)));
-            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->paginate(config("app.records_per_page"));
+            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date', 'user_plan_details.updated_at as renew_date')->orderBy("user_plan_details.id", "desc")->paginate(config("app.records_per_page"));
             return view('admin.plans.transaction-logs')->with(compact('transactions', 'count'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
@@ -238,7 +250,7 @@ class PlanController extends Controller
             $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id');
             if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
             if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
-            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->get();
+            $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date', 'user_plan_details.updated_at as renew_date')->orderBy("user_plan_details.id", "desc")->get();
             return $this->downloadtransactionsReportFile($transactions);
         } catch (\Exception $e) {
             return errorMsg($e->getMessage());
@@ -252,7 +264,7 @@ class PlanController extends Controller
             header('Content-Disposition: attachment; filename="Transaction logs "' . time() . '.csv');
             $output = fopen("php://output", "w");
 
-            fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On'));
+            fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On', 'Purchased on'));
 
             if (count($data) > 0) {
                 foreach ($data as $key => $row) {
@@ -263,8 +275,9 @@ class PlanController extends Controller
                             $row->plan->name,
                             '$'.number_format(intval($row->plan->price), 2, '.', ','),
                             ucfirst($row->plan->type),
-                            date('d M Y', strtotime('+1 month'.$row->created_at)),
-                            date('d M Y, h:i:s a', strtotime($row->created_at)),
+                            date('d M Y', strtotime('+1 month'.$row->renew_date)),
+                            date('d M Y', strtotime($row->renew_date)),
+                            date('d M Y, h:i:s a', strtotime($row->receive_date)),
                         ];
                     }
                     fputcsv($output, $final);

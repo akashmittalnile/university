@@ -33,6 +33,28 @@
     </div>
 </div>
 
+<div class="supporters-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="supporters-content">
+                    <h1>
+                        {!! $data9->title ?? 'NA' !!}
+                    </h1>
+                    <p>
+                        {!! $data9->description ?? 'NA' !!}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="supporters-image">
+                    <img src="{{ isset($data9->image1) ? assets('uploads/about/'.($data9->image1 ?? null)) : assets('frontend/images/no-image.jpg') }}" alt="image" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="story-section">
     <div class="container">
         <div class="row">
@@ -55,6 +77,37 @@
         </div>
     </div>
 </div>
+@if(count($info) > 0)
+<div class="info-section">
+    <div class="container">
+        <div class="row">
+            @forelse($info as $key => $val) 
+            <div class="col-3">
+                <div class="team-members-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="team-members-card-imag">
+                                <img width="100" src="{{ assets('uploads/info/'.$val->image) }}"alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="team-members-card-content">
+                                <div class="team-quotes">"</div>
+                                <div class="team-members-card-content-innner">
+                                    <p>{!! $val->description ?? 'NA' !!}</p>
+                                    <h4>{!! $val->title ?? 'NA' !!}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @empty
+            @endforelse
+        </div>
+    </div>
+</div>
+@endif
 @if(count($team) > 0)
 <div class="team-section">
     <div class="container">
@@ -81,9 +134,10 @@
                                         <div class="team-members-card-content">
                                             <div class="team-quotes">"</div>
                                             <div class="team-members-card-content-innner">
-                                            <p>" {!! $val->company_name ?? 'NA' !!} "</p>
-                                            <h4>{!! $val->name ?? 'NA' !!}</h4>
-                                            <h6><i class="bi bi-dash-lg me-2"></i>{!! $val->designation ?? 'NA' !!}</h6></div>
+                                                <p>" {!! $val->company_name ?? 'NA' !!} "</p>
+                                                <h4>{!! $val->name ?? 'NA' !!}</h4>
+                                                <h6><i class="bi bi-dash-lg me-2"></i>{!! $val->designation ?? 'NA' !!}</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -312,39 +366,61 @@
         </div>
     </div>
 
-
-    <div class="supporters-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="supporters-content">
-                        <h1>
-                            {!! $data9->title ?? 'NA' !!}
-                        </h1>
-                        <p>
-                            {!! $data9->description ?? 'NA' !!}
-                        </p>
-                    </div>
+@if(count($award) > 0)
+<div class="team-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="team-heading-info">
+                    <h1 class="text-center">{!! $data10->title ?? 'NA' !!}</h1>
+                    <div class="text-center">{!! $data10->title ?? 'NA' !!}</div>
                 </div>
-                <div class="col-md-6">
-                    <div class="supporters-image">
-                        <img src="{{ isset($data9->image1) ? assets('uploads/about/'.($data9->image1 ?? null)) : assets('frontend/images/no-image.jpg') }}" alt="image" class="img-fluid" />
+            </div>
+            <div class="col-md-12">
+                <div class="team-carousel-info">
+                    <div id="awards" class="owl-carousel">
+                        @forelse($award as $key => $val) 
+                        <div class="item">
+                            <div class="team-members-card">
+
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="team-members-card-image">
+                                            <img src="{{ assets('uploads/award/'.$val->image) }}"alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+@endif
+
+
+    
 
 <script>
     $(document).ready(function(){
-        $("#customers-testimonials1").owlCarousel({
+        $("#awards").owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
             dots: false,
             responsive: {
-                1000: {
+                0: {
                     items: 1
+                },
+                500: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
                 },
             }
         });

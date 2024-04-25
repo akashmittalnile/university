@@ -25,7 +25,7 @@ class AdminController extends Controller
         $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id');
         if($request->filled('search')) $transactions->where("users.name", "LIKE", "%$request->search%")->orWhere('plans.price', $request->search);
         if($request->filled('receive_date')) $transactions->whereDate('user_plan_details.created_at', date('Y-m-d', strtotime($request->receive_date)));
-        $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date')->orderBy("user_plan_details.id", "desc")->limit(5)->get();
+        $transactions = $transactions->select('user_plan_details.*', 'user_plan_details.created_at as receive_date', 'user_plan_details.updated_at as renew_date')->orderBy("user_plan_details.id", "desc")->limit(5)->get();
 
         $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $data = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->select(
@@ -51,7 +51,7 @@ class AdminController extends Controller
         $transactions = UserPlanDetail::join('plans', 'user_plan_details.plan_id', '=', 'plans.id')->join('users', 'user_plan_details.user_id', '=', 'users.id')->when(request()->has('search'), function ($query) {
             $name = request('search');
             return $query->where("users.name", "LIKE", "%$name%")->orWhere('plans.price', $name);
-        })->orderBy("user_plan_details.id", "desc")->get();
+        })->select('user_plan_details.*', 'user_plan_details.created_at as receive_date', 'user_plan_details.updated_at as renew_date')->orderBy("user_plan_details.id", "desc")->get();
         return $this->downloadDownloadReportFile($transactions);
     }
 
@@ -62,7 +62,7 @@ class AdminController extends Controller
         header('Content-Disposition: attachment; filename="Membership transaction "' . time() . '.csv');
         $output = fopen("php://output", "w");
 
-        fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On'));
+        fputcsv($output, array('S.no', 'Name', 'Subscription Plan', 'Amount Paid', 'Billing type', 'Billing Due Date', 'Amount Received On', 'Purchased on'));
 
         if (count($data) > 0) {
             foreach ($data as $key => $row) {
@@ -73,8 +73,9 @@ class AdminController extends Controller
                         $row->plan->name,
                         '$'.number_format(intval($row->plan->price), 2, '.', ','),
                         ucfirst($row->plan->type),
-                        '1st of Every Month',
-                        date('d M Y, h:i:s a', strtotime($row->created_at)),
+                        date('d M Y', strtotime('+1 month'.$row->renew_date)),
+                        date('d M Y', strtotime($row->renew_date)),
+                        date('d M Y, h:i:s a', strtotime($row->receive_date)),
                     ];
                 }
                 fputcsv($output, $final);

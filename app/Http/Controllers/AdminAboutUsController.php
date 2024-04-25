@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ManageAboutUs;
+use App\Models\ManageAwardImage;
+use App\Models\ManageInfo;
 use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
@@ -20,6 +22,7 @@ class AdminAboutUsController extends Controller
             $data7 = ManageAboutUs::where('section_code', 'global')->first();
             $data8 = ManageAboutUs::where('section_code', 'partner')->first();
             $data9 = ManageAboutUs::where('section_code', 'support')->first();
+            $data10 = ManageAboutUs::where('section_code', 'award')->first();
             $how = ManageAboutUs::where('section_code', 'how')->first();
             $how1 = ManageAboutUs::where('section_code', 'how1')->first();
             $how2 = ManageAboutUs::where('section_code', 'how2')->first();
@@ -27,7 +30,9 @@ class AdminAboutUsController extends Controller
             $how4 = ManageAboutUs::where('section_code', 'how4')->first();
             $how5 = ManageAboutUs::where('section_code', 'how5')->first();
             $team = TeamMember::orderByDesc('id')->get();
-            return view("admin.about_us.about_us", compact('how', 'how1', 'how2', 'how3', 'how4', 'how5', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data8', 'data9', 'team'));
+            $info = ManageInfo::orderByDesc('id')->get();
+            $award = ManageAwardImage::orderByDesc('id')->get();
+            return view("admin.about_us.about_us", compact('how', 'how1', 'how2', 'how3', 'how4', 'how5', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data8', 'data9', 'data10', 'team', 'info', 'award'));
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
@@ -640,6 +645,188 @@ class AdminAboutUsController extends Controller
                 ManageAboutUs::create(['title' => $request->title, 'description' => $request->description, 'image1' => $name, 'section_code' => $request->section, 'status' => 1]);
             }
             return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function infoSave(Request $request)
+    {
+        try {
+            $request->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $info = new ManageInfo;
+            $info->title = $request->title;
+            $info->description = $request->description;
+
+            if ($request->hasFile("image")) {
+                $name = fileUpload($request->image, "uploads/info");
+                $info->image = $name;
+            }
+            $info->status = 1;
+            $info->save();
+
+            return redirect()->back()->with('success', 'Info Added Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function infoDelete($id)
+    {
+        try {
+            $id = encrypt_decrypt('decrypt', $id);
+            $info = ManageInfo::where('id', $id)->first();
+
+            $link = public_path() . "/uploads/info/" . $info->image;
+            if (file_exists($link)) {
+                unlink($link);
+            }
+
+            ManageInfo::where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Info Deleted Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function infoUpdate(Request $request)
+    {
+        try {
+            $request->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->id);
+            $info = ManageInfo::where('id', $id)->first();
+            $info->title = $request->title;
+            $info->description = $request->description;
+
+            if ($request->hasFile("image")) {
+                if (isset($info->image)) {
+                    $link = public_path() . "/uploads/info/" . $info->image;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $name = fileUpload($request->image, "uploads/info");
+                $info->image = $name;
+            }
+            $info->status = 1;
+            $info->save();
+
+            return redirect()->back()->with('success', 'Info Updated Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function aboutAwardSave(Request $request)
+    {
+        try {
+            $request->validate(
+                [
+                    'award_title' => 'required',
+                    "award_description" => 'required',
+                ]
+            );
+            if (isset($request->award_id) && $request->award_id != '') {
+                // dd($request->all());
+                $id = encrypt_decrypt('decrypt', $request->award_id);
+                $about = ManageAboutUs::where('id', $id)->where('section_code', 'award')->first();
+                $about->title = $request->award_title ?? null;
+                $about->description = $request->award_description;
+                $about->status = 1;
+                $about->updated_at = date('Y-m-d H:i:s');
+                $about->save();
+            } else {
+                $about = new ManageAboutUs;
+                $about->section_code = 'award';
+                $about->title = $request->award_title;
+                $about->description = $request->award_description;
+                $about->status = 1;
+                $about->save();
+            }
+            return redirect()->back()->with('success', 'Content Updated Successfully');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function awardSave(Request $request)
+    {
+        try {
+            $request->validate(
+                [
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $award = new ManageAwardImage;
+
+            if ($request->hasFile("image")) {
+                $name = fileUpload($request->image, "uploads/award");
+                $award->image = $name;
+            }
+            $award->status = 1;
+            $award->save();
+
+            return redirect()->back()->with('success', 'Image Added Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function awardDelete($id)
+    {
+        try {
+            $id = encrypt_decrypt('decrypt', $id);
+            $award = ManageAwardImage::where('id', $id)->first();
+
+            $link = public_path() . "/uploads/award/" . $award->image;
+            if (file_exists($link)) {
+                unlink($link);
+            }
+
+            ManageAwardImage::where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Image Deleted Successfully.');
+        } catch (\Exception $e) {
+            return errorMsg('Exception => ' . $e->getMessage());
+        }
+    }
+
+    public function awardUpdate(Request $request)
+    {
+        try {
+            $request->validate(
+                [
+                    "image" => 'file|max:10240',
+                ]
+            );
+            $id = encrypt_decrypt('decrypt', $request->id);
+            $award = ManageAwardImage::where('id', $id)->first();
+
+            if ($request->hasFile("image")) {
+                if (isset($award->image)) {
+                    $link = public_path() . "/uploads/award/" . $award->image;
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
+                }
+                $name = fileUpload($request->image, "uploads/award");
+                $award->image = $name;
+            }
+            $award->status = 1;
+            $award->save();
+
+            return redirect()->back()->with('success', 'Image Updated Successfully.');
         } catch (\Exception $e) {
             return errorMsg('Exception => ' . $e->getMessage());
         }
